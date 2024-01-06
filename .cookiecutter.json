@@ -1,0 +1,17 @@
+{
+    "_copy_without_render": [
+        "*.github"
+    ],
+    "_template": "https://github.com/MartinBernstorff/nimble-python-cookiecutter",
+    "author": "Martin Bernstorff",
+    "copyright_year": "2023",
+    "email": "martinbernstorff@gmail.com",
+    "friendly_name": "Herbarium",
+    "github_repo": "herbarium",
+    "github_user": "MartinBernstorff",
+    "license": "MIT",
+    "package_name": "herbarium",
+    "project_name": "herbarium",
+    "release_to_pypi": "yes",
+    "version": "0.0.0"
+}
