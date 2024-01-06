@@ -4,11 +4,13 @@
 [![PyPI](https://img.shields.io/pypi/v/herbarium.svg)][pypi status]
 [![Python Version](https://img.shields.io/pypi/pyversions/herbarium)][pypi status]
 [![Tests](https://github.com/MartinBernstorff/herbarium/actions/workflows/tests.yml/badge.svg)][tests]
+[![Roadmap](https://img.shields.io/badge/Board-Roadmap-green)][roadmap]
 
 [dev container]: https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/MartinBernstorff/herbarium/
 [pypi status]: https://pypi.org/project/herbarium/
 [documentation]: https://MartinBernstorff.github.io/herbarium/
 [tests]: https://github.com/MartinBernstorff/herbarium/actions?workflow=Tests
+[roadmap]: https://github.com/users/MartinBernstorff/projects/5
 
 
 <!-- start short-description -->
