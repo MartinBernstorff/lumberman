@@ -17,7 +17,7 @@ dependencies = ["typer"]
 dev = [
   "cruft==2.15.0",
   "pyright==1.1.333",
-  "pytest==7.4.3",
+  "pytest==7.4.4",
   "pytest-cov==4.1.0",
   "pytest-xdist==3.5.0",
   "pytest-sugar==0.9.7",
