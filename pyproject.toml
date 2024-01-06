@@ -14,18 +14,22 @@ requires-python = ">=3.11"
 dependencies = ["typer"]
 
 [project.optional-dependencies]
-dev = ["cruft==2.15.0",
-"pyright==1.1.333",
-"pytest==7.4.3",
-"pytest-cov==4.1.0",
-"pytest-xdist==3.5.0",
-"pytest-sugar==0.9.7",
-"diff-cover==8.0.1",
-"ruff==0.1.2",
+dev = [
+  "cruft==2.15.0",
+  "pyright==1.1.333",
+  "pytest==7.4.3",
+  "pytest-cov==4.1.0",
+  "pytest-xdist==3.5.0",
+  "pytest-sugar==0.9.7",
+  "diff-cover==8.0.1",
+  "ruff==0.1.2",
 ]
 
 [project.license]
 file = "LICENSE"
+
+[project.scripts]
+herb = "herbarium.__main__:app"
 
 [project.readme]
 file = "README.md"
@@ -42,7 +46,7 @@ pythonPlatform = "Darwin"
 reportMissingTypeStubs = false
 
 [tool.ruff]
-line-length = 70
+line-length = 100
 # Enable pycodestyle (`E`) and Pyflakes (`F`) codes by default.
 select = [
   "A",
@@ -115,7 +119,7 @@ dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 target-version = "py311"
 
 [tool.ruff.format]
-skip-magic-trailing-comma = false
+skip-magic-trailing-comma = true
 
 [tool.ruff.flake8-annotations]
 mypy-init-return = true

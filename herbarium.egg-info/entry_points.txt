@@ -1,0 +1,2 @@
+[console_scripts]
+herb = herbarium.__main__:app
