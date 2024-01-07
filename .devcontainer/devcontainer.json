@@ -29,8 +29,7 @@
         "ghcr.io/devcontainers/features/github-cli:1": {}
     },
     "initializeCommand": [
-        "mkdir -p ${localEnv:HOME}/config/gh",
-        "touch ${localEnv:HOME}/config/gh/hosts.yml"
+        "mkdir -p ${localEnv:HOME}/config/gh && touch ${localEnv:HOME}/config/gh/hosts.yml"
     ],
     "postStartCommand": "make install"
     // Features to add to the dev container. More info: https://containers.dev/features.
