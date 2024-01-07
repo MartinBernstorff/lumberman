@@ -7,10 +7,9 @@
         {
             "label": "PR",
             "type": "shell",
-            "command": "make finalise-pr",
+            "command": "herb submit",
             "group": "test",
             "dependsOn": [
-                "Setup PR",
                 "Lint",
                 "Test",
                 "Static type check",
@@ -26,18 +25,6 @@
             "label": "Lint",
             "type": "shell",
             "command": "make lint",
-            "presentation": {
-                "reveal": "always",
-                "clear": true,
-                "showReuseMessage": false,
-                "group": "pr"
-            },
-            "problemMatcher": []
-        },
-        {
-            "label": "Setup PR",
-            "type": "shell",
-            "command": "make setup-pr",
             "presentation": {
                 "reveal": "always",
                 "clear": true,
