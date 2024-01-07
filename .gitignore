@@ -10,8 +10,7 @@ _build/
 
 # MacOS
 .DS_Store
-.graphite_cache_persist
-.graphite_repo_config
+.graphite_*
 herbarium.egg-info/**
 
 # Byte-compiled / optimized / DLL files
