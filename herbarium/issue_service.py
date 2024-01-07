@@ -3,8 +3,6 @@ from collections.abc import Sequence
 from dataclasses import dataclass
 from typing import Protocol
 
-from rich.progress import Progress, SpinnerColumn, TextColumn
-
 from .subprocess_utils import shell_output
 
 

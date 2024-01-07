@@ -1,7 +1,7 @@
 from typing import Protocol
 
 from .issue_service import Issue
-from .subprocess_utils import interactive_cmd, shell_output
+from .subprocess_utils import interactive_cmd
 
 
 def sanitise_issue_title(issue_title: str) -> str:
