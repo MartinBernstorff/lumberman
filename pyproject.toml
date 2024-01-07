@@ -29,6 +29,7 @@ dev = [
 file = "LICENSE"
 
 [project.scripts]
+herbarium = "herbarium.__main__:app"
 herb = "herbarium.__main__:app"
 
 [project.readme]

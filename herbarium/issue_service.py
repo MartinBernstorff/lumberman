@@ -30,7 +30,8 @@ class GithubIssueService(IssueService):
         my_issues_cmd = shell("gh issue list --assignee='@me' --json number,title")
 
         if my_issues_cmd is None:
-            return None
+            print("No issues assigned to you, exiting")
+            return []
 
         values = json.loads(my_issues_cmd)
         parsed_output = [Issue(entity_id=str(v["number"]), title=v["title"]) for v in values]
