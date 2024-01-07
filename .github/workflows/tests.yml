@@ -30,8 +30,8 @@ jobs:
       - name: Pre-build dev container image
         uses: devcontainers/ci@v0.3
         with:
-          imageName: ghcr.io/{{ cookiecutter.github_user }}/{{ cookiecutter.github_repo }}-devcontainer
-          cacheFrom: ghcr.io/{{ cookiecutter.github_user }}/{{ cookiecutter.github_repo }}-devcontainer:latest
+          imageName: ghcr.io/martinbernstorff/herbarium-devcontainer
+          cacheFrom: ghcr.io/martinbernstorff/herbarium-devcontainer-devcontainer:latest
           push: filter
           refFilterForPush: refs/heads/main
           runCmd:
