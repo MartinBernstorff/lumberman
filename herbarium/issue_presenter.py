@@ -3,11 +3,9 @@ from typing import Protocol
 
 import questionary
 from rich.console import Console
-from rich.prompt import Prompt
 from rich.table import Table
 
 from .issue_service import Issue
-from .string_parsing import get_letter_alphabet_position, get_letter_from_alphabet_position
 
 console = Console()
 
