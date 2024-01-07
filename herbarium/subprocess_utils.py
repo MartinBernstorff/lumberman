@@ -18,7 +18,7 @@ def shell_output(command: str) -> str | None:
     import subprocess
 
     try:
-        result = subprocess.run(command, shell=True, stderr=STDOUT).decode("utf-8").strip()
+        result = subprocess.check_output(command, shell=True, stderr=STDOUT).decode("utf-8").strip()
     except subprocess.CalledProcessError as e:
         raise RuntimeError(
             f"""{command} failed.
