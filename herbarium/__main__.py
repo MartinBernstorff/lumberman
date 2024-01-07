@@ -33,7 +33,7 @@ def next():  # noqa: A001 [Shadowing python built-in]
 @app.command()
 def submit():
     with Progress(
-        SpinnerColumn(), TextColumn("[progress.description]{task.description}"), transient=True
+        SpinnerColumn(), TextColumn("[progress.description]{task.description} "), transient=True
     ) as progress:
         progress.add_task("Submitting stack", start=True)
         stacker.submit_stack()
