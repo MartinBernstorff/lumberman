@@ -11,7 +11,7 @@ authors = [
 description = "Herbarium"
 classifiers = ["Programming Language :: Python :: 3.11"]
 requires-python = ">=3.11"
-dependencies = ["typer"]
+dependencies = ["typer", "questionary"]
 
 [project.optional-dependencies]
 dev = [

@@ -1,8 +1,15 @@
 from collections.abc import Sequence
 from typing import Protocol
 
+import questionary
+from rich.console import Console
+from rich.prompt import Prompt
+from rich.table import Table
+
 from .issue_service import Issue
 from .string_parsing import get_letter_alphabet_position, get_letter_from_alphabet_position
+
+console = Console()
 
 
 class IssuePresenter(Protocol):
@@ -11,24 +18,20 @@ class IssuePresenter(Protocol):
 
 
 class DefaultIssuePresenter(IssuePresenter):
+    def _show_issues_table(self, issues: Sequence[Issue]):
+        table = Table("Title")
+
+        for issue in issues:
+            table.add_row(issue.title)
+
+        console.print(table)
+
     def select_issue_dialog(self, issues: Sequence[Issue]) -> Issue:
-        issue_strings = [
-            f"[{get_letter_from_alphabet_position(i+1)}] {issue.title}"
-            for i, issue in enumerate(issues)
-        ]
+        self._show_issues_table(issues)
+        selected_issue_title = questionary.autocomplete(
+            "I found these issues for you. Which one do you want to work on?",
+            choices=[issue.title for issue in issues],
+            qmark="",
+        ).ask()
 
-        n_issues = len(issues)
-
-        terminal_output = "\n".join(reversed(issue_strings))
-        print(f"\n{terminal_output}\n")
-
-        print("I found these issues for you. Which do you want to work on?\n")
-
-        issue_index = (
-            get_letter_alphabet_position(
-                input(f"[a-{get_letter_from_alphabet_position(n_issues)}]: ")
-            )
-            - 1
-        )
-
-        return issues[issue_index]
+        return next(issue for issue in issues if issue.title == selected_issue_title)

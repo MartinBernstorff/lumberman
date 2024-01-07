@@ -1,4 +1,6 @@
 import typer
+from rich import print
+from rich.progress import Progress, SpinnerColumn, TextColumn
 
 from .registry import issue_services, presenters, stackers
 
@@ -18,14 +20,24 @@ def new():
 
 @app.command()
 def next():  # noqa: A001 [Shadowing python built-in]
-    my_issues = issue_service.get_issues_assigned_to_me()
+    with Progress(
+        SpinnerColumn(), TextColumn("[progress.description]{task.description}"), transient=True
+    ) as progress:
+        progress.add_task("Getting issues assigned to you", start=True)
+        my_issues = issue_service.get_issues_assigned_to_me()
+
     selected_issue = issue_presenter.select_issue_dialog(my_issues)
     stacker.add_to_stack(selected_issue)
 
 
 @app.command()
 def submit():
-    stacker.submit_stack()
+    with Progress(
+        SpinnerColumn(), TextColumn("[progress.description]{task.description} "), transient=True
+    ) as progress:
+        progress.add_task("Submitting stack", start=True)
+        stacker.submit_stack()
+        print(":rocket: [bold green]Stack submitted![/bold green]")
 
 
 if __name__ == "__main__":

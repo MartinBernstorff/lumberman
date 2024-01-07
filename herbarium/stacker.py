@@ -1,7 +1,7 @@
 from typing import Protocol
 
 from .issue_service import Issue
-from .subprocess_utils import shell
+from .subprocess_utils import interactive_cmd, shell_output
 
 
 def sanitise_issue_title(issue_title: str) -> str:
@@ -38,17 +38,17 @@ class Stacker(Protocol):
 
 class Graphite(Stacker):
     def create_stack_from_trunk(self, issue: Issue):
-        shell("git checkout main")
-        shell("git pull")
+        interactive_cmd("git checkout main")
+        interactive_cmd("git pull")
         self.add_to_stack(issue)
 
     def add_to_stack(self, issue: Issue):
         sanitised_title = sanitise_issue_title(issue.title)
         branch_title = f"{issue.entity_id}-{sanitised_title}"
-        first_commit_str = f"$'{issue.title}\n\nFixes #{issue.entity_id}'"
-        shell(f"gt create {branch_title} --all -m {first_commit_str}")
-        shell(f"git commit --allow-empty -m {first_commit_str}")
+        first_commit_str = f"'{issue.title}\n\nFixes #{issue.entity_id}'"
+        interactive_cmd(f"gt create {branch_title} --all -m {first_commit_str}")
+        interactive_cmd(f"git commit --allow-empty -m {first_commit_str}")
 
     def submit_stack(self):
-        shell("gt submit -m --no-edit --publish")
-        shell("gt log short")
+        interactive_cmd("gt submit -m --no-edit --publish")
+        interactive_cmd("gt log short")
