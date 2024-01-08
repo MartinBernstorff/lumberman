@@ -2,6 +2,33 @@
 
 
 
+## v0.5.0 (2024-01-08)
+
+### Feature
+
+* feat: pretty error message if no issues assigned (#47)
+
+feat: pretty error message if no issues assigned
+
+Fixes #29
+
+misc.
+
+fix: types ([`84f501e`](https://github.com/MartinBernstorff/herbarium/commit/84f501eb5f27788f546b96809d843b02be8fbaf0))
+
+* feat: pretty error message if no issues assigned
+
+Fixes #29 ([`6087659`](https://github.com/MartinBernstorff/herbarium/commit/608765985b3afb2c82fe85e26e7c07933637148e))
+
+### Fix
+
+* fix: types ([`50ef8e8`](https://github.com/MartinBernstorff/herbarium/commit/50ef8e8ea9465dfc270425921923fc15148f7aee))
+
+### Unknown
+
+* misc. ([`6c195ba`](https://github.com/MartinBernstorff/herbarium/commit/6c195ba50e21f5b9f55e937216b9be266c9ac699))
+
+
 ## v0.4.1 (2024-01-08)
 
 ### Ci
