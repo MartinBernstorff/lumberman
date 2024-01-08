@@ -35,7 +35,7 @@ class Stacker(Protocol):
     def add_to_stack(self, issue: Issue):
         ...
 
-    def submit_stack(self):
+    def submit_stack(self, automerge: bool):
         ...
 
 
@@ -52,6 +52,11 @@ class Graphite(Stacker):
         interactive_cmd(f"gt create {branch_title} --all -m {first_commit_str}")
         interactive_cmd(f"git commit --allow-empty -m {first_commit_str}")
 
-    def submit_stack(self):
-        interactive_cmd("gt submit -m --no-edit --publish")
+    def submit_stack(self, automerge: bool):
+        submit_command = "gt submit --no-edit --publish"
+
+        if automerge:
+            submit_command += " --merge-when-ready"
+
+        interactive_cmd(submit_command)
         interactive_cmd("gt log short")
