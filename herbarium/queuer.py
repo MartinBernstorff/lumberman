@@ -84,7 +84,6 @@ class Graphite(Queuer):
 
     def add_to_end_of_queue(self, issue: Issue):
         self._sync()
-
         first_commit_str = self._get_first_commit_str(issue)
         branch_title = self._get_branch_title(issue=issue)
         interactive_cmd(f"gt create {branch_title} --all")
