@@ -83,14 +83,14 @@ class Graphite(Queuer):
         with StagingMigrater():
             interactive_cmd("gt bottom")
 
-        interactive_cmd(f"gt create {branch_title} --all --insert")
+        interactive_cmd(f'gt create {branch_title} --all --insert -m "{first_commit_str}"')
         interactive_cmd(f'git commit --allow-empty -m "{first_commit_str}"')
 
     def add_to_end_of_queue(self, issue: Issue):
         self._sync()
         first_commit_str = self._get_first_commit_str(issue)
         branch_title = self._get_branch_title(issue=issue)
-        interactive_cmd(f"gt create {branch_title} --all")
+        interactive_cmd(f'gt create {branch_title} --all -m "{first_commit_str}"')
         interactive_cmd(f'git commit --allow-empty -m "{first_commit_str}"')
 
     def _get_first_commit_str(self, issue: Issue) -> str:
