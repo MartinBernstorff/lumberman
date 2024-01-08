@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 from types import TracebackType
-from typing import Any
 
 import typer
 

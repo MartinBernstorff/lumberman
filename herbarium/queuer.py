@@ -1,9 +1,8 @@
 import re
 from dataclasses import dataclass
-from typing import Optional, Protocol
+from typing import Protocol
 
 from .git_utils import StagingMigrater
-from .issue_presenter import IssuePresenter
 from .issue_service import Issue
 from .subprocess_utils import interactive_cmd
 
