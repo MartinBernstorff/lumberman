@@ -8,18 +8,22 @@
             "label": "PR",
             "type": "shell",
             "command": "herb submit",
-            "group": "test",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
             "dependsOn": [
                 "Lint",
                 "Test",
-                "Static type check",
+                "Static type check"
             ],
             "presentation": {
                 "reveal": "always",
                 "clear": true,
                 "showReuseMessage": false,
                 "group": "pr"
-            }
+            },
+            "problemMatcher": []
         },
         {
             "label": "Lint",
@@ -42,7 +46,7 @@
                 "clear": true,
                 "showReuseMessage": false,
                 "group": "pr"
-            },
+            }
         },
         {
             "label": "Static type check",
