@@ -2,6 +2,29 @@
 
 
 
+## v0.6.0 (2024-01-08)
+
+### Feature
+
+* feat: cleaner issue title parsing (#48) ([`da985b9`](https://github.com/MartinBernstorff/herbarium/commit/da985b91103e8421ca653a448122936e8e0d05ea))
+
+* feat: cleaner issue title parsing
+
+Fixes #16 ([`76821cf`](https://github.com/MartinBernstorff/herbarium/commit/76821cfb833bf16e2f80df519b025a14b3d29304))
+
+### Unknown
+
+* cli: present refresh option when finding issues (#50) ([`3d69629`](https://github.com/MartinBernstorff/herbarium/commit/3d69629d79115793bc490bb4a95552aad238fafe))
+
+* misc. ([`a4300f9`](https://github.com/MartinBernstorff/herbarium/commit/a4300f9d9779cfa9e7566850a32e65a33d737bbf))
+
+* cli: present refresh option when finding issues
+
+Fixes #49 ([`3a6f020`](https://github.com/MartinBernstorff/herbarium/commit/3a6f020c5e274b30e6e3a72dc54ae2cd6a5c3df7))
+
+* misc. ([`a8b9623`](https://github.com/MartinBernstorff/herbarium/commit/a8b96233560dd2d4e92f6d860b221056a1dc507a))
+
+
 ## v0.5.0 (2024-01-08)
 
 ### Feature
