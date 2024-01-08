@@ -1,10 +1,19 @@
+import re
+from collections.abc import Mapping
+from dataclasses import dataclass
 from typing import Protocol
 
 from .issue_service import Issue
 from .subprocess_utils import interactive_cmd
 
 
-def sanitise_issue_title(issue_title: str) -> str:
+@dataclass(frozen=True)
+class ParsedIssue:
+    prefix: str
+    description: str
+
+
+def sanitise_text_for_git(input_string: str) -> str:
     char2replacement = {
         " ": "-",
         ":": "/",
@@ -22,10 +31,20 @@ def sanitise_issue_title(issue_title: str) -> str:
     }
 
     for character, replacement in char2replacement.items():
-        issue_title = issue_title.replace(character, replacement)
+        input_string = input_string.replace(character, replacement)
 
-    issue_title = issue_title.replace("--", "-")
-    return issue_title
+    return input_string.replace("--", "-")
+
+
+def parse_issue_title(issue_title: str) -> ParsedIssue:
+    # Get all string between start and first ":"
+    prefix = re.findall(r"^(.*?):", issue_title)[0]
+    description = re.findall(r": (.*)$", issue_title)[0]
+
+    return ParsedIssue(
+        prefix=sanitise_text_for_git(input_string=prefix),
+        description=sanitise_text_for_git(input_string=description),
+    )
 
 
 class Stacker(Protocol):
@@ -54,8 +73,8 @@ class Graphite(Stacker):
 
     def add_to_stack(self, issue: Issue):
         self._sync()
-        sanitised_title = sanitise_issue_title(issue.title)
-        branch_title = f"{issue.entity_id}-{sanitised_title}"
+        parsed_issue = parse_issue_title(issue.title)
+        branch_title = f"{parsed_issue.prefix}/{issue.entity_id}/{parsed_issue.description}"
         first_commit_str = f"'{issue.title}\n\nFixes #{issue.entity_id}'"
         interactive_cmd(f"gt create {branch_title} --all -m {first_commit_str}")
         interactive_cmd(f"git commit --allow-empty -m {first_commit_str}")
