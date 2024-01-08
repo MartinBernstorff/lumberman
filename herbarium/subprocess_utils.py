@@ -8,11 +8,13 @@ def interactive_cmd(command: str) -> None:
     try:
         subprocess.run(command, shell=True, stderr=STDOUT, check=True)
     except subprocess.CalledProcessError as e:
-        raise RuntimeError(
-            f"""{command} failed.
-    Exit code: {e.returncode}
-    Output: {e.stdout.decode('utf-8').strip()}"""
-        ) from e
+        error_message = f"""{command} failed.
+\tExit code: {e.returncode}"""
+
+        if e.stdout:
+            error_message += f"\n\tOutput: {e.stdout.decode('utf-8').strip()}"
+
+        raise RuntimeError(error_message) from e
 
 
 def shell_output(command: str) -> Optional[str]:
