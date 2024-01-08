@@ -2,6 +2,65 @@
 
 
 
+## v0.4.1 (2024-01-08)
+
+### Ci
+
+* ci: run tests on prs against any branch (#39) ([`e21f947`](https://github.com/MartinBernstorff/herbarium/commit/e21f9477d183d65fd1d7701e691d1c46882a15ef))
+
+* ci: run tests on prs against any branch ([`28c6035`](https://github.com/MartinBernstorff/herbarium/commit/28c603591f7b3037a610a8261c67a14f449aab39))
+
+### Fix
+
+* fix: prettier log
+
+Fixes #35 ([`8e149ba`](https://github.com/MartinBernstorff/herbarium/commit/8e149ba4aa166e439138f027894b41a909798fe2))
+
+### Unknown
+
+* cli: reverse log output (#45)
+
+cli: reverse log output
+
+Fixes #44
+
+cli: reverse log output
+
+Fixes #44 ([`a4faa4b`](https://github.com/MartinBernstorff/herbarium/commit/a4faa4ba49ef31d6e2dad7b95e275b32909b0f72))
+
+* cli: reverse log output
+
+Fixes #44 ([`3d68811`](https://github.com/MartinBernstorff/herbarium/commit/3d6881183f9af53a875e67c9a2521fb9c960b58a))
+
+* misc. ([`5213f14`](https://github.com/MartinBernstorff/herbarium/commit/5213f1453aa956db3bc17f349bdcda8c5b2d22c6))
+
+* misc. ([`428c6ae`](https://github.com/MartinBernstorff/herbarium/commit/428c6aeeb101c1554f5515278829564ad2e73883))
+
+* cli: simplify stack submit animations (#43)
+
+cli: simplify stack submit animations
+
+Fixes #42
+
+misc. ([`d2e44b6`](https://github.com/MartinBernstorff/herbarium/commit/d2e44b60dbe2b96a5c4a7b56d3b0022c321de8a5))
+
+* misc. ([`834beb9`](https://github.com/MartinBernstorff/herbarium/commit/834beb96486e0aee8efabe881543cc462af9db4f))
+
+* dev: submit with automerge (#41)
+
+dev: submit with automerge
+
+Fixes #40
+
+misc. ([`1657a46`](https://github.com/MartinBernstorff/herbarium/commit/1657a46d5e56d4855554458010c1da773e026451))
+
+* misc. ([`0b43842`](https://github.com/MartinBernstorff/herbarium/commit/0b43842cf145ba29421fd2521cf8cc24b23ef326))
+
+* dev: submit with automerge
+
+Fixes #40 ([`144e52c`](https://github.com/MartinBernstorff/herbarium/commit/144e52ca324fc353070af6f2926fc74d7eb1e848))
+
+
 ## v0.4.0 (2024-01-08)
 
 ### Feature
