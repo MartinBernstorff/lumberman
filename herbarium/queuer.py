@@ -62,7 +62,7 @@ class Queuer(Protocol):
 
 class Graphite(Queuer):
     def _sync(self):
-        interactive_cmd("gt sync --force --show-delete-progress")
+        interactive_cmd("gt sync --force")
 
     def create_queue_from_trunk(self, issue: Issue):
         self._sync()
@@ -82,7 +82,7 @@ class Graphite(Queuer):
             first_commit_str += "\n\nFixes #{issue.entity_id}"
 
         interactive_cmd(f'gt create {branch_title} --all -m "{first_commit_str}"')
-        interactive_cmd(f"git commit --allow-empty -m {first_commit_str}")
+        interactive_cmd(f'git commit --allow-empty -m "{first_commit_str}"')
 
     def submit_queue(self, automerge: bool):
         self._sync()
