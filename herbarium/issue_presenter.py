@@ -3,7 +3,6 @@ from dataclasses import dataclass
 from typing import Optional, Protocol
 
 import questionary
-import rich
 import typer
 from rich.console import Console
 
