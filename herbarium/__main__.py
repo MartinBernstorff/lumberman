@@ -52,18 +52,18 @@ def select_issue() -> Issue:
 @app.command()
 def new():
     selected_issue = select_issue()
-    stacker.create_stack_from_trunk(selected_issue)
+    stacker.add_to_end_of_queue(selected_issue)
 
 
 @app.command()
 def next():  # noqa: A001 [Shadowing python built-in]
     selected_issue = select_issue()
-    stacker.add_to_stack(selected_issue)
+    stacker.add_to_end_of_queue(selected_issue)
 
 
 @app.command()
 def submit(automerge: bool = False):
-    stacker.submit_stack(automerge=automerge)
+    stacker.submit_queue(automerge=automerge)
     print(":rocket: [bold green]Stack submitted![/bold green]")
     stacker.status()
 
