@@ -2,6 +2,21 @@
 
 
 
+## v0.4.0 (2024-01-08)
+
+### Feature
+
+* feat: delete unused branches on submit (#37)
+
+feat: delete unused branches on submit
+
+Fixes #30
+
+misc.
+
+fix: even prettier logs ([`45d6a50`](https://github.com/MartinBernstorff/herbarium/commit/45d6a50f0d7238790d0b657594987c1b678c648d))
+
+
 ## v0.3.1 (2024-01-08)
 
 ### Fix
