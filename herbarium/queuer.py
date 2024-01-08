@@ -78,11 +78,11 @@ class Graphite(Queuer):
         entity_id_section = "" if issue.entity_id is None else f"/{issue.entity_id}"
         branch_title = f"{parsed_issue.prefix}{entity_id_section}/{parsed_issue.description}"
 
-        first_commit_str = f"'{issue.title}"
+        first_commit_str = f"{issue.title}"
         if issue.entity_id is not None:
-            first_commit_str += "\n\nFixes #{issue.entity_id}'"
+            first_commit_str += "\n\nFixes #{issue.entity_id}"
 
-        interactive_cmd(f"gt create {branch_title} --all -m {first_commit_str}")
+        interactive_cmd(f"gt create {branch_title} --all -m '{first_commit_str}'")
         interactive_cmd(f"git commit --allow-empty -m {first_commit_str}")
 
     def submit_queue(self, automerge: bool):
