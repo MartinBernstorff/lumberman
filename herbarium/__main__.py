@@ -40,6 +40,8 @@ def submit(automerge: bool = False):
     print(":rocket: [bold green]Stack submitted![/bold green]")
     stacker.status()
 
+    stacker.status()
+
 
 if __name__ == "__main__":
     app()
