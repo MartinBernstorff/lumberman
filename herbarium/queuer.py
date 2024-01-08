@@ -79,7 +79,7 @@ class Graphite(Queuer):
 
         first_commit_str = f"{issue.title}"
         if issue.entity_id is not None:
-            first_commit_str += "\n\nFixes #{issue.entity_id}"
+            first_commit_str += f"\n\nFixes #{issue.entity_id}"
 
         interactive_cmd(f'gt create {branch_title} --all -m "{first_commit_str}"')
         interactive_cmd(f'git commit --allow-empty -m "{first_commit_str}"')
