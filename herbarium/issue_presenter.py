@@ -27,10 +27,9 @@ class DefaultIssuePresenter(IssuePresenter):
     def _show_selection_dialog(self, issues: Sequence[Issue]) -> str:
         issue_titles = [issue.title for issue in issues]
         return questionary.select(
-            "I found these issues for you. Which one do you want to work on?",
+            "What's next? :rocket:",
             choices=[self.refresh_prompt, self.manual_prompt, *issue_titles],
             default=issue_titles[0],
-            qmark="",
         ).ask()
 
     def select_issue_dialog(self, issues: Sequence[Issue]) -> Optional[Issue]:
