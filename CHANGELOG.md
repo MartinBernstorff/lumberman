@@ -2,6 +2,27 @@
 
 
 
+## v0.8.0 (2024-01-08)
+
+### Feature
+
+* feat: simplify prompt (#56)
+
+feat: simplify prompt
+
+misc. ([`c017abd`](https://github.com/MartinBernstorff/herbarium/commit/c017abdd64406dc93ca283c3e2846cdc3dfc875d))
+
+* feat: simplify prompt ([`92c1885`](https://github.com/MartinBernstorff/herbarium/commit/92c18850cddbe9d107f6759eed17b008e12cb17a))
+
+### Unknown
+
+* misc. ([`649fe4a`](https://github.com/MartinBernstorff/herbarium/commit/649fe4af6410923a945ba9855045d22b96c326e9))
+
+* misc. (#55) ([`8c91f5c`](https://github.com/MartinBernstorff/herbarium/commit/8c91f5cc75573a84caa45e4e70b17606577d2158))
+
+* misc. ([`f1656a7`](https://github.com/MartinBernstorff/herbarium/commit/f1656a7493273eb93fe867a546ecf599d8247a77))
+
+
 ## v0.7.0 (2024-01-08)
 
 ### Feature
