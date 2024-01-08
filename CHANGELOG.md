@@ -2,6 +2,21 @@
 
 
 
+## v0.3.1 (2024-01-08)
+
+### Fix
+
+* fix: prettier log (#36)
+
+fix: prettier log
+
+Fixes #35
+
+fix: prettier log
+
+Fixes #35 ([`4482f2c`](https://github.com/MartinBernstorff/herbarium/commit/4482f2c9dda485cc006ab5b299f412525a1eabc5))
+
+
 ## v0.3.0 (2024-01-08)
 
 ### Feature
