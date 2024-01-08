@@ -58,7 +58,7 @@ def new():
 @app.command()
 def insert_at_front():
     selected_issue = select_issue()
-    stacker.add_to_end_of_queue(selected_issue)
+    stacker.add_to_beginning_of_queue(selected_issue)
 
 
 @app.command()

@@ -2,6 +2,7 @@ import re
 from dataclasses import dataclass
 from typing import Optional, Protocol
 
+from .git_utils import StagingMigrater
 from .issue_presenter import IssuePresenter
 from .issue_service import Issue
 from .subprocess_utils import interactive_cmd
@@ -78,7 +79,10 @@ class Graphite(Queuer):
         self._sync()
         first_commit_str = self._get_first_commit_str(issue)
         branch_title = self._get_branch_title(issue=issue)
-        interactive_cmd("gt bottom")
+
+        with StagingMigrater():
+            interactive_cmd("gt bottom")
+
         interactive_cmd(f"gt create {branch_title} --all --insert")
         interactive_cmd(f'git commit --allow-empty -m "{first_commit_str}"')
 
@@ -97,7 +101,7 @@ class Graphite(Queuer):
 
     def _get_branch_title(self, issue: Issue) -> str:
         parsed_issue = parse_issue_title(issue.title)
-        entity_id_section = "" if entity_id is None else f"/{entity_id}"
+        entity_id_section = "" if issue.entity_id is None else f"/{issue.entity_id}"
         return f"{parsed_issue.prefix}{entity_id_section}/{parsed_issue.description}"
 
     def submit_queue(self, automerge: bool):
