@@ -62,5 +62,6 @@ class Graphite(Stacker):
             submit_command += " --merge-when-ready"
 
         interactive_cmd(submit_command)
-        print("\n")
+
+    def status(self):
         interactive_cmd("gt log short")
