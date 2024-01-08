@@ -38,6 +38,9 @@ class Stacker(Protocol):
     def submit_stack(self, automerge: bool):
         ...
 
+    def status(self):
+        ...
+
 
 class Graphite(Stacker):
     def create_stack_from_trunk(self, issue: Issue):
