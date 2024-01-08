@@ -16,6 +16,9 @@ def sanitise_issue_title(issue_title: str) -> str:
         "[": "",
         "": "",
         "`": "",
+        ">": "",
+        "<": "",
+        "=": "",
     }
 
     for character, replacement in char2replacement.items():
