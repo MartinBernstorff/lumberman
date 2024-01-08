@@ -3,7 +3,6 @@ from typing import Protocol
 
 import questionary
 from rich.console import Console
-from rich.table import Table
 
 from .issue_service import Issue
 
