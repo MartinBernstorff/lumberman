@@ -1,3 +1,5 @@
+from dataclasses import dataclass
+from types import TracebackType
 from typing import Any
 
 import typer
@@ -30,9 +32,6 @@ def commit_unstaged() -> None:
     shell_output(f'git commit -m "{commit_msg}"')
 
 
-from dataclasses import dataclass
-
-
 @dataclass
 class StagingMigrater:
     has_stashed: bool = False
@@ -44,7 +43,7 @@ class StagingMigrater:
         shell_output("git stash")
         self.has_stashed = True
 
-    def __exit__(self, **kwargs: Any) -> None:
+    def __exit__(self, exc_type: type, exc_val: Exception, exc_tb: TracebackType) -> None:
         """Applies the latest stash"""
         if not self.has_stashed:
             return
