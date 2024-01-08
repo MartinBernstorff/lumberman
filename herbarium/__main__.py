@@ -1,8 +1,11 @@
+from collections.abc import Sequence
+
 import typer
 from rich import print
 from rich.progress import Progress, SpinnerColumn, TextColumn
 from rich.prompt import Confirm
 
+from .issue_service import Issue
 from .registry import issue_services, presenters, stackers
 
 app = typer.Typer()
@@ -20,6 +23,18 @@ def look_for_new_issues() -> bool:
     return retry
 
 
+def select_issue(my_issues: Sequence[Issue]) -> Issue:
+    refresh_prompt = "Refresh..."
+    selected_issue = issue_presenter.select_issue_dialog(my_issues, refresh_prompt=refresh_prompt)
+
+    while selected_issue is None:
+        selected_issue = issue_presenter.select_issue_dialog(
+            my_issues, refresh_prompt=refresh_prompt
+        )
+
+    return selected_issue
+
+
 @app.command()
 def new():
     with Progress(
@@ -33,7 +48,7 @@ def new():
             next()
         return
 
-    selected_issue = issue_presenter.select_issue_dialog(my_issues)
+    selected_issue = select_issue(my_issues=my_issues)
     stacker.create_stack_from_trunk(selected_issue)
 
 
@@ -50,7 +65,7 @@ def next():  # noqa: A001 [Shadowing python built-in]
             next()
         return
 
-    selected_issue = issue_presenter.select_issue_dialog(my_issues)
+    selected_issue = select_issue(my_issues=my_issues)
     stacker.add_to_stack(selected_issue)
 
 
