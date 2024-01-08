@@ -2,6 +2,23 @@
 
 
 
+## v0.3.0 (2024-01-08)
+
+### Feature
+
+* feat: newline after submitting stack to get log pretty (#34)
+
+feat: newline after submitting stack to get log pretty
+
+Fixes #31
+
+misc. ([`99de3de`](https://github.com/MartinBernstorff/herbarium/commit/99de3ded14a272fe85e2e2a68a0e7ce555305a3f))
+
+* feat: make automerge a command-line argument (#33)
+
+Fixes #32 ([`6ecac7f`](https://github.com/MartinBernstorff/herbarium/commit/6ecac7f1ae9a2829d2696b0af8e226997e476ecc))
+
+
 ## v0.2.0 (2024-01-08)
 
 ### Feature
