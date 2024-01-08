@@ -2,6 +2,51 @@
 
 
 
+## v0.8.2 (2024-01-08)
+
+### Fix
+
+* fix: Fixes in first commit (#60)
+
+fix: Fixes in first commit
+
+fix: Fixes in first commit ([`e69d0d7`](https://github.com/MartinBernstorff/herbarium/commit/e69d0d77f91632bea76fc4adcb68a0921d8a6632))
+
+* fix: Fixes in first commit ([`8341b40`](https://github.com/MartinBernstorff/herbarium/commit/8341b4002f4ce350952942c2cf19a29a90815f0c))
+
+### Style
+
+* style: lint ([`249025e`](https://github.com/MartinBernstorff/herbarium/commit/249025ea8555b34554a7ae3844e5a5db206c5ae6))
+
+### Unknown
+
+* cli: fix emoji handling in prompt
+
+Fixes #{issue.entity_id} ([`edd4e74`](https://github.com/MartinBernstorff/herbarium/commit/edd4e74a34c8601b8997084a6d5127b7183fbb64))
+
+* dev: remove redundant ruff target version ([`bf7f6a4`](https://github.com/MartinBernstorff/herbarium/commit/bf7f6a463d85aae7f3a2b1b1a1014c95f42984a2))
+
+* cli: fix emoji handling in prompt (#59)
+
+cli: fix emoji handling in prompt
+
+Fixes #{issue.entity_id}
+
+misc. ([`79392c0`](https://github.com/MartinBernstorff/herbarium/commit/79392c07ba9cb5187327a4513be7778c7e0f61f0))
+
+* misc. ([`1ff09a2`](https://github.com/MartinBernstorff/herbarium/commit/1ff09a2aa12ef7f7e6ec7cfdb9409b10d1b5ac0a))
+
+* dev: remove redundant ruff target version (#63)
+
+dev: remove redundant ruff target version
+
+dev: remove redundant ruff target version ([`3737c4a`](https://github.com/MartinBernstorff/herbarium/commit/3737c4a597e0cc1c40101bc588304d11ca38853b))
+
+* dev: remove redundant ruff target version ([`3149656`](https://github.com/MartinBernstorff/herbarium/commit/31496564ce8afe8be1d3e679faa88bef4be0efb4))
+
+* dev: remove redundant ruff target version ([`0acebcb`](https://github.com/MartinBernstorff/herbarium/commit/0acebcb24fc75f6bb6e5bf52e848fef2bac08c5a))
+
+
 ## v0.8.1 (2024-01-08)
 
 ### Fix
