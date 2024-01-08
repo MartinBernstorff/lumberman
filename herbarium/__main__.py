@@ -35,12 +35,12 @@ def next():  # noqa: A001 [Shadowing python built-in]
 
 
 @app.command()
-def submit():
+def submit(automerge: bool = False):
     with Progress(
         SpinnerColumn(), TextColumn("[progress.description]{task.description} "), transient=True
     ) as progress:
         progress.add_task("Submitting stack", start=True)
-        stacker.submit_stack()
+        stacker.submit_stack(automerge=automerge)
         print(":rocket: [bold green]Stack submitted![/bold green]")
 
 
