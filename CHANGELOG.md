@@ -2,6 +2,27 @@
 
 
 
+## v0.8.1 (2024-01-08)
+
+### Fix
+
+* fix: prettier subprocess handling (#57)
+
+fix: prettier subprocess handling
+
+Fixes #{issue.entity_id}
+
+misc. ([`2faa5a2`](https://github.com/MartinBernstorff/herbarium/commit/2faa5a2fc05ca27116099a4761aa83eaf23e8bcf))
+
+* fix: prettier subprocess handling
+
+Fixes #{issue.entity_id} ([`5e4204e`](https://github.com/MartinBernstorff/herbarium/commit/5e4204eed04344cb8ae8db6a01f9fba6c1da0ec0))
+
+### Unknown
+
+* misc. ([`d2edd50`](https://github.com/MartinBernstorff/herbarium/commit/d2edd5065dc6a95ce66aa16292a2c21a52c78828))
+
+
 ## v0.8.0 (2024-01-08)
 
 ### Feature
