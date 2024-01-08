@@ -9,8 +9,8 @@ authors = [
   { name = "Martin Bernstorff", email = "martinbernstorff@gmail.com" },
 ]
 description = "Herbarium"
-classifiers = ["Programming Language :: Python :: 3.11"]
-requires-python = ">=3.11"
+classifiers = ["Programming Language :: Python :: 3.9", "Programming Language :: Python :: 3.10", "Programming Language :: Python :: 3.11", "Programming Language :: Python :: 3.12"]
+requires-python = ">=3.9"
 dependencies = ["typer", "questionary"]
 
 [project.optional-dependencies]
@@ -117,7 +117,7 @@ exclude = [
 ]
 # Allow unused variables when underscore-prefixed.
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
-target-version = "py311"
+target-version = "py39"
 
 [tool.ruff.format]
 skip-magic-trailing-comma = true

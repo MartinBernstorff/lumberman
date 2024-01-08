@@ -1,4 +1,5 @@
 from subprocess import STDOUT
+from typing import Optional
 
 
 def interactive_cmd(command: str) -> None:
@@ -14,7 +15,7 @@ def interactive_cmd(command: str) -> None:
         ) from e
 
 
-def shell_output(command: str) -> str | None:
+def shell_output(command: str) -> Optional[str]:
     import subprocess
 
     try:

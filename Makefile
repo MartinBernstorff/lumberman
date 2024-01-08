@@ -3,7 +3,7 @@ MAKEFLAGS = --no-print-directory
 
 # Dependency management
 install-dev:
-	@pip install --upgrade .[dev]
+	@pip install --upgrade -e .[dev]
 
 install:
 	@make install-dev
