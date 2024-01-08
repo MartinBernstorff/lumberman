@@ -1,14 +1,14 @@
 import json
 from collections.abc import Sequence
 from dataclasses import dataclass
-from typing import Protocol
+from typing import Optional, Protocol
 
 from .subprocess_utils import shell_output
 
 
 @dataclass(frozen=True)
 class Issue:
-    entity_id: str
+    entity_id: Optional[str]
     title: str
 
 

@@ -1,5 +1,4 @@
 import re
-from collections.abc import Mapping
 from dataclasses import dataclass
 from typing import Protocol
 
@@ -47,39 +46,45 @@ def parse_issue_title(issue_title: str) -> ParsedIssue:
     )
 
 
-class Stacker(Protocol):
-    def create_stack_from_trunk(self, issue: Issue):
+class Queuer(Protocol):
+    def create_queue_from_trunk(self, issue: Issue):
         ...
 
-    def add_to_stack(self, issue: Issue):
+    def add_to_end_of_queue(self, issue: Issue):
         ...
 
-    def submit_stack(self, automerge: bool):
+    def submit_queue(self, automerge: bool):
         ...
 
     def status(self):
         ...
 
 
-class Graphite(Stacker):
+class Graphite(Queuer):
     def _sync(self):
         interactive_cmd("gt sync --force --show-delete-progress")
 
-    def create_stack_from_trunk(self, issue: Issue):
+    def create_queue_from_trunk(self, issue: Issue):
         self._sync()
         interactive_cmd("git checkout main")
         interactive_cmd("git pull")
-        self.add_to_stack(issue)
+        self.add_to_end_of_queue(issue)
 
-    def add_to_stack(self, issue: Issue):
+    def add_to_end_of_queue(self, issue: Issue):
         self._sync()
         parsed_issue = parse_issue_title(issue.title)
-        branch_title = f"{parsed_issue.prefix}/{issue.entity_id}/{parsed_issue.description}"
-        first_commit_str = f"'{issue.title}\n\nFixes #{issue.entity_id}'"
-        interactive_cmd(f"gt create {branch_title} --all -m {first_commit_str}")
+
+        entity_id_section = "" if issue.entity_id is None else f"/{issue.entity_id}"
+        branch_title = f"{parsed_issue.prefix}{entity_id_section}/{parsed_issue.description}"
+
+        first_commit_str = f"{issue.title}"
+        if issue.entity_id is not None:
+            first_commit_str += "\n\nFixes #{issue.entity_id}"
+
+        interactive_cmd(f'gt create {branch_title} --all -m "{first_commit_str}"')
         interactive_cmd(f"git commit --allow-empty -m {first_commit_str}")
 
-    def submit_stack(self, automerge: bool):
+    def submit_queue(self, automerge: bool):
         self._sync()
         submit_command = "gt submit --no-edit --publish"
 
