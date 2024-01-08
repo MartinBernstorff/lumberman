@@ -2,6 +2,27 @@
 
 
 
+## v0.2.0 (2024-01-08)
+
+### Feature
+
+* feat: support python &gt;=3.9 (#28)
+
+feat: support python &gt;=3.9
+
+Fixes #27
+
+feat: support python &gt;=3.9
+
+Fixes #27
+
+misc.
+
+misc.
+
+misc. ([`61d9402`](https://github.com/MartinBernstorff/herbarium/commit/61d9402f6601fbe85c6a6c2bec04d6211a4f8007))
+
+
 ## v0.1.0 (2024-01-07)
 
 ### Ci
