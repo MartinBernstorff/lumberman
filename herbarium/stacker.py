@@ -70,4 +70,5 @@ class Graphite(Stacker):
         interactive_cmd(submit_command)
 
     def status(self):
+        print("\n")
         interactive_cmd("gt log short")
