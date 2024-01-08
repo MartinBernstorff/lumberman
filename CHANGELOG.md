@@ -2,6 +2,53 @@
 
 
 
+## v0.7.0 (2024-01-08)
+
+### Feature
+
+* feat: allow manual creation (#53)
+
+feat: allow manual creation
+
+Fixes #20
+
+misc.
+
+misc.
+
+misc.
+
+misc.
+
+misc.
+
+misc. ([`aa7f404`](https://github.com/MartinBernstorff/herbarium/commit/aa7f404b2bbbd59965ea10f3ab92b0561bc83468))
+
+* feat: allow manual creation
+
+Fixes #20 ([`8050c4b`](https://github.com/MartinBernstorff/herbarium/commit/8050c4b7a10f29817dec260100b58f2a2c4a296c))
+
+### Style
+
+* style: linting ([`2f095e1`](https://github.com/MartinBernstorff/herbarium/commit/2f095e1cfb478ddcc9117b9814a034bfbba1bf43))
+
+### Unknown
+
+* misc. ([`ba0a034`](https://github.com/MartinBernstorff/herbarium/commit/ba0a034bfce09b875d3fbcfffa65e78f88113e97))
+
+* misc. ([`d3c75fe`](https://github.com/MartinBernstorff/herbarium/commit/d3c75fec3ad59a2a160ca0f2236f6a943d1cae9f))
+
+* misc. ([`4bccccb`](https://github.com/MartinBernstorff/herbarium/commit/4bccccbd3ba923d8e00c0465a4c8fd07d72a0312))
+
+* misc. ([`13b5811`](https://github.com/MartinBernstorff/herbarium/commit/13b5811285d6e4d66e9574036c79fe14786861be))
+
+* misc. ([`9dd20aa`](https://github.com/MartinBernstorff/herbarium/commit/9dd20aa8fb5909ecc7899ab17dc9b0841c59d163))
+
+* misc. ([`88e8b32`](https://github.com/MartinBernstorff/herbarium/commit/88e8b32c4fecd0af366c87bef521c0d0b0ece832))
+
+* misc. ([`345ec2f`](https://github.com/MartinBernstorff/herbarium/commit/345ec2fc3b379f2016097b48ceebb69976450d23))
+
+
 ## v0.6.0 (2024-01-08)
 
 ### Feature
