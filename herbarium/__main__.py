@@ -15,7 +15,7 @@ issue_presenter = presenters["Default"]()
 stacker = stackers["Graphite"]()
 
 
-def look_for_new_issues() -> bool:
+def retry_issue_getting() -> bool:
     retry = Confirm.ask(
         ":palm_tree: No issues assigned to you in this repository. Do you want to retry?",
         default=True,
@@ -23,49 +23,41 @@ def look_for_new_issues() -> bool:
     return retry
 
 
-def select_issue(my_issues: Sequence[Issue]) -> Issue:
-    refresh_prompt = "Refresh..."
-    selected_issue = issue_presenter.select_issue_dialog(my_issues, refresh_prompt=refresh_prompt)
+def get_my_issues() -> Sequence[Issue]:
+    with Progress(
+        SpinnerColumn(), TextColumn("[progress.description]{task.description}"), transient=True
+    ) as progress:
+        progress.add_task("Getting issues assigned to you", start=True)
+        my_issues = issue_service.get_issues_assigned_to_me()
+
+    if not my_issues:
+        if retry_issue_getting():
+            next()
+        return []
+
+    return my_issues
+
+
+def select_issue() -> Issue:
+    my_issues = get_my_issues()
+    selected_issue = issue_presenter.select_issue_dialog(my_issues)
 
     while selected_issue is None:
-        selected_issue = issue_presenter.select_issue_dialog(
-            my_issues, refresh_prompt=refresh_prompt
-        )
+        my_issues = get_my_issues()
+        selected_issue = issue_presenter.select_issue_dialog(my_issues)
 
     return selected_issue
 
 
 @app.command()
 def new():
-    with Progress(
-        SpinnerColumn(), TextColumn("[progress.description]{task.description}"), transient=True
-    ) as progress:
-        progress.add_task("Getting issues assigned to you", start=True)
-        my_issues = issue_service.get_issues_assigned_to_me()
-
-    if not my_issues:
-        if look_for_new_issues():
-            next()
-        return
-
-    selected_issue = select_issue(my_issues=my_issues)
+    selected_issue = select_issue()
     stacker.create_stack_from_trunk(selected_issue)
 
 
 @app.command()
 def next():  # noqa: A001 [Shadowing python built-in]
-    with Progress(
-        SpinnerColumn(), TextColumn("[progress.description]{task.description}"), transient=True
-    ) as progress:
-        progress.add_task("Getting issues assigned to you", start=True)
-        my_issues = issue_service.get_issues_assigned_to_me()
-
-    if not my_issues:
-        if look_for_new_issues():
-            next()
-        return
-
-    selected_issue = select_issue(my_issues=my_issues)
+    selected_issue = select_issue()
     stacker.add_to_stack(selected_issue)
 
 

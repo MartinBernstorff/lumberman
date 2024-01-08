@@ -8,7 +8,7 @@ from .subprocess_utils import shell_output
 
 @dataclass(frozen=True)
 class Issue:
-    entity_id: str
+    entity_id: str | None
     title: str
 
 
