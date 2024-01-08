@@ -40,7 +40,7 @@ def submit(automerge: bool = False):
         SpinnerColumn(), TextColumn("[progress.description]{task.description} "), transient=True
     ) as progress:
         progress.add_task("Submitting stack", start=True)
-        stacker.submit_stack(automerge=automerge)
+        progress.console.print(stacker.submit_stack(automerge=automerge))
         print(":rocket: [bold green]Stack submitted![/bold green]")
 
     stacker.status()
