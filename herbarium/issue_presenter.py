@@ -3,6 +3,7 @@ from dataclasses import dataclass
 from typing import Optional, Protocol
 
 import questionary
+import rich
 import typer
 from rich.console import Console
 
@@ -27,7 +28,7 @@ class DefaultIssuePresenter(IssuePresenter):
     def _show_selection_dialog(self, issues: Sequence[Issue]) -> str:
         issue_titles = [issue.title for issue in issues]
         return questionary.select(
-            "What's next? :rocket:",
+            "What's next? 🚀",
             choices=[self.refresh_prompt, self.manual_prompt, *issue_titles],
             default=issue_titles[0],
         ).ask()
