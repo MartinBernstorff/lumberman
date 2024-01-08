@@ -22,7 +22,7 @@ class DefaultIssuePresenter(IssuePresenter):
     refresh_prompt: str = "Refresh..."
 
     def _show_entry_dialog(self) -> str:
-        return typer.prompt("Title").ask()
+        return typer.prompt("Title")
 
     def _show_selection_dialog(self, issues: Sequence[Issue]) -> str:
         issue_titles = [issue.title for issue in issues]
