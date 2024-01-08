@@ -45,7 +45,7 @@ class Stacker(Protocol):
 class Graphite(Stacker):
     def _sync(self):
         interactive_cmd("gt sync --force --show-delete-progress")
-    
+
     def create_stack_from_trunk(self, issue: Issue):
         self._sync()
         interactive_cmd("git checkout main")
