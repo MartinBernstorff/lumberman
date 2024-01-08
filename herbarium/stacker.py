@@ -38,6 +38,9 @@ class Stacker(Protocol):
     def submit_stack(self, automerge: bool):
         ...
 
+    def status(self):
+        ...
+
 
 class Graphite(Stacker):
     def create_stack_from_trunk(self, issue: Issue):
@@ -59,5 +62,6 @@ class Graphite(Stacker):
             submit_command += " --merge-when-ready"
 
         interactive_cmd(submit_command)
-        print("\n")
+
+    def status(self):
         interactive_cmd("gt log short")
