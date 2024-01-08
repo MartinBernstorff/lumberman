@@ -2,7 +2,28 @@
 
 
 
+## v0.9.0 (2024-01-08)
+
+### Feature
+
+* feat: insert at bottom (#61)
+
+feat: insert at bottom
+
+Fixes #51
+
+misc.
+
+misc. ([`3cb9eda`](https://github.com/MartinBernstorff/herbarium/commit/3cb9eda640bc38b7fab4c1c06c96875e3b85cc08))
+
+
 ## v0.8.2 (2024-01-08)
+
+### Feature
+
+* feat: insert at bottom
+
+Fixes #51 ([`fd42fcc`](https://github.com/MartinBernstorff/herbarium/commit/fd42fcc592a8ff2c12f60c93ef57cd07daa14b32))
 
 ### Fix
 
@@ -16,9 +37,29 @@ fix: Fixes in first commit ([`e69d0d7`](https://github.com/MartinBernstorff/herb
 
 ### Style
 
+* style: linting ([`fe5571d`](https://github.com/MartinBernstorff/herbarium/commit/fe5571d1bf4843568062e57062ff5c4c1c09b8cc))
+
 * style: lint ([`249025e`](https://github.com/MartinBernstorff/herbarium/commit/249025ea8555b34554a7ae3844e5a5db206c5ae6))
 
 ### Unknown
+
+* misc. ([`5402933`](https://github.com/MartinBernstorff/herbarium/commit/5402933314d9691d87237f0493f8250765ebdcf5))
+
+* misc. ([`f5a2a01`](https://github.com/MartinBernstorff/herbarium/commit/f5a2a0140dc51f86955be51d88a5a62728f6320f))
+
+* misc. ([`87bc825`](https://github.com/MartinBernstorff/herbarium/commit/87bc825a7e31de6e38abfc4d16b4dfcfc80fe162))
+
+* cli: fix emoji handling in prompt
+
+Fixes #{issue.entity_id} ([`4b69473`](https://github.com/MartinBernstorff/herbarium/commit/4b694735d166b83f1cf9c551acf6394d5b77e7bd))
+
+* dev: remove redundant ruff target version ([`ab5534a`](https://github.com/MartinBernstorff/herbarium/commit/ab5534a50a4e2c8a85435fa432daef0fc4047357))
+
+* misc. ([`511cc27`](https://github.com/MartinBernstorff/herbarium/commit/511cc27048ea8cec7c0fa25a7ac1690d4721942a))
+
+* misc. ([`fc57fee`](https://github.com/MartinBernstorff/herbarium/commit/fc57fee4096854fa11cbd1e8d66a417275bbf67f))
+
+* misc. ([`be268a0`](https://github.com/MartinBernstorff/herbarium/commit/be268a0435c2f99d707f079544967adc4e1d02d5))
 
 * cli: fix emoji handling in prompt
 
