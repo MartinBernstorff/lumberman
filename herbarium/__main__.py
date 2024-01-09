@@ -21,6 +21,7 @@ from dataclasses import dataclass
 @dataclass
 class QueueOperation:
     def __enter__(self):
+        print(":arrows_clockwise: [bold green]Syncing with remote...[/bold green]")
         stacker.sync()
 
     def __exit__(self, exc_type: type, exc_val: Exception, exc_tb: TracebackType) -> None:
