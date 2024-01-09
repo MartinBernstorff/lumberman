@@ -76,7 +76,6 @@ class Graphite(Queuer):
         interactive_cmd("gt sync --force")
 
     def create_queue_from_trunk(self, issue: Issue):
-        self._sync()
         interactive_cmd("gt trunk")
         self.add_to_end_of_queue(issue)
 
