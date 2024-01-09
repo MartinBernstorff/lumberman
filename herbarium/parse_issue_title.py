@@ -3,7 +3,7 @@ from dataclasses import dataclass
 
 
 @dataclass(frozen=True)
-class ParsedIssue:
+class ParsedTitle:
     prefix: str
     description: str
 
@@ -31,12 +31,12 @@ def sanitise_text_for_git(input_string: str) -> str:
     return input_string.replace("--", "-")
 
 
-def parse_issue_title(issue_title: str) -> ParsedIssue:
+def parse_issue_title(issue_title: str) -> ParsedTitle:
     # Get all string between start and first ":"
     prefix = re.findall(r"^(.*?)[:\(]", issue_title)[0]
     description = re.findall(r": (.*)$", issue_title)[0]
 
-    return ParsedIssue(
+    return ParsedTitle(
         prefix=sanitise_text_for_git(input_string=prefix),
         description=sanitise_text_for_git(input_string=description),
     )
