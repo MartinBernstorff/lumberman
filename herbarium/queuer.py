@@ -82,6 +82,7 @@ class Graphite(Queuer):
         with StagingMigrater():
             interactive_cmd("gt bottom")
 
+        interactive_cmd("gt trunk")
         interactive_cmd(f'gt create {branch_title} --all --insert -m "{first_commit_str}"')
         interactive_cmd(f'git commit --allow-empty -m "{first_commit_str}"')
 
