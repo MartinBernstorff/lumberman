@@ -59,6 +59,9 @@ def get_my_issues() -> Sequence[Issue]:
 
 def select_issue() -> Issue:
     my_issues = get_my_issues()
+
+    # XXX: Give both my issues and X most recent issues here
+
     selected_issue = issue_presenter.select_issue_dialog(my_issues)
 
     while selected_issue is None:

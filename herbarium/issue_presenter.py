@@ -14,14 +14,14 @@ console = Console()
 
 class IssuePresenter(Protocol):
     def select_issue_dialog(
-        self, all_issues: Sequence[Issue], issues_assigned_to_me: Sequence[Issue]
+        self, most_recent_issues: Sequence[Issue], issues_assigned_to_me: Sequence[Issue]
     ) -> Optional[Issue]:
         ...
 
 
 @dataclass(frozen=True)
 class DefaultIssuePresenter(IssuePresenter):
-    ten_latest_prompt: str = "10 latest issues"
+    ten_latest_prompt: str = "Recent"
     manual_prompt: str = "Manual"
     refresh_prompt: str = "Refresh..."
 
