@@ -55,6 +55,9 @@ def parse_issue_title(issue_title: str) -> ParsedIssue:
 
 
 class Queuer(Protocol):
+    def sync(self):
+        ...
+
     def create_queue_from_trunk(self, issue: Issue):
         ...
 
@@ -72,7 +75,7 @@ class Queuer(Protocol):
 
 
 class Graphite(Queuer):
-    def _sync(self):
+    def sync(self):
         interactive_cmd("gt sync --force")
 
     def create_queue_from_trunk(self, issue: Issue):
@@ -80,7 +83,6 @@ class Graphite(Queuer):
         self.add_to_end_of_queue(issue)
 
     def add_to_beginning_of_queue(self, issue: Issue):
-        self._sync()
         first_commit_str = self._get_first_commit_str(issue)
         branch_title = self._get_branch_title(issue=issue)
 
@@ -92,7 +94,6 @@ class Graphite(Queuer):
         interactive_cmd(f'git commit --allow-empty -m "{first_commit_str}"')
 
     def add_to_end_of_queue(self, issue: Issue):
-        self._sync()
         first_commit_str = self._get_first_commit_str(issue)
         branch_title = self._get_branch_title(issue=issue)
 
@@ -114,7 +115,6 @@ Fixes #{issue.entity_id}"""
         return f"{parsed_issue.prefix}{entity_id_section}/{parsed_issue.description}"
 
     def submit_queue(self, automerge: bool):
-        self._sync()
         submit_command = "gt submit --no-edit --publish"
 
         if automerge:
