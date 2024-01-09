@@ -7,6 +7,7 @@ import typer
 from rich.console import Console
 
 from .issue_service import Issue
+from .parse_issue_title import parse_issue_title
 
 console = Console()
 
@@ -40,6 +41,9 @@ class DefaultIssuePresenter(IssuePresenter):
 
         if selected_issue_title == self.manual_prompt:
             selected_issue_title = self._show_entry_dialog()
-            return Issue(entity_id=None, description=selected_issue_title)
+            parsed_title = parse_issue_title(selected_issue_title)
+            return Issue(
+                entity_id=None, prefix=parsed_title.prefix, description=parsed_title.description
+            )
 
         return next(issue for issue in issues if issue.description == selected_issue_title)
