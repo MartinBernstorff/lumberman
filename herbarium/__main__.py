@@ -68,6 +68,11 @@ def next():  # noqa: A001 [Shadowing python built-in]
 
 
 @app.command()
+def status():
+    stacker.status()
+
+
+@app.command()
 def submit(automerge: bool = False):
     stacker.submit_queue(automerge=automerge)
     print(":rocket: [bold green]Stack submitted![/bold green]")
