@@ -65,9 +65,8 @@ Fixes #{issue.entity_id}"""
         return sanitise_text_for_bash(first_commit_str)
 
     def _get_branch_title(self, issue: Issue) -> str:
-        parsed_issue = parse_issue_title(issue.description)
         entity_id_section = "" if issue.entity_id is None else f"/{issue.entity_id}"
-        return f"{parsed_issue.prefix}{entity_id_section}/{parsed_issue.description}"
+        return f"{issue.prefix}{entity_id_section}/{issue.description}"
 
     def submit_queue(self, automerge: bool):
         submit_command = "gt submit --no-edit --publish --stack"
