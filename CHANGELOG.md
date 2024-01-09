@@ -2,9 +2,24 @@
 
 
 
+## v0.12.0 (2024-01-09)
+
+### Feature
+
+* feat: show current stack state after each operation (issue #67) (#76) ([`3ea5b4c`](https://github.com/MartinBernstorff/herbarium/commit/3ea5b4c86662ed8b0a5659ec34cd63660c7b7dbf))
+
+
 ## v0.11.0 (2024-01-09)
 
 ### Feature
+
+* feat: show current stack state after each operation (issue #67)
+
+Fixes #67 ([`12292f2`](https://github.com/MartinBernstorff/herbarium/commit/12292f2f65cb87e6b175824b533bd845bea91d46))
+
+* feat: show current stack state after each operation (issue #67)
+
+Fixes #67 ([`541feef`](https://github.com/MartinBernstorff/herbarium/commit/541feef2fa06d795951875bacd2f61384b004cc1))
 
 * feat: add herb status command (issue #69) (#75)
 
