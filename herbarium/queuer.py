@@ -75,7 +75,7 @@ class Queuer(Protocol):
 
 
 class Graphite(Queuer):
-    def _sync(self):
+    def sync(self):
         interactive_cmd("gt sync --force --restack")
 
     def create_queue_from_trunk(self, issue: Issue):
