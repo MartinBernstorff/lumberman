@@ -2,7 +2,26 @@
 
 
 
+## v0.11.0 (2024-01-09)
+
+### Feature
+
+* feat: add herb status command (issue #69) (#75)
+
+feat: add herb status command (issue #69)
+
+Fixes #69
+
+misc. ([`17d1719`](https://github.com/MartinBernstorff/herbarium/commit/17d17194c925822f494c171ae1592177c34e7071))
+
+
 ## v0.10.1 (2024-01-09)
+
+### Feature
+
+* feat: add herb status command (issue #69)
+
+Fixes #69 ([`a4f6bc3`](https://github.com/MartinBernstorff/herbarium/commit/a4f6bc3462fbcd5be5efaf6d1278ca3c1017c1e4))
 
 ### Fix
 
@@ -31,6 +50,8 @@ misc. ([`1b612be`](https://github.com/MartinBernstorff/herbarium/commit/1b612bec
 Fixes #68 ([`f8488e2`](https://github.com/MartinBernstorff/herbarium/commit/f8488e22797253a5fe8797d2181d537371435938))
 
 ### Unknown
+
+* misc. ([`9cbd95c`](https://github.com/MartinBernstorff/herbarium/commit/9cbd95cea209bb99c9581c3cde83a6159474825e))
 
 * misc. ([`13d7208`](https://github.com/MartinBernstorff/herbarium/commit/13d72086969505b1daa392f2a5b26b498ee4d65d))
 
