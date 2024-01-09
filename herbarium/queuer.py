@@ -1,57 +1,10 @@
-import re
-from dataclasses import dataclass
 from typing import Protocol
+
+from herbarium.parse_issue_title import parse_issue_title, sanitise_text_for_bash
 
 from .git_utils import StagingMigrater
 from .issue_service import Issue
 from .subprocess_utils import interactive_cmd
-
-
-@dataclass(frozen=True)
-class ParsedIssue:
-    prefix: str
-    description: str
-
-
-def sanitise_text_for_bash(input_string: str) -> str:
-    char_to_remove = ["`"]
-    for character in char_to_remove:
-        input_string = input_string.replace(character, "")
-    return input_string
-
-
-def sanitise_text_for_git(input_string: str) -> str:
-    char2replacement = {
-        " ": "-",
-        ":": "/",
-        ",": "",
-        "'": "",
-        '"': "",
-        "(": "",
-        ")": "",
-        "[": "",
-        "": "",
-        "`": "",
-        ">": "",
-        "<": "",
-        "=": "",
-    }
-
-    for character, replacement in char2replacement.items():
-        input_string = input_string.replace(character, replacement)
-
-    return input_string.replace("--", "-")
-
-
-def parse_issue_title(issue_title: str) -> ParsedIssue:
-    # Get all string between start and first ":"
-    prefix = re.findall(r"^(.*?):", issue_title)[0]
-    description = re.findall(r": (.*)$", issue_title)[0]
-
-    return ParsedIssue(
-        prefix=sanitise_text_for_git(input_string=prefix),
-        description=sanitise_text_for_git(input_string=description),
-    )
 
 
 class Queuer(Protocol):
@@ -102,18 +55,18 @@ class Graphite(Queuer):
         interactive_cmd(f'git commit --allow-empty -m "{first_commit_str}"')
 
     def _get_first_commit_str(self, issue: Issue) -> str:
-        first_commit_str = f"{issue.title}"
-        if issue.entity_id is not None:
-            first_commit_str += f""" (issue #{issue.entity_id})
+        if issue.entity_id is None:
+            first_commit_str = f"{issue.prefix}: {issue.description}"
+        else:
+            first_commit_str = f"""{issue.prefix}(#{issue.entity_id}): {issue.description}
 
 Fixes #{issue.entity_id}"""
 
         return sanitise_text_for_bash(first_commit_str)
 
     def _get_branch_title(self, issue: Issue) -> str:
-        parsed_issue = parse_issue_title(issue.title)
         entity_id_section = "" if issue.entity_id is None else f"/{issue.entity_id}"
-        return f"{parsed_issue.prefix}{entity_id_section}/{parsed_issue.description}"
+        return f"{issue.prefix}{entity_id_section}/{issue.description}"
 
     def submit_queue(self, automerge: bool):
         submit_command = "gt submit --no-edit --publish --stack"
