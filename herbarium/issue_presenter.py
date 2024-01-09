@@ -13,12 +13,15 @@ console = Console()
 
 
 class IssuePresenter(Protocol):
-    def select_issue_dialog(self, issues: Sequence[Issue]) -> Optional[Issue]:
+    def select_issue_dialog(
+        self, all_issues: Sequence[Issue], issues_assigned_to_me: Sequence[Issue]
+    ) -> Optional[Issue]:
         ...
 
 
 @dataclass(frozen=True)
 class DefaultIssuePresenter(IssuePresenter):
+    ten_latest_prompt: str = "10 latest issues"
     manual_prompt: str = "Manual"
     refresh_prompt: str = "Refresh..."
 
@@ -29,7 +32,12 @@ class DefaultIssuePresenter(IssuePresenter):
         issue_titles = [issue.description for issue in issues]
         return questionary.select(
             "What's next? 🚀",
-            choices=[self.refresh_prompt, self.manual_prompt, *issue_titles],
+            choices=[
+                self.refresh_prompt,
+                self.ten_latest_prompt,
+                self.manual_prompt,
+                *issue_titles,
+            ],
             default=issue_titles[0],
         ).ask()
 
