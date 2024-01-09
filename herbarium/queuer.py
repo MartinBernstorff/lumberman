@@ -95,7 +95,7 @@ class Graphite(Queuer):
     def _get_first_commit_str(self, issue: Issue) -> str:
         first_commit_str = f"{issue.title}"
         if issue.entity_id is not None:
-            first_commit_str += f""" (#{issue.entity_id})
+            first_commit_str += f""" (issue #{issue.entity_id})
 
 Fixes #{issue.entity_id}"""
 
