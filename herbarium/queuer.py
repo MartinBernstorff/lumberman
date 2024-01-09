@@ -58,7 +58,7 @@ class Graphite(Queuer):
         if issue.entity_id is None:
             first_commit_str = f"{issue.prefix}: {issue.description}"
         else:
-            first_commit_str = f"""{issue.prefix}({issue.entity_id}): {issue.description}
+            first_commit_str = f"""{issue.prefix}(#{issue.entity_id}): {issue.description}
 
 Fixes #{issue.entity_id}"""
 
