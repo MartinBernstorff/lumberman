@@ -116,7 +116,7 @@ Fixes #{issue.entity_id}"""
         return f"{parsed_issue.prefix}{entity_id_section}/{parsed_issue.description}"
 
     def submit_queue(self, automerge: bool):
-        submit_command = "gt submit --no-edit --publish"
+        submit_command = "gt submit --no-edit --publish --stack"
 
         if automerge:
             submit_command += " --merge-when-ready"
