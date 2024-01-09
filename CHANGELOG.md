@@ -2,6 +2,29 @@
 
 
 
+## v0.12.1 (2024-01-09)
+
+### Fix
+
+* fix: new should create branch from trunk (#80) ([`dcbb496`](https://github.com/MartinBernstorff/herbarium/commit/dcbb496b6383081ecf835a6ed925569377e88b58))
+
+* fix: decrease syncs ([`1a3d21b`](https://github.com/MartinBernstorff/herbarium/commit/1a3d21ba81decee7e4c0dd3c2a2711e75bb7cc09))
+
+* fix: new should create branch from trunk (issue #79)
+
+Fixes #79 ([`50dfa29`](https://github.com/MartinBernstorff/herbarium/commit/50dfa29ab7e11a5cc358dd89651c53cf07d1502f))
+
+### Unknown
+
+* misc. ([`a18907f`](https://github.com/MartinBernstorff/herbarium/commit/a18907f62761a6c87da68ca040e7b451171d1e88))
+
+* misc. ([`6f3e21e`](https://github.com/MartinBernstorff/herbarium/commit/6f3e21e525c6da81f386fec114f14858e72dd5a9))
+
+* misc. ([`2b77a63`](https://github.com/MartinBernstorff/herbarium/commit/2b77a63cd5f272ef387f37454a9a4705bbaceee5))
+
+* misc. ([`94ae390`](https://github.com/MartinBernstorff/herbarium/commit/94ae3904558e2149dc351456bf2cdb475b8911ea))
+
+
 ## v0.12.0 (2024-01-09)
 
 ### Feature
