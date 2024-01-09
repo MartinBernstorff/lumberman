@@ -52,7 +52,7 @@ def select_issue() -> Issue:
 @app.command()
 def new():
     selected_issue = select_issue()
-    stacker.add_to_end_of_queue(selected_issue)
+    stacker.create_queue_from_trunk(selected_issue)
     stacker.status()
 
 

@@ -77,8 +77,7 @@ class Graphite(Queuer):
 
     def create_queue_from_trunk(self, issue: Issue):
         self._sync()
-        interactive_cmd("git checkout main")
-        interactive_cmd("git pull")
+        interactive_cmd("gt trunk")
         self.add_to_end_of_queue(issue)
 
     def add_to_beginning_of_queue(self, issue: Issue):
