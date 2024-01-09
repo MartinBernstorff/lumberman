@@ -13,6 +13,13 @@ class ParsedIssue:
     description: str
 
 
+def sanitise_text_for_bash(input_string: str) -> str:
+    char_to_remove = ["`"]
+    for character in char_to_remove:
+        input_string = input_string.replace(character, "")
+    return input_string
+
+
 def sanitise_text_for_git(input_string: str) -> str:
     char2replacement = {
         " ": "-",
@@ -90,6 +97,7 @@ class Graphite(Queuer):
         self._sync()
         first_commit_str = self._get_first_commit_str(issue)
         branch_title = self._get_branch_title(issue=issue)
+
         interactive_cmd(f'gt create {branch_title} --all -m "{first_commit_str}"')
         interactive_cmd(f'git commit --allow-empty -m "{first_commit_str}"')
 
@@ -100,7 +108,7 @@ class Graphite(Queuer):
 
 Fixes #{issue.entity_id}"""
 
-        return first_commit_str
+        return sanitise_text_for_bash(first_commit_str)
 
     def _get_branch_title(self, issue: Issue) -> str:
         parsed_issue = parse_issue_title(issue.title)
