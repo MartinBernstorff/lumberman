@@ -2,6 +2,25 @@
 
 
 
+## v0.10.0 (2024-01-09)
+
+### Feature
+
+* feat: add issue number to PR title (#65)
+
+feat: add issue number to PR title
+
+feat: add issue number to PR title ([`d3c0437`](https://github.com/MartinBernstorff/herbarium/commit/d3c043795aeb4c3b608a18fe4e69f9fa0292eaba))
+
+* feat: add issue number to PR title ([`6e24ae6`](https://github.com/MartinBernstorff/herbarium/commit/6e24ae6d8671d5a41cf72635c639797075eaa75d))
+
+* feat: add issue number to PR title ([`1800951`](https://github.com/MartinBernstorff/herbarium/commit/1800951e19699a1562a7817f84dfffba6592edda))
+
+### Unknown
+
+* misc. ([`e76cb20`](https://github.com/MartinBernstorff/herbarium/commit/e76cb20df4ea038ebdc31cf467e2140a6fbf1f65))
+
+
 ## v0.9.0 (2024-01-08)
 
 ### Feature
