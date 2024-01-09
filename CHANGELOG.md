@@ -2,6 +2,45 @@
 
 
 
+## v0.10.1 (2024-01-09)
+
+### Fix
+
+* fix: remove  from descriptions since they have special meaning in shell (issue #70) (#74)
+
+fix: remove  from descriptions since they have special meaning in shell (issue #70)
+
+Fixes #70
+
+misc. ([`9947474`](https://github.com/MartinBernstorff/herbarium/commit/9947474bafb794fb2d28870f0138f292c1084e9f))
+
+* fix: remove  from descriptions since they have special meaning in shell (issue #70)
+
+Fixes #70 ([`d555127`](https://github.com/MartinBernstorff/herbarium/commit/d5551278d9dea79eba7bf27ce4012ae9f15819fb))
+
+* fix: insert-at-front (issue #68) (#73)
+
+fix: insert-at-front (issue #68)
+
+Fixes #68
+
+misc. ([`1b612be`](https://github.com/MartinBernstorff/herbarium/commit/1b612beca91156d42f20a60eff21f8d432ea7222))
+
+* fix: insert-at-front (issue #68)
+
+Fixes #68 ([`f8488e2`](https://github.com/MartinBernstorff/herbarium/commit/f8488e22797253a5fe8797d2181d537371435938))
+
+### Unknown
+
+* misc. ([`13d7208`](https://github.com/MartinBernstorff/herbarium/commit/13d72086969505b1daa392f2a5b26b498ee4d65d))
+
+* misc. ([`c3aa3ad`](https://github.com/MartinBernstorff/herbarium/commit/c3aa3ad9f71a946e8b8f9abb4621273bdef75e4e))
+
+* cli: fix emoji handling in prompt (#58) (#66)
+
+Fixes #58 ([`9c9b8ad`](https://github.com/MartinBernstorff/herbarium/commit/9c9b8adc0f96105a7f7a85cb9d4a940f550e9c28))
+
+
 ## v0.10.0 (2024-01-09)
 
 ### Feature
@@ -17,6 +56,10 @@ feat: add issue number to PR title ([`d3c0437`](https://github.com/MartinBernsto
 * feat: add issue number to PR title ([`1800951`](https://github.com/MartinBernstorff/herbarium/commit/1800951e19699a1562a7817f84dfffba6592edda))
 
 ### Unknown
+
+* cli: fix emoji handling in prompt (#58)
+
+Fixes #58 ([`2e76529`](https://github.com/MartinBernstorff/herbarium/commit/2e7652948e36f62777f977c6c80678523a6bf911))
 
 * misc. ([`e76cb20`](https://github.com/MartinBernstorff/herbarium/commit/e76cb20df4ea038ebdc31cf467e2140a6fbf1f65))
 
