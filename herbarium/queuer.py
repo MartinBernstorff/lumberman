@@ -95,7 +95,10 @@ class Graphite(Queuer):
     def _get_first_commit_str(self, issue: Issue) -> str:
         first_commit_str = f"{issue.title}"
         if issue.entity_id is not None:
-            first_commit_str += f"\n\nFixes #{issue.entity_id}"
+            first_commit_str += f""" (issue #{issue.entity_id})
+
+Fixes #{issue.entity_id}"""
+
         return first_commit_str
 
     def _get_branch_title(self, issue: Issue) -> str:
