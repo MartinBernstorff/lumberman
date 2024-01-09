@@ -2,6 +2,71 @@
 
 
 
+## v0.13.0 (2024-01-09)
+
+### Feature
+
+* feat: support new prefix (issue #83) (#85)
+
+feat: support new prefix (issue #83)
+
+Fixes #83
+
+misc.
+
+misc.
+
+misc.
+
+misc. ([`963e7a3`](https://github.com/MartinBernstorff/herbarium/commit/963e7a3a9619cfa175fc286917536f475b46cf23))
+
+* feat: submit descendants when running submit (issue #77) (#82)
+
+feat: submit descendants when running submit (issue #77)
+
+Fixes #77
+
+misc. ([`7b16189`](https://github.com/MartinBernstorff/herbarium/commit/7b161891d843406f626fc47d3cb01b1fc5d0c62e))
+
+* feat: submit descendants when running submit (issue #77)
+
+Fixes #77 ([`40039a4`](https://github.com/MartinBernstorff/herbarium/commit/40039a4ad6acb6c50ee41165f966154264bbbf78))
+
+* feat: restack on sync (issue #78) (#81)
+
+feat: restack on sync (issue #78)
+
+Fixes #78
+
+feat: restack on sync (issue #78)
+
+Fixes #78 ([`572c834`](https://github.com/MartinBernstorff/herbarium/commit/572c83466a1196db463c707bf5a51c0312a97b71))
+
+* feat: restack on sync (issue #78)
+
+Fixes #78 ([`f8f7815`](https://github.com/MartinBernstorff/herbarium/commit/f8f78152136ae44826737a9359d62ace7f9b9f06))
+
+### Fix
+
+* fix: typo ([`1d31e1b`](https://github.com/MartinBernstorff/herbarium/commit/1d31e1bea1923dd903a27a5834fd41807a5ee974))
+
+### Unknown
+
+* misc. ([`4983081`](https://github.com/MartinBernstorff/herbarium/commit/4983081c3c50a1c4324d5b48f422031aa3da68a5))
+
+* misc. ([`8dabb1f`](https://github.com/MartinBernstorff/herbarium/commit/8dabb1fb56f203901cb09572e141652fb6dcbc7a))
+
+* misc. ([`82e5000`](https://github.com/MartinBernstorff/herbarium/commit/82e5000c503cb313998e17dfea31f0fa1f268be7))
+
+* misc. ([`2936338`](https://github.com/MartinBernstorff/herbarium/commit/29363383b33177d094a4cb55e1a55778cadae09a))
+
+* misc. ([`6317036`](https://github.com/MartinBernstorff/herbarium/commit/631703656873e981827509ee3a6bb8f420317da2))
+
+* misc. ([`302d7fe`](https://github.com/MartinBernstorff/herbarium/commit/302d7fe19db0e62e15326649617c9b9e04cf6709))
+
+* misc. ([`4a03f96`](https://github.com/MartinBernstorff/herbarium/commit/4a03f96dbaebafaa5f30b6e846d27f840f602cca))
+
+
 ## v0.12.1 (2024-01-09)
 
 ### Fix
