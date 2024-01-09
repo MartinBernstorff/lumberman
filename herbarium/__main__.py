@@ -1,4 +1,5 @@
 from collections.abc import Sequence
+from types import TracebackType
 
 import typer
 from rich import print
@@ -13,6 +14,18 @@ app = typer.Typer()
 issue_service = issue_services["Github"]()
 issue_presenter = presenters["Default"]()
 stacker = stackers["Graphite"]()
+
+from dataclasses import dataclass
+
+
+@dataclass
+class QueueOperation:
+    def __enter__(self):
+        print(":arrows_clockwise: [bold green]Syncing with remote...[/bold green]")
+        stacker.sync()
+
+    def __exit__(self, exc_type: type, exc_val: Exception, exc_tb: TracebackType) -> None:
+        stacker.status()
 
 
 def retry_issue_getting() -> bool:
@@ -51,23 +64,23 @@ def select_issue() -> Issue:
 
 @app.command()
 def new():
-    selected_issue = select_issue()
-    stacker.add_to_end_of_queue(selected_issue)
-    stacker.status()
+    with QueueOperation():
+        selected_issue = select_issue()
+        stacker.create_queue_from_trunk(selected_issue)
 
 
 @app.command()
 def insert_at_front():
-    selected_issue = select_issue()
-    stacker.add_to_beginning_of_queue(selected_issue)
-    stacker.status()
+    with QueueOperation():
+        selected_issue = select_issue()
+        stacker.add_to_beginning_of_queue(selected_issue)
 
 
 @app.command()
 def next():  # noqa: A001 [Shadowing python built-in]
-    selected_issue = select_issue()
-    stacker.add_to_end_of_queue(selected_issue)
-    stacker.status()
+    with QueueOperation():
+        selected_issue = select_issue()
+        stacker.add_to_end_of_queue(selected_issue)
 
 
 @app.command()
@@ -77,9 +90,9 @@ def status():
 
 @app.command()
 def submit(automerge: bool = False):
-    stacker.submit_queue(automerge=automerge)
-    print(":rocket: [bold green]Stack submitted![/bold green]")
-    stacker.status()
+    with QueueOperation():
+        stacker.submit_queue(automerge=automerge)
+        print(":rocket: [bold green]Stack submitted![/bold green]")
 
 
 if __name__ == "__main__":
