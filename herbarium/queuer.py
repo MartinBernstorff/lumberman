@@ -55,9 +55,10 @@ class Graphite(Queuer):
         interactive_cmd(f'git commit --allow-empty -m "{first_commit_str}"')
 
     def _get_first_commit_str(self, issue: Issue) -> str:
-        first_commit_str = f"{issue.description}"
-        if issue.entity_id is not None:
-            first_commit_str += f""" (issue #{issue.entity_id})
+        if issue.entity_id is None:
+            first_commit_str = f"{issue.prefix}: {issue.description}"
+        else:
+            first_commit_str = f"""{issue.prefix}({issue.entity_id}): {issue.description}
 
 Fixes #{issue.entity_id}"""
 
