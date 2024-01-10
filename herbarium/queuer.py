@@ -1,6 +1,6 @@
 from typing import Protocol
 
-from herbarium.parse_issue_title import parse_issue_title, sanitise_text_for_bash
+from herbarium.parse_issue_title import sanitise_text_for_bash
 
 from .git_utils import StagingMigrater
 from .issue_service import Issue
