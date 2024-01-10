@@ -2,6 +2,25 @@
 
 
 
+## v0.13.1 (2024-01-10)
+
+### Performance
+
+* perf: no-need-to-sync-before-submit (#87)
+
+perf: no-need-to-sync-before-submit
+
+perf: no-need-to-sync-before-submit ([`4662466`](https://github.com/MartinBernstorff/herbarium/commit/466246653124cdc31462c97b73eea22eba43dc9b))
+
+* perf: no-need-to-sync-before-submit ([`719cdab`](https://github.com/MartinBernstorff/herbarium/commit/719cdab6a18a2107bf29b29ff2885e7807d29886))
+
+* perf: no-need-to-sync-before-submit ([`9426927`](https://github.com/MartinBernstorff/herbarium/commit/94269272c38f0e20bdd081b5cbc40c43d4251101))
+
+### Style
+
+* style: lint ([`568cf53`](https://github.com/MartinBernstorff/herbarium/commit/568cf536d24678597619ee4d6e60ff71508b1838))
+
+
 ## v0.13.0 (2024-01-09)
 
 ### Feature
