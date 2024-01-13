@@ -68,7 +68,7 @@ def select_issue() -> Issue:
     return selected_issue
 
 
-class Location(enum.Enum):
+class Location(str, enum.Enum):
     front = "front"
     before = "before"
     after = "after"
