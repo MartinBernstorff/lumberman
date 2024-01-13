@@ -2,6 +2,31 @@
 
 
 
+## v0.14.0 (2024-01-13)
+
+### Feature
+
+* feat(#91): implement-go-to-front (#100)
+
+feat(#91): implement-go-to-front
+
+Fixes #91
+
+misc.
+
+misc. ([`50bd9fe`](https://github.com/MartinBernstorff/herbarium/commit/50bd9fe79a3ff91d5dc9c348b3d5e7780a857d16))
+
+* feat(#91): implement-go-to-front
+
+Fixes #91 ([`d9dd1a9`](https://github.com/MartinBernstorff/herbarium/commit/d9dd1a96a0bd80faabc055f0536a6e957ba33239))
+
+### Unknown
+
+* misc. ([`ce80502`](https://github.com/MartinBernstorff/herbarium/commit/ce80502073bccc1daa0fd5513d782c44479dbd5f))
+
+* misc. ([`49eb56f`](https://github.com/MartinBernstorff/herbarium/commit/49eb56f864a3b37df4872b88425353a0843fbe1b))
+
+
 ## v0.13.1 (2024-01-10)
 
 ### Performance
