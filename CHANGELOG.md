@@ -2,6 +2,45 @@
 
 
 
+## v0.20.0 (2024-01-13)
+
+### Feature
+
+* feat: select from 10 most recent issues (issue #71) (#72)
+
+Fixes #71 ([`3ec5c56`](https://github.com/MartinBernstorff/herbarium/commit/3ec5c568fddc708aef5caf91031a16827ef66957))
+
+### Refactor
+
+* refactor: misc. (#116)
+
+refactor: misc.
+
+refactor: misc. ([`d812453`](https://github.com/MartinBernstorff/herbarium/commit/d812453ffc5bc89808586f383cf443386ff2b983))
+
+### Unknown
+
+* misc. ([`d0cadbd`](https://github.com/MartinBernstorff/herbarium/commit/d0cadbd4d782f2f6a2c74b163d3bb549f0e206dd))
+
+* misc. ([`dbf38cc`](https://github.com/MartinBernstorff/herbarium/commit/dbf38cc9b552a223c2e72d7da451656d26666042))
+
+* misc. ([`5e7bbca`](https://github.com/MartinBernstorff/herbarium/commit/5e7bbca305e563164008cf08582477959b531e38))
+
+* misc. ([`19436ef`](https://github.com/MartinBernstorff/herbarium/commit/19436ef65aa473b17e4162420ca67e799fae390d))
+
+* dev: allow-skipping-sync-on-herb-add (#117)
+
+dev: allow-skipping-sync-on-herb-add
+
+dev: allow-skipping-sync-on-herb-add
+
+misc. ([`d8979fd`](https://github.com/MartinBernstorff/herbarium/commit/d8979fdd0b7861a3ffb3684363d913dd8ef37ef5))
+
+* misc. ([`642199e`](https://github.com/MartinBernstorff/herbarium/commit/642199e87536500282dfe3c8a4de805b84a131c2))
+
+* dev: allow-skipping-sync-on-herb-add ([`d99a48c`](https://github.com/MartinBernstorff/herbarium/commit/d99a48c1fa14e88668e1da99641932e3d42fa79e))
+
+
 ## v0.19.0 (2024-01-13)
 
 ### Feature
@@ -23,6 +62,10 @@ Fixes #110 ([`81eb964`](https://github.com/MartinBernstorff/herbarium/commit/81e
 ### Fix
 
 * fix: correct issue selection ([`0cb5cf9`](https://github.com/MartinBernstorff/herbarium/commit/0cb5cf9795eddf849950608e63bddc668b21aee0))
+
+### Refactor
+
+* refactor: misc. ([`61e8422`](https://github.com/MartinBernstorff/herbarium/commit/61e8422357633c0cce9365fe0d000c9ee4f630ab))
 
 ### Unknown
 
