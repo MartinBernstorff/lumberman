@@ -7,13 +7,14 @@ from rich.progress import Progress, SpinnerColumn, TextColumn
 from rich.prompt import Confirm
 
 from .issue_service import Issue
-from .registry import issue_services, presenters, stackers
+from .registry import issue_services, presenters, queue_manipulators, queue_navigators
 
 app = typer.Typer()
 
 issue_service = issue_services["Github"]()
 issue_presenter = presenters["Default"]()
-stacker = stackers["Graphite"]()
+queue_navigator = queue_navigators["Graphite"]()
+queue_manipulator = queue_manipulators["Graphite"]()
 
 from dataclasses import dataclass
 
@@ -25,10 +26,10 @@ class QueueOperation:
     def __enter__(self):
         print(":arrows_clockwise: [bold green]Syncing with remote...[/bold green]")
         if self.sync_on_enter:
-            stacker.sync()
+            queue_manipulator.sync()
 
     def __exit__(self, exc_type: type, exc_val: Exception, exc_tb: TracebackType) -> None:
-        stacker.status()
+        queue_navigator.status()
 
 
 def retry_issue_getting() -> bool:
@@ -69,32 +70,32 @@ def select_issue() -> Issue:
 def new():
     with QueueOperation():
         selected_issue = select_issue()
-        stacker.create_queue_from_trunk(selected_issue)
+        queue_navigator.create_queue_from_trunk(selected_issue)
 
 
 @app.command()
 def insert_at_front():
     with QueueOperation():
         selected_issue = select_issue()
-        stacker.add_to_beginning_of_queue(selected_issue)
+        queue_navigator.add_to_beginning_of_queue(selected_issue)
 
 
 @app.command()
 def next():  # noqa: A001 [Shadowing python built-in]
     with QueueOperation():
         selected_issue = select_issue()
-        stacker.add_to_end_of_queue(selected_issue)
+        queue_navigator.add_to_end_of_queue(selected_issue)
 
 
 @app.command()
 def status():
-    stacker.status()
+    queue_navigator.status()
 
 
 @app.command()
 def submit(automerge: bool = False):
     with QueueOperation(sync_on_enter=False):
-        stacker.submit_queue(automerge=automerge)
+        queue_navigator.submit_queue(automerge=automerge)
         print(":rocket: [bold green]Stack submitted![/bold green]")
 
 

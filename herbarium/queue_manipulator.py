@@ -15,6 +15,9 @@ class QueueManipulator(Protocol):
     def add(self):
         ...
 
+    def sync(self):
+        ...
+
 
 class GraphiteManipulator(QueueManipulator):
     issue_parser: IssueParser
@@ -33,3 +36,6 @@ class GraphiteManipulator(QueueManipulator):
             f'gt create {self.issue_info.branch_title} --all --insert -m "{self.issue_info.first_commit_str}"'
         )
         interactive_cmd(f'git commit --allow-empty -m "{self.issue_info.first_commit_str}"')
+
+    def sync(self):
+        
