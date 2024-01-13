@@ -1,5 +1,6 @@
 from collections.abc import Sequence
 from types import TracebackType
+from typing import Literal
 
 import typer
 from rich import print
@@ -66,25 +67,34 @@ def select_issue() -> Issue:
     return selected_issue
 
 
-@app.command()
-def new():
-    with QueueOperation():
-        selected_issue = select_issue()
-        queue_navigator.create_queue_from_trunk(selected_issue)
+LocationType = Literal["front", "before", "after", "back"]
+
+str2navigation = {
+    "front": queue_navigator.go_to_front,
+    "before": queue_navigator.move_up_one,
+    "after": queue_navigator.move_down_one,
+    "back": queue_navigator.go_to_back,
+}
 
 
 @app.command()
-def insert_at_front():
+def add(location: LocationType):
     with QueueOperation():
         selected_issue = select_issue()
-        queue_navigator.add_to_beginning_of_queue(selected_issue)
+        str2navigation[location]()
+        queue_manipulator.add(selected_issue)
+        print(
+            f":heavy_plus_sign: [bold green]Issue {selected_issue} added to the queue![/bold green]"
+        )
 
 
 @app.command()
-def next():  # noqa: A001 [Shadowing python built-in]
+def fork(location: LocationType):
     with QueueOperation():
         selected_issue = select_issue()
-        queue_navigator.add_to_end_of_queue(selected_issue)
+        str2navigation[location]()
+        queue_manipulator.fork(selected_issue)
+        print(f":fork_and_knife: [bold green]Issue {selected_issue} forked![/bold green]")
 
 
 @app.command()
