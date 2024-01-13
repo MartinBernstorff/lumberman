@@ -50,7 +50,7 @@ def get_my_issues() -> Sequence[Issue]:
 
     if not my_issues:
         if retry_issue_getting():
-            next()
+            raise NotImplementedError
         return []
 
     return my_issues
