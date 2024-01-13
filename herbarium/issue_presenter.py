@@ -1,10 +1,9 @@
 from collections.abc import Sequence
 from dataclasses import dataclass
-from typing import Optional, Protocol, Union
+from typing import Protocol, Union
 
 import questionary
 import typer
-from git import refresh
 from rich.console import Console
 
 from .issue_service import Issue
