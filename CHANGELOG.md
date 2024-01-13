@@ -2,6 +2,19 @@
 
 
 
+## v0.18.0 (2024-01-13)
+
+### Feature
+
+* feat: delete-merged-branches-on-sync (#108)
+
+feat: delete-merged-branches-on-sync
+
+feat: delete-merged-branches-on-sync ([`c2ed5d8`](https://github.com/MartinBernstorff/herbarium/commit/c2ed5d8f04cf4008e6fe6474a7a0fed96136ddd6))
+
+* feat: delete-merged-branches-on-sync ([`9822bd7`](https://github.com/MartinBernstorff/herbarium/commit/9822bd79b535d87b7586f5bdb73eecb5ea99c559))
+
+
 ## v0.17.0 (2024-01-13)
 
 ### Feature
