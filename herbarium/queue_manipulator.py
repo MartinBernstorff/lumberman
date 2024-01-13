@@ -40,7 +40,7 @@ class GraphiteManipulator(QueueManipulator):
         interactive_cmd(f'git commit --allow-empty -m "{issue_info.first_commit_str}"')
 
     def sync(self):
-        interactive_cmd("gt sync --force --restack")
+        interactive_cmd("gt sync --force --restack --delete")
 
     def submit(self, automerge: bool = False):
         command = "gt submit -m --no-edit --publish"
