@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 from typing import Protocol
 
 from .issue_parser import IssueParser
@@ -21,6 +22,7 @@ class QueueManipulator(Protocol):
         ...
 
 
+@dataclass(frozen=True)
 class GraphiteManipulator(QueueManipulator):
     issue_parser: IssueParser
 
