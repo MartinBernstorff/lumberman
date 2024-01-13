@@ -1,0 +1,37 @@
+from dataclasses import dataclass
+from typing import Protocol
+
+from .git_utils import StagingMigrater
+from .subprocess_utils import interactive_cmd
+
+
+class QueueNavigator(Protocol):
+    def go_to_front(self):
+        ...
+
+    def go_to_end(self):
+        ...
+
+    def move_up_one(self):
+        ...
+
+    def move_down_one(self):
+        ...
+
+
+@dataclass(frozen=True)
+class GraphiteNavigator(QueueNavigator):
+    def go_to_front(self):
+        with StagingMigrater():
+            interactive_cmd("gt trunk")
+        interactive_cmd("gt up")
+
+    def go_to_end(self):
+        with StagingMigrater():
+            interactive_cmd("gt top")
+
+    def move_up_one(self):
+        interactive_cmd("gt up")
+
+    def move_down_one(self):
+        interactive_cmd("gt down")
