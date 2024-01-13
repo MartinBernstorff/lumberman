@@ -1,5 +1,7 @@
+import enum
 from collections.abc import Sequence
 from types import TracebackType
+from typing import Any
 
 import typer
 from rich import print
@@ -7,13 +9,14 @@ from rich.progress import Progress, SpinnerColumn, TextColumn
 from rich.prompt import Confirm
 
 from .issue_service import Issue
-from .registry import issue_services, presenters, stackers
+from .registry import issue_services, presenters, queue_manipulators, queue_navigators
 
 app = typer.Typer()
 
 issue_service = issue_services["Github"]()
 issue_presenter = presenters["Default"]()
-stacker = stackers["Graphite"]()
+queue_navigator = queue_navigators["Graphite"]()
+queue_manipulator = queue_manipulators["Graphite"]
 
 from dataclasses import dataclass
 
@@ -25,10 +28,10 @@ class QueueOperation:
     def __enter__(self):
         print(":arrows_clockwise: [bold green]Syncing with remote...[/bold green]")
         if self.sync_on_enter:
-            stacker.sync()
+            queue_manipulator.sync()
 
     def __exit__(self, exc_type: type, exc_val: Exception, exc_tb: TracebackType) -> None:
-        stacker.status()
+        queue_navigator.status()
 
 
 def retry_issue_getting() -> bool:
@@ -48,7 +51,7 @@ def get_my_issues() -> Sequence[Issue]:
 
     if not my_issues:
         if retry_issue_getting():
-            next()
+            raise NotImplementedError
         return []
 
     return my_issues
@@ -65,36 +68,55 @@ def select_issue() -> Issue:
     return selected_issue
 
 
-@app.command()
-def new():
-    with QueueOperation():
-        selected_issue = select_issue()
-        stacker.create_queue_from_trunk(selected_issue)
+class Location(str, enum.Enum):
+    front = "front"
+    before = "before"
+    after = "after"
+    back = "back"
+
+
+class NoOp:
+    def __call__(self):
+        pass
+
+
+str2navigation = {
+    "front": queue_navigator.go_to_front,
+    "before": queue_navigator.move_up_one,
+    "after": NoOp(),
+    "back": queue_navigator.go_to_back,
+}
 
 
 @app.command()
-def insert_at_front():
+def add(location: Location = Location.after):
     with QueueOperation():
         selected_issue = select_issue()
-        stacker.add_to_beginning_of_queue(selected_issue)
+        str2navigation[location.value]()
+        queue_manipulator.add(selected_issue)
+        print(
+            f":heavy_plus_sign: [bold green]Issue {selected_issue} added to the queue![/bold green]"
+        )
 
 
 @app.command()
-def next():  # noqa: A001 [Shadowing python built-in]
+def fork(location: Location = Location.front):
     with QueueOperation():
         selected_issue = select_issue()
-        stacker.add_to_end_of_queue(selected_issue)
+        str2navigation[location.value]()
+        queue_manipulator.fork(selected_issue)
+        print(f":fork_and_knife: [bold green]Issue {selected_issue} forked![/bold green]")
 
 
 @app.command()
 def status():
-    stacker.status()
+    queue_navigator.status()
 
 
 @app.command()
 def submit(automerge: bool = False):
     with QueueOperation(sync_on_enter=False):
-        stacker.submit_queue(automerge=automerge)
+        queue_manipulator.submit(automerge=automerge)
         print(":rocket: [bold green]Stack submitted![/bold green]")
 
 
