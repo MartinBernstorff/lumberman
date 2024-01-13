@@ -91,8 +91,8 @@ str2navigation = {
 @app.command()
 @app.command(name="a")
 @app.command(name="next")
-def add(location: Location = Location.after):
-    with QueueOperation():
+def add(location: Location = Location.after, skip_sync: bool = False):
+    with QueueOperation(sync_on_enter=not skip_sync):
         selected_issue = select_issue()
         str2navigation[location.value]()
         queue_manipulator.add(selected_issue)

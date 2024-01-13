@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 from typing import Protocol
 
-from .issue_stringifyer import IssueStringifyer
 from .issue_service import Issue
+from .issue_stringifyer import IssueStringifyer
 from .subprocess_utils import interactive_cmd
 
 
