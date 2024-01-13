@@ -45,5 +45,5 @@ class GraphiteManipulator(QueueManipulator):
     def submit(self, automerge: bool = False):
         command = "gt submit -m --no-edit --publish"
         if automerge:
-            command += " --automerge"
+            command += " --merge-when-ready"
         interactive_cmd(command)
