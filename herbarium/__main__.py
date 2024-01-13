@@ -12,6 +12,7 @@ from .registry import issue_services, presenters, queue_manipulators, queue_navi
 
 app = typer.Typer()
 
+in_progress_label = "in-progress"
 issue_service = issue_services["Github"]()
 issue_presenter = presenters["Default"]()
 queue_navigator = queue_navigators["Graphite"]()
@@ -95,9 +96,7 @@ def add(location: Location = Location.after):
         selected_issue = select_issue()
         str2navigation[location.value]()
         queue_manipulator.add(selected_issue)
-        print(
-            f":heavy_plus_sign: [bold green]Issue {selected_issue} added to the queue![/bold green]"
-        )
+        issue_service.label_issue(selected_issue, label=in_progress_label)
 
 
 @app.command()
@@ -108,7 +107,7 @@ def fork(location: Location = Location.front):
         selected_issue = select_issue()
         str2navigation[location.value]()
         queue_manipulator.fork(selected_issue)
-        print(f":fork_and_knife: [bold green]Issue {selected_issue} forked![/bold green]")
+        issue_service.label_issue(selected_issue, label=in_progress_label)
 
 
 @app.command()

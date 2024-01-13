@@ -22,6 +22,9 @@ class IssueService(Protocol):
     def get_issues_assigned_to_me(self) -> Sequence[Issue]:
         ...
 
+    def label_issue(self, issue: Issue, label: str) -> None:
+        ...
+
 
 class GithubIssueService(IssueService):
     def setup(self) -> None:
@@ -37,7 +40,9 @@ class GithubIssueService(IssueService):
 
     def get_issues_assigned_to_me(self) -> Sequence[Issue]:
         """Get issues assigned to current user on current repo"""
-        my_issues_cmd = shell_output("gh issue list --assignee='@me' --json number,title")
+        my_issues_cmd = shell_output(
+            "gh issue list --search 'is:open assignee:@me -label:in-progress' --json number,title"
+        )
 
         if my_issues_cmd is None:
             return []
@@ -47,3 +52,21 @@ class GithubIssueService(IssueService):
         parsed_output = [self._values_to_issue(v) for v in values]
 
         return parsed_output
+
+    def _create_label(self, label: str) -> None:
+        shell_output(f"gh label create {label}")
+
+    def _add_label_to_issue(self, issue: Issue, label: str) -> None:
+        shell_output(f'gh issue edit "{issue.entity_id}" --add-label "{label}"')
+
+    def label_issue(self, issue: Issue, label: str) -> None:
+        if not issue.entity_id:
+            return
+        try:
+            self._add_label_to_issue(issue, label)
+        except Exception:
+            try:
+                self._create_label(label)
+                self._add_label_to_issue(issue, label)
+            except Exception as e:
+                raise RuntimeError(f"Error labeling issue {issue.entity_id} with {label}") from e
