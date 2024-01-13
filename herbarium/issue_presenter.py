@@ -1,6 +1,6 @@
 from collections.abc import Sequence
 from dataclasses import dataclass
-from typing import Optional, Protocol
+from typing import Protocol, Union
 
 import questionary
 import typer
@@ -13,12 +13,17 @@ console = Console()
 
 
 class IssuePresenter(Protocol):
-    def select_issue_dialog(self, issues: Sequence[Issue]) -> Optional[Issue]:
+    ten_latest_prompt: str
+    manual_prompt: str
+    refresh_prompt: str
+
+    def select_issue_dialog(self, issues: Sequence[Issue]) -> Union[Issue, str]:
         ...
 
 
 @dataclass(frozen=True)
 class DefaultIssuePresenter(IssuePresenter):
+    ten_latest_prompt: str = "Recent"
     manual_prompt: str = "Manual"
     refresh_prompt: str = "Refresh..."
 
@@ -29,15 +34,20 @@ class DefaultIssuePresenter(IssuePresenter):
         issue_titles = [issue.description for issue in issues]
         return questionary.select(
             "What's next? 🚀",
-            choices=[self.refresh_prompt, self.manual_prompt, *issue_titles],
+            choices=[
+                self.refresh_prompt,
+                self.ten_latest_prompt,
+                self.manual_prompt,
+                *issue_titles,
+            ],
             default=issue_titles[0],
         ).ask()
 
-    def select_issue_dialog(self, issues: Sequence[Issue]) -> Optional[Issue]:
+    def select_issue_dialog(self, issues: Sequence[Issue]) -> Union[Issue, str]:
         selected_issue_title = self._show_selection_dialog(issues=issues)
 
-        if selected_issue_title == self.refresh_prompt:
-            return None
+        if selected_issue_title in [self.refresh_prompt, self.ten_latest_prompt]:
+            return selected_issue_title
 
         if selected_issue_title == self.manual_prompt:
             selected_issue_title = self._show_entry_dialog()
