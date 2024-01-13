@@ -22,6 +22,9 @@ class IssueService(Protocol):
     def get_issues_assigned_to_me(self) -> Sequence[Issue]:
         ...
 
+    def label_issue(self, issue: Issue, label: str) -> None:
+        ...
+
 
 class GithubIssueService(IssueService):
     def setup(self) -> None:
@@ -47,3 +50,21 @@ class GithubIssueService(IssueService):
         parsed_output = [self._values_to_issue(v) for v in values]
 
         return parsed_output
+
+    def _create_label(self, label: str) -> None:
+        shell_output(f"gh label create {label}")
+
+    def _add_label_to_issue(self, issue: Issue, label: str) -> None:
+        shell_output(f"gh issue label add {issue.entity_id} {label}")
+
+    def label_issue(self, issue: Issue, label: str) -> None:
+        if not issue.entity_id:
+            return
+        try:
+            self._add_label_to_issue(issue, label)
+        except Exception as e:
+            try:
+                self._create_label(label)
+                self._add_label_to_issue(issue, label)
+            except Exception as e:
+                raise RuntimeError(f"Error labeling issue {issue.entity_id} with {label}") from e
