@@ -2,6 +2,69 @@
 
 
 
+## v0.16.0 (2024-01-13)
+
+### Feature
+
+* feat: implement-new-vocabulary (#102)
+
+feat: implement-new-vocabulary
+
+misc.
+
+misc.
+
+misc.
+
+misc.
+
+misc.
+
+misc.
+
+misc.
+
+misc.
+
+misc.
+
+lint
+
+misc. ([`3f15589`](https://github.com/MartinBernstorff/herbarium/commit/3f15589dcebed46ab106b2353540fb9be04956ec))
+
+* feat: implement-new-vocabulary ([`8a09bde`](https://github.com/MartinBernstorff/herbarium/commit/8a09bde24b0c3234df0ca9640efb22e42d8811e7))
+
+### Unknown
+
+* misc. ([`bfce67f`](https://github.com/MartinBernstorff/herbarium/commit/bfce67f564238773188e46ffb3027aed692f6895))
+
+* misc. ([`f1bbed8`](https://github.com/MartinBernstorff/herbarium/commit/f1bbed8c8a2a6c830d2947f0464396e54ec2eee8))
+
+* misc. ([`6c9b0df`](https://github.com/MartinBernstorff/herbarium/commit/6c9b0dfb2337898575ec1827881c85c878fdfe86))
+
+* misc. ([`ab08fdf`](https://github.com/MartinBernstorff/herbarium/commit/ab08fdfc6c9b46077bbc299513bd8676ae3d427a))
+
+* lint ([`5db9b57`](https://github.com/MartinBernstorff/herbarium/commit/5db9b57248b976f4922f9d64cf949b9b49de34b6))
+
+* misc. ([`e11c540`](https://github.com/MartinBernstorff/herbarium/commit/e11c5402f40bfdc7af20353d05fe8fc292af4b0a))
+
+* misc. ([`7d5bb3a`](https://github.com/MartinBernstorff/herbarium/commit/7d5bb3a79d78e05da70e4a5984e13691d276e5d4))
+
+* misc. ([`b7a52c8`](https://github.com/MartinBernstorff/herbarium/commit/b7a52c81c13aed9a67019e5b0d8847a6214dd440))
+
+* misc. ([`2726f85`](https://github.com/MartinBernstorff/herbarium/commit/2726f8519c3ee2137e872f673b5a1c38dfc4f886))
+
+* misc. ([`3311ecb`](https://github.com/MartinBernstorff/herbarium/commit/3311ecbcb5fde71fa1789b8847fb84c27b0f445d))
+
+* misc. ([`867d3a5`](https://github.com/MartinBernstorff/herbarium/commit/867d3a52500a444a515ac9c86f76746aa6dff98f))
+
+* misc. ([`a50158c`](https://github.com/MartinBernstorff/herbarium/commit/a50158cfc38c4fb61cc699846a42e03dade3e1eb))
+
+* misc. ([`7741123`](https://github.com/MartinBernstorff/herbarium/commit/7741123fbcb3642f93e24eb72210ca23856a3db6))
+
+* misc. ([`9f6d5e8`](https://github.com/MartinBernstorff/herbarium/commit/9f6d5e823770706a67634021beb4c77147f7c47f))
+
+
 ## v0.15.0 (2024-01-13)
 
 ### Feature
