@@ -3,7 +3,7 @@ from collections.abc import Sequence
 from dataclasses import dataclass
 from typing import Optional, Protocol
 
-from .parse_issue_title import parse_issue_title
+from .issue_title_parser import parse_issue_title
 from .subprocess_utils import shell_output
 
 

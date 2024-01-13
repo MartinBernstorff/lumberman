@@ -2,7 +2,6 @@ from dataclasses import dataclass
 from typing import Protocol
 
 from .issue_service import Issue
-from .parse_issue_title import sanitise_text_for_bash
 
 
 @dataclass(frozen=True)
@@ -11,12 +10,19 @@ class IssueInfo:
     first_commit_str: str
 
 
-class IssueParser(Protocol):
+class IssueStringifyer(Protocol):
     def get_issue_info(self, issue: Issue) -> IssueInfo:
         ...
 
 
-class DefaultIssueParser(IssueParser):
+def sanitise_text_for_bash(input_string: str) -> str:
+    char_to_remove = ["`"]
+    for character in char_to_remove:
+        input_string = input_string.replace(character, "")
+    return input_string
+
+
+class DefaultIssueStringifyer(IssueStringifyer):
     def get_issue_info(self, issue: Issue) -> IssueInfo:
         branch_title = self._get_branch_title(issue=issue)
         first_commit_str = self._get_first_commit_str(issue=issue)

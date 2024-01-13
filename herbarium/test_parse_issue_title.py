@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 import pytest
 
-from .parse_issue_title import ParsedTitle, parse_issue_title
+from .issue_title_parser import ParsedTitle, parse_issue_title
 
 
 @dataclass(frozen=True)

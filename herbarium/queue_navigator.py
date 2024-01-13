@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Protocol
 
-from .git_utils import StagingMigrater
+from .git_stager import StagingMigrater
 from .subprocess_utils import interactive_cmd
 
 
