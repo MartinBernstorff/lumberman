@@ -18,6 +18,9 @@ class QueueNavigator(Protocol):
     def move_down_one(self):
         ...
 
+    def status(self):
+        ...
+
 
 @dataclass(frozen=True)
 class GraphiteNavigator(QueueNavigator):
@@ -35,3 +38,6 @@ class GraphiteNavigator(QueueNavigator):
 
     def move_down_one(self):
         interactive_cmd("gt down")
+
+    def status(self):
+        interactive_cmd("gt log short --reverse")
