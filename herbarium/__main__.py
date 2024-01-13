@@ -1,7 +1,6 @@
 import enum
 from collections.abc import Sequence
 from types import TracebackType
-from typing import Any
 
 import typer
 from rich import print
@@ -69,10 +68,14 @@ def select_issue() -> Issue:
 
 
 class Location(str, enum.Enum):
-    front = "front"
-    before = "before"
-    after = "after"
-    back = "back"
+    fr = "front"
+    be = "before"
+    af = "after"
+    ba = "back"
+    front = "front"  # noqa: PIE796
+    before = "before"  # noqa: PIE796
+    after = "after"  # noqa: PIE796
+    back = "back"  # noqa: PIE796
 
 
 class NoOp:
@@ -88,6 +91,7 @@ str2navigation = {
 }
 
 
+@app.command(name="next")
 @app.command()
 def add(location: Location = Location.after):
     with QueueOperation():
@@ -99,6 +103,7 @@ def add(location: Location = Location.after):
         )
 
 
+@app.command(name="new")
 @app.command()
 def fork(location: Location = Location.front):
     with QueueOperation():
