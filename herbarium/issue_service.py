@@ -40,7 +40,9 @@ class GithubIssueService(IssueService):
 
     def get_issues_assigned_to_me(self) -> Sequence[Issue]:
         """Get issues assigned to current user on current repo"""
-        my_issues_cmd = shell_output("gh issue list --search '@me' --json number,title")
+        my_issues_cmd = shell_output(
+            "gh issue list --search 'is:open assignee:@me -label:in-progress' --json number,title"
+        )
 
         if my_issues_cmd is None:
             return []
@@ -62,7 +64,7 @@ class GithubIssueService(IssueService):
             return
         try:
             self._add_label_to_issue(issue, label)
-        except Exception as e:
+        except Exception:
             try:
                 self._create_label(label)
                 self._add_label_to_issue(issue, label)
