@@ -2,9 +2,24 @@
 
 
 
+## v0.15.0 (2024-01-13)
+
+### Feature
+
+* feat: implement-QueueNavigator (#101)
+
+feat: implement-QueueNavigator
+
+misc.
+
+misc. ([`2de54db`](https://github.com/MartinBernstorff/herbarium/commit/2de54dbf1fc06933623bea3cba54268dca87d5b5))
+
+
 ## v0.14.0 (2024-01-13)
 
 ### Feature
+
+* feat: implement-QueueNavigator ([`c69f2df`](https://github.com/MartinBernstorff/herbarium/commit/c69f2dfdb11f458ae6748c9f997a721713448c6a))
 
 * feat(#91): implement-go-to-front (#100)
 
@@ -21,6 +36,10 @@ misc. ([`50bd9fe`](https://github.com/MartinBernstorff/herbarium/commit/50bd9fe7
 Fixes #91 ([`d9dd1a9`](https://github.com/MartinBernstorff/herbarium/commit/d9dd1a96a0bd80faabc055f0536a6e957ba33239))
 
 ### Unknown
+
+* misc. ([`a3ca5c4`](https://github.com/MartinBernstorff/herbarium/commit/a3ca5c44eef75143ddfc1c5495c573bbbe2b7fcd))
+
+* misc. ([`fa933e9`](https://github.com/MartinBernstorff/herbarium/commit/fa933e94edb99ea9a2115d1d36f7a6bb608845c0))
 
 * misc. ([`ce80502`](https://github.com/MartinBernstorff/herbarium/commit/ce80502073bccc1daa0fd5513d782c44479dbd5f))
 
