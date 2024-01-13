@@ -1,7 +1,6 @@
 import enum
 from collections.abc import Sequence
 from types import TracebackType
-from typing import Literal
 
 import typer
 from rich import print
