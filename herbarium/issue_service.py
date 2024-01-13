@@ -1,5 +1,5 @@
 import json
-from collections.abc import Sequence
+from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 from typing import Optional, Protocol
 
@@ -19,7 +19,10 @@ class IssueService(Protocol):
         """Any setup needed, including installing CLI tools, etc."""
         ...
 
-    def get_issues_assigned_to_me(self) -> Sequence[Issue]:
+    def get_latest_issues(self, in_progress_label: str) -> Sequence[Issue]:
+        ...
+
+    def get_issues_assigned_to_me(self, in_progress_label: str) -> Sequence[Issue]:
         ...
 
     def label_issue(self, issue: Issue, label: str) -> None:
@@ -41,19 +44,30 @@ class GithubIssueService(IssueService):
             prefix=parsed_title.prefix,
         )
 
-    def get_issues_assigned_to_me(self) -> Sequence[Issue]:
+    def get_latest_issues(self, in_progress_label: str) -> Sequence[Issue]:
+        latest_issues = shell_output(
+            f"gh issue list --limit 10 --json number,title --search 'is:open -label:{in_progress_label}'"
+        )
+
+        if latest_issues is None:
+            return []
+
+        return self._parse_github_json_str(latest_issues)
+
+    def get_issues_assigned_to_me(self, in_progress_label: str) -> Sequence[Issue]:
         """Get issues assigned to current user on current repo"""
         my_issues_cmd = shell_output(
-            "gh issue list --search 'is:open assignee:@me -label:in-progress' --json number,title"
+            f"gh issue list --search 'is:open assignee:@me -label:{in_progress_label}' --json number,title"
         )
 
         if my_issues_cmd is None:
             return []
 
-        values = json.loads(my_issues_cmd)
+        return self._parse_github_json_str(my_issues_cmd)
 
+    def _parse_github_json_str(self, issue_str: str) -> Sequence[Issue]:
+        values = json.loads(issue_str)
         parsed_output = [self._values_to_issue(v) for v in values]
-
         return parsed_output
 
     def _create_label(self, label: str) -> None:

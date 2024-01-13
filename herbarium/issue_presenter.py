@@ -1,9 +1,10 @@
 from collections.abc import Sequence
 from dataclasses import dataclass
-from typing import Optional, Protocol
+from typing import Optional, Protocol, Union
 
 import questionary
 import typer
+from git import refresh
 from rich.console import Console
 
 from .issue_service import Issue
@@ -13,9 +14,11 @@ console = Console()
 
 
 class IssuePresenter(Protocol):
-    def select_issue_dialog(
-        self, most_recent_issues: Sequence[Issue], issues_assigned_to_me: Sequence[Issue]
-    ) -> Optional[Issue]:
+    ten_latest_prompt: str
+    manual_prompt: str
+    refresh_prompt: str
+
+    def select_issue_dialog(self, issues: Sequence[Issue]) -> Union[Issue, str]:
         ...
 
 
@@ -41,11 +44,11 @@ class DefaultIssuePresenter(IssuePresenter):
             default=issue_titles[0],
         ).ask()
 
-    def select_issue_dialog(self, issues: Sequence[Issue]) -> Optional[Issue]:
+    def select_issue_dialog(self, issues: Sequence[Issue]) -> Union[Issue, str]:
         selected_issue_title = self._show_selection_dialog(issues=issues)
 
-        if selected_issue_title == self.refresh_prompt:
-            return None
+        if selected_issue_title in [self.refresh_prompt, self.ten_latest_prompt]:
+            return selected_issue_title
 
         if selected_issue_title == self.manual_prompt:
             selected_issue_title = self._show_entry_dialog()

@@ -1,6 +1,7 @@
 import enum
 from collections.abc import Sequence
 from types import TracebackType
+from typing import Optional
 
 import typer
 from rich import print
@@ -42,12 +43,27 @@ def retry_issue_getting() -> bool:
     return retry
 
 
+def get_latest_issues() -> Sequence[Issue]:
+    with Progress(
+        SpinnerColumn(), TextColumn("[progress.description]{task.description}"), transient=True
+    ) as progress:
+        progress.add_task("Getting latest issues", start=True)
+        latest_issues = issue_service.get_latest_issues(in_progress_label=in_progress_label)
+
+    if not latest_issues:
+        if retry_issue_getting():
+            raise NotImplementedError
+        return []
+
+    return latest_issues
+
+
 def get_my_issues() -> Sequence[Issue]:
     with Progress(
         SpinnerColumn(), TextColumn("[progress.description]{task.description}"), transient=True
     ) as progress:
         progress.add_task("Getting issues assigned to you", start=True)
-        my_issues = issue_service.get_issues_assigned_to_me()
+        my_issues = issue_service.get_issues_assigned_to_me(in_progress_label=in_progress_label)
 
     if not my_issues:
         if retry_issue_getting():
@@ -57,16 +73,17 @@ def get_my_issues() -> Sequence[Issue]:
     return my_issues
 
 
-def select_issue() -> Issue:
-    my_issues = get_my_issues()
+def select_issue(issues: Optional[Sequence[Issue]] = None) -> Issue:
+    if issues is None:
+        issues = get_my_issues()
+    selected_issue = issue_presenter.select_issue_dialog(issues)
 
-    # XXX: Give both my issues and X most recent issues here
-
-    selected_issue = issue_presenter.select_issue_dialog(my_issues)
-
-    while selected_issue is None:
-        my_issues = get_my_issues()
-        selected_issue = issue_presenter.select_issue_dialog(my_issues)
+    if selected_issue is issue_presenter.refresh_prompt:
+        return select_issue()
+    if selected_issue is issue_presenter.ten_latest_prompt:
+        return select_issue(get_latest_issues())
+    if isinstance(selected_issue, str):
+        raise NotImplementedError
 
     return selected_issue
 
