@@ -2,6 +2,45 @@
 
 
 
+## v0.19.0 (2024-01-13)
+
+### Feature
+
+* feat(#110): on-submit-mark-issue-as-in-progress (#112)
+
+feat(#110): on-submit-mark-issue-as-in-progress
+
+Fixes #110
+
+misc.
+
+misc ([`d33c4c8`](https://github.com/MartinBernstorff/herbarium/commit/d33c4c8df0690afb279219034e21c3d79eb8b3bf))
+
+* feat(#110): on-submit-mark-issue-as-in-progress
+
+Fixes #110 ([`81eb964`](https://github.com/MartinBernstorff/herbarium/commit/81eb964992e66c78e704dc500468b99b0276c33e))
+
+### Fix
+
+* fix: correct issue selection ([`0cb5cf9`](https://github.com/MartinBernstorff/herbarium/commit/0cb5cf9795eddf849950608e63bddc668b21aee0))
+
+### Unknown
+
+* misc. ([`fd4a4b0`](https://github.com/MartinBernstorff/herbarium/commit/fd4a4b0ef172cea86f4c2facd7be67ff73f904ea))
+
+* misc ([`61e435d`](https://github.com/MartinBernstorff/herbarium/commit/61e435d024dd7177806424e136ac9759456bf709))
+
+* misc. ([`49645da`](https://github.com/MartinBernstorff/herbarium/commit/49645da267e3678c02882957729c0ce222833992))
+
+* dev: automatically-submit-and-ask-for-next-issue (#109)
+
+dev: automatically-submit-and-ask-for-next-issue
+
+dev: automatically-submit-and-ask-for-next-issue ([`8a83dd9`](https://github.com/MartinBernstorff/herbarium/commit/8a83dd97d2bf4b277f09aba966688556f5f369cf))
+
+* dev: automatically-submit-and-ask-for-next-issue ([`1f8fa3a`](https://github.com/MartinBernstorff/herbarium/commit/1f8fa3a9194ce19f3686a1b885c94bc94d19a624))
+
+
 ## v0.18.0 (2024-01-13)
 
 ### Feature
