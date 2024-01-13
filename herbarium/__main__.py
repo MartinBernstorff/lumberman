@@ -91,8 +91,9 @@ str2navigation = {
 }
 
 
-@app.command(name="next")
 @app.command()
+@app.command(name="a")
+@app.command(name="next")
 def add(location: Location = Location.after):
     with QueueOperation():
         selected_issue = select_issue()
@@ -103,8 +104,9 @@ def add(location: Location = Location.after):
         )
 
 
-@app.command(name="new")
 @app.command()
+@app.command(name="f")
+@app.command(name="new")
 def fork(location: Location = Location.front):
     with QueueOperation():
         selected_issue = select_issue()
