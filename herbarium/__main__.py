@@ -68,14 +68,10 @@ def select_issue() -> Issue:
 
 
 class Location(str, enum.Enum):
-    fr = "front"
-    be = "before"
-    af = "after"
-    ba = "back"
-    front = "front"  # noqa: PIE796
-    before = "before"  # noqa: PIE796
-    after = "after"  # noqa: PIE796
-    back = "back"  # noqa: PIE796
+    front = "front"
+    before = "before"
+    after = "after"
+    back = "back"
 
 
 class NoOp:
