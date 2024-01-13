@@ -15,7 +15,7 @@ app = typer.Typer()
 issue_service = issue_services["Github"]()
 issue_presenter = presenters["Default"]()
 queue_navigator = queue_navigators["Graphite"]()
-queue_manipulator = queue_manipulators["Graphite"]()
+queue_manipulator = queue_manipulators["Graphite"]
 
 from dataclasses import dataclass
 
