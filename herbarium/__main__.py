@@ -1,3 +1,4 @@
+import enum
 from collections.abc import Sequence
 from types import TracebackType
 from typing import Literal
@@ -67,7 +68,12 @@ def select_issue() -> Issue:
     return selected_issue
 
 
-LocationType = Literal["front", "before", "after", "back"]
+class Location(enum.Enum):
+    front = "front"
+    before = "before"
+    after = "after"
+    back = "back"
+
 
 str2navigation = {
     "front": queue_navigator.go_to_front,
@@ -78,10 +84,10 @@ str2navigation = {
 
 
 @app.command()
-def add(location: LocationType):
+def add(location: Location):
     with QueueOperation():
         selected_issue = select_issue()
-        str2navigation[location]()
+        str2navigation[location.value]()
         queue_manipulator.add(selected_issue)
         print(
             f":heavy_plus_sign: [bold green]Issue {selected_issue} added to the queue![/bold green]"
@@ -89,10 +95,10 @@ def add(location: LocationType):
 
 
 @app.command()
-def fork(location: LocationType):
+def fork(location: Location):
     with QueueOperation():
         selected_issue = select_issue()
-        str2navigation[location]()
+        str2navigation[location.value]()
         queue_manipulator.fork(selected_issue)
         print(f":fork_and_knife: [bold green]Issue {selected_issue} forked![/bold green]")
 
