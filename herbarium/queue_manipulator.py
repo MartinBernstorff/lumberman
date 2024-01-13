@@ -1,13 +1,13 @@
 from dataclasses import dataclass
 from typing import Protocol
 
-from .issue_parser import IssueParser
+from .issue_stringifyer import IssueStringifyer
 from .issue_service import Issue
 from .subprocess_utils import interactive_cmd
 
 
 class QueueManipulator(Protocol):
-    issue_parser: IssueParser
+    issue_parser: IssueStringifyer
 
     def fork(self, issue: Issue):
         ...
@@ -24,7 +24,7 @@ class QueueManipulator(Protocol):
 
 @dataclass(frozen=True)
 class GraphiteManipulator(QueueManipulator):
-    issue_parser: IssueParser
+    issue_parser: IssueStringifyer
 
     def fork(self, issue: Issue):
         issue_info = self.issue_parser.get_issue_info(issue)
