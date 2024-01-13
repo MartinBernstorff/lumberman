@@ -1,7 +1,6 @@
 import enum
 from collections.abc import Sequence
 from types import TracebackType
-from typing import Any
 
 import typer
 from rich import print
@@ -89,6 +88,8 @@ str2navigation = {
 
 
 @app.command()
+@app.command(name="a")
+@app.command(name="next")
 def add(location: Location = Location.after):
     with QueueOperation():
         selected_issue = select_issue()
@@ -100,6 +101,8 @@ def add(location: Location = Location.after):
 
 
 @app.command()
+@app.command(name="f")
+@app.command(name="new")
 def fork(location: Location = Location.front):
     with QueueOperation():
         selected_issue = select_issue()
