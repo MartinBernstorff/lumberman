@@ -105,7 +105,7 @@ def status():
 @app.command()
 def submit(automerge: bool = False):
     with QueueOperation(sync_on_enter=False):
-        queue_navigator.submit_queue(automerge=automerge)
+        queue_manipulator.submit(automerge=automerge)
         print(":rocket: [bold green]Stack submitted![/bold green]")
 
 

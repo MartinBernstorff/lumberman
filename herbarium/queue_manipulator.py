@@ -36,3 +36,6 @@ class GraphiteManipulator(QueueManipulator):
 
     def sync(self):
         interactive_cmd("gt sync --force --restack")
+
+    def submit(self):
+        interactive_cmd("gt submit")
