@@ -1,6 +1,7 @@
 import enum
 from collections.abc import Sequence
 from types import TracebackType
+from typing import Any
 
 import typer
 from rich import print
@@ -74,10 +75,15 @@ class Location(str, enum.Enum):
     back = "back"
 
 
+class NoOp:
+    def __call__(self):
+        pass
+
+
 str2navigation = {
     "front": queue_navigator.go_to_front,
     "before": queue_navigator.move_up_one,
-    "after": queue_navigator.move_down_one,
+    "after": NoOp(),
     "back": queue_navigator.go_to_back,
 }
 
