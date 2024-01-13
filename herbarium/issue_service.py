@@ -57,7 +57,7 @@ class GithubIssueService(IssueService):
         shell_output(f"gh label create {label}")
 
     def _add_label_to_issue(self, issue: Issue, label: str) -> None:
-        shell_output(f"gh issue label add {issue.entity_id} {label}")
+        shell_output(f'gh issue edit "{issue.entity_id}" --add-label "{label}"')
 
     def label_issue(self, issue: Issue, label: str) -> None:
         if not issue.entity_id:
