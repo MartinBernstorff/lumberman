@@ -2,9 +2,44 @@
 
 
 
+## v0.17.0 (2024-01-13)
+
+### Feature
+
+* feat(#103): support-aliases-for-commands-and-locations (#106)
+
+feat(#103): support-aliases-for-commands-and-locations
+
+Fixes #103
+
+misc.
+
+misc.
+
+misc. ([`a18d976`](https://github.com/MartinBernstorff/herbarium/commit/a18d9769da412fa069b50467d65b7e1c06b83ffb))
+
+### Fix
+
+* fix(#104): automerge-is--merge-when-ready-in-graphite (#107)
+
+fix(#104): automerge-is--merge-when-ready-in-graphite
+
+Fixes #104
+
+misc. ([`d587bf4`](https://github.com/MartinBernstorff/herbarium/commit/d587bf4770417104ced54a380ec75a752fad3eb8))
+
+### Unknown
+
+* misc. ([`5259014`](https://github.com/MartinBernstorff/herbarium/commit/5259014481d7c4f00d6b366580b9950fc7b36fd5))
+
+
 ## v0.16.0 (2024-01-13)
 
 ### Feature
+
+* feat(#103): support-aliases-for-commands-and-locations
+
+Fixes #103 ([`e6c88a5`](https://github.com/MartinBernstorff/herbarium/commit/e6c88a52f820f30e5e7978581e981b7d13c0b045))
 
 * feat: implement-new-vocabulary (#102)
 
@@ -35,6 +70,12 @@ misc. ([`3f15589`](https://github.com/MartinBernstorff/herbarium/commit/3f15589d
 * feat: implement-new-vocabulary ([`8a09bde`](https://github.com/MartinBernstorff/herbarium/commit/8a09bde24b0c3234df0ca9640efb22e42d8811e7))
 
 ### Unknown
+
+* misc. ([`f7520f5`](https://github.com/MartinBernstorff/herbarium/commit/f7520f576b4e754014cca85e53540ed186c41778))
+
+* misc. ([`479b68c`](https://github.com/MartinBernstorff/herbarium/commit/479b68ca452f04429370e74ee5a960ed510879d2))
+
+* misc. ([`241be46`](https://github.com/MartinBernstorff/herbarium/commit/241be460e46f93ff8cca4a0d633b696d4784e3ec))
 
 * misc. ([`bfce67f`](https://github.com/MartinBernstorff/herbarium/commit/bfce67f564238773188e46ffb3027aed692f6895))
 
