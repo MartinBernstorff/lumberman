@@ -7,7 +7,7 @@
         {
             "label": "PR",
             "type": "shell",
-            "command": "herb submit --automerge",
+            "command": "herb add",
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -15,8 +15,21 @@
             "dependsOn": [
                 "Lint",
                 "Test",
-                "Static type check"
+                "Static type check",
+                "Submit"
             ],
+            "presentation": {
+                "reveal": "always",
+                "clear": true,
+                "showReuseMessage": false,
+                "group": "pr"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Submit",
+            "type": "shell",
+            "command": "herb submit --automerge",
             "presentation": {
                 "reveal": "always",
                 "clear": true,
