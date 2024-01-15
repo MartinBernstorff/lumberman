@@ -1,7 +1,7 @@
 import enum
 from collections.abc import Sequence
 from types import TracebackType
-from typing import Optional
+from typing import Literal, Optional
 
 import typer
 from rich import print
@@ -24,16 +24,15 @@ from dataclasses import dataclass
 
 @dataclass
 class QueueOperation:
-    sync_on_enter: bool = False
-    sync_on_exit: bool = True
+    sync_time: Literal["enter", "exit", "none"] = "enter"
 
     def __enter__(self):
         print(":arrows_clockwise: [bold green]Syncing with remote...[/bold green]")
-        if self.sync_on_enter:
+        if self.sync_time == "enter":
             queue_manipulator.sync()
 
     def __exit__(self, exc_type: type, exc_val: Exception, exc_tb: TracebackType) -> None:
-        if self.sync_on_exit:
+        if self.sync_time == "exit":
             queue_manipulator.sync()
         queue_navigator.status()
 
@@ -115,7 +114,7 @@ str2navigation = {
 @app.command(name="a")
 @app.command(name="next")
 def add(location: Location = Location.after):
-    with QueueOperation(sync_on_enter=False, sync_on_exit=True):
+    with QueueOperation(sync_time="exit"):
         selected_issue = select_issue()
         str2navigation[location.value]()
         queue_manipulator.add(selected_issue)
@@ -126,7 +125,7 @@ def add(location: Location = Location.after):
 @app.command(name="f")
 @app.command(name="new")
 def fork(location: Location = Location.front):
-    with QueueOperation(sync_on_enter=True, sync_on_exit=False):
+    with QueueOperation(sync_time="exit"):
         selected_issue = select_issue()
         str2navigation[location.value]()
         queue_manipulator.fork(selected_issue)
@@ -140,7 +139,7 @@ def status():
 
 @app.command()
 def submit(automerge: bool = False):
-    with QueueOperation(sync_on_enter=False):
+    with QueueOperation(sync_time="exit"):
         queue_manipulator.submit(automerge=automerge)
         print(":rocket: [bold green]Stack submitted![/bold green]")
 
