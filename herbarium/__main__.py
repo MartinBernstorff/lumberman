@@ -67,11 +67,6 @@ def get_my_issues() -> Sequence[Issue]:
         progress.add_task("Getting issues assigned to you", start=True)
         my_issues = issue_service.get_issues_assigned_to_me(in_progress_label=in_progress_label)
 
-    if not my_issues:
-        if retry_issue_getting():
-            raise NotImplementedError
-        return []
-
     return my_issues
 
 
