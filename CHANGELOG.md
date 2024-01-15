@@ -2,7 +2,22 @@
 
 
 
+## v0.23.0 (2024-01-15)
+
+### Feature
+
+* feat: remove fork command (#141)
+
+Fixes #140. ([`fb37eb1`](https://github.com/MartinBernstorff/herbarium/commit/fb37eb1d5ee20e5753739fc3efe5ec0b4f799d25))
+
+
 ## v0.22.4 (2024-01-15)
+
+### Feature
+
+* feat: remove fork command
+
+Fixes #140. ([`5059d90`](https://github.com/MartinBernstorff/herbarium/commit/5059d9039571fc219f58763fe65401756965eac5))
 
 ### Fix
 
