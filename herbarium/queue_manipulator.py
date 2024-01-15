@@ -29,10 +29,11 @@ class GraphiteManipulator(QueueManipulator):
     def _new_branch(self, insert: bool, issue: Issue):
         issue_info = self.issue_parser.get_issue_info(issue)
 
-        create_command = f'gt create -m "{issue_info.first_commit_str}" --all'
+        create_command = f'gt create -m "{issue_info.first_commit_str}" --no-interactive'
         create_command += " --insert" if insert else ""
 
         interactive_cmd(create_command)
+        interactive_cmd("git add -A")
         interactive_cmd(f'git commit --allow-empty -m "{issue_info.first_commit_str}"')
 
     def fork(self, issue: Issue):
