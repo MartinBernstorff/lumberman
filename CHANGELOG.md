@@ -2,6 +2,33 @@
 
 
 
+## v0.20.1 (2024-01-15)
+
+### Fix
+
+* fix: commit-string-correctly ([`e9ed5ae`](https://github.com/MartinBernstorff/herbarium/commit/e9ed5aecbfd570f2e53f9cba67db1677279a2f2e))
+
+### Performance
+
+* perf(#119): do-not-sync-branches-before-showing-issue-selector (#121)
+
+perf(#119): do-not-sync-branches-before-showing-issue-selector
+
+Fixes #119
+
+misc. ([`cebeede`](https://github.com/MartinBernstorff/herbarium/commit/cebeedee90fb57eebb967a2de2bd3efe62b3ccff))
+
+* perf(#119): do-not-sync-branches-before-showing-issue-selector
+
+Fixes #119 ([`c7afe0f`](https://github.com/MartinBernstorff/herbarium/commit/c7afe0fec83f9d730d768102e157b828e3ceacd5))
+
+### Unknown
+
+* misc. ([`94be8f8`](https://github.com/MartinBernstorff/herbarium/commit/94be8f88bbb1bd69ea10d69b2f8b6294cf0becad))
+
+* misc. ([`11cfaf2`](https://github.com/MartinBernstorff/herbarium/commit/11cfaf286d9da12bd0de1bca500ebffff3bc30f1))
+
+
 ## v0.20.0 (2024-01-13)
 
 ### Feature
