@@ -2,6 +2,33 @@
 
 
 
+## v0.21.0 (2024-01-15)
+
+### Feature
+
+* feat(#118): show select issue dialog when no issues assigned to the user (#124)
+
+feat(#118): show select issue dialog when no issues assigned to the user
+
+Fixes #118
+
+misc.
+
+misc ([`119723f`](https://github.com/MartinBernstorff/herbarium/commit/119723f82159d4b95e5c12897d90c1ffc0491b4d))
+
+* feat(#118): show select issue dialog when no issues assigned to the user
+
+Fixes #118 ([`5fd2da8`](https://github.com/MartinBernstorff/herbarium/commit/5fd2da8c01e78bb5678e20b1d18e69a045f7fb89))
+
+### Unknown
+
+* misc. ([`b763b7f`](https://github.com/MartinBernstorff/herbarium/commit/b763b7fa731c0f11871f0f55c202397aed1c9c63))
+
+* misc ([`4c48b07`](https://github.com/MartinBernstorff/herbarium/commit/4c48b07a5d3277e08427637dadcc4582c23fc6e5))
+
+* misc. ([`43e5955`](https://github.com/MartinBernstorff/herbarium/commit/43e5955fcaa1e624c8de02dde7ede14675aa6037))
+
+
 ## v0.20.3 (2024-01-15)
 
 ### Fix
