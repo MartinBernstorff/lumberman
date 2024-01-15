@@ -8,9 +8,8 @@ class ParsedTitle:
     description: str
 
 
-def sanitise_text_for_git(input_string: str) -> str:
+def sanitise_text_for_git(input_string: str, replace_spaces: bool) -> str:
     char2replacement = {
-        " ": "-",
         ":": "/",
         ",": "",
         "'": "",
@@ -25,6 +24,9 @@ def sanitise_text_for_git(input_string: str) -> str:
         "=": "",
     }
 
+    if replace_spaces:
+        char2replacement[" "] = "-"
+
     for character, replacement in char2replacement.items():
         input_string = input_string.replace(character, replacement)
 
@@ -36,10 +38,7 @@ def parse_issue_title(issue_title: str) -> ParsedTitle:
     prefix = re.findall(r"^(.*?)[:\(]", issue_title)[0]
     description = re.findall(r": (.*)$", issue_title)[0]
 
-    return ParsedTitle(
-        prefix=sanitise_text_for_git(input_string=prefix),
-        description=sanitise_text_for_git(input_string=description),
-    )
+    return ParsedTitle(prefix=prefix, description=description)
 
 
 def sanitise_text_for_bash(input_string: str) -> str:

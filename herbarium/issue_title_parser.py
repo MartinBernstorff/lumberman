@@ -36,7 +36,4 @@ def parse_issue_title(issue_title: str) -> ParsedTitle:
     prefix = re.findall(r"^(.*?)[:\(]", issue_title)[0]
     description = re.findall(r": (.*)$", issue_title)[0]
 
-    return ParsedTitle(
-        prefix=sanitise_text_for_git(input_string=prefix),
-        description=sanitise_text_for_git(input_string=description),
-    )
+    return ParsedTitle(prefix=prefix, description=description)

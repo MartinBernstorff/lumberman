@@ -15,12 +15,12 @@ class ParseTestExample:
     ("example"),
     [
         ParseTestExample(
-            input_value="test(#77): test_description",
-            expected=ParsedTitle(prefix="test", description="test_description"),
+            input_value="test(#77): test description",
+            expected=ParsedTitle(prefix="test", description="test description"),
         ),
         ParseTestExample(
-            input_value="test: test_description",
-            expected=ParsedTitle(prefix="test", description="test_description"),
+            input_value="test: test description",
+            expected=ParsedTitle(prefix="test", description="test description"),
         ),
     ],
 )
