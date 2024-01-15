@@ -9,9 +9,6 @@ from .subprocess_utils import interactive_cmd
 class QueueManipulator(Protocol):
     issue_parser: IssueStringifyer
 
-    def fork(self, issue: Issue):
-        ...
-
     def add(self, issue: Issue):
         ...
 
@@ -25,12 +22,6 @@ class QueueManipulator(Protocol):
 @dataclass(frozen=True)
 class GraphiteManipulator(QueueManipulator):
     issue_parser: IssueStringifyer
-
-    def fork(self, issue: Issue):
-        issue_info = self.issue_parser.get_issue_info(issue)
-        interactive_cmd(
-            f'gt create "{issue_info.branch_title}" --all -m "{issue_info.first_commit_str}"'
-        )
 
     def add(self, issue: Issue):
         issue_info = self.issue_parser.get_issue_info(issue)
