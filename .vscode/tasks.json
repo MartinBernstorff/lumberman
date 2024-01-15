@@ -7,7 +7,7 @@
         {
             "label": "PR",
             "type": "shell",
-            "command": "herb add --skip-sync",
+            "command": "herb add",
             "group": {
                 "kind": "build",
                 "isDefault": true
