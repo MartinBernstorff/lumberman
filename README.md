@@ -15,7 +15,7 @@
 
 <!-- start short-description -->
 
-TODO: Add a short description of the project.
+TODO: Add a short description of the project
 
 <!-- end short-description -->
 ## Installation
