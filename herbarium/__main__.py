@@ -53,8 +53,6 @@ def get_latest_issues() -> Sequence[Issue]:
         latest_issues = issue_service.get_latest_issues(in_progress_label=in_progress_label)
 
     if not latest_issues:
-        if retry_issue_getting():
-            raise NotImplementedError
         return []
 
     return latest_issues
