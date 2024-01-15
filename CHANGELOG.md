@@ -2,6 +2,19 @@
 
 
 
+## v0.22.0 (2024-01-15)
+
+### Feature
+
+* feat: bump version ([`f0ef023`](https://github.com/MartinBernstorff/herbarium/commit/f0ef0233bb77dd768b112c585394266976e687d5))
+
+### Unknown
+
+* misc. (#132) ([`797c862`](https://github.com/MartinBernstorff/herbarium/commit/797c8629f8906c08926a696092e17d7700996fd2))
+
+* misc. ([`297a5e9`](https://github.com/MartinBernstorff/herbarium/commit/297a5e957ac2d653ed1c56b1d44cbef81a6f5145))
+
+
 ## v0.21.0 (2024-01-15)
 
 ### Feature
