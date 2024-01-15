@@ -2,6 +2,37 @@
 
 
 
+## v0.23.1 (2024-01-15)
+
+### Fix
+
+* fix: avoid double-commit on new branch (#145) ([`4fc214d`](https://github.com/MartinBernstorff/herbarium/commit/4fc214da25231dc069656b09cccfee154d77fdb2))
+
+* fix: avoid double-commit on new branch ([`e68f1a8`](https://github.com/MartinBernstorff/herbarium/commit/e68f1a8989082943337a390a839d2433641bce07))
+
+### Refactor
+
+* refactor: simplify new branch creation (#144)
+
+refactor: simplify new branch creation
+
+refactor: simplify new branch creation ([`ee8b9eb`](https://github.com/MartinBernstorff/herbarium/commit/ee8b9eba6fa03ffeb88819de567de70e963e93ca))
+
+* refactor: simplify new branch creation ([`326f568`](https://github.com/MartinBernstorff/herbarium/commit/326f568949dea0cb04f75d797b353434f1c6a51e))
+
+* refactor: simplify new branch creation ([`9a2a7a7`](https://github.com/MartinBernstorff/herbarium/commit/9a2a7a7daaf60d74bc5bea08542f42c0a132374d))
+
+### Unknown
+
+* Revert &#34;feat: remove fork command&#34; (#143) ([`ba5b611`](https://github.com/MartinBernstorff/herbarium/commit/ba5b61183495d74872e669b0dca789c67b8943bf))
+
+* Revert &#34;feat: remove fork command&#34; ([`6791039`](https://github.com/MartinBernstorff/herbarium/commit/67910399c8142d006daad9cc3ef98a149ce63462))
+
+* dev: disable isort split on trailing comma (#142) ([`12734a1`](https://github.com/MartinBernstorff/herbarium/commit/12734a16eaff1b9cac1f5a7a0b8b48e5ccf512bb))
+
+* dev: disable isort split on trailing comma ([`982e084`](https://github.com/MartinBernstorff/herbarium/commit/982e084d6e1cd69c0f0de793f3080a5cca6f2aad))
+
+
 ## v0.23.0 (2024-01-15)
 
 ### Feature
