@@ -2,6 +2,15 @@
 
 
 
+## v0.20.3 (2024-01-15)
+
+### Fix
+
+* fix: add and fork require quotations surrounds (#123)
+
+. ([`df31f94`](https://github.com/MartinBernstorff/herbarium/commit/df31f941f7effbc390547cceaa09cf339a78d7e7))
+
+
 ## v0.20.2 (2024-01-15)
 
 ### Fix
@@ -21,6 +30,12 @@ misc ([`763e7d3`](https://github.com/MartinBernstorff/herbarium/commit/763e7d36e
 * fix(#90): branch-name-generation-inserts-dashes-for-spaces
 
 Fixes #90 ([`3d5c522`](https://github.com/MartinBernstorff/herbarium/commit/3d5c52206b9682434569ac3ef80b1f12f3e81dc3))
+
+### Refactor
+
+* refactor(#62): rename instances of stacker to queuer
+
+Fixes #62 ([`44c5df8`](https://github.com/MartinBernstorff/herbarium/commit/44c5df80aad26c39c375287b348fcfe4fb654ed3))
 
 ### Unknown
 
