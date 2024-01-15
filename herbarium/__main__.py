@@ -109,8 +109,8 @@ str2navigation = {
 @app.command(name="a")
 @app.command(name="next")
 def add(location: Location = Location.after):
-    with QueueOperation(sync_time="exit"):
-        selected_issue = select_issue()
+    selected_issue = select_issue()
+    with QueueOperation(sync_time="enter"):
         str2navigation[location.value]()
         queue_manipulator.add(selected_issue)
         issue_service.label_issue(selected_issue, label=in_progress_label)
@@ -120,8 +120,8 @@ def add(location: Location = Location.after):
 @app.command(name="f")
 @app.command(name="new")
 def fork(location: Location = Location.front):
-    with QueueOperation(sync_time="exit"):
-        selected_issue = select_issue()
+    selected_issue = select_issue()
+    with QueueOperation(sync_time="enter"):
         str2navigation[location.value]()
         queue_manipulator.fork(selected_issue)
         issue_service.label_issue(selected_issue, label=in_progress_label)
