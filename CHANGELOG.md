@@ -2,6 +2,35 @@
 
 
 
+## v0.20.2 (2024-01-15)
+
+### Fix
+
+* fix(#90): branch-name-generation-inserts-dashes-for-spaces (#122)
+
+fix(#90): branch-name-generation-inserts-dashes-for-spaces
+
+Fixes #90
+
+misc.
+
+misc.
+
+misc ([`763e7d3`](https://github.com/MartinBernstorff/herbarium/commit/763e7d36e0a016a6c218d1fdeac562848f29b3d4))
+
+* fix(#90): branch-name-generation-inserts-dashes-for-spaces
+
+Fixes #90 ([`3d5c522`](https://github.com/MartinBernstorff/herbarium/commit/3d5c52206b9682434569ac3ef80b1f12f3e81dc3))
+
+### Unknown
+
+* misc ([`abbdf72`](https://github.com/MartinBernstorff/herbarium/commit/abbdf72bc89fb56b0f901e8325b24eba69719a49))
+
+* misc. ([`d7695e7`](https://github.com/MartinBernstorff/herbarium/commit/d7695e791fd67ceb1e4893a826d5ced87a5b7318))
+
+* misc. ([`6a09dfc`](https://github.com/MartinBernstorff/herbarium/commit/6a09dfcdc2d45d847bdfbe27b6f7fe4d2d4e9c80))
+
+
 ## v0.20.1 (2024-01-15)
 
 ### Fix
