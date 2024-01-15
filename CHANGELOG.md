@@ -2,6 +2,25 @@
 
 
 
+## v0.22.1 (2024-01-15)
+
+### Fix
+
+* fix: getting recent issues crashes (#134)
+
+Fixes #130. ([`043f3c2`](https://github.com/MartinBernstorff/herbarium/commit/043f3c2ded7da3a61c90d1fb08f6dfc0d51c2f56))
+
+* fix: getting recent issues crashes
+
+Fixes #130. ([`48e3e55`](https://github.com/MartinBernstorff/herbarium/commit/48e3e5587e382ebdb8e776ed1b8c858d5d97b14f))
+
+### Unknown
+
+* deps:(deps-dev): bump pyright from 1.1.333 to 1.1.346 (#128) ([`d88f075`](https://github.com/MartinBernstorff/herbarium/commit/d88f075095c001a984c95b35edf2079720c8b949))
+
+* deps:(deps-dev): bump ruff from 0.1.2 to 0.1.13 (#129) ([`7b2232c`](https://github.com/MartinBernstorff/herbarium/commit/7b2232c654c930fca8a9b04d50b35b6b180fb55e))
+
+
 ## v0.22.0 (2024-01-15)
 
 ### Feature
@@ -13,6 +32,37 @@
 * misc. (#132) ([`797c862`](https://github.com/MartinBernstorff/herbarium/commit/797c8629f8906c08926a696092e17d7700996fd2))
 
 * misc. ([`297a5e9`](https://github.com/MartinBernstorff/herbarium/commit/297a5e957ac2d653ed1c56b1d44cbef81a6f5145))
+
+* deps:(deps-dev): bump ruff from 0.1.2 to 0.1.13
+
+Bumps [ruff](https://github.com/astral-sh/ruff) from 0.1.2 to 0.1.13.
+- [Release notes](https://github.com/astral-sh/ruff/releases)
+- [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/astral-sh/ruff/compare/v0.1.2...v0.1.13)
+
+---
+updated-dependencies:
+- dependency-name: ruff
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`0cf6f07`](https://github.com/MartinBernstorff/herbarium/commit/0cf6f07c31f5c0030a59f6214cb6a2bcd2f6b5de))
+
+* deps:(deps-dev): bump pyright from 1.1.333 to 1.1.346
+
+Bumps [pyright](https://github.com/RobertCraigie/pyright-python) from 1.1.333 to 1.1.346.
+- [Release notes](https://github.com/RobertCraigie/pyright-python/releases)
+- [Commits](https://github.com/RobertCraigie/pyright-python/compare/v1.1.333...v1.1.346)
+
+---
+updated-dependencies:
+- dependency-name: pyright
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`e886bd2`](https://github.com/MartinBernstorff/herbarium/commit/e886bd286524563c3d670665d32b65ffc89e6751))
 
 
 ## v0.21.0 (2024-01-15)
