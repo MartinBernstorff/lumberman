@@ -27,7 +27,6 @@ class GraphiteNavigator(QueueNavigator):
     def go_to_front(self):
         with StagingMigrater():
             interactive_cmd("gt trunk")
-        interactive_cmd("gt up")
 
     def go_to_back(self):
         with StagingMigrater():
