@@ -29,13 +29,13 @@ class GraphiteManipulator(QueueManipulator):
     def fork(self, issue: Issue):
         issue_info = self.issue_parser.get_issue_info(issue)
         interactive_cmd(
-            f'gt create {issue_info.branch_title} --all -m "{issue_info.first_commit_str}"'
+            f'gt create "{issue_info.branch_title}" --all -m "{issue_info.first_commit_str}"'
         )
 
     def add(self, issue: Issue):
         issue_info = self.issue_parser.get_issue_info(issue)
         interactive_cmd(
-            f'gt create {issue_info.branch_title} --all --insert -m "{issue_info.first_commit_str}"'
+            f'gt create "{issue_info.branch_title}" --all --insert -m "{issue_info.first_commit_str}"'
         )
         interactive_cmd(f'git commit --allow-empty -m "{issue_info.first_commit_str}"')
 
