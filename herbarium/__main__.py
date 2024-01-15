@@ -71,8 +71,10 @@ def get_my_issues() -> Sequence[Issue]:
 
 
 def select_issue(issues: Optional[Sequence[Issue]] = None) -> Issue:
-    if issues is None:
+    if not issues:
         issues = get_my_issues()
+    if not issues:
+        issues = get_latest_issues()
     selected_issue = issue_presenter.select_issue_dialog(issues)
 
     if selected_issue is issue_presenter.refresh_prompt:
@@ -80,7 +82,7 @@ def select_issue(issues: Optional[Sequence[Issue]] = None) -> Issue:
     if selected_issue is issue_presenter.ten_latest_prompt:
         return select_issue(get_latest_issues())
     if isinstance(selected_issue, str):
-        raise NotImplementedError
+        raise NotImplementedError(f"Command {selected_issue} not implemented")
 
     return selected_issue
 
