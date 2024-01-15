@@ -29,9 +29,6 @@ class IssueService(Protocol):
         ...
 
 
-# XXX: Add get_recent_issues(n: int) to issue_service
-
-
 class GithubIssueService(IssueService):
     def setup(self) -> None:
         pass
