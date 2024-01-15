@@ -26,18 +26,20 @@ class QueueManipulator(Protocol):
 class GraphiteManipulator(QueueManipulator):
     issue_parser: IssueStringifyer
 
-    def fork(self, issue: Issue):
+    def _new_branch(self, insert: bool, issue: Issue):
         issue_info = self.issue_parser.get_issue_info(issue)
-        interactive_cmd(
-            f'gt create "{issue_info.branch_title}" --all -m "{issue_info.first_commit_str}"'
-        )
+
+        create_command = f'gt create -m "{issue_info.first_commit_str}" --all'
+        create_command += " --insert" if insert else ""
+
+        interactive_cmd(create_command)
+        interactive_cmd(f'git commit --allow-empty -m "{issue_info.first_commit_str}"')
+
+    def fork(self, issue: Issue):
+        self._new_branch(insert=False, issue=issue)
 
     def add(self, issue: Issue):
-        issue_info = self.issue_parser.get_issue_info(issue)
-        interactive_cmd(
-            f'gt create "{issue_info.branch_title}" --all --insert -m "{issue_info.first_commit_str}"'
-        )
-        interactive_cmd(f'git commit --allow-empty -m "{issue_info.first_commit_str}"')
+        self._new_branch(insert=True, issue=issue)
 
     def sync(self):
         interactive_cmd("gt sync --force --restack --delete")
