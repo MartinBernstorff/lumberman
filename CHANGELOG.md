@@ -2,6 +2,27 @@
 
 
 
+## v0.22.3 (2024-01-15)
+
+### Fix
+
+* fix: locations for cli (#137) ([`0d11195`](https://github.com/MartinBernstorff/herbarium/commit/0d111956d4426be6a21eedfd73bc9f72e03cfbfb))
+
+* fix: locations for cli ([`d66aaac`](https://github.com/MartinBernstorff/herbarium/commit/d66aaacb4bc7ce8c136ad6e88b65138850533e32))
+
+### Style
+
+* style: lint (#138)
+
+style: lint
+
+style: lint ([`919e244`](https://github.com/MartinBernstorff/herbarium/commit/919e24497f9fbc33ebbcce68dd7cb5b19a53dd5b))
+
+* style: lint ([`b27d3db`](https://github.com/MartinBernstorff/herbarium/commit/b27d3db74a5a6b2653490c51695d73a68045fd04))
+
+* style: lint ([`4e6068a`](https://github.com/MartinBernstorff/herbarium/commit/4e6068a3315d84eb58399046bf93cfa894b6d151))
+
+
 ## v0.22.2 (2024-01-15)
 
 ### Fix
