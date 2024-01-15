@@ -2,7 +2,6 @@ from dataclasses import dataclass
 from typing import Protocol
 
 from .issue_service import Issue
-from .issue_title_parser import sanitise_text_for_git
 
 
 @dataclass(frozen=True)
