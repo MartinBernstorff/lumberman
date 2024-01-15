@@ -2,6 +2,19 @@
 
 
 
+## v0.22.2 (2024-01-15)
+
+### Fix
+
+* fix(#135): sanitise  when creating branch (#136)
+
+Fixes #135 ([`4b10945`](https://github.com/MartinBernstorff/herbarium/commit/4b10945232440bd3a9c7a223f3f5b22e663d102d))
+
+* fix(#135): sanitise  when creating branch
+
+Fixes #135 ([`8a8af4d`](https://github.com/MartinBernstorff/herbarium/commit/8a8af4d71c2d154a743176230b0cdf6f260c29aa))
+
+
 ## v0.22.1 (2024-01-15)
 
 ### Fix
