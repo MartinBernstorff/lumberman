@@ -2,9 +2,24 @@
 
 
 
+## v0.22.4 (2024-01-15)
+
+### Fix
+
+* fix(#88): herb add front does not automatically restack (#139)
+
+fix(#88): herb add front does not automatically restack
+
+Fixes #88
+
+fix: go to front should go to trunk ([`75ed735`](https://github.com/MartinBernstorff/herbarium/commit/75ed735f7782acd99499cc1cf63fe61d04e8e41e))
+
+
 ## v0.22.3 (2024-01-15)
 
 ### Fix
+
+* fix: go to front should go to trunk ([`493a70a`](https://github.com/MartinBernstorff/herbarium/commit/493a70a51e428b18c47d519f9a5b252f3ebcbccc))
 
 * fix: locations for cli (#137) ([`0d11195`](https://github.com/MartinBernstorff/herbarium/commit/0d111956d4426be6a21eedfd73bc9f72e03cfbfb))
 
