@@ -73,8 +73,6 @@ def get_my_issues() -> Sequence[Issue]:
 def select_issue(issues: Optional[Sequence[Issue]] = None) -> Issue:
     if not issues:
         issues = get_my_issues()
-    if not issues:
-        issues = get_latest_issues()
     selected_issue = issue_presenter.select_issue_dialog(issues)
 
     if selected_issue is issue_presenter.refresh_prompt:
