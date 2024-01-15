@@ -67,16 +67,11 @@ def get_my_issues() -> Sequence[Issue]:
         progress.add_task("Getting issues assigned to you", start=True)
         my_issues = issue_service.get_issues_assigned_to_me(in_progress_label=in_progress_label)
 
-    if not my_issues:
-        if retry_issue_getting():
-            raise NotImplementedError
-        return []
-
     return my_issues
 
 
 def select_issue(issues: Optional[Sequence[Issue]] = None) -> Issue:
-    if issues is None:
+    if not issues:
         issues = get_my_issues()
     selected_issue = issue_presenter.select_issue_dialog(issues)
 
@@ -85,7 +80,7 @@ def select_issue(issues: Optional[Sequence[Issue]] = None) -> Issue:
     if selected_issue is issue_presenter.ten_latest_prompt:
         return select_issue(get_latest_issues())
     if isinstance(selected_issue, str):
-        raise NotImplementedError
+        raise NotImplementedError(f"Command {selected_issue} not implemented")
 
     return selected_issue
 

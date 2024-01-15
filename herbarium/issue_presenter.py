@@ -40,7 +40,7 @@ class DefaultIssuePresenter(IssuePresenter):
                 self.manual_prompt,
                 *issue_titles,
             ],
-            default=issue_titles[0],
+            default=issue_titles[0] if issue_titles else self.manual_prompt,
         ).ask()
 
     def select_issue_dialog(self, issues: Sequence[Issue]) -> Union[Issue, str]:
