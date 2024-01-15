@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from typing import Protocol
 
 from .issue_service import Issue
+from .issue_title_parser import sanitise_text_for_git
 
 
 @dataclass(frozen=True)
@@ -31,7 +32,7 @@ class DefaultIssueStringifyer(IssueStringifyer):
 
     def _get_branch_title(self, issue: Issue) -> str:
         entity_id_section = "" if issue.entity_id is None else f"/{issue.entity_id}"
-        return f"{issue.prefix}{entity_id_section}/{issue.description}"
+        return sanitise_text_for_bash(f"{issue.prefix}{entity_id_section}/{issue.description}")
 
     def _get_first_commit_str(self, issue: Issue) -> str:
         if issue.entity_id is None:
