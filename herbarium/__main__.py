@@ -1,7 +1,7 @@
 import enum
 from collections.abc import Sequence
 from types import TracebackType
-from typing import Literal, Optional
+from typing import Annotated, Literal, Optional
 
 import typer
 from rich import print
@@ -102,11 +102,13 @@ str2navigation = {
     "back": queue_navigator.go_to_back,
 }
 
+LocationCLIOption = Annotated[Location, typer.Argument()]
+
 
 @app.command()
 @app.command(name="a")
 @app.command(name="next")
-def add(location: Location = Location.after):
+def add(location: LocationCLIOption = Location.after):
     with QueueOperation(sync_time="exit"):
         selected_issue = select_issue()
         str2navigation[location.value]()
@@ -117,7 +119,7 @@ def add(location: Location = Location.after):
 @app.command()
 @app.command(name="f")
 @app.command(name="new")
-def fork(location: Location = Location.front):
+def fork(location: LocationCLIOption = Location.front):
     with QueueOperation(sync_time="exit"):
         selected_issue = select_issue()
         str2navigation[location.value]()
