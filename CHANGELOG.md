@@ -2,6 +2,23 @@
 
 
 
+## v0.25.1 (2024-01-16)
+
+### Fix
+
+* fix(#99): handle lack of prefix gracefully (#157) ([`3fe766b`](https://github.com/MartinBernstorff/herbarium/commit/3fe766b736df980b85efb10978faa37e3aed18b1))
+
+* fix(#99): handle lack of prefix gracefully
+
+Fixes #99 ([`8d8f2b8`](https://github.com/MartinBernstorff/herbarium/commit/8d8f2b8715179b0a1c768822dc04b8eb126e55e5))
+
+### Unknown
+
+* misc. ([`5783312`](https://github.com/MartinBernstorff/herbarium/commit/5783312d2809dbed1ab12d282d82a3849d9a5baa))
+
+* misc. ([`22ba1a6`](https://github.com/MartinBernstorff/herbarium/commit/22ba1a6ca27376cf229caf51566f6159e75d2a1e))
+
+
 ## v0.25.0 (2024-01-16)
 
 ### Feature
