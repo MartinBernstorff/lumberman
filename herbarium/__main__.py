@@ -90,18 +90,6 @@ class Location(str, enum.Enum):
     back = "back"
 
 
-class NoOp:
-    def __call__(self):
-        pass
-
-
-str2navigation = {
-    "front": queue_navigator.go_to_front,
-    "before": queue_navigator.move_forward_one,
-    "after": NoOp(),
-    "back": queue_navigator.go_to_back,
-}
-
 LocationCLIOption = Annotated[Location, typer.Argument()]
 
 
@@ -111,18 +99,44 @@ LocationCLIOption = Annotated[Location, typer.Argument()]
 def add(location: LocationCLIOption = Location.after):
     with QueueOperation(sync_time="exit"):
         selected_issue = select_issue()
-        str2navigation[location.value]()
+
+        if location == Location.front:
+            queue_navigator.go_to_front()
+        elif location == Location.back:
+            queue_navigator.go_to_back()
+        elif location == Location.after:
+            pass
+        elif location == Location.before:
+            queue_navigator.move_forward_one()
+
         queue_manipulator.add(selected_issue)
         issue_service.label_issue(selected_issue, label=in_progress_label)
 
 
 @app.command()
 @app.command(name="f")
-@app.command(name="new")
 def fork(location: LocationCLIOption = Location.front):
     with QueueOperation(sync_time="exit"):
         selected_issue = select_issue()
-        str2navigation[location.value]()
+
+        if location == Location.front:
+            queue_navigator.go_to_second_in_line()
+        elif location == Location.back:
+            queue_navigator.go_to_next_to_last()
+        elif location == Location.after:
+            pass  # No need to do anything, already in the correct location
+        elif location == Location.before:
+            queue_navigator.move_forward_one()
+
+        queue_manipulator.fork(selected_issue)
+        issue_service.label_issue(selected_issue, label=in_progress_label)
+
+
+@app.command()
+def new():
+    with QueueOperation(sync_time="exit"):
+        selected_issue = select_issue()
+        queue_navigator.go_to_front()
         queue_manipulator.fork(selected_issue)
         issue_service.label_issue(selected_issue, label=in_progress_label)
 
