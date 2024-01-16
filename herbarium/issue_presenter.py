@@ -7,7 +7,7 @@ import typer
 from rich.console import Console
 
 from .issue_service import Issue
-from .parse_issue_title import parse_issue_title
+from .issue_title_parser import parse_issue_title
 
 console = Console()
 

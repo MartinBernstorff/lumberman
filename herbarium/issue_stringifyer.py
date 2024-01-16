@@ -30,18 +30,24 @@ class DefaultIssueStringifyer(IssueStringifyer):
         )
 
     def _get_branch_title(self, issue: Issue) -> str:
-        prefix_section = f"{issue.prefix}"
-        if issue.entity_id is not None:
-            prefix_section += f"/{issue.entity_id}"
-
-        return sanitise_text_for_bash(f"{prefix_section}/{issue.description}")
+        branch_title = ""
+        branch_title += f"{issue.prefix}/" if issue.prefix is not None else ""
+        branch_title += f"{issue.entity_id}/" if issue.entity_id is not None else ""
+        branch_title += issue.description
+        return sanitise_text_for_bash(branch_title)
 
     def _get_first_commit_str(self, issue: Issue) -> str:
-        if issue.entity_id is None:
-            first_commit_str = f"{issue.prefix}: {issue.description}"
-        else:
-            first_commit_str = f"""{issue.prefix}(#{issue.entity_id}): {issue.description}
+        first_commit_str = ""
+        first_commit_str += issue.prefix if issue.prefix is not None else ""
+        first_commit_str += f"(#{issue.entity_id})" if issue.entity_id is not None else ""
+        first_commit_str += ": " if first_commit_str else first_commit_str
+        first_commit_str += issue.description
+        first_commit_str += (
+            f"""
 
 Fixes #{issue.entity_id}"""
+            if issue.entity_id is not None
+            else ""
+        )
 
         return sanitise_text_for_bash(first_commit_str)
