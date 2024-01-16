@@ -97,7 +97,7 @@ class NoOp:
 
 str2navigation = {
     "front": queue_navigator.go_to_front,
-    "before": queue_navigator.move_up_one,
+    "before": queue_navigator.move_forward_one,
     "after": NoOp(),
     "back": queue_navigator.go_to_back,
 }
