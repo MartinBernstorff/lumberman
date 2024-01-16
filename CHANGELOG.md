@@ -2,6 +2,27 @@
 
 
 
+## v0.23.2 (2024-01-16)
+
+### Fix
+
+* fix(#146): add before adds after (#151)
+
+fix(#146): add before adds after
+
+Fixes #146
+
+misc. ([`4221d63`](https://github.com/MartinBernstorff/herbarium/commit/4221d6397d34c64799efd4eea2fc2aff4396fb96))
+
+* fix(#146): add before adds after
+
+Fixes #146 ([`439c8e3`](https://github.com/MartinBernstorff/herbarium/commit/439c8e327fd5a602d87bbd89891fb64ab2c325a5))
+
+### Unknown
+
+* misc. ([`ca1ca75`](https://github.com/MartinBernstorff/herbarium/commit/ca1ca7527839a143c52b54a22721cfad247470c6))
+
+
 ## v0.23.1 (2024-01-15)
 
 ### Fix
