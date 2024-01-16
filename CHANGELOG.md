@@ -2,6 +2,25 @@
 
 
 
+## v0.24.0 (2024-01-16)
+
+### Feature
+
+* feat: add new ([`9d9bd4a`](https://github.com/MartinBernstorff/herbarium/commit/9d9bd4ad303a2ab0c847f73a51981b7de2579a7e))
+
+### Fix
+
+* fix(#149): fork back does not fork (#152) ([`22cf251`](https://github.com/MartinBernstorff/herbarium/commit/22cf251011634f263e0e4988fb7bc5cb2842f4d1))
+
+* fix(#149): fork back does not fork
+
+Fixes #149 ([`48737b7`](https://github.com/MartinBernstorff/herbarium/commit/48737b7e50f27e36f04d695f53ee100d2cc09d2a))
+
+### Unknown
+
+* misc. ([`5bc5c33`](https://github.com/MartinBernstorff/herbarium/commit/5bc5c335f135309067ccb200f203895a2c429f79))
+
+
 ## v0.23.2 (2024-01-16)
 
 ### Fix
