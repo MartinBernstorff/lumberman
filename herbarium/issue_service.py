@@ -54,7 +54,7 @@ class GithubIssueService(IssueService):
     def get_issues_assigned_to_me(self, in_progress_label: str) -> Sequence[Issue]:
         """Get issues assigned to current user on current repo"""
         my_issues_cmd = shell_output(
-            f"gh issue list --assignee @me --json number,title --search '-label:{in_progress_label}' --json number,title"
+            f"gh issue list --assignee @me --search '-label:{in_progress_label}' --json number,title"
         )
 
         if my_issues_cmd is None:
