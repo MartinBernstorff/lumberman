@@ -2,6 +2,33 @@
 
 
 
+## v0.25.0 (2024-01-16)
+
+### Feature
+
+* feat(#153): simplify branch name (#156) ([`53843db`](https://github.com/MartinBernstorff/herbarium/commit/53843dbfde22cbe95bf5d5864964b6ac2f65c154))
+
+* feat(#153): simplify branch name
+
+Fixes #153 ([`0b8a7bc`](https://github.com/MartinBernstorff/herbarium/commit/0b8a7bcf3a4846457d0acc71325131ad19c09d81))
+
+### Fix
+
+* fix(#133): remove double --json in get_issues_assigned_to_me (#154)
+
+fix(#133): remove double --json in get_issues_assigned_to_me
+
+Fixes #133
+
+misc. ([`9b9a898`](https://github.com/MartinBernstorff/herbarium/commit/9b9a898e0aff28fc3bab4d03f7f3b3156540f54a))
+
+### Unknown
+
+* misc. ([`b18cc6e`](https://github.com/MartinBernstorff/herbarium/commit/b18cc6e9f57fdd8dc4068b62809f61796392d454))
+
+* misc. ([`cd94f92`](https://github.com/MartinBernstorff/herbarium/commit/cd94f92e4a56630a3741f88a8d78258d7d5a1b91))
+
+
 ## v0.24.0 (2024-01-16)
 
 ### Feature
@@ -10,6 +37,10 @@
 
 ### Fix
 
+* fix(#133): remove double --json in get_issues_assigned_to_me
+
+Fixes #133 ([`b5fd29b`](https://github.com/MartinBernstorff/herbarium/commit/b5fd29b04fb883d0c928db345592748e8c5d2111))
+
 * fix(#149): fork back does not fork (#152) ([`22cf251`](https://github.com/MartinBernstorff/herbarium/commit/22cf251011634f263e0e4988fb7bc5cb2842f4d1))
 
 * fix(#149): fork back does not fork
@@ -17,6 +48,8 @@
 Fixes #149 ([`48737b7`](https://github.com/MartinBernstorff/herbarium/commit/48737b7e50f27e36f04d695f53ee100d2cc09d2a))
 
 ### Unknown
+
+* misc. ([`71f3850`](https://github.com/MartinBernstorff/herbarium/commit/71f38500e25feb8cd863c6b85170e80d4de42f74))
 
 * misc. ([`5bc5c33`](https://github.com/MartinBernstorff/herbarium/commit/5bc5c335f135309067ccb200f203895a2c429f79))
 
