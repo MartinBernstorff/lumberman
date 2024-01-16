@@ -32,6 +32,7 @@ class GraphiteManipulator(QueueManipulator):
         create_command = f'gt create {issue_info.branch_title} -m "{issue_info.first_commit_str}" --no-interactive'
         create_command += " --insert" if insert else ""
 
+        print(f"Creating branch with command: {create_command}")
         interactive_cmd(create_command)
         interactive_cmd("git add -A")
         interactive_cmd(f'git commit --allow-empty -m "{issue_info.first_commit_str}"')

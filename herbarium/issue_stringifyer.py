@@ -24,10 +24,10 @@ def sanitise_text_for_bash(input_string: str) -> str:
 
 class DefaultIssueStringifyer(IssueStringifyer):
     def get_issue_info(self, issue: Issue) -> IssueInfo:
-        branch_title = self._get_branch_title(issue=issue)
-        first_commit_str = self._get_first_commit_str(issue=issue)
-
-        return IssueInfo(branch_title=branch_title, first_commit_str=first_commit_str)
+        return IssueInfo(
+            branch_title=self._get_branch_title(issue=issue),
+            first_commit_str=self._get_first_commit_str(issue=issue),
+        )
 
     def _get_branch_title(self, issue: Issue) -> str:
         prefix_section = f"{issue.prefix}"
