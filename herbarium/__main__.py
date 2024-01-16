@@ -115,7 +115,6 @@ def add(location: LocationCLIOption = Location.after):
 
 @app.command()
 @app.command(name="f")
-@app.command(name="new")
 def fork(location: LocationCLIOption = Location.front):
     with QueueOperation(sync_time="exit"):
         selected_issue = select_issue()
@@ -129,6 +128,15 @@ def fork(location: LocationCLIOption = Location.front):
         elif location == Location.before:
             queue_navigator.move_forward_one()
 
+        queue_manipulator.fork(selected_issue)
+        issue_service.label_issue(selected_issue, label=in_progress_label)
+
+
+@app.command()
+def new():
+    with QueueOperation(sync_time="exit"):
+        selected_issue = select_issue()
+        queue_navigator.go_to_front()
         queue_manipulator.fork(selected_issue)
         issue_service.label_issue(selected_issue, label=in_progress_label)
 
