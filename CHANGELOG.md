@@ -2,6 +2,27 @@
 
 
 
+## v0.26.0 (2024-01-17)
+
+### Feature
+
+* feat: bump version ([`c34c33c`](https://github.com/MartinBernstorff/herbarium/commit/c34c33cfcd34aee4e4e4fa9684f294ef3b2535dd))
+
+### Refactor
+
+* refactor: simplify issue stringification (#158)
+
+refactor: simplify issue stringification
+
+misc. ([`e382408`](https://github.com/MartinBernstorff/herbarium/commit/e38240821be707d7f6a4c258eb64fbcbc374a90f))
+
+### Unknown
+
+* Update queue_manipulator.py (#160) ([`a193ebd`](https://github.com/MartinBernstorff/herbarium/commit/a193ebd5dba0c342a7ec6fbd4be9a971d4a11b61))
+
+* Update queue_manipulator.py ([`e9c5cdc`](https://github.com/MartinBernstorff/herbarium/commit/e9c5cdcd118a8b081d7dd45b3a4ca215a4c5600f))
+
+
 ## v0.25.1 (2024-01-16)
 
 ### Fix
@@ -12,7 +33,13 @@
 
 Fixes #99 ([`8d8f2b8`](https://github.com/MartinBernstorff/herbarium/commit/8d8f2b8715179b0a1c768822dc04b8eb126e55e5))
 
+### Refactor
+
+* refactor: simplify issue stringification ([`2c1aeaa`](https://github.com/MartinBernstorff/herbarium/commit/2c1aeaa85fc4f719479a4064431ea4dee301e9ad))
+
 ### Unknown
+
+* misc. ([`8d2b215`](https://github.com/MartinBernstorff/herbarium/commit/8d2b2157cf1007f37485c7bbc50d631667edca9f))
 
 * misc. ([`5783312`](https://github.com/MartinBernstorff/herbarium/commit/5783312d2809dbed1ab12d282d82a3849d9a5baa))
 
