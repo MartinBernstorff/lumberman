@@ -153,7 +153,6 @@ def status():
 def sync(automerge: bool = False):
     """Synchronize all state, ensuring the queue is internally in sync, and in sync with the remote. Creates PRs if needed."""
     with QueueOperation(sync_time="enter"):
-        queue_manipulator.sync()
         queue_manipulator.submit(automerge=automerge)
         print(":rocket: [bold green]Stack submitted![/bold green]")
 
