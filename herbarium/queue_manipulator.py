@@ -47,7 +47,7 @@ class GraphiteManipulator(QueueManipulator):
         interactive_cmd("gt sync --force --restack --delete")
 
     def submit(self, automerge: bool = False):
-        command = "gt submit -m --no-edit --publish"
+        command = "gt submit --no-edit --publish"
         if automerge:
             command += " --merge-when-ready"
         interactive_cmd(command)
