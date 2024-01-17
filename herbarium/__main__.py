@@ -90,7 +90,7 @@ class Location(str, enum.Enum):
     back = "back"
 
 
-LocationCLIOption = Annotated[Location, typer.Argument()]
+LocationCLIOption = Annotated[Location, typer.Argument(help="Where to locate the new item.")]
 
 
 @app.command()
