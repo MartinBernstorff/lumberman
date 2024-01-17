@@ -2,6 +2,23 @@
 
 
 
+## v0.29.0 (2024-01-17)
+
+### Feature
+
+* feat(#127): periodically squash commits to make rebasing easier (#170)
+
+Fixes #127 ([`7004692`](https://github.com/MartinBernstorff/herbarium/commit/7004692375777dffb8611d199107eca6ae3ad7d9))
+
+### Unknown
+
+* Update devcontainer.json ([`e2fd4c8`](https://github.com/MartinBernstorff/herbarium/commit/e2fd4c8c454e1741f292bccd4116128030de5c50))
+
+* Update devcontainer.json ([`878f8d8`](https://github.com/MartinBernstorff/herbarium/commit/878f8d8c24bee7b84d0e357cacfff65e80eb67cc))
+
+* Update devcontainer.json ([`8c50f7d`](https://github.com/MartinBernstorff/herbarium/commit/8c50f7d5a18ba49c216cd48bad8a20aefe079302))
+
+
 ## v0.28.0 (2024-01-17)
 
 ### Documentation
@@ -17,6 +34,10 @@ Fixes #162
 Fixes #162 ([`4e9eeb2`](https://github.com/MartinBernstorff/herbarium/commit/4e9eeb26b959f2560c28399982cc86fceffb4abe))
 
 ### Feature
+
+* feat(#127): periodically squash commits to make rebasing easier
+
+Fixes #127 ([`a0df305`](https://github.com/MartinBernstorff/herbarium/commit/a0df3052051e48211127c7910e0d7c677c93ecaf))
 
 * feat(#161): sync command (#168) ([`8a5e4b5`](https://github.com/MartinBernstorff/herbarium/commit/8a5e4b57d5c12159e58ade3ac8abfe1382169cd4))
 
