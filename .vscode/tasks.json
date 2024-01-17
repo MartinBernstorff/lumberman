@@ -16,7 +16,7 @@
                 "Lint",
                 "Test",
                 "Static type check",
-                "Submit"
+                "Squash-submit"
             ],
             "presentation": {
                 "reveal": "always",
@@ -27,9 +27,9 @@
             "problemMatcher": []
         },
         {
-            "label": "Submit",
+            "label": "Squash-submit",
             "type": "shell",
-            "command": "herb sync --automerge",
+            "command": "herb sync --automerge --squash",
             "presentation": {
                 "reveal": "always",
                 "clear": true,

@@ -150,10 +150,10 @@ def status():
 
 
 @app.command()
-def sync(automerge: bool = False):
+def sync(automerge: bool = False, squash: bool = False):
     """Synchronize all state, ensuring the queue is internally in sync, and in sync with the remote. Creates PRs if needed."""
     with QueueOperation(sync_time="enter"):
-        queue_manipulator.submit(automerge=automerge)
+        queue_manipulator.submit(automerge=automerge, squash=squash)
         print(":rocket: [bold green]Stack submitted![/bold green]")
 
 
