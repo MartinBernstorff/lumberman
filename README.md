@@ -45,5 +45,3 @@ TODO: Add minimal usage example
 
 [github issue tracker]: https://github.com/MartinBernstorff/herbarium/issues
 [github discussions]: https://github.com/MartinBernstorff/herbarium/discussions
-
-
