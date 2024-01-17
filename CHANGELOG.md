@@ -2,6 +2,43 @@
 
 
 
+## v0.27.0 (2024-01-17)
+
+### Feature
+
+* feat(#163): show help if no command provided (#165)
+
+feat(#163): show help if no command provided
+
+Fixes #163
+
+misc. ([`d4280a7`](https://github.com/MartinBernstorff/herbarium/commit/d4280a755bebce6fdfbdb7dfe331cfe3b64b051a))
+
+* feat(#163): show help if no command provided
+
+Fixes #163 ([`fb5c7aa`](https://github.com/MartinBernstorff/herbarium/commit/fb5c7aa96ccdf8c6af1811bffaefe47ab82734ac))
+
+### Fix
+
+* fix(#164): remove single-letter aliases from help output (#166)
+
+fix(#164): remove single-letter aliases from help output
+
+Fixes #164
+
+misc. ([`9375159`](https://github.com/MartinBernstorff/herbarium/commit/9375159f1a2fdaf877b83a043185479618c7adad))
+
+* fix(#164): remove single-letter aliases from help output
+
+Fixes #164 ([`02f5822`](https://github.com/MartinBernstorff/herbarium/commit/02f582222cfc57e24cdc27fc89123235e13b6d3b))
+
+### Unknown
+
+* misc. ([`874bec2`](https://github.com/MartinBernstorff/herbarium/commit/874bec22b1a217a27631e69f92afc05ba1a5e409))
+
+* misc. ([`0d50a56`](https://github.com/MartinBernstorff/herbarium/commit/0d50a5690c3a38993258c33fc4fd8e40842b1c7e))
+
+
 ## v0.26.0 (2024-01-17)
 
 ### Feature
