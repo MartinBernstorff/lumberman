@@ -11,7 +11,7 @@ from rich.prompt import Confirm
 from .issue_service import Issue
 from .registry import issue_services, presenters, queue_manipulators, queue_navigators
 
-app = typer.Typer()
+app = typer.Typer(no_args_is_help=True)
 
 in_progress_label = "in-progress"
 issue_service = issue_services["Github"]()
