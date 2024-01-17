@@ -96,6 +96,7 @@ LocationCLIOption = Annotated[Location, typer.Argument()]
 @app.command()
 @app.command(name="a", hidden=True)
 def add(location: LocationCLIOption = Location.after):
+    """Add a new item to the current queue. Defaults to adding an item in between the current item and the next item."""
     with QueueOperation(sync_time="exit"):
         selected_issue = select_issue()
 
@@ -115,6 +116,7 @@ def add(location: LocationCLIOption = Location.after):
 @app.command()
 @app.command(name="f", hidden=True)
 def fork(location: LocationCLIOption = Location.front):
+    """Fork into a new queue and add an item. Defaults to forking from the first item in the current queue."""
     with QueueOperation(sync_time="exit"):
         selected_issue = select_issue()
 
@@ -133,6 +135,7 @@ def fork(location: LocationCLIOption = Location.front):
 
 @app.command()
 def new():
+    """Start a new queue on top of trunk."""
     with QueueOperation(sync_time="exit"):
         selected_issue = select_issue()
         queue_navigator.go_to_front()
@@ -142,11 +145,13 @@ def new():
 
 @app.command()
 def status():
+    """Print the current queue status."""
     queue_navigator.status()
 
 
 @app.command()
 def submit(automerge: bool = False):
+    """Create PRs from the queue in the remote repository."""
     with QueueOperation(sync_time="enter"):
         queue_manipulator.submit(automerge=automerge)
         print(":rocket: [bold green]Stack submitted![/bold green]")
