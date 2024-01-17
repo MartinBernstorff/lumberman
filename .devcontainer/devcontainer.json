@@ -29,7 +29,7 @@
         "ghcr.io/devcontainers/features/github-cli:1": {}
     },
     "postStartCommand": [
-        "make install && git config --global core.editor code && gt user pager --disable"
+        "make install"
     ]
     // Features to add to the dev container. More info: https://containers.dev/features.
     // "features": {},
