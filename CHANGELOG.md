@@ -2,6 +2,43 @@
 
 
 
+## v0.28.0 (2024-01-17)
+
+### Documentation
+
+* docs(#162): add docstrings to CLI commands (#167)
+
+Fixes #162
+
+@HLasse Would love if you have any feedback here! ([`2880361`](https://github.com/MartinBernstorff/herbarium/commit/2880361fe2321a338401a8c2873e7f392b35c22b))
+
+* docs(#162): add docstrings to CLI commands
+
+Fixes #162 ([`4e9eeb2`](https://github.com/MartinBernstorff/herbarium/commit/4e9eeb26b959f2560c28399982cc86fceffb4abe))
+
+### Feature
+
+* feat(#161): sync command (#168) ([`8a5e4b5`](https://github.com/MartinBernstorff/herbarium/commit/8a5e4b57d5c12159e58ade3ac8abfe1382169cd4))
+
+* feat(#161): sync command
+
+Fixes #161 ([`0273f3c`](https://github.com/MartinBernstorff/herbarium/commit/0273f3c10490ff6ac2ac77b3f5a56e5c1864404a))
+
+### Unknown
+
+* misc. ([`99f9222`](https://github.com/MartinBernstorff/herbarium/commit/99f9222b7522e73fedb352d7c1c820f2278578b8))
+
+* misc. ([`9fef4d5`](https://github.com/MartinBernstorff/herbarium/commit/9fef4d5c17cbd60b78f3a9ef9ee9e171eb06d62d))
+
+* misc. ([`400bcc0`](https://github.com/MartinBernstorff/herbarium/commit/400bcc056d707ae55e2a692f103ea9f187bf9631))
+
+* misc. ([`636e409`](https://github.com/MartinBernstorff/herbarium/commit/636e409d1e2bac2d68cc2363c4cf3ff9e1a1939a))
+
+* misc. ([`8f033c3`](https://github.com/MartinBernstorff/herbarium/commit/8f033c30a5c9a8002ce77a735a8bab4fe1a8b4e1))
+
+* misc. ([`2cc9883`](https://github.com/MartinBernstorff/herbarium/commit/2cc9883381acd4be1c1dd1f797b8851b9718cc96))
+
+
 ## v0.27.0 (2024-01-17)
 
 ### Feature
