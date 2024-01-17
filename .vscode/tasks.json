@@ -29,7 +29,7 @@
         {
             "label": "Submit",
             "type": "shell",
-            "command": "herb submit --automerge",
+            "command": "herb sync --automerge",
             "presentation": {
                 "reveal": "always",
                 "clear": true,
