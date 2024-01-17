@@ -94,8 +94,7 @@ LocationCLIOption = Annotated[Location, typer.Argument()]
 
 
 @app.command()
-@app.command(name="a")
-@app.command(name="next")
+@app.command(name="a", hidden=True)
 def add(location: LocationCLIOption = Location.after):
     with QueueOperation(sync_time="exit"):
         selected_issue = select_issue()
@@ -114,7 +113,7 @@ def add(location: LocationCLIOption = Location.after):
 
 
 @app.command()
-@app.command(name="f")
+@app.command(name="f", hidden=True)
 def fork(location: LocationCLIOption = Location.front):
     with QueueOperation(sync_time="exit"):
         selected_issue = select_issue()
