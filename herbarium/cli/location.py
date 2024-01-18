@@ -5,10 +5,10 @@ import typer
 
 
 class Location(str, enum.Enum):
-    after = "after"
-    back = "back"
-    before = "before"
-    front = "front"
+    up = "up"
+    top = "top"
+    down = "down"
+    bottom = "bottom"
 
 
 LocationCLIOption = Annotated[Location, typer.Argument(help="Where to locate the new item.")]

@@ -9,22 +9,22 @@ from ..git import StagingMigrater
 
 
 class QueueNavigator(Protocol):
-    def go_to_front(self):
+    def bottom(self):
         ...
 
-    def go_to_second_in_line(self):
+    def go_to_second_from_bottom(self):
         ...
 
-    def go_to_back(self):
+    def top(self):
         ...
 
     def go_to_next_to_last(self):
         ...
 
-    def before(self):
+    def down(self):
         ...
 
-    def after(self):
+    def up(self):
         ...
 
     def status(self):
@@ -33,32 +33,32 @@ class QueueNavigator(Protocol):
 
 @dataclass(frozen=True)
 class GraphiteNavigator(QueueNavigator):
-    def go_to_front(self):
+    def bottom(self):
         with StagingMigrater():
             interactive_cmd("gt trunk")
 
-    def go_to_second_in_line(self):
-        self.go_to_front()
-        self.after()
+    def go_to_second_from_bottom(self):
+        self.bottom()
+        self.up()
 
-    def go_to_back(self):
+    def top(self):
         with StagingMigrater():
             interactive_cmd("gt top")
 
     def go_to_next_to_last(self):
-        self.go_to_back()
-        self.before()
+        self.top()
+        self.down()
 
-    def before(self):
+    def down(self):
         interactive_cmd("gt down")
 
-    def after(self):
+    def up(self):
         interactive_cmd("gt up")
 
     def status(self):
         result: str = shell_output("gt log short")  # type: ignore
         print(
             "\n",
-            Panel(result, title="Back", subtitle="Front", expand=False, box=box.HORIZONTALS),
+            Panel(result, title="Top", subtitle="Bottom", expand=False, box=box.HORIZONTALS),
             "\n",
         )
