@@ -1,0 +1,510 @@
+# `lumberman`
+
+All commands are registered as [sh]orthand. You can call the command as 'sh' or 'shorthand'.
+
+**Usage**:
+
+```console
+$ lumberman [OPTIONS] COMMAND [ARGS]...
+```
+
+**Commands**:
+
+* `[a]dd`: Add a new item to the current stack.
+* `[bo]ttom`: Go to the bottom of the stack.
+* `[d]elete`: Add a new item to the current stack.
+* `[do]wn`: Go to the item below the current one.
+* `[f]ork`: Fork into a new stack and add an item.
+* `[m]ove`: Move the current item to a new location in...
+* `[n]ew`: Start a new stack on top of trunk.
+* `[s]ync`: Synchronize all state, ensuring the stack...
+* `[st]atus`: Print the current stack status.
+* `[to]p`: Go to the top of the stack.
+* `[up]`: Go to the item above the current one.
+* `a`: Add a new item to the current stack.
+* `add`: Add a new item to the current stack.
+* `bo`: Go to the bottom of the stack.
+* `bottom`: Go to the bottom of the stack.
+* `d`: Add a new item to the current stack.
+* `delete`: Add a new item to the current stack.
+* `do`: Go to the item below the current one.
+* `down`: Go to the item below the current one.
+* `f`: Fork into a new stack and add an item.
+* `fork`: Fork into a new stack and add an item.
+* `m`: Move the current item to a new location in...
+* `move`: Move the current item to a new location in...
+* `n`: Start a new stack on top of trunk.
+* `new`: Start a new stack on top of trunk.
+* `s`: Synchronize all state, ensuring the stack...
+* `st`: Print the current stack status.
+* `status`: Print the current stack status.
+* `sync`: Synchronize all state, ensuring the stack...
+* `to`: Go to the top of the stack.
+* `top`: Go to the top of the stack.
+* `up`: Go to the item above the current one.
+
+## `lumberman [a]dd`
+
+Add a new item to the current stack. Defaults to adding an item in between the current item and the next item.
+
+**Usage**:
+
+```console
+$ lumberman [a]dd [OPTIONS]
+```
+
+**Options**:
+
+* `--location [up|top|down|bottom]`: [default: Location.up]
+* `--help`: Show this message and exit.
+
+## `lumberman [bo]ttom`
+
+Go to the bottom of the stack.
+
+**Usage**:
+
+```console
+$ lumberman [bo]ttom [OPTIONS]
+```
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
+## `lumberman [d]elete`
+
+Add a new item to the current stack. Defaults to adding an item in between the current item and the next item.
+
+**Usage**:
+
+```console
+$ lumberman [d]elete [OPTIONS]
+```
+
+**Options**:
+
+* `--location [up|top|down|bottom]`: [default: Location.up]
+* `--help`: Show this message and exit.
+
+## `lumberman [do]wn`
+
+Go to the item below the current one.
+
+**Usage**:
+
+```console
+$ lumberman [do]wn [OPTIONS]
+```
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
+## `lumberman [f]ork`
+
+Fork into a new stack and add an item. Defaults to forking from the first item in the current stack.
+
+**Usage**:
+
+```console
+$ lumberman [f]ork [OPTIONS]
+```
+
+**Options**:
+
+* `--location [up|top|down|bottom]`: [default: Location.bottom]
+* `--help`: Show this message and exit.
+
+## `lumberman [m]ove`
+
+Move the current item to a new location in the stack.
+
+**Usage**:
+
+```console
+$ lumberman [m]ove [OPTIONS]
+```
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
+## `lumberman [n]ew`
+
+Start a new stack on top of trunk.
+
+**Usage**:
+
+```console
+$ lumberman [n]ew [OPTIONS]
+```
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
+## `lumberman [s]ync`
+
+Synchronize all state, ensuring the stack is internally in sync, and in sync with the remote. Creates PRs if needed.
+
+**Usage**:
+
+```console
+$ lumberman [s]ync [OPTIONS]
+```
+
+**Options**:
+
+* `--automerge / --no-automerge`: [default: no-automerge]
+* `--draft / --no-draft`: [default: no-draft]
+* `--squash / --no-squash`: [default: no-squash]
+* `--help`: Show this message and exit.
+
+## `lumberman [st]atus`
+
+Print the current stack status.
+
+**Usage**:
+
+```console
+$ lumberman [st]atus [OPTIONS]
+```
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
+## `lumberman [to]p`
+
+Go to the top of the stack.
+
+**Usage**:
+
+```console
+$ lumberman [to]p [OPTIONS]
+```
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
+## `lumberman [up]`
+
+Go to the item above the current one.
+
+**Usage**:
+
+```console
+$ lumberman [up] [OPTIONS]
+```
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
+## `lumberman a`
+
+Add a new item to the current stack. Defaults to adding an item in between the current item and the next item.
+
+**Usage**:
+
+```console
+$ lumberman a [OPTIONS]
+```
+
+**Options**:
+
+* `--location [up|top|down|bottom]`: [default: Location.up]
+* `--help`: Show this message and exit.
+
+## `lumberman add`
+
+Add a new item to the current stack. Defaults to adding an item in between the current item and the next item.
+
+**Usage**:
+
+```console
+$ lumberman add [OPTIONS]
+```
+
+**Options**:
+
+* `--location [up|top|down|bottom]`: [default: Location.up]
+* `--help`: Show this message and exit.
+
+## `lumberman bo`
+
+Go to the bottom of the stack.
+
+**Usage**:
+
+```console
+$ lumberman bo [OPTIONS]
+```
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
+## `lumberman bottom`
+
+Go to the bottom of the stack.
+
+**Usage**:
+
+```console
+$ lumberman bottom [OPTIONS]
+```
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
+## `lumberman d`
+
+Add a new item to the current stack. Defaults to adding an item in between the current item and the next item.
+
+**Usage**:
+
+```console
+$ lumberman d [OPTIONS]
+```
+
+**Options**:
+
+* `--location [up|top|down|bottom]`: [default: Location.up]
+* `--help`: Show this message and exit.
+
+## `lumberman delete`
+
+Add a new item to the current stack. Defaults to adding an item in between the current item and the next item.
+
+**Usage**:
+
+```console
+$ lumberman delete [OPTIONS]
+```
+
+**Options**:
+
+* `--location [up|top|down|bottom]`: [default: Location.up]
+* `--help`: Show this message and exit.
+
+## `lumberman do`
+
+Go to the item below the current one.
+
+**Usage**:
+
+```console
+$ lumberman do [OPTIONS]
+```
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
+## `lumberman down`
+
+Go to the item below the current one.
+
+**Usage**:
+
+```console
+$ lumberman down [OPTIONS]
+```
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
+## `lumberman f`
+
+Fork into a new stack and add an item. Defaults to forking from the first item in the current stack.
+
+**Usage**:
+
+```console
+$ lumberman f [OPTIONS]
+```
+
+**Options**:
+
+* `--location [up|top|down|bottom]`: [default: Location.bottom]
+* `--help`: Show this message and exit.
+
+## `lumberman fork`
+
+Fork into a new stack and add an item. Defaults to forking from the first item in the current stack.
+
+**Usage**:
+
+```console
+$ lumberman fork [OPTIONS]
+```
+
+**Options**:
+
+* `--location [up|top|down|bottom]`: [default: Location.bottom]
+* `--help`: Show this message and exit.
+
+## `lumberman m`
+
+Move the current item to a new location in the stack.
+
+**Usage**:
+
+```console
+$ lumberman m [OPTIONS]
+```
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
+## `lumberman move`
+
+Move the current item to a new location in the stack.
+
+**Usage**:
+
+```console
+$ lumberman move [OPTIONS]
+```
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
+## `lumberman n`
+
+Start a new stack on top of trunk.
+
+**Usage**:
+
+```console
+$ lumberman n [OPTIONS]
+```
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
+## `lumberman new`
+
+Start a new stack on top of trunk.
+
+**Usage**:
+
+```console
+$ lumberman new [OPTIONS]
+```
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
+## `lumberman s`
+
+Synchronize all state, ensuring the stack is internally in sync, and in sync with the remote. Creates PRs if needed.
+
+**Usage**:
+
+```console
+$ lumberman s [OPTIONS]
+```
+
+**Options**:
+
+* `--automerge / --no-automerge`: [default: no-automerge]
+* `--draft / --no-draft`: [default: no-draft]
+* `--squash / --no-squash`: [default: no-squash]
+* `--help`: Show this message and exit.
+
+## `lumberman st`
+
+Print the current stack status.
+
+**Usage**:
+
+```console
+$ lumberman st [OPTIONS]
+```
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
+## `lumberman status`
+
+Print the current stack status.
+
+**Usage**:
+
+```console
+$ lumberman status [OPTIONS]
+```
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
+## `lumberman sync`
+
+Synchronize all state, ensuring the stack is internally in sync, and in sync with the remote. Creates PRs if needed.
+
+**Usage**:
+
+```console
+$ lumberman sync [OPTIONS]
+```
+
+**Options**:
+
+* `--automerge / --no-automerge`: [default: no-automerge]
+* `--draft / --no-draft`: [default: no-draft]
+* `--squash / --no-squash`: [default: no-squash]
+* `--help`: Show this message and exit.
+
+## `lumberman to`
+
+Go to the top of the stack.
+
+**Usage**:
+
+```console
+$ lumberman to [OPTIONS]
+```
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
+## `lumberman top`
+
+Go to the top of the stack.
+
+**Usage**:
+
+```console
+$ lumberman top [OPTIONS]
+```
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
+## `lumberman up`
+
+Go to the item above the current one.
+
+**Usage**:
+
+```console
+$ lumberman up [OPTIONS]
+```
+
+**Options**:
+
+* `--help`: Show this message and exit.
