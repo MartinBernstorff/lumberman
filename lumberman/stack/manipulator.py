@@ -10,9 +10,11 @@ class QueueManipulator(Protocol):
     issue_parser: IssueStringifyer
 
     def fork(self, issue: Issue):
+        """Create a new item, forking from the current item."""
         ...
 
     def add(self, issue: Issue):
+        """Add a new item. If an item exists above the current item, insert between them."""
         ...
 
     def delete(self):

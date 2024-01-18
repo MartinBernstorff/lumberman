@@ -9,6 +9,9 @@ from ..git import StagingMigrater
 
 
 class QueueNavigator(Protocol):
+    def trunk(self):
+        ...
+
     def bottom(self):
         ...
 
@@ -27,9 +30,13 @@ class QueueNavigator(Protocol):
 
 @dataclass(frozen=True)
 class GraphiteNavigator(QueueNavigator):
-    def bottom(self):
+    def trunk(self):
         with StagingMigrater():
             interactive_cmd("gt trunk")
+
+    def bottom(self):
+        with StagingMigrater():
+            interactive_cmd("gt bottom")
 
     def top(self):
         with StagingMigrater():

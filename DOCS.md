@@ -10,9 +10,9 @@ $ lumberman [OPTIONS] COMMAND [ARGS]...
 
 **Commands**:
 
-* `[a]dd`: Add a new item to the current stack.
+* `[a]dd`: Prompt to add a new item to the current...
 * `[bo]ttom`: Go to the bottom of the stack.
-* `[d]elete`: Add a new item to the current stack.
+* `[d]elete`: Prompt to delete an item.
 * `[do]wn`: Go to the item below the current one.
 * `[f]ork`: Fork into a new stack and add an item.
 * `[m]ove`: Move the current item to a new location in...
@@ -21,12 +21,12 @@ $ lumberman [OPTIONS] COMMAND [ARGS]...
 * `[st]atus`: Print the current stack status.
 * `[to]p`: Go to the top of the stack.
 * `[up]`: Go to the item above the current one.
-* `a`: Add a new item to the current stack.
-* `add`: Add a new item to the current stack.
+* `a`: Prompt to add a new item to the current...
+* `add`: Prompt to add a new item to the current...
 * `bo`: Go to the bottom of the stack.
 * `bottom`: Go to the bottom of the stack.
-* `d`: Add a new item to the current stack.
-* `delete`: Add a new item to the current stack.
+* `d`: Prompt to delete an item.
+* `delete`: Prompt to delete an item.
 * `do`: Go to the item below the current one.
 * `down`: Go to the item below the current one.
 * `f`: Fork into a new stack and add an item.
@@ -45,7 +45,7 @@ $ lumberman [OPTIONS] COMMAND [ARGS]...
 
 ## `lumberman [a]dd`
 
-Add a new item to the current stack. Defaults to adding an item in between the current item and the next item.
+Prompt to add a new item to the current stack. Defaults to adding an item in between the current item and the next item.
 
 **Usage**:
 
@@ -55,7 +55,7 @@ $ lumberman [a]dd [OPTIONS]
 
 **Options**:
 
-* `--location [up|top|down|bottom]`: [default: Location.up]
+* `--location [up|top|down|bottom|trunk]`: [default: Location.up]
 * `--help`: Show this message and exit.
 
 ## `lumberman [bo]ttom`
@@ -74,7 +74,7 @@ $ lumberman [bo]ttom [OPTIONS]
 
 ## `lumberman [d]elete`
 
-Add a new item to the current stack. Defaults to adding an item in between the current item and the next item.
+Prompt to delete an item.
 
 **Usage**:
 
@@ -84,7 +84,6 @@ $ lumberman [d]elete [OPTIONS]
 
 **Options**:
 
-* `--location [up|top|down|bottom]`: [default: Location.up]
 * `--help`: Show this message and exit.
 
 ## `lumberman [do]wn`
@@ -113,7 +112,7 @@ $ lumberman [f]ork [OPTIONS]
 
 **Options**:
 
-* `--location [up|top|down|bottom]`: [default: Location.bottom]
+* `--location [up|top|down|bottom|trunk]`: [default: Location.bottom]
 * `--help`: Show this message and exit.
 
 ## `lumberman [m]ove`
@@ -205,7 +204,7 @@ $ lumberman [up] [OPTIONS]
 
 ## `lumberman a`
 
-Add a new item to the current stack. Defaults to adding an item in between the current item and the next item.
+Prompt to add a new item to the current stack. Defaults to adding an item in between the current item and the next item.
 
 **Usage**:
 
@@ -215,12 +214,12 @@ $ lumberman a [OPTIONS]
 
 **Options**:
 
-* `--location [up|top|down|bottom]`: [default: Location.up]
+* `--location [up|top|down|bottom|trunk]`: [default: Location.up]
 * `--help`: Show this message and exit.
 
 ## `lumberman add`
 
-Add a new item to the current stack. Defaults to adding an item in between the current item and the next item.
+Prompt to add a new item to the current stack. Defaults to adding an item in between the current item and the next item.
 
 **Usage**:
 
@@ -230,7 +229,7 @@ $ lumberman add [OPTIONS]
 
 **Options**:
 
-* `--location [up|top|down|bottom]`: [default: Location.up]
+* `--location [up|top|down|bottom|trunk]`: [default: Location.up]
 * `--help`: Show this message and exit.
 
 ## `lumberman bo`
@@ -263,7 +262,7 @@ $ lumberman bottom [OPTIONS]
 
 ## `lumberman d`
 
-Add a new item to the current stack. Defaults to adding an item in between the current item and the next item.
+Prompt to delete an item.
 
 **Usage**:
 
@@ -273,12 +272,11 @@ $ lumberman d [OPTIONS]
 
 **Options**:
 
-* `--location [up|top|down|bottom]`: [default: Location.up]
 * `--help`: Show this message and exit.
 
 ## `lumberman delete`
 
-Add a new item to the current stack. Defaults to adding an item in between the current item and the next item.
+Prompt to delete an item.
 
 **Usage**:
 
@@ -288,7 +286,6 @@ $ lumberman delete [OPTIONS]
 
 **Options**:
 
-* `--location [up|top|down|bottom]`: [default: Location.up]
 * `--help`: Show this message and exit.
 
 ## `lumberman do`
@@ -331,7 +328,7 @@ $ lumberman f [OPTIONS]
 
 **Options**:
 
-* `--location [up|top|down|bottom]`: [default: Location.bottom]
+* `--location [up|top|down|bottom|trunk]`: [default: Location.bottom]
 * `--help`: Show this message and exit.
 
 ## `lumberman fork`
@@ -346,7 +343,7 @@ $ lumberman fork [OPTIONS]
 
 **Options**:
 
-* `--location [up|top|down|bottom]`: [default: Location.bottom]
+* `--location [up|top|down|bottom|trunk]`: [default: Location.bottom]
 * `--help`: Show this message and exit.
 
 ## `lumberman m`

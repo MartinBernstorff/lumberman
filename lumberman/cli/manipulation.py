@@ -5,17 +5,19 @@ from .location import Location, LocationCLIOption
 
 
 def add(location: LocationCLIOption = Location.up):
-    """Add a new item to the current stack. Defaults to adding an item in between the current item and the next item."""
+    """Prompt to add a new item to the current stack. Defaults to adding an item in between the current item and the next item."""
     with STACK_OP(sync_time="exit", sync_remote=False):
         selected_issue = ISSUE_CONTROLLER.select_issue()
 
+        if location == Location.trunk:
+            STACK_NAVIGATOR.trunk()
         if location == Location.bottom:
             STACK_NAVIGATOR.bottom()
-        elif location == Location.top:
+        if location == Location.top:
             STACK_NAVIGATOR.top()
-        elif location == Location.up:
+        if location == Location.up:
             pass
-        elif location == Location.down:
+        if location == Location.down:
             STACK_NAVIGATOR.down()
 
         STACK_MANIPULATOR.add(selected_issue)
@@ -29,7 +31,7 @@ def move():
 
 
 def delete():
-    """Delete a selected item from the stack."""
+    """Prompt to delete an item."""
     with STACK_OP(sync_time="exit", sync_remote=False):
         STACK_MANIPULATOR.delete()
 
@@ -58,7 +60,7 @@ def new():
     """Start a new stack on top of trunk."""
     with STACK_OP(sync_time="exit", sync_remote=False):
         selected_issue = ISSUE_CONTROLLER.select_issue()
-        STACK_NAVIGATOR.bottom()
+        STACK_NAVIGATOR.trunk()
         STACK_MANIPULATOR.fork(selected_issue)
         ISSUE_CONTROLLER.label_issue_in_progress(selected_issue)
 
