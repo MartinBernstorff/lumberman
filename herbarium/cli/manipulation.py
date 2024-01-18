@@ -22,6 +22,16 @@ def add(location: LocationCLIOption = Location.after):
         ISSUE_CONTROLLER.label_issue_in_progress(selected_issue)
 
 
+def move():
+    """Move the current item to a new location in the queue."""
+    QUEUE_MANIPULATOR.move()
+
+
+def delete():
+    """Delete a selected item from the queue."""
+    QUEUE_MANIPULATOR.delete()
+
+
 def fork(location: LocationCLIOption = Location.front):
     """Fork into a new queue and add an item. Defaults to forking from the first item in the current queue."""
     with QUEUE_OP(sync_time="exit"):
