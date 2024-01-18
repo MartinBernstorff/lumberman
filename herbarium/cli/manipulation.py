@@ -61,6 +61,6 @@ def new():
 
 def sync(automerge: bool = False, draft: bool = False, squash: bool = False):
     """Synchronize all state, ensuring the queue is internally in sync, and in sync with the remote. Creates PRs if needed."""
-    with QUEUE_OP(sync_time="enter"):
+    with QUEUE_OP(sync_time="none"):
         QUEUE_MANIPULATOR.sync(automerge=automerge, squash=squash, draft=draft)
-        print(":rocket: [bold green]Stack submitted![/bold green]")
+        print(":rocket: [bold green]Stack synced![/bold green]")
