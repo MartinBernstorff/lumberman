@@ -1,26 +1,31 @@
-from .config import QUEUE_NAVIGATOR
+from .config import QUEUE_NAVIGATOR, QUEUE_OP
 
 
 def front():
     """Go to the front of the queue."""
-    QUEUE_NAVIGATOR.go_to_front()
+    with QUEUE_OP(sync_time="none"):
+        QUEUE_NAVIGATOR.go_to_front()
 
 
 def before():
     """Go to the item before the current one."""
-    QUEUE_NAVIGATOR.before()
+    with QUEUE_OP(sync_time="none"):
+        QUEUE_NAVIGATOR.before()
 
 
 def after():
     """Go to the item after the current one."""
-    QUEUE_NAVIGATOR.after()
+    with QUEUE_OP(sync_time="none"):
+        QUEUE_NAVIGATOR.after()
 
 
 def back():
     """Go to the back of the queue."""
-    QUEUE_NAVIGATOR.go_to_back()
+    with QUEUE_OP(sync_time="none"):
+        QUEUE_NAVIGATOR.go_to_back()
 
 
 def status():
     """Print the current queue status."""
-    QUEUE_NAVIGATOR.status()
+    with QUEUE_OP(sync_time="none"):
+        QUEUE_NAVIGATOR.status()
