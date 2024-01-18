@@ -5,8 +5,8 @@ from typing import Callable
 
 import typer
 
-from herbarium.cli import manipulation as man
-from herbarium.cli import navigation as nav
+from lumberman.cli import manipulation as man
+from lumberman.cli import navigation as nav
 
 app = typer.Typer(
     no_args_is_help=True,

@@ -6,12 +6,12 @@
     "author": "Martin Bernstorff",
     "copyright_year": "2023",
     "email": "martinbernstorff@gmail.com",
-    "friendly_name": "Herbarium",
-    "github_repo": "herbarium",
+    "friendly_name": "Lumberman",
+    "github_repo": "lumberman",
     "github_user": "MartinBernstorff",
     "license": "MIT",
-    "package_name": "herbarium",
-    "project_name": "herbarium",
+    "package_name": "lumberman",
+    "project_name": "lumberman",
     "release_to_pypi": "yes",
     "version": "0.0.0"
 }

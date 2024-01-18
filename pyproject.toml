@@ -3,12 +3,12 @@ requires = ["setuptools>=61.0.0", "wheel", "setuptools_scm"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "herbarium"
+name = "lumberman"
 version = "0.32.1"
 authors = [
   { name = "Martin Bernstorff", email = "martinbernstorff@gmail.com" },
 ]
-description = "Herbarium"
+description = "Lumberman"
 classifiers = ["Programming Language :: Python :: 3.9", "Programming Language :: Python :: 3.10", "Programming Language :: Python :: 3.11", "Programming Language :: Python :: 3.12"]
 requires-python = ">=3.9"
 dependencies = ["typer", "questionary"]
@@ -29,17 +29,17 @@ dev = [
 file = "LICENSE"
 
 [project.scripts]
-herbarium = "herbarium.__main__:app"
-herb = "herbarium.__main__:app"
+lumberman = "lumberman.__main__:app"
+lm = "lumberman.__main__:app"
 
 [project.readme]
 file = "README.md"
 content-type = "text/markdown"
 
 [project.urls]
-homepage = "https://github.com/MartinBernstorff/herbarium"
-repository = "https://github.com/MartinBernstorff/herbarium"
-documentation = "https://MartinBernstorff.github.io/herbarium/"
+homepage = "https://github.com/MartinBernstorff/lumberman"
+repository = "https://github.com/MartinBernstorff/lumberman"
+documentation = "https://MartinBernstorff.github.io/lumberman/"
 
 [tool.pyright]
 exclude = [".*venv*"]

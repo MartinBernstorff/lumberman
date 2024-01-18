@@ -1,4 +1,4 @@
-SRC_PATH = herbarium
+SRC_PATH = lumberman
 MAKEFLAGS = --no-print-directory
 
 # Dependency management
