@@ -15,6 +15,12 @@ class QueueManipulator(Protocol):
     def add(self, issue: Issue):
         ...
 
+    def delete(self):
+        ...
+
+    def move(self):
+        ...
+
     def sync(self):
         ...
 
@@ -42,6 +48,12 @@ class GraphiteManipulator(QueueManipulator):
 
     def add(self, issue: Issue):
         self._new_branch(insert=True, issue=issue)
+
+    def delete(self):
+        interactive_cmd("gt delete")
+
+    def move(self):
+        interactive_cmd("gt move")
 
     def sync(self):
         interactive_cmd("gt sync --force --restack --delete")
