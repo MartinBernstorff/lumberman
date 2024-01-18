@@ -1,161 +1,32 @@
-import enum
-from collections.abc import Sequence
-from types import TracebackType
-from typing import Annotated, Literal, Optional
-
 import typer
-from rich import print
-from rich.progress import Progress, SpinnerColumn, TextColumn
-from rich.prompt import Confirm
 
-from .issue_service import Issue
-from .registry import issue_services, presenters, queue_manipulators, queue_navigators
+from .cli import manipulation as man
+from .cli import navigation as nav
 
-app = typer.Typer(no_args_is_help=True)
+app = typer.Typer(no_args_is_help=True, add_help_option=False, add_completion=False, help="Test")
 
-in_progress_label = "in-progress"
-issue_service = issue_services["Github"]()
-issue_presenter = presenters["Default"]()
-queue_navigator = queue_navigators["Graphite"]()
-queue_manipulator = queue_manipulators["Graphite"]
+# Navigation
+end_of_queue_help_panel_str = "End of queue navigation"
+app.command(rich_help_panel=end_of_queue_help_panel_str)(nav.front)
+app.command(rich_help_panel=end_of_queue_help_panel_str)(nav.back)
 
-from dataclasses import dataclass
+navigation_help_panel_str = "Stepwise navigation"
+app.command(rich_help_panel=navigation_help_panel_str)(nav.before)
+app.command(rich_help_panel=navigation_help_panel_str)(nav.after)
 
+orientation_help_panel_str = "Orientation"
+app.command(rich_help_panel=orientation_help_panel_str)(nav.status)
 
-@dataclass
-class QueueOperation:
-    sync_time: Literal["enter", "exit", "none"] = "enter"
+# Manipulation
+manipulation_help_panel_str = "Manipulation"
+app.command(rich_help_panel=manipulation_help_panel_str)(man.add)
+app.command(name="a", hidden=True)(man.add)
 
-    def __enter__(self):
-        print(":arrows_clockwise: [bold green]Syncing with remote...[/bold green]")
-        if self.sync_time == "enter":
-            queue_manipulator.sync()
+app.command(name="fo", hidden=True)(man.fork)
+app.command(rich_help_panel=manipulation_help_panel_str)(man.fork)
 
-    def __exit__(self, exc_type: type, exc_val: Exception, exc_tb: TracebackType) -> None:
-        if self.sync_time == "exit":
-            queue_manipulator.sync()
-        queue_navigator.status()
-
-
-def retry_issue_getting() -> bool:
-    retry = Confirm.ask(
-        ":palm_tree: No issues assigned to you in this repository. Do you want to retry?",
-        default=True,
-    )
-    return retry
-
-
-def get_latest_issues() -> Sequence[Issue]:
-    with Progress(
-        SpinnerColumn(), TextColumn("[progress.description]{task.description}"), transient=True
-    ) as progress:
-        progress.add_task("Getting latest issues", start=True)
-        latest_issues = issue_service.get_latest_issues(in_progress_label=in_progress_label)
-
-    if not latest_issues:
-        return []
-
-    return latest_issues
-
-
-def get_my_issues() -> Sequence[Issue]:
-    with Progress(
-        SpinnerColumn(), TextColumn("[progress.description]{task.description}"), transient=True
-    ) as progress:
-        progress.add_task("Getting issues assigned to you", start=True)
-        my_issues = issue_service.get_issues_assigned_to_me(in_progress_label=in_progress_label)
-
-    return my_issues
-
-
-def select_issue(issues: Optional[Sequence[Issue]] = None) -> Issue:
-    if not issues:
-        issues = get_my_issues()
-    selected_issue = issue_presenter.select_issue_dialog(issues)
-
-    if selected_issue is issue_presenter.refresh_prompt:
-        return select_issue()
-    if selected_issue is issue_presenter.ten_latest_prompt:
-        return select_issue(get_latest_issues())
-    if isinstance(selected_issue, str):
-        raise NotImplementedError(f"Command {selected_issue} not implemented")
-
-    return selected_issue
-
-
-class Location(str, enum.Enum):
-    front = "front"
-    before = "before"
-    after = "after"
-    back = "back"
-
-
-LocationCLIOption = Annotated[Location, typer.Argument(help="Where to locate the new item.")]
-
-
-@app.command()
-@app.command(name="a", hidden=True)
-def add(location: LocationCLIOption = Location.after):
-    """Add a new item to the current queue. Defaults to adding an item in between the current item and the next item."""
-    with QueueOperation(sync_time="exit"):
-        selected_issue = select_issue()
-
-        if location == Location.front:
-            queue_navigator.go_to_front()
-        elif location == Location.back:
-            queue_navigator.go_to_back()
-        elif location == Location.after:
-            pass
-        elif location == Location.before:
-            queue_navigator.move_forward_one()
-
-        queue_manipulator.add(selected_issue)
-        issue_service.label_issue(selected_issue, label=in_progress_label)
-
-
-@app.command()
-@app.command(name="f", hidden=True)
-def fork(location: LocationCLIOption = Location.front):
-    """Fork into a new queue and add an item. Defaults to forking from the first item in the current queue."""
-    with QueueOperation(sync_time="exit"):
-        selected_issue = select_issue()
-
-        if location == Location.front:
-            queue_navigator.go_to_second_in_line()
-        elif location == Location.back:
-            queue_navigator.go_to_next_to_last()
-        elif location == Location.after:
-            pass  # No need to do anything, already in the correct location
-        elif location == Location.before:
-            queue_navigator.move_forward_one()
-
-        queue_manipulator.fork(selected_issue)
-        issue_service.label_issue(selected_issue, label=in_progress_label)
-
-
-@app.command()
-def new():
-    """Start a new queue on top of trunk."""
-    with QueueOperation(sync_time="exit"):
-        selected_issue = select_issue()
-        queue_navigator.go_to_front()
-        queue_manipulator.fork(selected_issue)
-        issue_service.label_issue(selected_issue, label=in_progress_label)
-
-
-@app.command()
-def status():
-    """Print the current queue status."""
-    queue_navigator.status()
-
-
-@app.command()
-def sync(automerge: bool = False, squash: bool = False):
-    """Synchronize all state, ensuring the queue is internally in sync, and in sync with the remote. Creates PRs if needed."""
-    with QueueOperation(sync_time="enter"):
-        queue_manipulator.submit(automerge=automerge, squash=squash)
-        print(":rocket: [bold green]Stack submitted![/bold green]")
-
+app.command(rich_help_panel=manipulation_help_panel_str)(man.new)
+app.command(rich_help_panel=manipulation_help_panel_str)(man.sync)
 
 if __name__ == "__main__":
     app()

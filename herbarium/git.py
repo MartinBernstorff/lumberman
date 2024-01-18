@@ -3,7 +3,7 @@ from types import TracebackType
 
 import typer
 
-from herbarium.subprocess_utils import shell_output
+from herbarium.cli.subprocess_utils import shell_output
 
 
 def has_uncommitted_changes() -> bool:
