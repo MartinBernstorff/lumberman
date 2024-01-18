@@ -23,6 +23,7 @@ dev = [
   "pytest-sugar==0.9.7",
   "diff-cover==8.0.1",
   "ruff==0.1.13",
+  "typer-cli==0.0.13",
 ]
 
 [project.license]

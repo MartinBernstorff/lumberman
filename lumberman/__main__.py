@@ -31,7 +31,7 @@ class CommandSection:
 commands = [
     CommandSection(
         name="Nav: End of stack",
-        commands=[Command(name="[bo]ottom", fn=nav.bottom), Command(name="[to]p", fn=nav.top)],
+        commands=[Command(name="[bo]ttom", fn=nav.bottom), Command(name="[to]p", fn=nav.top)],
     ),
     CommandSection(
         name="Nav: Stepwise",
