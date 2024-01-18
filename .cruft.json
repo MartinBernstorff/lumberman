@@ -4,13 +4,13 @@
   "checkout": null,
   "context": {
     "cookiecutter": {
-      "project_name": "herbarium",
-      "package_name": "herbarium",
-      "friendly_name": "Herbarium",
+      "project_name": "lumberman",
+      "package_name": "lumberman",
+      "friendly_name": "Lumberman",
       "author": "Martin Bernstorff",
       "email": "martinbernstorff@gmail.com",
       "github_user": "MartinBernstorff",
-      "github_repo": "herbarium",
+      "github_repo": "lumberman",
       "version": "0.0.0",
       "copyright_year": "2023",
       "release_to_pypi": "yes",

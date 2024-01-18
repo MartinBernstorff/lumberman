@@ -1,15 +1,15 @@
-# Herbarium
+# Lumberman
 
 [![Open in Dev Container](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)][dev container]
-[![PyPI](https://img.shields.io/pypi/v/herbarium.svg)][pypi status]
-[![Python Version](https://img.shields.io/pypi/pyversions/herbarium)][pypi status]
-[![Tests](https://github.com/MartinBernstorff/herbarium/actions/workflows/tests.yml/badge.svg)][tests]
+[![PyPI](https://img.shields.io/pypi/v/lumberman.svg)][pypi status]
+[![Python Version](https://img.shields.io/pypi/pyversions/lumberman)][pypi status]
+[![Tests](https://github.com/MartinBernstorff/lumberman/actions/workflows/tests.yml/badge.svg)][tests]
 [![Roadmap](https://img.shields.io/badge/Board-Roadmap-green)][roadmap]
 
-[dev container]: https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/MartinBernstorff/herbarium/
-[pypi status]: https://pypi.org/project/herbarium/
-[documentation]: https://MartinBernstorff.github.io/herbarium/
-[tests]: https://github.com/MartinBernstorff/herbarium/actions?workflow=Tests
+[dev container]: https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/MartinBernstorff/lumberman/
+[pypi status]: https://pypi.org/project/lumberman/
+[documentation]: https://MartinBernstorff.github.io/lumberman/
+[tests]: https://github.com/MartinBernstorff/lumberman/actions?workflow=Tests
 [roadmap]: https://github.com/users/MartinBernstorff/projects/5
 
 
@@ -20,7 +20,7 @@ TODO: Add a short description of the project
 <!-- end short-description -->
 ## Installation
 ```bash
-pip install herbarium
+pip install lumberman
 ```
 ## Usage
 
@@ -30,7 +30,7 @@ TODO: Add minimal usage example
 #### Devcontainer
 1. Install [Orbstack](https://orbstack.dev/) or Docker Desktop. Make sure to complete the full install process before continuing.
 2. If not installed, install VSCode
-3. Press this [link](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/MartinBernstorff/herbarium/)
+3. Press this [link](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/MartinBernstorff/lumberman/)
 4. Complete the setup process
 5. Done! Easy as that.
 
@@ -43,5 +43,5 @@ TODO: Add minimal usage example
 | 👩‍💻 **Usage Questions**          | [GitHub Discussions]   |
 | 🗯 **General Discussion**       | [GitHub Discussions]   |
 
-[github issue tracker]: https://github.com/MartinBernstorff/herbarium/issues
-[github discussions]: https://github.com/MartinBernstorff/herbarium/discussions
+[github issue tracker]: https://github.com/MartinBernstorff/lumberman/issues
+[github discussions]: https://github.com/MartinBernstorff/lumberman/discussions
