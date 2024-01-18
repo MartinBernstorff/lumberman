@@ -9,6 +9,7 @@ class Location(str, enum.Enum):
     top = "top"
     down = "down"
     bottom = "bottom"
+    trunk = "trunk"
 
 
 LocationCLIOption = Annotated[

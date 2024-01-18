@@ -42,7 +42,7 @@ commands = [
         name="Manipulation",
         commands=[
             Command(name="[a]dd", fn=man.add),
-            Command(name="[d]elete", fn=man.add),
+            Command(name="[d]elete", fn=man.delete),
             Command(name="[f]ork", fn=man.fork),
             Command(name="[m]ove", fn=man.move),
             Command(name="[n]ew", fn=man.new),

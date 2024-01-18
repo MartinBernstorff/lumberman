@@ -1,6 +1,12 @@
 from .config import STACK_NAVIGATOR, STACK_OP
 
 
+def trunk():
+    """Go to the trunk of the stack."""
+    with STACK_OP(sync_time="none", sync_remote=False):
+        STACK_NAVIGATOR.trunk()
+
+
 def bottom():
     """Go to the bottom of the stack."""
     with STACK_OP(sync_time="none", sync_remote=False):
