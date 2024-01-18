@@ -2,9 +2,26 @@
 
 
 
+## v0.31.0 (2024-01-18)
+
+### Feature
+
+* feat(#173 &amp; #174): add move and delete (#181)
+
+Fixes #174
+
+Fixes #173 ([`96f26dc`](https://github.com/MartinBernstorff/herbarium/commit/96f26dcd59ca2e7e16f4a6b528f99ea7c0e8b13c))
+
+
 ## v0.30.0 (2024-01-18)
 
 ### Feature
+
+* feat(#173 &amp; #174): add move and delete
+
+Fixes #174
+
+Fixes #173 ([`83864f9`](https://github.com/MartinBernstorff/herbarium/commit/83864f916b35cea8b67f61db25dbbe3014200de3))
 
 * feat(#178): automatic app command parsing (#180)
 
