@@ -7,7 +7,7 @@
         {
             "label": "PR",
             "type": "shell",
-            "command": "lumberman add",
+            "command": "",
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -20,7 +20,7 @@
             ],
             "presentation": {
                 "reveal": "always",
-                "clear": true,
+                "clear": false,
                 "showReuseMessage": false,
                 "group": "pr"
             },
