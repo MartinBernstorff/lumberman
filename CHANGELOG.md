@@ -2,6 +2,21 @@
 
 
 
+## v0.32.1 (2024-01-18)
+
+### Performance
+
+* perf: decrease remote syncs (#186) ([`e1da04d`](https://github.com/MartinBernstorff/herbarium/commit/e1da04dbbac9d1c15c47512e9e3be26e1fba35ce))
+
+* perf: decrease remote syncs ([`eb7de2c`](https://github.com/MartinBernstorff/herbarium/commit/eb7de2cf6b238ab6cba2b66710c49d41455806e1))
+
+### Unknown
+
+* dev: disable pager on devcontainer start (#185) ([`f9fa218`](https://github.com/MartinBernstorff/herbarium/commit/f9fa218ef930140c0285d1ab4f714981fe767044))
+
+* dev: disable pager on devcontainer start ([`a632fca`](https://github.com/MartinBernstorff/herbarium/commit/a632fca3597904462c9bef885399710c83e7f774))
+
+
 ## v0.32.0 (2024-01-18)
 
 ### Feature
