@@ -40,9 +40,11 @@ def fork(location: LocationCLIOption = Location.bottom):
         selected_issue = ISSUE_CONTROLLER.select_issue()
 
         if location == Location.bottom:
-            STACK_NAVIGATOR.go_to_second_from_bottom()
+            STACK_NAVIGATOR.bottom()
+            STACK_NAVIGATOR.up()
         elif location == Location.top:
-            STACK_NAVIGATOR.go_to_next_to_last()
+            STACK_NAVIGATOR.top()
+            STACK_NAVIGATOR.down()
         elif location == Location.up:
             pass  # No need to do anything, already in the correct location
         elif location == Location.down:

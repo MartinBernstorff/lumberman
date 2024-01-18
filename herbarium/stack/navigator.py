@@ -12,13 +12,7 @@ class QueueNavigator(Protocol):
     def bottom(self):
         ...
 
-    def go_to_second_from_bottom(self):
-        ...
-
     def top(self):
-        ...
-
-    def go_to_next_to_last(self):
         ...
 
     def down(self):
@@ -37,17 +31,9 @@ class GraphiteNavigator(QueueNavigator):
         with StagingMigrater():
             interactive_cmd("gt trunk")
 
-    def go_to_second_from_bottom(self):
-        self.bottom()
-        self.up()
-
     def top(self):
         with StagingMigrater():
             interactive_cmd("gt top")
-
-    def go_to_next_to_last(self):
-        self.top()
-        self.down()
 
     def down(self):
         interactive_cmd("gt down")
