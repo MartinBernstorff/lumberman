@@ -2,11 +2,8 @@ SRC_PATH = herbarium
 MAKEFLAGS = --no-print-directory
 
 # Dependency management
-install-dev:
-	@pip install --upgrade -e .[dev]
-
 install:
-	@make install-dev
+	pip install --upgrade -e .[dev]
 
 # Tasks
 generate_coverage:

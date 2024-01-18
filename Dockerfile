@@ -25,7 +25,8 @@ RUN npm install -g @withgraphite/graphite-cli@stable
 # Dev experience
 COPY Makefile ./
 COPY pyproject.toml ./
-RUN --mount=type=cache,target=/root/.cache/pip make install-dev 
+RUN --mount=type=cache,target=/root/.cache/pip make install
 
 COPY . /app
 RUN pip install -e .
+RUN rm -rf build
