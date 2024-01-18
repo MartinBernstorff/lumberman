@@ -6,7 +6,7 @@ from .location import Location, LocationCLIOption
 
 def add(location: LocationCLIOption = Location.after):
     """Add a new item to the current queue. Defaults to adding an item in between the current item and the next item."""
-    with QUEUE_OP(sync_time="exit"):
+    with QUEUE_OP(sync_time="exit", sync_remote=False):
         selected_issue = ISSUE_CONTROLLER.select_issue()
 
         if location == Location.front:
@@ -24,17 +24,19 @@ def add(location: LocationCLIOption = Location.after):
 
 def move():
     """Move the current item to a new location in the queue."""
-    QUEUE_MANIPULATOR.move()
+    with QUEUE_OP(sync_time="exit", sync_remote=False):
+        QUEUE_MANIPULATOR.move()
 
 
 def delete():
     """Delete a selected item from the queue."""
-    QUEUE_MANIPULATOR.delete()
+    with QUEUE_OP(sync_time="exit", sync_remote=False):
+        QUEUE_MANIPULATOR.delete()
 
 
 def fork(location: LocationCLIOption = Location.front):
     """Fork into a new queue and add an item. Defaults to forking from the first item in the current queue."""
-    with QUEUE_OP(sync_time="exit"):
+    with QUEUE_OP(sync_time="enter", sync_remote=False):
         selected_issue = ISSUE_CONTROLLER.select_issue()
 
         if location == Location.front:
@@ -52,7 +54,7 @@ def fork(location: LocationCLIOption = Location.front):
 
 def new():
     """Start a new queue on top of trunk."""
-    with QUEUE_OP(sync_time="exit"):
+    with QUEUE_OP(sync_time="exit", sync_remote=False):
         selected_issue = ISSUE_CONTROLLER.select_issue()
         QUEUE_NAVIGATOR.go_to_front()
         QUEUE_MANIPULATOR.fork(selected_issue)
@@ -61,6 +63,6 @@ def new():
 
 def sync(automerge: bool = False, draft: bool = False, squash: bool = False):
     """Synchronize all state, ensuring the queue is internally in sync, and in sync with the remote. Creates PRs if needed."""
-    with QUEUE_OP(sync_time="none"):
-        QUEUE_MANIPULATOR.sync(automerge=automerge, squash=squash, draft=draft)
+    with QUEUE_OP(sync_time="none", sync_remote=False):
+        QUEUE_MANIPULATOR.sync(automerge=automerge, squash=squash, draft=draft, sync_remote=True)
         print(":rocket: [bold green]Stack synced![/bold green]")
