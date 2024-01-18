@@ -1,31 +1,30 @@
-from .config import QUEUE_NAVIGATOR, QUEUE_OP
+from .config import STACK_NAVIGATOR, STACK_OP
 
 
-def front():
-    """Go to the front of the queue."""
-    with QUEUE_OP(sync_time="none", sync_remote=False):
-        QUEUE_NAVIGATOR.go_to_front()
+def bottom():
+    """Go to the bottom of the stack."""
+    with STACK_OP(sync_time="none", sync_remote=False):
+        STACK_NAVIGATOR.bottom()
 
 
-def before():
-    """Go to the item before the current one."""
-    with QUEUE_OP(sync_time="none", sync_remote=False):
-        QUEUE_NAVIGATOR.before()
+def down():
+    """Go to the item below the current one."""
+    with STACK_OP(sync_time="none", sync_remote=False):
+        STACK_NAVIGATOR.down()
 
 
-def after():
-    """Go to the item after the current one."""
-    with QUEUE_OP(sync_time="none", sync_remote=False):
-        QUEUE_NAVIGATOR.after()
+def up():
+    """Go to the item above the current one."""
+    with STACK_OP(sync_time="none", sync_remote=False):
+        STACK_NAVIGATOR.up()
 
 
-def back():
-    """Go to the back of the queue."""
-    with QUEUE_OP(sync_time="none", sync_remote=False):
-        QUEUE_NAVIGATOR.go_to_back()
+def top():
+    """Go to the top of the stack."""
+    with STACK_OP(sync_time="none", sync_remote=False):
+        STACK_NAVIGATOR.top()
 
 
 def status():
-    """Print the current queue status."""
-    with QUEUE_OP(sync_time="none", sync_remote=False):
-        QUEUE_NAVIGATOR.status()
+    """Print the current stack status."""
+    STACK_NAVIGATOR.status()

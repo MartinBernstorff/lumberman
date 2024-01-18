@@ -1,68 +1,68 @@
 from rich import print
 
-from .config import ISSUE_CONTROLLER, QUEUE_MANIPULATOR, QUEUE_NAVIGATOR, QUEUE_OP
+from .config import ISSUE_CONTROLLER, STACK_MANIPULATOR, STACK_NAVIGATOR, STACK_OP
 from .location import Location, LocationCLIOption
 
 
-def add(location: LocationCLIOption = Location.after):
-    """Add a new item to the current queue. Defaults to adding an item in between the current item and the next item."""
-    with QUEUE_OP(sync_time="exit", sync_remote=False):
+def add(location: LocationCLIOption = Location.up):
+    """Add a new item to the current stack. Defaults to adding an item in between the current item and the next item."""
+    with STACK_OP(sync_time="exit", sync_remote=False):
         selected_issue = ISSUE_CONTROLLER.select_issue()
 
-        if location == Location.front:
-            QUEUE_NAVIGATOR.go_to_front()
-        elif location == Location.back:
-            QUEUE_NAVIGATOR.go_to_back()
-        elif location == Location.after:
+        if location == Location.bottom:
+            STACK_NAVIGATOR.bottom()
+        elif location == Location.top:
+            STACK_NAVIGATOR.top()
+        elif location == Location.up:
             pass
-        elif location == Location.before:
-            QUEUE_NAVIGATOR.before()
+        elif location == Location.down:
+            STACK_NAVIGATOR.down()
 
-        QUEUE_MANIPULATOR.add(selected_issue)
+        STACK_MANIPULATOR.add(selected_issue)
         ISSUE_CONTROLLER.label_issue_in_progress(selected_issue)
 
 
 def move():
-    """Move the current item to a new location in the queue."""
-    with QUEUE_OP(sync_time="exit", sync_remote=False):
-        QUEUE_MANIPULATOR.move()
+    """Move the current item to a new location in the stack."""
+    with STACK_OP(sync_time="exit", sync_remote=False):
+        STACK_MANIPULATOR.move()
 
 
 def delete():
-    """Delete a selected item from the queue."""
-    with QUEUE_OP(sync_time="exit", sync_remote=False):
-        QUEUE_MANIPULATOR.delete()
+    """Delete a selected item from the stack."""
+    with STACK_OP(sync_time="exit", sync_remote=False):
+        STACK_MANIPULATOR.delete()
 
 
-def fork(location: LocationCLIOption = Location.front):
-    """Fork into a new queue and add an item. Defaults to forking from the first item in the current queue."""
-    with QUEUE_OP(sync_time="enter", sync_remote=False):
+def fork(location: LocationCLIOption = Location.bottom):
+    """Fork into a new stack and add an item. Defaults to forking from the first item in the current stack."""
+    with STACK_OP(sync_time="enter", sync_remote=False):
         selected_issue = ISSUE_CONTROLLER.select_issue()
 
-        if location == Location.front:
-            QUEUE_NAVIGATOR.go_to_second_in_line()
-        elif location == Location.back:
-            QUEUE_NAVIGATOR.go_to_next_to_last()
-        elif location == Location.after:
+        if location == Location.bottom:
+            STACK_NAVIGATOR.go_to_second_from_bottom()
+        elif location == Location.top:
+            STACK_NAVIGATOR.go_to_next_to_last()
+        elif location == Location.up:
             pass  # No need to do anything, already in the correct location
-        elif location == Location.before:
-            QUEUE_NAVIGATOR.before()
+        elif location == Location.down:
+            STACK_NAVIGATOR.down()
 
-        QUEUE_MANIPULATOR.fork(selected_issue)
+        STACK_MANIPULATOR.fork(selected_issue)
         ISSUE_CONTROLLER.label_issue_in_progress(selected_issue)
 
 
 def new():
-    """Start a new queue on top of trunk."""
-    with QUEUE_OP(sync_time="exit", sync_remote=False):
+    """Start a new stack on top of trunk."""
+    with STACK_OP(sync_time="exit", sync_remote=False):
         selected_issue = ISSUE_CONTROLLER.select_issue()
-        QUEUE_NAVIGATOR.go_to_front()
-        QUEUE_MANIPULATOR.fork(selected_issue)
+        STACK_NAVIGATOR.bottom()
+        STACK_MANIPULATOR.fork(selected_issue)
         ISSUE_CONTROLLER.label_issue_in_progress(selected_issue)
 
 
 def sync(automerge: bool = False, draft: bool = False, squash: bool = False):
-    """Synchronize all state, ensuring the queue is internally in sync, and in sync with the remote. Creates PRs if needed."""
-    with QUEUE_OP(sync_time="none", sync_remote=False):
-        QUEUE_MANIPULATOR.sync(automerge=automerge, squash=squash, draft=draft, sync_remote=True)
+    """Synchronize all state, ensuring the stack is internally in sync, and in sync with the remote. Creates PRs if needed."""
+    with STACK_OP(sync_time="none", sync_remote=False):
+        STACK_MANIPULATOR.sync(automerge=automerge, squash=squash, draft=draft, sync_remote=True)
         print(":rocket: [bold green]Stack synced![/bold green]")

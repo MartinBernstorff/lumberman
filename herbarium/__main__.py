@@ -12,7 +12,7 @@ app = typer.Typer(
     no_args_is_help=True,
     add_help_option=False,
     add_completion=False,
-    help="All commands are registered as [sh]orthand. You can call the command as 'sh' or 'shorthand'",
+    help="All commands are registered as [sh]orthand. You can call the command as 'sh' or 'shorthand'.",
 )
 
 
@@ -30,12 +30,12 @@ class CommandSection:
 
 commands = [
     CommandSection(
-        name="End of queue navigation",
-        commands=[Command(name="[fr]ont", fn=nav.front), Command(name="[ba]ck", fn=nav.back)],
+        name="Nav: End of stack",
+        commands=[Command(name="[bo]ottom", fn=nav.bottom), Command(name="[to]p", fn=nav.top)],
     ),
     CommandSection(
-        name="Stepwise navigation",
-        commands=[Command(name="[be]efore", fn=nav.before), Command(name="[af]ter", fn=nav.after)],
+        name="Nav: Stepwise",
+        commands=[Command(name="[do]wn", fn=nav.down), Command(name="[up]", fn=nav.up)],
     ),
     CommandSection(name="Orientation", commands=[Command(name="[st]atus", fn=nav.status)]),
     CommandSection(
