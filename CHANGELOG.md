@@ -2,6 +2,25 @@
 
 
 
+## v0.30.0 (2024-01-18)
+
+### Feature
+
+* feat(#178): automatic app command parsing (#180)
+
+Fixes #178 ([`b5ae288`](https://github.com/MartinBernstorff/herbarium/commit/b5ae288c29deeb54f7f5d732fe1a77c9a68d987c))
+
+* feat(#178): automatic app command parsing
+
+Fixes #178 ([`5f7c13d`](https://github.com/MartinBernstorff/herbarium/commit/5f7c13d035c76ad0e6f3c80ab273e839f0e38841))
+
+### Refactor
+
+* refactor: MVC for main (#179) ([`801b7ae`](https://github.com/MartinBernstorff/herbarium/commit/801b7ae7b8d07b42a46c731df7fedbf02f51c683))
+
+* refactor: MVC for main ([`207d18c`](https://github.com/MartinBernstorff/herbarium/commit/207d18ccc1c84bdba542f81dd879c319a2c736e9))
+
+
 ## v0.29.0 (2024-01-17)
 
 ### Feature
