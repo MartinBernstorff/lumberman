@@ -11,4 +11,6 @@ class Location(str, enum.Enum):
     bottom = "bottom"
 
 
-LocationCLIOption = Annotated[Location, typer.Argument(help="Where to locate the new item.")]
+LocationCLIOption = Annotated[
+    Location, typer.Argument(default=None, help="Where to locate the new item.")
+]
