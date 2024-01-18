@@ -21,10 +21,7 @@ class QueueManipulator(Protocol):
     def move(self):
         ...
 
-    def sync(self):
-        ...
-
-    def submit(self, automerge: bool, squash: bool):
+    def sync(self, automerge: bool = False, squash: bool = False, draft: bool = True):
         ...
 
 
@@ -55,14 +52,18 @@ class GraphiteManipulator(QueueManipulator):
     def move(self):
         interactive_cmd("gt move")
 
-    def sync(self):
+    def sync(self, automerge: bool = False, squash: bool = False, draft: bool = True):
         interactive_cmd("gt sync --force --restack --delete")
 
-    def submit(self, automerge: bool, squash: bool):
         if squash:
             interactive_cmd("gt squash --no-edit")
 
-        command = "gt submit --no-edit --publish --stack"
+        command = "gt submit --no-edit --stack"
+        if draft:
+            command += " --draft"
+        else:
+            command += " --publish"
+
         if automerge:
             command += " --merge-when-ready"
         interactive_cmd(command)
