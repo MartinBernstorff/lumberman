@@ -19,6 +19,7 @@
                 "GitHub.vscode-pull-request-github",
                 "ms-vscode.makefile-tools",
                 "github.vscode-github-actions",
+                "SeeLog.python-init-generator"
             ]
         }
     },

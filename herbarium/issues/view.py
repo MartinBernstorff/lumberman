@@ -6,13 +6,13 @@ import questionary
 import typer
 from rich.console import Console
 
-from .issue_service import Issue
-from .issue_title_parser import parse_issue_title
+from .model import Issue
+from .title_parser import parse_issue_title
 
 console = Console()
 
 
-class IssuePresenter(Protocol):
+class IssueView(Protocol):
     ten_latest_prompt: str
     manual_prompt: str
     refresh_prompt: str
@@ -22,7 +22,7 @@ class IssuePresenter(Protocol):
 
 
 @dataclass(frozen=True)
-class DefaultIssuePresenter(IssuePresenter):
+class DefaultIssueView(IssueView):
     ten_latest_prompt: str = "Recent"
     manual_prompt: str = "Manual"
     refresh_prompt: str = "Refresh..."

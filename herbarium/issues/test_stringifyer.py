@@ -2,8 +2,8 @@ from dataclasses import dataclass
 
 import pytest
 
-from .issue_service import Issue
-from .issue_stringifyer import DefaultIssueStringifyer
+from .model import Issue
+from .stringifyer import DefaultIssueStringifyer
 
 
 @dataclass(frozen=True)

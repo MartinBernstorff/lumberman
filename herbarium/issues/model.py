@@ -3,8 +3,8 @@ from collections.abc import Sequence
 from dataclasses import dataclass
 from typing import Optional, Protocol
 
-from .issue_title_parser import parse_issue_title
-from .subprocess_utils import shell_output
+from ..cli.subprocess_utils import shell_output
+from .title_parser import parse_issue_title
 
 
 @dataclass(frozen=True)
@@ -14,7 +14,7 @@ class Issue:
     description: str
 
 
-class IssueService(Protocol):
+class IssueModel(Protocol):
     def setup(self) -> None:
         """Any setup needed, including installing CLI tools, etc."""
         ...
@@ -29,7 +29,7 @@ class IssueService(Protocol):
         ...
 
 
-class GithubIssueService(IssueService):
+class GithubIssueModel(IssueModel):
     def setup(self) -> None:
         pass
 
