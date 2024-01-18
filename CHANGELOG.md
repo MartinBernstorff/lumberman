@@ -2,6 +2,33 @@
 
 
 
+## v0.32.0 (2024-01-18)
+
+### Feature
+
+* feat: show status after navigation (#183) ([`326afb7`](https://github.com/MartinBernstorff/herbarium/commit/326afb73ee3ee1c7b2eff4ba57d69ea1461ec467))
+
+* feat: show status after navigation ([`c664803`](https://github.com/MartinBernstorff/herbarium/commit/c664803dd49e8052842b40b24ba7ed4d027962a6))
+
+* feat(#169): support syncing to draft PRs (#182)
+
+feat(#169): support syncing to draft PRs
+
+Fixes #169
+
+misc. ([`3f6a574`](https://github.com/MartinBernstorff/herbarium/commit/3f6a574473cf38d335ed5b7d2c49198db5f34165))
+
+* feat(#169): support syncing to draft PRs
+
+Fixes #169 ([`14fe707`](https://github.com/MartinBernstorff/herbarium/commit/14fe7076581c2ef78087714a42442289596e64ea))
+
+### Performance
+
+* perf: do not double-sync (#184) ([`f84b6c3`](https://github.com/MartinBernstorff/herbarium/commit/f84b6c33b61436f89a7e547aa31203061ad10a4d))
+
+* perf: do not double-sync ([`d3a487c`](https://github.com/MartinBernstorff/herbarium/commit/d3a487cad43da4287258eb45cadc364d9c6c3c96))
+
+
 ## v0.31.0 (2024-01-18)
 
 ### Feature
