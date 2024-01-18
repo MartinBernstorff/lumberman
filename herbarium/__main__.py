@@ -1,32 +1,64 @@
+import re
+from collections.abc import Sequence
+from dataclasses import dataclass
+from typing import Callable
+
 import typer
 
-from .cli import manipulation as man
-from .cli import navigation as nav
+from herbarium.cli import manipulation as man
+from herbarium.cli import navigation as nav
 
-app = typer.Typer(no_args_is_help=True, add_help_option=False, add_completion=False, help="Test")
+app = typer.Typer(
+    no_args_is_help=True,
+    add_help_option=False,
+    add_completion=False,
+    help="All commands are registered as [sh]orthand. You can call the command as 'sh' or 'shorthand'",
+)
 
-# Navigation
-end_of_queue_help_panel_str = "End of queue navigation"
-app.command(rich_help_panel=end_of_queue_help_panel_str)(nav.front)
-app.command(rich_help_panel=end_of_queue_help_panel_str)(nav.back)
 
-navigation_help_panel_str = "Stepwise navigation"
-app.command(rich_help_panel=navigation_help_panel_str)(nav.before)
-app.command(rich_help_panel=navigation_help_panel_str)(nav.after)
+@dataclass(frozen=True)
+class Command:
+    name: str
+    fn: Callable[[], None]
 
-orientation_help_panel_str = "Orientation"
-app.command(rich_help_panel=orientation_help_panel_str)(nav.status)
 
-# Manipulation
-manipulation_help_panel_str = "Manipulation"
-app.command(rich_help_panel=manipulation_help_panel_str)(man.add)
-app.command(name="a", hidden=True)(man.add)
+@dataclass(frozen=True)
+class CommandSection:
+    name: str
+    commands: Sequence[Command]
 
-app.command(name="fo", hidden=True)(man.fork)
-app.command(rich_help_panel=manipulation_help_panel_str)(man.fork)
 
-app.command(rich_help_panel=manipulation_help_panel_str)(man.new)
-app.command(rich_help_panel=manipulation_help_panel_str)(man.sync)
+commands = [
+    CommandSection(
+        name="End of queue navigation",
+        commands=[Command(name="[fr]ont", fn=nav.front), Command(name="[ba]ck", fn=nav.back)],
+    ),
+    CommandSection(
+        name="Stepwise navigation",
+        commands=[Command(name="[be]efore", fn=nav.before), Command(name="[af]ter", fn=nav.after)],
+    ),
+    CommandSection(name="Orientation", commands=[Command(name="[s]tatus", fn=nav.status)]),
+    CommandSection(
+        name="Manipulation",
+        commands=[
+            Command(name="[a]dd", fn=man.add),
+            Command(name="[f]ork", fn=man.fork),
+            Command(name="[n]ew", fn=man.new),
+            Command(name="[s]ync", fn=man.sync),
+        ],
+    ),
+]
+
+for section in commands:
+    for command in section.commands:
+        app.command(name=command.name, rich_help_panel=section.name)(command.fn)
+
+        command_shorthand = re.findall(r"\[(.*?)\]", command.name)[0]
+        app.command(name=command_shorthand, hidden=True)(command.fn)
+
+        command_full = command.name.replace("[", "").replace("]", "")
+        app.command(name=command_full, hidden=True)(command.fn)
+
 
 if __name__ == "__main__":
     app()
