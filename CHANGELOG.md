@@ -2,6 +2,33 @@
 
 
 
+## v0.35.1 (2024-01-22)
+
+### Fix
+
+* fix: simpler annotation ([`4a5c06a`](https://github.com/MartinBernstorff/lumberman/commit/4a5c06a8c418ca1c9a210cf5bdc123bd15d00fbd))
+
+### Unknown
+
+* deps:(deps-dev): bump diff-cover from 8.0.1 to 8.0.3 (#202) ([`9e87fd6`](https://github.com/MartinBernstorff/lumberman/commit/9e87fd64be755cfa8ef4c10edce84022ee0edd5e))
+
+* deps:(deps-dev): bump diff-cover from 8.0.1 to 8.0.3
+
+Bumps [diff-cover](https://github.com/Bachmann1234/diff-cover) from 8.0.1 to 8.0.3.
+- [Release notes](https://github.com/Bachmann1234/diff-cover/releases)
+- [Changelog](https://github.com/Bachmann1234/diff_cover/blob/main/CHANGELOG)
+- [Commits](https://github.com/Bachmann1234/diff-cover/compare/v8.0.1...v8.0.3)
+
+---
+updated-dependencies:
+- dependency-name: diff-cover
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`7d6cb94`](https://github.com/MartinBernstorff/lumberman/commit/7d6cb9473245f0d61eb1cd045a32f6afe3c55ccb))
+
+
 ## v0.35.0 (2024-01-22)
 
 ### Feature
