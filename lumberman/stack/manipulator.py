@@ -13,8 +13,8 @@ class QueueManipulator(Protocol):
         """Create a new item, forking from the current item."""
         ...
 
-    def add(self, issue: Issue):
-        """Add a new item. If an item exists above the current item, insert between them."""
+    def create(self, issue: Issue):
+        """Create a new item. If an item exists above the current item, insert between them."""
         ...
 
     def delete(self):
@@ -51,7 +51,7 @@ class GraphiteManipulator(QueueManipulator):
     def fork(self, issue: Issue):
         self._new_branch(insert=False, issue=issue)
 
-    def add(self, issue: Issue):
+    def create(self, issue: Issue):
         self._new_branch(insert=True, issue=issue)
 
     def delete(self):
