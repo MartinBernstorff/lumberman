@@ -15,10 +15,10 @@ $ lumberman [OPTIONS] COMMAND [ARGS]...
 * `[d]elete`: Prompt to delete an item.
 * `[do]wn`: Go to the item below the current one.
 * `[f]ork`: Fork into a new stack and add an item.
+* `[l]og`: Print the current stack status.
 * `[m]ove`: Move the current item to a new location in...
 * `[n]ew`: Start a new stack on top of trunk.
 * `[s]ync`: Synchronize all state, ensuring the stack...
-* `[st]atus`: Print the current stack status.
 * `[to]p`: Go to the top of the stack.
 * `[up]`: Go to the item above the current one.
 * `bo`: Go to the bottom of the stack.
@@ -31,13 +31,13 @@ $ lumberman [OPTIONS] COMMAND [ARGS]...
 * `down`: Go to the item below the current one.
 * `f`: Fork into a new stack and add an item.
 * `fork`: Fork into a new stack and add an item.
+* `l`: Print the current stack status.
+* `log`: Print the current stack status.
 * `m`: Move the current item to a new location in...
 * `move`: Move the current item to a new location in...
 * `n`: Start a new stack on top of trunk.
 * `new`: Start a new stack on top of trunk.
 * `s`: Synchronize all state, ensuring the stack...
-* `st`: Print the current stack status.
-* `status`: Print the current stack status.
 * `sync`: Synchronize all state, ensuring the stack...
 * `to`: Go to the top of the stack.
 * `top`: Go to the top of the stack.
@@ -115,6 +115,20 @@ $ lumberman [f]ork [OPTIONS]
 * `--location [up|top|down|bottom|trunk]`: [default: Location.bottom]
 * `--help`: Show this message and exit.
 
+## `lumberman [l]og`
+
+Print the current stack status.
+
+**Usage**:
+
+```console
+$ lumberman [l]og [OPTIONS]
+```
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
 ## `lumberman [m]ove`
 
 Move the current item to a new location in the stack.
@@ -158,20 +172,6 @@ $ lumberman [s]ync [OPTIONS]
 * `--automerge / --no-automerge`: [default: no-automerge]
 * `--draft / --no-draft`: [default: no-draft]
 * `--squash / --no-squash`: [default: no-squash]
-* `--help`: Show this message and exit.
-
-## `lumberman [st]atus`
-
-Print the current stack status.
-
-**Usage**:
-
-```console
-$ lumberman [st]atus [OPTIONS]
-```
-
-**Options**:
-
 * `--help`: Show this message and exit.
 
 ## `lumberman [to]p`
@@ -346,6 +346,34 @@ $ lumberman fork [OPTIONS]
 * `--location [up|top|down|bottom|trunk]`: [default: Location.bottom]
 * `--help`: Show this message and exit.
 
+## `lumberman l`
+
+Print the current stack status.
+
+**Usage**:
+
+```console
+$ lumberman l [OPTIONS]
+```
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
+## `lumberman log`
+
+Print the current stack status.
+
+**Usage**:
+
+```console
+$ lumberman log [OPTIONS]
+```
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
 ## `lumberman m`
 
 Move the current item to a new location in the stack.
@@ -417,34 +445,6 @@ $ lumberman s [OPTIONS]
 * `--automerge / --no-automerge`: [default: no-automerge]
 * `--draft / --no-draft`: [default: no-draft]
 * `--squash / --no-squash`: [default: no-squash]
-* `--help`: Show this message and exit.
-
-## `lumberman st`
-
-Print the current stack status.
-
-**Usage**:
-
-```console
-$ lumberman st [OPTIONS]
-```
-
-**Options**:
-
-* `--help`: Show this message and exit.
-
-## `lumberman status`
-
-Print the current stack status.
-
-**Usage**:
-
-```console
-$ lumberman status [OPTIONS]
-```
-
-**Options**:
-
 * `--help`: Show this message and exit.
 
 ## `lumberman sync`

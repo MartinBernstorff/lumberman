@@ -31,6 +31,6 @@ def top():
         STACK_NAVIGATOR.top()
 
 
-def status():
+def log():
     """Print the current stack status."""
-    STACK_NAVIGATOR.status()
+    STACK_NAVIGATOR.log()

@@ -30,4 +30,4 @@ class QueueOperation:
     def __exit__(self, exc_type: type, exc_val: Exception, exc_tb: TracebackType) -> None:
         if self.sync_time == "exit":
             self.stack_manipulator.sync(sync_remote=self.sync_remote)
-        self.stack_navigator.status()
+        self.stack_navigator.log()
