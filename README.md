@@ -28,6 +28,11 @@ To see inline documentation:
 lumberman
 ```
 
+Or the alias:
+```bash
+lm
+```
+
 Or see the [documentation](./DOCS.md)
 
 ### Setting up a development environment
