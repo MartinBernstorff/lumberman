@@ -2,6 +2,15 @@
 
 
 
+## v0.35.0 (2024-01-22)
+
+### Feature
+
+* feat(#198): rename status to log (#199)
+
+Fixes #198 ([`cb2ebc2`](https://github.com/MartinBernstorff/lumberman/commit/cb2ebc26c4244f98d64ed1af521f137c9879b62f))
+
+
 ## v0.34.0 (2024-01-22)
 
 ### Documentation
@@ -15,6 +24,10 @@
 * docs: add docs to readme ([`530dd82`](https://github.com/MartinBernstorff/lumberman/commit/530dd8294a58cb45af7db5f2fc006e419a2d0afd))
 
 ### Feature
+
+* feat(#198): rename status to log
+
+Fixes #198 ([`7ff230a`](https://github.com/MartinBernstorff/lumberman/commit/7ff230a97e7ba45c560ff281a366a724e6aa1b16))
 
 * feat(#196): rename add to create (#197)
 
