@@ -24,7 +24,7 @@ class QueueNavigator(Protocol):
     def up(self):
         ...
 
-    def status(self):
+    def log(self):
         ...
 
 
@@ -48,7 +48,7 @@ class GraphiteNavigator(QueueNavigator):
     def up(self):
         interactive_cmd("gt up")
 
-    def status(self):
+    def log(self):
         result: str = shell_output("gt log short")  # type: ignore
         print(
             "\n",

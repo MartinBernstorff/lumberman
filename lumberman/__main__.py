@@ -38,7 +38,7 @@ commands = [
         name="Nav: Stepwise",
         commands=[Command(name="[do]wn", fn=nav.down), Command(name="[up]", fn=nav.up)],
     ),
-    CommandSection(name="Orientation", commands=[Command(name="[st]atus", fn=nav.status)]),
+    CommandSection(name="Orientation", commands=[Command(name="[l]og", fn=nav.log)]),
     CommandSection(
         name="Manipulation",
         commands=[
