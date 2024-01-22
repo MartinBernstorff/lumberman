@@ -9,10 +9,11 @@ from lumberman.cli import manipulation as man
 from lumberman.cli import navigation as nav
 
 app = typer.Typer(
+    name="[l]umber[m]an",
     no_args_is_help=True,
     add_help_option=False,
     add_completion=False,
-    help="All commands are registered as [sh]orthand. You can call the command as 'sh' or 'shorthand'.",
+    help="All commands are registered as [sh]orthand. You can call the command as 'lm sh' or 'lumberman shorthand'.",
 )
 
 
@@ -41,7 +42,7 @@ commands = [
     CommandSection(
         name="Manipulation",
         commands=[
-            Command(name="[a]dd", fn=man.add),
+            Command(name="[c]reate", fn=man.create),
             Command(name="[d]elete", fn=man.delete),
             Command(name="[f]ork", fn=man.fork),
             Command(name="[m]ove", fn=man.move),

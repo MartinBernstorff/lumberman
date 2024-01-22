@@ -4,8 +4,8 @@ from .config import ISSUE_CONTROLLER, STACK_MANIPULATOR, STACK_NAVIGATOR, STACK_
 from .location import Location, LocationCLIOption
 
 
-def add(location: LocationCLIOption = Location.up):
-    """Prompt to add a new item to the current stack. Defaults to adding an item in between the current item and the next item."""
+def create(location: LocationCLIOption = Location.up):
+    """Prompt to create a new item on the current stack. Defaults to creating an item in between the current item and the next item."""
     with STACK_OP(sync_time="exit", sync_remote=False):
         selected_issue = ISSUE_CONTROLLER.select_issue()
 
@@ -20,7 +20,7 @@ def add(location: LocationCLIOption = Location.up):
         if location == Location.down:
             STACK_NAVIGATOR.down()
 
-        STACK_MANIPULATOR.add(selected_issue)
+        STACK_MANIPULATOR.create(selected_issue)
         ISSUE_CONTROLLER.label_issue_in_progress(selected_issue)
 
 

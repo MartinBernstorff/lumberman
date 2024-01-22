@@ -1,6 +1,6 @@
 # `lumberman`
 
-All commands are registered as [sh]orthand. You can call the command as 'sh' or 'shorthand'.
+All commands are registered as [sh]orthand. You can call the command as 'lm sh' or 'lumberman shorthand'.
 
 **Usage**:
 
@@ -10,8 +10,8 @@ $ lumberman [OPTIONS] COMMAND [ARGS]...
 
 **Commands**:
 
-* `[a]dd`: Prompt to add a new item to the current...
 * `[bo]ttom`: Go to the bottom of the stack.
+* `[c]reate`: Prompt to create a new item on the current...
 * `[d]elete`: Prompt to delete an item.
 * `[do]wn`: Go to the item below the current one.
 * `[f]ork`: Fork into a new stack and add an item.
@@ -21,10 +21,10 @@ $ lumberman [OPTIONS] COMMAND [ARGS]...
 * `[st]atus`: Print the current stack status.
 * `[to]p`: Go to the top of the stack.
 * `[up]`: Go to the item above the current one.
-* `a`: Prompt to add a new item to the current...
-* `add`: Prompt to add a new item to the current...
 * `bo`: Go to the bottom of the stack.
 * `bottom`: Go to the bottom of the stack.
+* `c`: Prompt to create a new item on the current...
+* `create`: Prompt to create a new item on the current...
 * `d`: Prompt to delete an item.
 * `delete`: Prompt to delete an item.
 * `do`: Go to the item below the current one.
@@ -43,21 +43,6 @@ $ lumberman [OPTIONS] COMMAND [ARGS]...
 * `top`: Go to the top of the stack.
 * `up`: Go to the item above the current one.
 
-## `lumberman [a]dd`
-
-Prompt to add a new item to the current stack. Defaults to adding an item in between the current item and the next item.
-
-**Usage**:
-
-```console
-$ lumberman [a]dd [OPTIONS]
-```
-
-**Options**:
-
-* `--location [up|top|down|bottom|trunk]`: [default: Location.up]
-* `--help`: Show this message and exit.
-
 ## `lumberman [bo]ttom`
 
 Go to the bottom of the stack.
@@ -70,6 +55,21 @@ $ lumberman [bo]ttom [OPTIONS]
 
 **Options**:
 
+* `--help`: Show this message and exit.
+
+## `lumberman [c]reate`
+
+Prompt to create a new item on the current stack. Defaults to creating an item in between the current item and the next item.
+
+**Usage**:
+
+```console
+$ lumberman [c]reate [OPTIONS]
+```
+
+**Options**:
+
+* `--location [up|top|down|bottom|trunk]`: [default: Location.up]
 * `--help`: Show this message and exit.
 
 ## `lumberman [d]elete`
@@ -202,36 +202,6 @@ $ lumberman [up] [OPTIONS]
 
 * `--help`: Show this message and exit.
 
-## `lumberman a`
-
-Prompt to add a new item to the current stack. Defaults to adding an item in between the current item and the next item.
-
-**Usage**:
-
-```console
-$ lumberman a [OPTIONS]
-```
-
-**Options**:
-
-* `--location [up|top|down|bottom|trunk]`: [default: Location.up]
-* `--help`: Show this message and exit.
-
-## `lumberman add`
-
-Prompt to add a new item to the current stack. Defaults to adding an item in between the current item and the next item.
-
-**Usage**:
-
-```console
-$ lumberman add [OPTIONS]
-```
-
-**Options**:
-
-* `--location [up|top|down|bottom|trunk]`: [default: Location.up]
-* `--help`: Show this message and exit.
-
 ## `lumberman bo`
 
 Go to the bottom of the stack.
@@ -258,6 +228,36 @@ $ lumberman bottom [OPTIONS]
 
 **Options**:
 
+* `--help`: Show this message and exit.
+
+## `lumberman c`
+
+Prompt to create a new item on the current stack. Defaults to creating an item in between the current item and the next item.
+
+**Usage**:
+
+```console
+$ lumberman c [OPTIONS]
+```
+
+**Options**:
+
+* `--location [up|top|down|bottom|trunk]`: [default: Location.up]
+* `--help`: Show this message and exit.
+
+## `lumberman create`
+
+Prompt to create a new item on the current stack. Defaults to creating an item in between the current item and the next item.
+
+**Usage**:
+
+```console
+$ lumberman create [OPTIONS]
+```
+
+**Options**:
+
+* `--location [up|top|down|bottom|trunk]`: [default: Location.up]
 * `--help`: Show this message and exit.
 
 ## `lumberman d`
