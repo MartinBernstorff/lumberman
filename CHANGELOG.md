@@ -2,6 +2,43 @@
 
 
 
+## v0.34.0 (2024-01-22)
+
+### Documentation
+
+* docs: move docs outside of readme (#193) ([`8a80470`](https://github.com/MartinBernstorff/lumberman/commit/8a804700500c258f45afbcb28e5dfd72c0486c42))
+
+* docs: move docs outside of readme ([`fe2743d`](https://github.com/MartinBernstorff/lumberman/commit/fe2743df13252001498fd8bb1cef79000efe28f4))
+
+* docs: add docs to readme (#192) ([`c1dbe66`](https://github.com/MartinBernstorff/lumberman/commit/c1dbe660c954c81cceef00747c63530603341386))
+
+* docs: add docs to readme ([`530dd82`](https://github.com/MartinBernstorff/lumberman/commit/530dd8294a58cb45af7db5f2fc006e419a2d0afd))
+
+### Feature
+
+* feat(#196): rename add to create (#197)
+
+Fixes #196 ([`a82eea7`](https://github.com/MartinBernstorff/lumberman/commit/a82eea7a51f5c7d78e26bb7c8c48eff0ab6bc31e))
+
+* feat(#196): rename add to create
+
+Fixes #196 ([`e64e836`](https://github.com/MartinBernstorff/lumberman/commit/e64e836389c52be451ae0c286f18126fcd5b0f29))
+
+### Refactor
+
+* refactor: misc. (#195) ([`cb2d4f9`](https://github.com/MartinBernstorff/lumberman/commit/cb2d4f9e83ceba65c188ded69b3e402cd60810bc))
+
+* refactor: misc. ([`6366e3d`](https://github.com/MartinBernstorff/lumberman/commit/6366e3d72b674efe396ff1b856f98756e9ac94bb))
+
+### Unknown
+
+* Update README.md ([`43e6f76`](https://github.com/MartinBernstorff/lumberman/commit/43e6f763676eb99de071b125cdccdc0e0ef9443c))
+
+* dev: do not auto-add after submitting (#194) ([`1f0170f`](https://github.com/MartinBernstorff/lumberman/commit/1f0170fc3e6ae3155d053c3cac1605c51d83ccbd))
+
+* dev: do not auto-add after submitting ([`e4eddfb`](https://github.com/MartinBernstorff/lumberman/commit/e4eddfb4655c4494e85faad403c569bfc45eca3b))
+
+
 ## v0.33.0 (2024-01-18)
 
 ### Feature
