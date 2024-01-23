@@ -2,7 +2,22 @@
 
 
 
+## v0.37.0 (2024-01-23)
+
+### Feature
+
+* feat(#208): sync after move (#209)
+
+Fixes #208 ([`2132ea3`](https://github.com/MartinBernstorff/lumberman/commit/2132ea354b76a0708c54942b32b1f91a3e6b738b))
+
+
 ## v0.36.1 (2024-01-23)
+
+### Feature
+
+* feat(#208): sync after move
+
+Fixes #208 ([`0ebc8ef`](https://github.com/MartinBernstorff/lumberman/commit/0ebc8ef46f90bc0849766befc5e3001d0f5c18bc))
 
 ### Fix
 
