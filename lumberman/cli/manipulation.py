@@ -1,7 +1,7 @@
 from rich import print
 
-from .config import ISSUE_CONTROLLER, STACK_MANIPULATOR, STACK_NAVIGATOR, STACK_OP
-from .location import Location, LocationCLIOption
+from lumberman.cli.config import ISSUE_CONTROLLER, STACK_MANIPULATOR, STACK_NAVIGATOR, STACK_OP
+from lumberman.cli.location import Location, LocationCLIOption
 
 
 def create(location: LocationCLIOption = Location.up):
@@ -70,3 +70,7 @@ def sync(automerge: bool = False, draft: bool = False, squash: bool = False):
     with STACK_OP(sync_time="none", sync_remote=False):
         STACK_MANIPULATOR.sync(automerge=automerge, squash=squash, draft=draft, sync_remote=True)
         print(":rocket: [bold green]Stack synced![/bold green]")
+
+
+if __name__ == "__main__":
+    move()

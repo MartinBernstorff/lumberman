@@ -8,6 +8,9 @@ def interactive_cmd(command: str) -> None:
     try:
         subprocess.run(command, shell=True, stderr=STDOUT, check=True)
     except subprocess.CalledProcessError as e:
+        if not e.stdout:
+            return
+
         error_message = f"""{command} failed.
 \tExit code: {e.returncode}"""
 
