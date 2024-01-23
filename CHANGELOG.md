@@ -2,6 +2,27 @@
 
 
 
+## v0.36.0 (2024-01-23)
+
+### Feature
+
+* feat(#204): add checkout command (#205) ([`7e1dc77`](https://github.com/MartinBernstorff/lumberman/commit/7e1dc776831b4fb06a9db90e83d9c8bab18dcdc8))
+
+* feat(#204): add checkout command
+
+Fixes #204 ([`e10d53d`](https://github.com/MartinBernstorff/lumberman/commit/e10d53da295e523dab9ffaec561d88be393fa92b))
+
+### Unknown
+
+* deps(#203): rich should automatically be installed (#206) ([`d8e9bdd`](https://github.com/MartinBernstorff/lumberman/commit/d8e9bdd2c62d0ab6002b3dfb89b5f0e2ad0d8b00))
+
+* deps(#203): rich should automatically be installed
+
+Fixes #203 ([`423f768`](https://github.com/MartinBernstorff/lumberman/commit/423f768177d0335e59cee46324b643e145c7e8f4))
+
+* update DOCS.md ([`824a27d`](https://github.com/MartinBernstorff/lumberman/commit/824a27d0ef1c927b4219ee3df19ebf9ec27ef7e2))
+
+
 ## v0.35.1 (2024-01-22)
 
 ### Fix
