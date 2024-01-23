@@ -2,6 +2,19 @@
 
 
 
+## v0.37.1 (2024-01-23)
+
+### Fix
+
+* fix: checkout should map to checkout (#210) ([`aac8b88`](https://github.com/MartinBernstorff/lumberman/commit/aac8b88c66be2b1c3f3acf64bc6821fdec4da006))
+
+* fix: checkout should map to checkout ([`4f282ea`](https://github.com/MartinBernstorff/lumberman/commit/4f282ea037e055393c4177ee8297072fa7578f87))
+
+### Unknown
+
+* update DOCS.md ([`c7be067`](https://github.com/MartinBernstorff/lumberman/commit/c7be0671ac3d99521934c6dc52c9e60786313b5b))
+
+
 ## v0.37.0 (2024-01-23)
 
 ### Feature
