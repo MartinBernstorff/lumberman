@@ -26,7 +26,7 @@ def create(location: LocationCLIOption = Location.up):
 
 def move():
     """Move the current item to a new location in the stack."""
-    with STACK_OP(sync_time="exit", sync_remote=False):
+    with STACK_OP(sync_time="exit", sync_remote=True):
         STACK_MANIPULATOR.move()
 
 
