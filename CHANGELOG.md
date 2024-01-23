@@ -2,6 +2,19 @@
 
 
 
+## v0.36.1 (2024-01-23)
+
+### Fix
+
+* fix(#190): queueop should not sync if command failed (#207)
+
+Fixes #190 ([`f3eef36`](https://github.com/MartinBernstorff/lumberman/commit/f3eef363477a74a63c4cebdd90695bff1f912558))
+
+* fix(#190): queueop should not sync if command failed
+
+Fixes #190 ([`68deb74`](https://github.com/MartinBernstorff/lumberman/commit/68deb7491e8231dc3753e5b29416e18c4aa003bd))
+
+
 ## v0.36.0 (2024-01-23)
 
 ### Feature
