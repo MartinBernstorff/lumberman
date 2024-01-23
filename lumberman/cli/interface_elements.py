@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from types import TracebackType
-from typing import Literal
+from typing import Literal, Union
 
 from rich import print
 
@@ -27,7 +27,9 @@ class QueueOperation:
         if self.sync_time == "enter":
             self.stack_manipulator.sync(sync_remote=self.sync_remote)
 
-    def __exit__(self, exc_type: type, exc_val: Exception, exc_tb: TracebackType) -> None:
-        if self.sync_time == "exit":
+    def __exit__(
+        self, exc_type: Union[type, None], exc_val: Exception, exc_tb: TracebackType
+    ) -> None:
+        if self.sync_time == "exit" and exc_type is not None:
             self.stack_manipulator.sync(sync_remote=self.sync_remote)
         self.stack_navigator.log()
