@@ -12,7 +12,7 @@ $ lumberman [OPTIONS] COMMAND [ARGS]...
 
 * `[bo]ttom`: Go to the bottom of the stack.
 * `[c]reate`: Prompt to create a new item on the current...
-* `[ch]heckout`: Go to the trunk of the stack.
+* `[ch]heckout`: Prompt to checkout an item in the stack.
 * `[d]elete`: Prompt to delete an item.
 * `[do]wn`: Go to the item below the current one.
 * `[f]ork`: Fork into a new stack and add an item.
@@ -25,8 +25,8 @@ $ lumberman [OPTIONS] COMMAND [ARGS]...
 * `bo`: Go to the bottom of the stack.
 * `bottom`: Go to the bottom of the stack.
 * `c`: Prompt to create a new item on the current...
-* `ch`: Go to the trunk of the stack.
-* `chheckout`: Go to the trunk of the stack.
+* `ch`: Prompt to checkout an item in the stack.
+* `chheckout`: Prompt to checkout an item in the stack.
 * `create`: Prompt to create a new item on the current...
 * `d`: Prompt to delete an item.
 * `delete`: Prompt to delete an item.
@@ -77,7 +77,7 @@ $ lumberman [c]reate [OPTIONS]
 
 ## `lumberman [ch]heckout`
 
-Go to the trunk of the stack.
+Prompt to checkout an item in the stack.
 
 **Usage**:
 
@@ -264,7 +264,7 @@ $ lumberman c [OPTIONS]
 
 ## `lumberman ch`
 
-Go to the trunk of the stack.
+Prompt to checkout an item in the stack.
 
 **Usage**:
 
@@ -278,7 +278,7 @@ $ lumberman ch [OPTIONS]
 
 ## `lumberman chheckout`
 
-Go to the trunk of the stack.
+Prompt to checkout an item in the stack.
 
 **Usage**:
 
