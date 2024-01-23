@@ -31,12 +31,14 @@ class CommandSection:
 
 commands = [
     CommandSection(
-        name="Nav: End of stack",
-        commands=[Command(name="[bo]ttom", fn=nav.bottom), Command(name="[to]p", fn=nav.top)],
-    ),
-    CommandSection(
-        name="Nav: Stepwise",
-        commands=[Command(name="[do]wn", fn=nav.down), Command(name="[up]", fn=nav.up)],
+        name="Navigation",
+        commands=[
+            Command(name="[ch]heckout", fn=nav.trunk),
+            Command(name="[bo]ttom", fn=nav.bottom),
+            Command(name="[to]p", fn=nav.top),
+            Command(name="[do]wn", fn=nav.down),
+            Command(name="[up]", fn=nav.up),
+        ],
     ),
     CommandSection(name="Orientation", commands=[Command(name="[l]og", fn=nav.log)]),
     CommandSection(

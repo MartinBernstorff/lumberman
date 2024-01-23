@@ -27,6 +27,9 @@ class QueueNavigator(Protocol):
     def log(self):
         ...
 
+    def checkout(self):
+        ...
+
 
 @dataclass(frozen=True)
 class GraphiteNavigator(QueueNavigator):
@@ -55,3 +58,6 @@ class GraphiteNavigator(QueueNavigator):
             Panel(result, title="Top", subtitle="Bottom", expand=False, box=box.HORIZONTALS),
             "\n",
         )
+
+    def checkout(self):
+        interactive_cmd("gt checkout")

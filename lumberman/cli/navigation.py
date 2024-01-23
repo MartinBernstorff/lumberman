@@ -34,3 +34,8 @@ def top():
 def log():
     """Print the current stack status."""
     STACK_NAVIGATOR.log()
+
+
+def checkout():
+    """Prompt to checkout an item in the stack."""
+    STACK_NAVIGATOR.checkout()
