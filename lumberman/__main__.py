@@ -33,7 +33,7 @@ commands = [
     CommandSection(
         name="Navigation",
         commands=[
-            Command(name="[ch]heckout", fn=nav.trunk),
+            Command(name="[ch]heckout", fn=nav.checkout),
             Command(name="[bo]ttom", fn=nav.bottom),
             Command(name="[to]p", fn=nav.top),
             Command(name="[do]wn", fn=nav.down),
