@@ -11,11 +11,11 @@ $ lumberman [OPTIONS] COMMAND [ARGS]...
 **Commands**:
 
 * `[bo]ttom`: Go to the bottom of the stack.
-* `[c]reate`: Prompt to create a new item on the current...
 * `[ch]heckout`: Prompt to checkout an item in the stack.
 * `[d]elete`: Prompt to delete an item.
 * `[do]wn`: Go to the item below the current one.
 * `[f]ork`: Fork into a new stack and add an item.
+* `[i]nsert`: Prompt to create a new item on the current...
 * `[l]og`: Print the current stack status.
 * `[m]ove`: Move the current item to a new location in...
 * `[n]ew`: Start a new stack on top of trunk.
@@ -24,16 +24,16 @@ $ lumberman [OPTIONS] COMMAND [ARGS]...
 * `[up]`: Go to the item above the current one.
 * `bo`: Go to the bottom of the stack.
 * `bottom`: Go to the bottom of the stack.
-* `c`: Prompt to create a new item on the current...
 * `ch`: Prompt to checkout an item in the stack.
 * `chheckout`: Prompt to checkout an item in the stack.
-* `create`: Prompt to create a new item on the current...
 * `d`: Prompt to delete an item.
 * `delete`: Prompt to delete an item.
 * `do`: Go to the item below the current one.
 * `down`: Go to the item below the current one.
 * `f`: Fork into a new stack and add an item.
 * `fork`: Fork into a new stack and add an item.
+* `i`: Prompt to create a new item on the current...
+* `insert`: Prompt to create a new item on the current...
 * `l`: Print the current stack status.
 * `log`: Print the current stack status.
 * `m`: Move the current item to a new location in...
@@ -58,21 +58,6 @@ $ lumberman [bo]ttom [OPTIONS]
 
 **Options**:
 
-* `--help`: Show this message and exit.
-
-## `lumberman [c]reate`
-
-Prompt to create a new item on the current stack. Defaults to creating an item in between the current item and the next item.
-
-**Usage**:
-
-```console
-$ lumberman [c]reate [OPTIONS]
-```
-
-**Options**:
-
-* `--location [up|top|down|bottom|trunk]`: [default: Location.up]
 * `--help`: Show this message and exit.
 
 ## `lumberman [ch]heckout`
@@ -130,6 +115,21 @@ $ lumberman [f]ork [OPTIONS]
 **Options**:
 
 * `--location [up|top|down|bottom|trunk]`: [default: Location.bottom]
+* `--help`: Show this message and exit.
+
+## `lumberman [i]nsert`
+
+Prompt to create a new item on the current stack. Defaults to creating an item in between the current item and the next item.
+
+**Usage**:
+
+```console
+$ lumberman [i]nsert [OPTIONS]
+```
+
+**Options**:
+
+* `--location [up|top|down|bottom|trunk]`: [default: Location.up]
 * `--help`: Show this message and exit.
 
 ## `lumberman [l]og`
@@ -247,21 +247,6 @@ $ lumberman bottom [OPTIONS]
 
 * `--help`: Show this message and exit.
 
-## `lumberman c`
-
-Prompt to create a new item on the current stack. Defaults to creating an item in between the current item and the next item.
-
-**Usage**:
-
-```console
-$ lumberman c [OPTIONS]
-```
-
-**Options**:
-
-* `--location [up|top|down|bottom|trunk]`: [default: Location.up]
-* `--help`: Show this message and exit.
-
 ## `lumberman ch`
 
 Prompt to checkout an item in the stack.
@@ -288,21 +273,6 @@ $ lumberman chheckout [OPTIONS]
 
 **Options**:
 
-* `--help`: Show this message and exit.
-
-## `lumberman create`
-
-Prompt to create a new item on the current stack. Defaults to creating an item in between the current item and the next item.
-
-**Usage**:
-
-```console
-$ lumberman create [OPTIONS]
-```
-
-**Options**:
-
-* `--location [up|top|down|bottom|trunk]`: [default: Location.up]
 * `--help`: Show this message and exit.
 
 ## `lumberman d`
@@ -389,6 +359,36 @@ $ lumberman fork [OPTIONS]
 **Options**:
 
 * `--location [up|top|down|bottom|trunk]`: [default: Location.bottom]
+* `--help`: Show this message and exit.
+
+## `lumberman i`
+
+Prompt to create a new item on the current stack. Defaults to creating an item in between the current item and the next item.
+
+**Usage**:
+
+```console
+$ lumberman i [OPTIONS]
+```
+
+**Options**:
+
+* `--location [up|top|down|bottom|trunk]`: [default: Location.up]
+* `--help`: Show this message and exit.
+
+## `lumberman insert`
+
+Prompt to create a new item on the current stack. Defaults to creating an item in between the current item and the next item.
+
+**Usage**:
+
+```console
+$ lumberman insert [OPTIONS]
+```
+
+**Options**:
+
+* `--location [up|top|down|bottom|trunk]`: [default: Location.up]
 * `--help`: Show this message and exit.
 
 ## `lumberman l`
