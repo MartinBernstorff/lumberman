@@ -44,7 +44,7 @@ commands = [
     CommandSection(
         name="Manipulation",
         commands=[
-            Command(name="[c]reate", fn=man.create),
+            Command(name="[i]nsert", fn=man.insert),
             Command(name="[d]elete", fn=man.delete),
             Command(name="[f]ork", fn=man.fork),
             Command(name="[m]ove", fn=man.move),

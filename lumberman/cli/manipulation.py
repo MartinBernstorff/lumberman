@@ -4,7 +4,7 @@ from lumberman.cli.config import ISSUE_CONTROLLER, STACK_MANIPULATOR, STACK_NAVI
 from lumberman.cli.location import Location, LocationCLIOption
 
 
-def create(location: LocationCLIOption = Location.up):
+def insert(location: LocationCLIOption = Location.up):
     """Prompt to create a new item on the current stack. Defaults to creating an item in between the current item and the next item."""
     with STACK_OP(sync_time="exit", sync_remote=False):
         selected_issue = ISSUE_CONTROLLER.select_issue()
@@ -20,7 +20,7 @@ def create(location: LocationCLIOption = Location.up):
         if location == Location.down:
             STACK_NAVIGATOR.down()
 
-        STACK_MANIPULATOR.create(selected_issue)
+        STACK_MANIPULATOR.insert(selected_issue)
         ISSUE_CONTROLLER.label_issue_in_progress(selected_issue)
 
 
