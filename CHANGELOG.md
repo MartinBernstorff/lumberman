@@ -2,6 +2,19 @@
 
 
 
+## v0.38.0 (2024-01-25)
+
+### Feature
+
+* feat: rename create to insert (#214) ([`bb57e20`](https://github.com/MartinBernstorff/lumberman/commit/bb57e20e22a4d0c065695271af53e507d24478e7))
+
+* feat: rename create to insert ([`fde76c5`](https://github.com/MartinBernstorff/lumberman/commit/fde76c59d5362223d172fdefc979a8c25f583dbb))
+
+### Unknown
+
+* update DOCS.md ([`6b5b1f8`](https://github.com/MartinBernstorff/lumberman/commit/6b5b1f81b268ecc533d300b5773d600df1172405))
+
+
 ## v0.37.1 (2024-01-23)
 
 ### Fix
