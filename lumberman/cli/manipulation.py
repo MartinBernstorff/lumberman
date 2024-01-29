@@ -1,10 +1,13 @@
+from typing import Annotated, Optional
+
+import typer
 from rich import print
 
 from lumberman.cli.config import ISSUE_CONTROLLER, STACK_MANIPULATOR, STACK_NAVIGATOR, STACK_OP
 from lumberman.cli.location import Location, LocationCLIOption
 
 
-def insert(location: LocationCLIOption = Location.up):
+def insert(location: Annotated[Optional[Location], typer.Argument()] = Location.up):
     """Prompt to create a new item on the current stack. Defaults to creating an item in between the current item and the next item."""
     with STACK_OP(sync_time="exit", sync_pull_requests=False):
         selected_issue = ISSUE_CONTROLLER.select_issue()

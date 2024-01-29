@@ -124,12 +124,15 @@ Prompt to create a new item on the current stack. Defaults to creating an item i
 **Usage**:
 
 ```console
-$ lumberman [i]nsert [OPTIONS]
+$ lumberman [i]nsert [OPTIONS] [LOCATION]:[up|top|down|bottom|trunk]
 ```
+
+**Arguments**:
+
+* `[LOCATION]:[up|top|down|bottom|trunk]`: [default: Location.up]
 
 **Options**:
 
-* `--location [up|top|down|bottom|trunk]`: [default: Location.up]
 * `--help`: Show this message and exit.
 
 ## `lumberman [l]og`
@@ -368,12 +371,15 @@ Prompt to create a new item on the current stack. Defaults to creating an item i
 **Usage**:
 
 ```console
-$ lumberman i [OPTIONS]
+$ lumberman i [OPTIONS] [LOCATION]:[up|top|down|bottom|trunk]
 ```
+
+**Arguments**:
+
+* `[LOCATION]:[up|top|down|bottom|trunk]`: [default: Location.up]
 
 **Options**:
 
-* `--location [up|top|down|bottom|trunk]`: [default: Location.up]
 * `--help`: Show this message and exit.
 
 ## `lumberman insert`
@@ -383,12 +389,15 @@ Prompt to create a new item on the current stack. Defaults to creating an item i
 **Usage**:
 
 ```console
-$ lumberman insert [OPTIONS]
+$ lumberman insert [OPTIONS] [LOCATION]:[up|top|down|bottom|trunk]
 ```
+
+**Arguments**:
+
+* `[LOCATION]:[up|top|down|bottom|trunk]`: [default: Location.up]
 
 **Options**:
 
-* `--location [up|top|down|bottom|trunk]`: [default: Location.up]
 * `--help`: Show this message and exit.
 
 ## `lumberman l`
