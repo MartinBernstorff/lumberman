@@ -33,10 +33,9 @@ def commit_unstaged() -> None:
 
 @dataclass
 class StagingMigrater:
-    has_stashed: bool = False
-
     def __enter__(self):
         if not has_uncommitted_changes():
+            self.has_stashed = False
             return
 
         shell_output("git stash")

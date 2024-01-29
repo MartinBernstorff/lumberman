@@ -1,3 +1,4 @@
+from ..git import StagingMigrater
 from .config import STACK_NAVIGATOR, STACK_OP
 
 
@@ -38,4 +39,5 @@ def log():
 
 def checkout():
     """Prompt to checkout an item in the stack."""
-    STACK_NAVIGATOR.checkout()
+    with StagingMigrater():
+        STACK_NAVIGATOR.checkout()
