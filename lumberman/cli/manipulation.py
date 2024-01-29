@@ -6,7 +6,7 @@ from lumberman.cli.location import Location, LocationCLIOption
 
 def insert(location: LocationCLIOption = Location.up):
     """Prompt to create a new item on the current stack. Defaults to creating an item in between the current item and the next item."""
-    with STACK_OP(sync_time="exit", sync_remote=False):
+    with STACK_OP(sync_time="exit", sync_pull_requests=False):
         selected_issue = ISSUE_CONTROLLER.select_issue()
 
         if location == Location.trunk:
@@ -26,19 +26,19 @@ def insert(location: LocationCLIOption = Location.up):
 
 def move():
     """Move the current item to a new location in the stack."""
-    with STACK_OP(sync_time="exit", sync_remote=True):
+    with STACK_OP(sync_time="exit", sync_pull_requests=True):
         STACK_MANIPULATOR.move()
 
 
 def delete():
     """Prompt to delete an item."""
-    with STACK_OP(sync_time="exit", sync_remote=False):
+    with STACK_OP(sync_time="exit", sync_pull_requests=False):
         STACK_MANIPULATOR.delete()
 
 
 def fork(location: LocationCLIOption = Location.bottom):
     """Fork into a new stack and add an item. Defaults to forking from the first item in the current stack."""
-    with STACK_OP(sync_time="enter", sync_remote=False):
+    with STACK_OP(sync_time="enter", sync_pull_requests=False):
         selected_issue = ISSUE_CONTROLLER.select_issue()
 
         if location == Location.bottom:
@@ -58,8 +58,9 @@ def fork(location: LocationCLIOption = Location.bottom):
 
 def new():
     """Start a new stack on top of trunk."""
-    with STACK_OP(sync_time="exit", sync_remote=False):
+    with STACK_OP(sync_time="none", sync_pull_requests=False):
         selected_issue = ISSUE_CONTROLLER.select_issue()
+        STACK_MANIPULATOR.sync(sync_pull_requests=False)
         STACK_NAVIGATOR.trunk()
         STACK_MANIPULATOR.fork(selected_issue)
         ISSUE_CONTROLLER.label_issue_in_progress(selected_issue)
@@ -67,8 +68,10 @@ def new():
 
 def sync(automerge: bool = False, draft: bool = False, squash: bool = False):
     """Synchronize all state, ensuring the stack is internally in sync, and in sync with the remote. Creates PRs if needed."""
-    with STACK_OP(sync_time="none", sync_remote=False):
-        STACK_MANIPULATOR.sync(automerge=automerge, squash=squash, draft=draft, sync_remote=True)
+    with STACK_OP(sync_time="none", sync_pull_requests=False):
+        STACK_MANIPULATOR.sync(
+            automerge=automerge, squash=squash, draft=draft, sync_pull_requests=True
+        )
         print(":rocket: [bold green]Stack synced![/bold green]")
 
 

@@ -25,7 +25,7 @@ class QueueManipulator(Protocol):
 
     def sync(
         self,
-        sync_remote: bool = True,
+        sync_pull_requests: bool = True,
         automerge: bool = False,
         squash: bool = False,
         draft: bool = True,
@@ -62,17 +62,17 @@ class GraphiteManipulator(QueueManipulator):
 
     def sync(
         self,
-        sync_remote: bool = True,
+        sync_pull_requests: bool = True,
         automerge: bool = False,
         squash: bool = False,
         draft: bool = True,
     ):
-        interactive_cmd("gt sync --force --restack --delete")
-
         if squash:
             interactive_cmd("gt squash --no-edit")
 
-        if sync_remote:
+        interactive_cmd("gt sync --pull --force --restack --delete")
+
+        if sync_pull_requests:
             command = "gt submit --no-edit --stack"
             if draft:
                 command += " --draft"
