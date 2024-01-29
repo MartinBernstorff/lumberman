@@ -2,6 +2,19 @@
 
 
 
+## v0.39.0 (2024-01-29)
+
+### Feature
+
+* feat(#220): sync main before creating new branch on new (#221)
+
+Fixes #220 ([`6858be2`](https://github.com/MartinBernstorff/lumberman/commit/6858be24faac4b3f6d7a77b57a5b901fcea55176))
+
+* feat(#220): sync main before creating new branch on new
+
+Fixes #220 ([`027ccf8`](https://github.com/MartinBernstorff/lumberman/commit/027ccf8f2020696bb263c23fb11a08224cfbc62d))
+
+
 ## v0.38.0 (2024-01-25)
 
 ### Feature
