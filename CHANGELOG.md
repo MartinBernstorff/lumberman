@@ -2,6 +2,19 @@
 
 
 
+## v0.40.0 (2024-01-31)
+
+### Feature
+
+* feat(#216): allow locations to be specified as positional args in insert (#222)
+
+Fixes #216 ([`e01cd1c`](https://github.com/MartinBernstorff/lumberman/commit/e01cd1c5eec1b5a628731f9bbe1d891680aa72f2))
+
+* feat(#216): allow locations to be specified as positional args in insert
+
+Fixes #216 ([`0b579db`](https://github.com/MartinBernstorff/lumberman/commit/0b579db2a1d94c2ef2f9928ba1ab2f7f9621f07a))
+
+
 ## v0.39.0 (2024-01-29)
 
 ### Feature
