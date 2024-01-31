@@ -2,6 +2,19 @@
 
 
 
+## v0.41.0 (2024-01-31)
+
+### Feature
+
+* feat(#212): auto-stash when using checkout (#223)
+
+Fixes #212 ([`ab5bdfa`](https://github.com/MartinBernstorff/lumberman/commit/ab5bdfa1f2ee391a4f7f1ddfecc36420912c750d))
+
+* feat(#212): auto-stash when using checkout
+
+Fixes #212 ([`ffba21f`](https://github.com/MartinBernstorff/lumberman/commit/ffba21f8da9b2d80bbf5b0151871084f9a40605d))
+
+
 ## v0.40.0 (2024-01-31)
 
 ### Feature
