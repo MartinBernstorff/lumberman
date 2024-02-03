@@ -2,6 +2,25 @@
 
 
 
+## v0.42.0 (2024-02-03)
+
+### Feature
+
+* feat(#228): automatically get recent issues if none assigned (#229)
+
+Fixes #228 ([`471e62b`](https://github.com/MartinBernstorff/lumberman/commit/471e62b082f164347e7514249816ec4a918091cf))
+
+* feat(#228): automatically get recent issues if none assigned
+
+Fixes #228 ([`2eebcb7`](https://github.com/MartinBernstorff/lumberman/commit/2eebcb7557f9891549e55d151ec670f6fc009e06))
+
+### Unknown
+
+* Install the CodeSee workflow. (#227) ([`c9d1e27`](https://github.com/MartinBernstorff/lumberman/commit/c9d1e272b058033d8f42e652566045e283a4aa03))
+
+* Install the CodeSee workflow. Learn more at https://docs.codesee.io ([`b4f8171`](https://github.com/MartinBernstorff/lumberman/commit/b4f8171425c392ead67d95115f8419e6d7256154))
+
+
 ## v0.41.0 (2024-01-31)
 
 ### Feature
