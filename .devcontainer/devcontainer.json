@@ -12,12 +12,10 @@
     "customizations": {
         "vscode": {
             "extensions": [
-                "GitHub.copilot",
-                "charliermarsh.ruff",
                 "ms-python.python",
-                "ms-python.vscode-pylance",
+                "charliermarsh.ruff",
+                "GitHub.copilot",
                 "GitHub.vscode-pull-request-github",
-                "ms-vscode.makefile-tools",
                 "github.vscode-github-actions",
                 "SeeLog.python-init-generator",
                 "MichaelCurrin.auto-commit-msg"
