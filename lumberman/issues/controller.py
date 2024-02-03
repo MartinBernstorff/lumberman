@@ -43,6 +43,8 @@ class IssueController:
     def select_issue(self, issues: Optional[Sequence[Issue]] = None) -> Issue:
         if not issues:
             issues = self._get_my_issues()
+            issues = [*issues, *self._get_latest_issues()]
+
         selected_issue = self.view.select_issue_dialog(issues)
 
         if selected_issue is self.view.refresh_prompt:
