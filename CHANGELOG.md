@@ -2,6 +2,25 @@
 
 
 
+## v0.44.1 (2024-02-19)
+
+### Fix
+
+* fix: misc. ([`3ce15fc`](https://github.com/MartinBernstorff/lumberman/commit/3ce15fce1b05a59daeeb2996186eb6849d06ab1d))
+
+### Refactor
+
+* refactor: unified issue title object (#245)
+
+fix: misc.
+
+update view.py update 7 files ([`baf4832`](https://github.com/MartinBernstorff/lumberman/commit/baf4832cfc928ac6b1cd1930fcb1d24191e3c20b))
+
+### Unknown
+
+* update view.py update 7 files ([`0fdd987`](https://github.com/MartinBernstorff/lumberman/commit/0fdd987ddd8b15ca504158e6ba4712a216b2e043))
+
+
 ## v0.44.0 (2024-02-19)
 
 ### Feature
