@@ -19,7 +19,7 @@ dependencies = ["typer==0.9.0", "questionary==2.0.1", "rich==13.7.0"]
 [project.optional-dependencies]
 dev = [
   "cruft",
-  "pyright==1.1.346",
+  "pyright==1.1.350",
   "pytest==7.4.3",
   "pytest-cov==4.1.0",
   "pytest-xdist==3.5.0",
@@ -47,7 +47,7 @@ documentation = "https://MartinBernstorff.github.io/lumberman/"
 [tool]
 rye = { dev-dependencies = [
   "cruft>=2.15.0",
-  "pyright==1.1.346",
+  "pyright==1.1.350",
   "pytest==7.4.3",
   "pytest-cov==4.1.0",
   "pytest-xdist==3.5.0",
