@@ -48,4 +48,4 @@ class DefaultIssueView(IssueView):
             parsed_title = parse_issue_title(selected_issue_title)
             return Issue(entity_id=None, title=parsed_title)
 
-        return next(issue for issue in issues if selected_issue_title in issue.title.content)
+        return next(issue for issue in issues if issue.title.content in selected_issue_title)
