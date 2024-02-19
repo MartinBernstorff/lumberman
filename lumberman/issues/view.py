@@ -33,7 +33,7 @@ class DefaultIssueView(IssueView):
     def _show_selection_dialog(self, issues: Sequence[Issue]) -> str:
         issue_titles = [f"{issue.description} #{issue.entity_id}" for issue in issues]
         selection: str = iterfzf(
-            [*issue_titles, self.refresh_prompt, self.ten_latest_prompt, self.manual_prompt]
+            [self.manual_prompt, *issue_titles, self.refresh_prompt, self.ten_latest_prompt]
         )  # type: ignore
         return selection
 
