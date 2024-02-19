@@ -2,7 +2,6 @@ from collections.abc import Sequence
 from dataclasses import dataclass
 from typing import Protocol, Union
 
-import questionary
 import typer
 from iterfzf import iterfzf  # type: ignore
 from rich.console import Console
