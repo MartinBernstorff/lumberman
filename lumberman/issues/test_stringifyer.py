@@ -4,6 +4,7 @@ import pytest
 
 from .model import Issue
 from .stringifyer import DefaultIssueStringifyer
+from .title_parser import IssueTitle
 
 
 @dataclass(frozen=True)
@@ -17,26 +18,34 @@ class TestIssueStringifyer:
     ("example"),
     [
         TestIssueStringifyer(
-            input_issue=Issue(entity_id="42", prefix="test-prefix", description="test-description"),
+            input_issue=Issue(
+                entity_id="42", title=IssueTitle(prefix="test-prefix", content="test-description")
+            ),
             first_commit_str="""test-prefix(#42): test-description
 
 Fixes #42""",
             branch_title="test-prefix/42/test-description",
         ),
         TestIssueStringifyer(
-            input_issue=Issue(entity_id=None, prefix=None, description="test-description"),
+            input_issue=Issue(
+                entity_id=None, title=IssueTitle(prefix=None, content="test-description")
+            ),
             first_commit_str="""test-description""",
             branch_title="test-description",
         ),
         TestIssueStringifyer(
-            input_issue=Issue(entity_id="42", prefix=None, description="test-description"),
+            input_issue=Issue(
+                entity_id="42", title=IssueTitle(prefix=None, content="test-description")
+            ),
             first_commit_str="""(#42): test-description
 
 Fixes #42""",
             branch_title="42/test-description",
         ),
         TestIssueStringifyer(
-            input_issue=Issue(entity_id=None, prefix="test-prefix", description="test-description"),
+            input_issue=Issue(
+                entity_id=None, title=IssueTitle(prefix="test-prefix", content="test-description")
+            ),
             first_commit_str="""test-prefix: test-description""",
             branch_title="test-prefix/test-description",
         ),

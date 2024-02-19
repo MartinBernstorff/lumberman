@@ -2,13 +2,13 @@ from dataclasses import dataclass
 
 import pytest
 
-from .title_parser import ParsedTitle, parse_issue_title
+from .title_parser import IssueTitle, parse_issue_title
 
 
 @dataclass(frozen=True)
 class ParseIssueTitleExample:
     input_value: str
-    expected: ParsedTitle
+    expected: IssueTitle
 
 
 @pytest.mark.parametrize(
@@ -16,14 +16,14 @@ class ParseIssueTitleExample:
     [
         ParseIssueTitleExample(
             input_value="test(#77): test description",
-            expected=ParsedTitle(prefix="test", description="test description"),
+            expected=IssueTitle(prefix="test", content="test description"),
         ),
         ParseIssueTitleExample(
             input_value="test: test description",
-            expected=ParsedTitle(prefix="test", description="test description"),
+            expected=IssueTitle(prefix="test", content="test description"),
         ),
         ParseIssueTitleExample(
-            input_value="no prefix", expected=ParsedTitle(prefix=None, description="no prefix")
+            input_value="no prefix", expected=IssueTitle(prefix=None, content="no prefix")
         ),
     ],
 )
