@@ -2,6 +2,25 @@
 
 
 
+## v0.43.0 (2024-02-19)
+
+### Feature
+
+* feat(#237): select with fuzzy finder (#239) ([`4a68824`](https://github.com/MartinBernstorff/lumberman/commit/4a688243b1612ece383702117937d9915fb3a6e5))
+
+* feat(#237): select with fuzzy finder
+
+Fixes #237 ([`0b8ce63`](https://github.com/MartinBernstorff/lumberman/commit/0b8ce63115c574b21c736c161f05a5d81dbd9dcd))
+
+### Unknown
+
+* misc. (#238) ([`7f1660c`](https://github.com/MartinBernstorff/lumberman/commit/7f1660caa736294ec513869db2bc98d30b742d36))
+
+* update view.py ([`7cd7865`](https://github.com/MartinBernstorff/lumberman/commit/7cd78653f43ee9418d99e5e1477152bc3441e6f5))
+
+* misc. ([`1ada069`](https://github.com/MartinBernstorff/lumberman/commit/1ada06968b36c7842bf46a73b845ce1a1ca8ac16))
+
+
 ## v0.42.0 (2024-02-03)
 
 ### Feature
