@@ -2,6 +2,31 @@
 
 
 
+## v0.45.0 (2024-02-19)
+
+### Feature
+
+* feat(#235): self-assign on issue selection (#247)
+
+Fixes #235 ([`95fb56c`](https://github.com/MartinBernstorff/lumberman/commit/95fb56cd124f682a72a633d484edc679c9ea707b))
+
+* feat(#235): self-assign on issue selection
+
+Fixes #235 ([`bb4b552`](https://github.com/MartinBernstorff/lumberman/commit/bb4b552be23e20d240056b5eb2b835e3bd3ce388))
+
+* feat(#236): print issue content to terminal when selecting (#246)
+
+Fixes #236 ([`faa954e`](https://github.com/MartinBernstorff/lumberman/commit/faa954e75b9a4b3311cae7760437549001590497))
+
+* feat(#235): self-assign on issue selection
+
+Fixes #235 ([`dfa745b`](https://github.com/MartinBernstorff/lumberman/commit/dfa745b65fb0bf4336feff771b62650756359a73))
+
+* feat(#236): print issue content to terminal when selecting
+
+Fixes #236 ([`3407156`](https://github.com/MartinBernstorff/lumberman/commit/34071567b8f08024d34965c20123b6ad045ba382))
+
+
 ## v0.44.1 (2024-02-19)
 
 ### Fix
