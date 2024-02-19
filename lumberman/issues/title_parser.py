@@ -4,9 +4,9 @@ from typing import Optional
 
 
 @dataclass(frozen=True)
-class ParsedTitle:
+class IssueTitle:
     prefix: Optional[str]
-    description: str
+    content: str
 
 
 def sanitise_text_for_git(input_string: str) -> str:
@@ -32,13 +32,13 @@ def sanitise_text_for_git(input_string: str) -> str:
     return input_string.replace("--", "-")
 
 
-def parse_issue_title(issue_title: str) -> ParsedTitle:
+def parse_issue_title(issue_title: str) -> IssueTitle:
     # Get all string between start and first ":"
     try:
         prefix = re.findall(r"^(.*?)[\(:]", issue_title)[0]
     except IndexError:
         # No prefix found, return without prefix
-        return ParsedTitle(prefix=None, description=issue_title)
+        return IssueTitle(prefix=None, content=issue_title)
 
     description = re.findall(r": (.*)$", issue_title)[0]
-    return ParsedTitle(prefix=prefix, description=description)
+    return IssueTitle(prefix=prefix, content=description)

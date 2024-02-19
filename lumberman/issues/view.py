@@ -31,7 +31,7 @@ class DefaultIssueView(IssueView):
         return typer.prompt("Title")
 
     def _show_selection_dialog(self, issues: Sequence[Issue]) -> str:
-        issue_titles = [f"{issue.description} #{issue.entity_id}" for issue in issues]
+        issue_titles = [f"{issue.title.content} #{issue.entity_id}" for issue in issues]
         selection: str = iterfzf(
             [self.manual_prompt, *issue_titles, self.refresh_prompt, self.ten_latest_prompt]
         )  # type: ignore
@@ -46,8 +46,6 @@ class DefaultIssueView(IssueView):
         if selected_issue_title == self.manual_prompt:
             selected_issue_title = self._show_entry_dialog()
             parsed_title = parse_issue_title(selected_issue_title)
-            return Issue(
-                entity_id=None, prefix=parsed_title.prefix, description=parsed_title.description
-            )
+            return Issue(entity_id=None, title=parsed_title)
 
-        return next(issue for issue in issues if issue.description == selected_issue_title)
+        return next(issue for issue in issues if selected_issue_title in issue.title.content)

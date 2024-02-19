@@ -4,14 +4,13 @@ from dataclasses import dataclass
 from typing import Optional, Protocol
 
 from ..cli.subprocess_utils import shell_output
-from .title_parser import parse_issue_title
+from .title_parser import IssueTitle, parse_issue_title
 
 
 @dataclass(frozen=True)
 class Issue:
     entity_id: Optional[str]
-    prefix: Optional[str]
-    description: str
+    title: IssueTitle
 
 
 class IssueModel(Protocol):
@@ -35,11 +34,7 @@ class GithubIssueModel(IssueModel):
 
     def _values_to_issue(self, values: dict[str, str]) -> Issue:
         parsed_title = parse_issue_title(values["title"])
-        return Issue(
-            entity_id=str(values["number"]),
-            description=parsed_title.description,
-            prefix=parsed_title.prefix,
-        )
+        return Issue(entity_id=str(values["number"]), title=parsed_title)
 
     def get_latest_issues(self, in_progress_label: str) -> Sequence[Issue]:
         latest_issues = shell_output(
