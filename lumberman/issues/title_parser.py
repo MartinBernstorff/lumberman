@@ -8,6 +8,11 @@ class IssueTitle:
     prefix: Optional[str]
     content: str
 
+    def __str__(self) -> str:
+        if self.prefix:
+            return f"{self.prefix}: {self.content}"
+        return f"{self.content}"
+
 
 def sanitise_text_for_git(input_string: str) -> str:
     char2replacement = {

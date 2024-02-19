@@ -19,7 +19,9 @@ class TestIssueStringifyer:
     [
         TestIssueStringifyer(
             input_issue=Issue(
-                entity_id="42", title=IssueTitle(prefix="test-prefix", content="test-description")
+                entity_id="42",
+                title=IssueTitle(prefix="test-prefix", content="test-description"),
+                description="test-description",
             ),
             first_commit_str="""test-prefix(#42): test-description
 
@@ -28,14 +30,18 @@ Fixes #42""",
         ),
         TestIssueStringifyer(
             input_issue=Issue(
-                entity_id=None, title=IssueTitle(prefix=None, content="test-description")
+                entity_id=None,
+                title=IssueTitle(prefix=None, content="test-description"),
+                description="test-description",
             ),
             first_commit_str="""test-description""",
             branch_title="test-description",
         ),
         TestIssueStringifyer(
             input_issue=Issue(
-                entity_id="42", title=IssueTitle(prefix=None, content="test-description")
+                entity_id="42",
+                title=IssueTitle(prefix=None, content="test-description"),
+                description="test-description",
             ),
             first_commit_str="""(#42): test-description
 
@@ -44,7 +50,9 @@ Fixes #42""",
         ),
         TestIssueStringifyer(
             input_issue=Issue(
-                entity_id=None, title=IssueTitle(prefix="test-prefix", content="test-description")
+                entity_id=None,
+                title=IssueTitle(prefix="test-prefix", content="test-description"),
+                description="test-description",
             ),
             first_commit_str="""test-prefix: test-description""",
             branch_title="test-prefix/test-description",

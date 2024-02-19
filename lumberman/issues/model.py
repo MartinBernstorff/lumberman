@@ -11,6 +11,7 @@ from .title_parser import IssueTitle, parse_issue_title
 class Issue:
     entity_id: Optional[str]
     title: IssueTitle
+    description: str
 
 
 class IssueModel(Protocol):
@@ -34,11 +35,13 @@ class GithubIssueModel(IssueModel):
 
     def _values_to_issue(self, values: dict[str, str]) -> Issue:
         parsed_title = parse_issue_title(values["title"])
-        return Issue(entity_id=str(values["number"]), title=parsed_title)
+        return Issue(
+            entity_id=str(values["number"]), title=parsed_title, description=values["body"]
+        )
 
     def get_latest_issues(self, in_progress_label: str) -> Sequence[Issue]:
         latest_issues = shell_output(
-            f"gh issue list --limit 10 --json number,title --search 'is:open -label:{in_progress_label}'"
+            f"gh issue list --limit 10 --json number,title,body --search 'is:open -label:{in_progress_label}'"
         )
 
         if latest_issues is None:
@@ -49,7 +52,7 @@ class GithubIssueModel(IssueModel):
     def get_issues_assigned_to_me(self, in_progress_label: str) -> Sequence[Issue]:
         """Get issues assigned to current user on current repo"""
         my_issues_cmd = shell_output(
-            f"gh issue list --assignee @me  --search '-label:{in_progress_label}' --json number,title"
+            f"gh issue list --assignee @me  --search '-label:{in_progress_label}' --json number,title,body"
         )
 
         if my_issues_cmd is None:
