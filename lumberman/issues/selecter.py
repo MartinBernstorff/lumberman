@@ -6,13 +6,13 @@ import typer
 from iterfzf import iterfzf  # type: ignore
 from rich.console import Console
 
-from .model import Issue
+from .provider import Issue
 from .title_parser import parse_issue_title
 
 console = Console()
 
 
-class IssueView(Protocol):
+class IssueSelecter(Protocol):
     ten_latest_prompt: str
     manual_prompt: str
     refresh_prompt: str
@@ -22,7 +22,7 @@ class IssueView(Protocol):
 
 
 @dataclass(frozen=True)
-class DefaultIssueView(IssueView):
+class DefaultIssueSelecter(IssueSelecter):
     ten_latest_prompt: str = "Recent"
     manual_prompt: str = "Manual"
     refresh_prompt: str = "Refresh..."

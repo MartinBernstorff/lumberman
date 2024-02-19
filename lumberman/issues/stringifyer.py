@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Protocol
 
-from .model import Issue
+from .provider import Issue
 
 
 @dataclass(frozen=True)

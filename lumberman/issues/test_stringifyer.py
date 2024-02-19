@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 import pytest
 
-from .model import Issue
+from .provider import Issue
 from .stringifyer import DefaultIssueStringifyer
 from .title_parser import IssueTitle
 

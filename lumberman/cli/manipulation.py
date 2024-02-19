@@ -6,7 +6,7 @@ from rich import print
 from lumberman.cli.config import ISSUE_CONTROLLER, STACK_MANIPULATOR, STACK_NAVIGATOR, STACK_OP
 from lumberman.cli.location import Location, LocationCLIOption
 
-from ..issues.model import Issue
+from ..issues.provider import Issue
 from .markdown import print_md
 
 
@@ -37,7 +37,7 @@ def insert(location: Annotated[Optional[Location], typer.Argument()] = Location.
 
         STACK_MANIPULATOR.insert(selected_issue)
         ISSUE_CONTROLLER.label_issue_in_progress(selected_issue)
-        ISSUE_CONTROLLER.model.assign(selected_issue, assignee="@me")
+        ISSUE_CONTROLLER.provider.assign(selected_issue, assignee="@me")
 
 
 def move():
@@ -70,7 +70,7 @@ def fork(location: LocationCLIOption = Location.bottom):
 
         STACK_MANIPULATOR.fork(selected_issue)
         ISSUE_CONTROLLER.label_issue_in_progress(selected_issue)
-        ISSUE_CONTROLLER.model.assign(selected_issue, assignee="@me")
+        ISSUE_CONTROLLER.provider.assign(selected_issue, assignee="@me")
 
 
 def new():
@@ -81,7 +81,7 @@ def new():
         STACK_NAVIGATOR.trunk()
         STACK_MANIPULATOR.fork(selected_issue)
         ISSUE_CONTROLLER.label_issue_in_progress(selected_issue)
-        ISSUE_CONTROLLER.model.assign(selected_issue, assignee="@me")
+        ISSUE_CONTROLLER.provider.assign(selected_issue, assignee="@me")
 
 
 def sync(automerge: bool = False, draft: bool = False, squash: bool = False):
