@@ -2,6 +2,21 @@
 
 
 
+## v0.44.0 (2024-02-19)
+
+### Feature
+
+* feat: easier selection of manual prompt (#244) ([`8b3a35f`](https://github.com/MartinBernstorff/lumberman/commit/8b3a35f9c62fdb7a37d2464465e1f4829d13b88c))
+
+* feat: exact matching with fzf ([`2eed06a`](https://github.com/MartinBernstorff/lumberman/commit/2eed06a9eca8735967d3ba129f4bb130715b94d1))
+
+### Unknown
+
+* deps: remove questionary (#243) ([`3d6dfbe`](https://github.com/MartinBernstorff/lumberman/commit/3d6dfbe912a16e84f800a7f92f378bb8895f3677))
+
+* deps: remove questionary ([`ee2867b`](https://github.com/MartinBernstorff/lumberman/commit/ee2867bc5805268c2b5ed471b8e443d8279b1e6f))
+
+
 ## v0.43.0 (2024-02-19)
 
 ### Feature
