@@ -41,7 +41,7 @@
         {
             "label": "Lint",
             "type": "shell",
-            "command": "make lint",
+            "command": "source .venv/bin/activate; make lint",
             "presentation": {
                 "reveal": "always",
                 "clear": true,
@@ -53,7 +53,7 @@
         {
             "label": "Test",
             "type": "shell",
-            "command": "make test",
+            "command": "source .venv/bin/activate; make test",
             "presentation": {
                 "reveal": "always",
                 "clear": true,
@@ -64,7 +64,7 @@
         {
             "label": "Static type check",
             "type": "shell",
-            "command": "make types",
+            "command": "source .venv/bin/activate; make types",
             "presentation": {
                 "reveal": "always",
                 "clear": true,
