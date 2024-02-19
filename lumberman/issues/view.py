@@ -46,6 +46,6 @@ class DefaultIssueView(IssueView):
         if selected_issue_title == self.manual_prompt:
             selected_issue_title = self._show_entry_dialog()
             parsed_title = parse_issue_title(selected_issue_title)
-            return Issue(entity_id=None, title=parsed_title)
+            return Issue(entity_id=None, title=parsed_title, description="")
 
         return next(issue for issue in issues if issue.title.content in selected_issue_title)

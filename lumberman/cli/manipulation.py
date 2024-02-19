@@ -6,11 +6,23 @@ from rich import print
 from lumberman.cli.config import ISSUE_CONTROLLER, STACK_MANIPULATOR, STACK_NAVIGATOR, STACK_OP
 from lumberman.cli.location import Location, LocationCLIOption
 
+from ..issues.model import Issue
+from .markdown import print_md
+
+
+def _select_issue() -> Issue:
+    selected_issue = ISSUE_CONTROLLER.select_issue()
+    print_md(f"# {selected_issue.title!s}")
+    if selected_issue.description:
+        print_md("## Description")
+        print_md(f"> {selected_issue.description}")
+    return selected_issue
+
 
 def insert(location: Annotated[Optional[Location], typer.Argument()] = Location.up):
     """Prompt to create a new item on the current stack. Defaults to creating an item in between the current item and the next item."""
     with STACK_OP(sync_time="exit", sync_pull_requests=False):
-        selected_issue = ISSUE_CONTROLLER.select_issue()
+        selected_issue = _select_issue()
 
         if location == Location.trunk:
             STACK_NAVIGATOR.trunk()
@@ -42,7 +54,7 @@ def delete():
 def fork(location: LocationCLIOption = Location.bottom):
     """Fork into a new stack and add an item. Defaults to forking from the first item in the current stack."""
     with STACK_OP(sync_time="enter", sync_pull_requests=False):
-        selected_issue = ISSUE_CONTROLLER.select_issue()
+        selected_issue = _select_issue()
 
         if location == Location.bottom:
             STACK_NAVIGATOR.bottom()
@@ -62,7 +74,7 @@ def fork(location: LocationCLIOption = Location.bottom):
 def new():
     """Start a new stack on top of trunk."""
     with STACK_OP(sync_time="none", sync_pull_requests=False):
-        selected_issue = ISSUE_CONTROLLER.select_issue()
+        selected_issue = _select_issue()
         STACK_MANIPULATOR.sync(sync_pull_requests=False)
         STACK_NAVIGATOR.trunk()
         STACK_MANIPULATOR.fork(selected_issue)
