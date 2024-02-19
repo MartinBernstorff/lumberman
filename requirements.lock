@@ -10,6 +10,8 @@
 -e file:.
 click==8.1.7
     # via typer
+iterfzf==1.1.0.44.0
+    # via lumberman
 markdown-it-py==3.0.0
     # via rich
 mdurl==0.1.2

@@ -2,8 +2,8 @@ from collections.abc import Sequence
 from dataclasses import dataclass
 from typing import Protocol, Union
 
-import questionary
 import typer
+from iterfzf import iterfzf  # type: ignore
 from rich.console import Console
 
 from .model import Issue
@@ -31,17 +31,11 @@ class DefaultIssueView(IssueView):
         return typer.prompt("Title")
 
     def _show_selection_dialog(self, issues: Sequence[Issue]) -> str:
-        issue_titles = [issue.description for issue in issues]
-        return questionary.select(
-            "What's next? 🚀",
-            choices=[
-                self.refresh_prompt,
-                self.ten_latest_prompt,
-                self.manual_prompt,
-                *issue_titles,
-            ],
-            default=issue_titles[0] if issue_titles else self.manual_prompt,
-        ).ask()
+        issue_titles = [f"{issue.description} #{issue.entity_id}" for issue in issues]
+        selection: str = iterfzf(
+            [*issue_titles, self.refresh_prompt, self.ten_latest_prompt, self.manual_prompt]
+        )  # type: ignore
+        return selection
 
     def select_issue_dialog(self, issues: Sequence[Issue]) -> Union[Issue, str]:
         selected_issue_title = self._show_selection_dialog(issues=issues)
