@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from typing import Protocol
 
 from ..cli.subprocess_utils import interactive_cmd
-from ..issues.model import Issue
+from ..issues.provider import Issue
 from ..issues.stringifyer import IssueStringifyer
 
 

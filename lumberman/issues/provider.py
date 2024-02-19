@@ -14,7 +14,7 @@ class Issue:
     description: str
 
 
-class IssueModel(Protocol):
+class IssueProvider(Protocol):
     def setup(self) -> None:
         """Any setup needed, including installing CLI tools, etc."""
         ...
@@ -32,7 +32,7 @@ class IssueModel(Protocol):
         ...
 
 
-class GithubIssueModel(IssueModel):
+class GithubIssueProvider(IssueProvider):
     def setup(self) -> None:
         pass
 

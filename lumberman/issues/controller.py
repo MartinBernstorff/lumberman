@@ -4,14 +4,14 @@ from typing import Optional
 
 from rich.progress import Progress, SpinnerColumn, TextColumn
 
-from .model import Issue, IssueModel
-from .view import IssueView
+from .provider import Issue, IssueProvider
+from .selecter import IssueSelecter
 
 
 @dataclass(frozen=True)
 class IssueController:
-    model: IssueModel
-    view: IssueView
+    view: IssueSelecter
+    provider: IssueProvider
     in_progress_label: str
 
     def _get_latest_issues(self) -> Sequence[Issue]:
@@ -19,7 +19,9 @@ class IssueController:
             SpinnerColumn(), TextColumn("[progress.description]{task.description}"), transient=True
         ) as progress:
             progress.add_task("Getting latest issues", start=True)
-            latest_issues = self.model.get_latest_issues(in_progress_label=self.in_progress_label)
+            latest_issues = self.provider.get_latest_issues(
+                in_progress_label=self.in_progress_label
+            )
 
         if not latest_issues:
             return []
@@ -31,14 +33,14 @@ class IssueController:
             SpinnerColumn(), TextColumn("[progress.description]{task.description}"), transient=True
         ) as progress:
             progress.add_task("Getting issues assigned to you", start=True)
-            my_issues = self.model.get_issues_assigned_to_me(
+            my_issues = self.provider.get_issues_assigned_to_me(
                 in_progress_label=self.in_progress_label
             )
 
         return my_issues
 
     def label_issue_in_progress(self, issue: Issue):
-        self.model.label_issue(issue, label=self.in_progress_label)
+        self.provider.label_issue(issue, label=self.in_progress_label)
 
     def select_issue(self, issues: Optional[Sequence[Issue]] = None) -> Issue:
         if not issues:
