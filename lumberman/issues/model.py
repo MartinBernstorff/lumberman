@@ -28,6 +28,9 @@ class IssueModel(Protocol):
     def label_issue(self, issue: Issue, label: str) -> None:
         ...
 
+    def assign(self, issue: Issue, assignee: str) -> None:
+        ...
+
 
 class GithubIssueModel(IssueModel):
     def setup(self) -> None:
@@ -82,3 +85,7 @@ class GithubIssueModel(IssueModel):
                 self._add_label_to_issue(issue, label)
             except Exception as e:
                 raise RuntimeError(f"Error labeling issue {issue.entity_id} with {label}") from e
+
+    def assign(self, issue: Issue, assignee: str) -> None:
+        if issue.entity_id:
+            shell_output(f"gh issue edit {int(issue.entity_id)} --add-assignee {assignee}")
