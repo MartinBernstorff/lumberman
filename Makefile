@@ -32,3 +32,9 @@ validate_ci: ## Run all checks
 	@make types
 	## CI doesn't support local coverage report, so skipping full test
 	@make test
+
+docker_ci: ## Run all checks in docker
+	@echo "––– Running all checks in docker –––"
+	@docker rm -f lumberman || true
+	@docker build -t lumberman:latest -f Dockerfile .
+	@docker run lumberman make validate_ci

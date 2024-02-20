@@ -14,8 +14,4 @@ jobs:
 
       - name: Build CI container
         run: |
-          docker build -t lumberman:latest -f Dockerfile .
-      
-      - name: Run CI
-        run: |
-          docker run lumberman make validate_ci
+          make docker_ci
