@@ -32,9 +32,9 @@ Or the alias:
 lm
 ```
 
-## Example
-
 <img align="right" src="https://github.com/MartinBernstorff/lumberman/assets/8526086/11effdd6-39aa-4f05-8eba-2ea730278e10"/>
+
+## Case study
 
 Let's look at a case! Say you're working on branch A, and you notice you can add an optimisation by making a small configuration change. Previously, you would have to:
 
