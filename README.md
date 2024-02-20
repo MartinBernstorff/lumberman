@@ -1,4 +1,4 @@
-# Lumberman
+📍# Lumberman
 
 [![Open in Dev Container](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)][dev container]
 [![PyPI](https://img.shields.io/pypi/v/lumberman.svg)][pypi status]
@@ -13,7 +13,7 @@
 **Lumberman** aims to simplify [stacking](https://stacking.dev/). It's a CLI that helps you:
 
 - 🚀 Tying into your issue tracker and using it to name branches, so you can quickly get to work
-- 🧭 A consistent, carefully curated set of commands and constantly giving you feedback, so you can navigate with confidence
+- 🗺️ A consistent, carefully curated set of commands and constantly giving you feedback, so you can navigate with confidence
 - 🧠 Strategically synchronising local and remote when it makes sense, so you have to keep less state in your head the amount of state you have to keep in your head by 
 
 ## Installation
