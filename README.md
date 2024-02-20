@@ -16,6 +16,24 @@
 - 🧭 A consistent, carefully curated set of commands and constantly giving you feedback, so you can navigate with confidence
 - 🧠 Strategically synchronising local and remote when it makes sense, so you have to keep less state in your head the amount of state you have to keep in your head by 
 
+## Installation
+```bash
+pip install lumberman
+```
+
+## Usage
+To see inline documentation:
+```bash
+lumberman
+```
+
+Or the alias:
+```bash
+lm
+```
+
+## Example
+
 <img align="right" src="https://github.com/MartinBernstorff/lumberman/assets/8526086/11effdd6-39aa-4f05-8eba-2ea730278e10"/>
 
 Let's look at a case! Say you're working on branch A, and you notice you can add an optimisation by making a small configuration change. Previously, you would have to:
@@ -36,24 +54,6 @@ But with lumberman:
 1. Commit changes
 1. lm sync
 1. lm top
-
-## Installation
-```bash
-pip install lumberman
-```
-
-## Usage
-To see inline documentation:
-```bash
-lumberman
-```
-
-Or the alias:
-```bash
-lm
-```
-
-Or see the [documentation](./DOCS.md)
 
 ### Setting up a development environment
 #### Devcontainer
