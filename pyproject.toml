@@ -1,35 +1,15 @@
-[build-system]
-requires = ["setuptools>=61.0.0", "wheel", "setuptools_scm"]
-build-backend = "setuptools.build_meta"
-
 [project]
-name = "lumberman"
 version = "0.45.0"
+requires-python = ">=3.9"
+name = "lumberman"
+description = "lumberman"
+dependencies = ["typer==0.9.0", "rich==13.7.0", "iterfzf>=1.1.0.44.0"]
 authors = [{ name = "Martin Bernstorff", email = "martinbernstorff@gmail.com" }]
-description = "Lumberman"
 classifiers = [
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
-]
-requires-python = ">=3.9"
-dependencies = [
-    "typer==0.9.0",
-    "rich==13.7.0",
-    "iterfzf>=1.1.0.44.0",
-]
-
-[project.optional-dependencies]
-dev = [
-  "cruft",
-  "pyright==1.1.346",
-  "pytest==7.4.3",
-  "pytest-cov==4.1.0",
-  "pytest-xdist==3.5.0",
-  "pytest-sugar==0.9.7",
-  "diff-cover==8.0.3",
-  "ruff==0.1.13",
 ]
 
 [project.license]
@@ -43,117 +23,31 @@ lm = "lumberman.__main__:app"
 file = "README.md"
 content-type = "text/markdown"
 
+[tool]
+rye = { dev-dependencies = [
+  "diff-cover==8.0.3",
+  "pyright==1.1.350",
+  "pytest==8.0.1",
+  "pytest-cov==4.1.0",
+  "pytest-xdist==3.5.0",
+  "pytest-sugar==1.0.0",
+  "ruff==0.2.2",
+] }
+
 [project.urls]
 homepage = "https://github.com/MartinBernstorff/lumberman"
 repository = "https://github.com/MartinBernstorff/lumberman"
 documentation = "https://MartinBernstorff.github.io/lumberman/"
 
-[tool]
-rye = { dev-dependencies = [
-  "cruft>=2.15.0",
-  "pyright==1.1.346",
-  "pytest==7.4.3",
-  "pytest-cov==4.1.0",
-  "pytest-xdist==3.5.0",
-  "pytest-sugar==0.9.7",
-  "diff-cover==8.0.3",
-  "ruff==0.1.13",
-] }
-
-[tool.pyright]
-exclude = [".*venv*"]
-pythonPlatform = "Darwin"
-reportMissingTypeStubs = false
-
-[tool.ruff]
-line-length = 100
-# Enable pycodestyle (`E`) and Pyflakes (`F`) codes by default.
-select = [
-  "A",
-  "ANN",
-  "ARG",
-  "B",
-  "C4",
-  "COM",
-  "D417",
-  "E",
-  "ERA",
-  "F",
-  "I",
-  "ICN",
-  "NPY001",
-  "PD002",
-  "PIE",
-  "PLE",
-  "PLW",
-  "PT",
-  "UP",
-  "PTH",
-  "RSE",
-  "RET",
-  "RUF",
-  "SIM",
-  "W",
-]
-ignore = [
-  "ANN101",
-  "ANN401",
-  "E402",
-  "E501",
-  "F401",
-  "F841",
-  "RET504",
-  "COM812",
-  "COM819",
-  "W191",
-]
-ignore-init-module-imports = true
-# Allow autofix for all enabled rules (when `--fix`) is provided.
-unfixable = ["ERA"]
-# Exclude a variety of commonly ignored directories.
-exclude = [
-  ".bzr",
-  ".direnv",
-  ".eggs",
-  ".git",
-  ".hg",
-  ".nox",
-  ".pants.d",
-  ".pytype",
-  ".ruff_cache",
-  ".svn",
-  ".tox",
-  ".venv",
-  "__pypackages__",
-  "_build",
-  "buck-out",
-  "build",
-  "dist",
-  "node_modules",
-  "venv",
-  "__init__.py",
-  "docs/conf.py",
-]
-# Allow unused variables when underscore-prefixed.
-dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
-
-[tool.ruff.format]
-skip-magic-trailing-comma = true
-
-[tool.ruff.flake8-annotations]
-mypy-init-return = true
-suppress-none-returning = true
-
-[tool.ruff.isort]
-known-third-party = ["wandb"]
-split-on-trailing-comma = false
-
-[tool.ruff.mccabe]
-# Unlike Flake8, default to a complexity level of 10.
-max-complexity = 10
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel", "setuptools_scm"]
+build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
 include-package-data = true
+
+[tool.setuptools.package-data]
+"*" = ["py.typed", "*.pyi"]
 
 [tool.semantic_release]
 branch = "main"

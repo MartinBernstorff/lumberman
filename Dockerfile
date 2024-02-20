@@ -3,30 +3,14 @@ FROM python:3.9
 # Set the working directory to /app
 WORKDIR /app
 
-####################
-# Install Graphite #
-####################
-ENV NVM_DIR=$HOME/.nvm
-RUN mkdir -p $NVM_DIR
-ENV NODE_VERSION=18.2.0
+ENV RYE_HOME="/opt/rye"
+ENV PATH="$RYE_HOME/shims:$PATH"
+RUN curl -sSf https://rye-up.com/get | RYE_INSTALL_OPTION="--yes" RYE_TOOLCHAIN_VERSION=3.9 bash
+RUN rye config --set-bool behavior.use-uv=true
 
-# Install nvm with node and npm
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash \
-    && . $NVM_DIR/nvm.sh \
-    && nvm install $NODE_VERSION \
-    && nvm alias default $NODE_VERSION \
-    && nvm use default
-
-ENV NODE_PATH=$NVM_DIR/v$NODE_VERSION/lib/node_modules
-ENV PATH=$NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
-
-RUN npm install -g @withgraphite/graphite-cli@stable
-
-# Dev experience
 COPY Makefile ./
 COPY pyproject.toml ./
-RUN --mount=type=cache,target=/root/.cache/pip make install
+RUN make install
 
 COPY . /app
-RUN pip install -e .
-RUN rm -rf build
+RUN make install

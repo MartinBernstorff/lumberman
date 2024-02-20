@@ -1,16 +1,17 @@
-from typing import Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Optional
 
-import typer
 from rich import print
 
 from lumberman.cli.config import ISSUE_CONTROLLER, STACK_MANIPULATOR, STACK_NAVIGATOR, STACK_OP
 from lumberman.cli.location import Location, LocationCLIOption
 
-from ..issues.provider import Issue
 from .markdown import print_md
 
+if TYPE_CHECKING:
+    from ..issues.provider import Issue
 
-def _select_issue() -> Issue:
+
+def _select_issue() -> "Issue":
     selected_issue = ISSUE_CONTROLLER.select_issue()
     print_md(f"# {selected_issue.title!s}")
     if selected_issue.description:
@@ -19,7 +20,7 @@ def _select_issue() -> Issue:
     return selected_issue
 
 
-def insert(location: Annotated[Optional[Location], typer.Argument()] = Location.up):
+def insert(location: Annotated[Optional[Location], "typer.Argument()"] = Location.up):
     """Prompt to create a new item on the current stack. Defaults to creating an item in between the current item and the next item."""
     with STACK_OP(sync_time="exit", sync_pull_requests=False):
         selected_issue = _select_issue()

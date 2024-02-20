@@ -1,19 +1,21 @@
 from dataclasses import dataclass
-from typing import Protocol
+from typing import TYPE_CHECKING, Protocol
 
 from ..cli.subprocess_utils import interactive_cmd
-from ..issues.provider import Issue
-from ..issues.stringifyer import IssueStringifyer
+
+if TYPE_CHECKING:
+    from ..issues.provider import Issue
+    from ..issues.stringifyer import IssueStringifyer
 
 
 class QueueManipulator(Protocol):
-    issue_parser: IssueStringifyer
+    issue_parser: "IssueStringifyer"
 
-    def fork(self, issue: Issue):
+    def fork(self, issue: "Issue"):
         """Create a new item, forking from the current item."""
         ...
 
-    def insert(self, issue: Issue):
+    def insert(self, issue: "Issue"):
         """Create a new item. If an item exists above the current item, insert between them."""
         ...
 
@@ -35,9 +37,9 @@ class QueueManipulator(Protocol):
 
 @dataclass(frozen=True)
 class GraphiteManipulator(QueueManipulator):
-    issue_parser: IssueStringifyer
+    issue_parser: "IssueStringifyer"
 
-    def _new_branch(self, insert: bool, issue: Issue):
+    def _new_branch(self, insert: bool, issue: "Issue"):
         issue_info = self.issue_parser.get_issue_info(issue)
 
         create_command = f'gt create "{issue_info.branch_title}" -m "{issue_info.first_commit_str}" --no-interactive'
@@ -48,10 +50,10 @@ class GraphiteManipulator(QueueManipulator):
         interactive_cmd("git add -A")
         interactive_cmd(f'git commit --allow-empty -m "{issue_info.first_commit_str}"')
 
-    def fork(self, issue: Issue):
+    def fork(self, issue: "Issue"):
         self._new_branch(insert=False, issue=issue)
 
-    def insert(self, issue: Issue):
+    def insert(self, issue: "Issue"):
         self._new_branch(insert=True, issue=issue)
 
     def delete(self):
