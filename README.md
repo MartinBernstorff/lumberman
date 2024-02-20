@@ -10,11 +10,38 @@
 [documentation]: https://MartinBernstorff.github.io/lumberman/
 [roadmap]: https://github.com/users/MartinBernstorff/projects/5
 
+**Lumberman** aims to simplify [stacking](https://stacking.dev/). It's a CLI that helps you:
+
+- 🚀 Tying into your issue tracker and using it to name branches, so you can quickly get to work
+- 🧭 A consistent, carefully curated set of commands and constantly giving you feedback, so you can navigate with confidence
+- 🧠 Strategically synchronising local and remote when it makes sense, so you have to keep less state in your head the amount of state you have to keep in your head by 
+
+<img align="right" src="https://github.com/MartinBernstorff/lumberman/assets/8526086/11effdd6-39aa-4f05-8eba-2ea730278e10"/>
+
+Let's look at a case! Say you're working on branch A, and you notice you can add an optimisation by making a small configuration change. Previously, you would have to:
+
+1. Switch from branch A to main
+1. Pull main to ensure you're aligned with remote
+1. Create a new branch from main
+1. Name the branch (Patch)
+1. Commit changes
+1. Push
+1. Create a PR
+1. Switch to branch A
+1. Merge the Patch-cfg branch into branch A
+
+But with lumberman:
+
+1. lm insert bottom
+1. Commit changes
+1. lm sync
+1. lm top
 
 ## Installation
 ```bash
 pip install lumberman
 ```
+
 ## Usage
 To see inline documentation:
 ```bash
