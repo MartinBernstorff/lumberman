@@ -18,7 +18,7 @@
 
 ## Installation
 ```bash
-pip install lumberman
+pipx install lumberman
 ```
 
 ## Usage
