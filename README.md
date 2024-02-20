@@ -1,4 +1,4 @@
-📍# Lumberman
+# Lumberman
 
 [![Open in Dev Container](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)][dev container]
 [![PyPI](https://img.shields.io/pypi/v/lumberman.svg)][pypi status]
