@@ -1,6 +1,5 @@
-from collections.abc import Sequence
 from dataclasses import dataclass
-from typing import Protocol, Union
+from typing import TYPE_CHECKING, Protocol, Union
 
 import typer
 from iterfzf import iterfzf  # type: ignore
@@ -8,6 +7,9 @@ from rich.console import Console
 
 from .provider import Issue
 from .title_parser import parse_issue_title
+
+if TYPE_CHECKING:
+    from collections.abc import Sequence
 
 console = Console()
 
@@ -17,7 +19,7 @@ class IssueSelecter(Protocol):
     manual_prompt: str
     refresh_prompt: str
 
-    def select_issue_dialog(self, issues: Sequence[Issue]) -> Union[Issue, str]:
+    def select_issue_dialog(self, issues: "Sequence[Issue]") -> Union[Issue, str]:
         ...
 
 
@@ -30,14 +32,14 @@ class DefaultIssueSelecter(IssueSelecter):
     def _show_entry_dialog(self) -> str:
         return typer.prompt("Title")
 
-    def _show_selection_dialog(self, issues: Sequence[Issue]) -> str:
+    def _show_selection_dialog(self, issues: "Sequence[Issue]") -> str:
         issue_titles = [f"{issue.title.content} #{issue.entity_id}" for issue in issues]
         selection: str = iterfzf(
             [self.manual_prompt, *issue_titles, self.refresh_prompt, self.ten_latest_prompt]
         )  # type: ignore
         return selection
 
-    def select_issue_dialog(self, issues: Sequence[Issue]) -> Union[Issue, str]:
+    def select_issue_dialog(self, issues: "Sequence[Issue]") -> Union[Issue, str]:
         selected_issue_title = self._show_selection_dialog(issues=issues)
 
         if selected_issue_title in [self.refresh_prompt, self.ten_latest_prompt]:

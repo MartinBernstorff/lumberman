@@ -1,10 +1,12 @@
 import json
-from collections.abc import Sequence
 from dataclasses import dataclass
-from typing import Optional, Protocol
+from typing import TYPE_CHECKING, Optional, Protocol
 
 from ..cli.subprocess_utils import shell_output
 from .title_parser import IssueTitle, parse_issue_title
+
+if TYPE_CHECKING:
+    from collections.abc import Sequence
 
 
 @dataclass(frozen=True)
@@ -19,10 +21,10 @@ class IssueProvider(Protocol):
         """Any setup needed, including installing CLI tools, etc."""
         ...
 
-    def get_latest_issues(self, in_progress_label: str) -> Sequence[Issue]:
+    def get_latest_issues(self, in_progress_label: str) -> "Sequence[Issue]":
         ...
 
-    def get_issues_assigned_to_me(self, in_progress_label: str) -> Sequence[Issue]:
+    def get_issues_assigned_to_me(self, in_progress_label: str) -> "Sequence[Issue]":
         ...
 
     def label_issue(self, issue: Issue, label: str) -> None:
@@ -42,7 +44,7 @@ class GithubIssueProvider(IssueProvider):
             entity_id=str(values["number"]), title=parsed_title, description=values["body"]
         )
 
-    def get_latest_issues(self, in_progress_label: str) -> Sequence[Issue]:
+    def get_latest_issues(self, in_progress_label: str) -> "Sequence[Issue]":
         latest_issues = shell_output(
             f"gh issue list --limit 10 --json number,title,body --search 'is:open -label:{in_progress_label}'"
         )
@@ -52,7 +54,7 @@ class GithubIssueProvider(IssueProvider):
 
         return self._parse_github_json_str(latest_issues)
 
-    def get_issues_assigned_to_me(self, in_progress_label: str) -> Sequence[Issue]:
+    def get_issues_assigned_to_me(self, in_progress_label: str) -> "Sequence[Issue]":
         """Get issues assigned to current user on current repo"""
         my_issues_cmd = shell_output(
             f"gh issue list --assignee @me  --search '-label:{in_progress_label}' --json number,title,body"
@@ -63,7 +65,7 @@ class GithubIssueProvider(IssueProvider):
 
         return self._parse_github_json_str(my_issues_cmd)
 
-    def _parse_github_json_str(self, issue_str: str) -> Sequence[Issue]:
+    def _parse_github_json_str(self, issue_str: str) -> "Sequence[Issue]":
         values = json.loads(issue_str)
         parsed_output = [self._values_to_issue(v) for v in values]
         return parsed_output

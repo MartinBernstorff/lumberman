@@ -1,17 +1,19 @@
 from dataclasses import dataclass
-from types import TracebackType
-from typing import Literal, Union
+from typing import TYPE_CHECKING, Literal, Union
 
 from rich import print
 
-from ..stack.manipulator import QueueManipulator
-from ..stack.navigator import QueueNavigator
+if TYPE_CHECKING:
+    from types import TracebackType
+
+    from ..stack.manipulator import QueueManipulator
+    from ..stack.navigator import QueueNavigator
 
 
 @dataclass
 class QueueOperation:
-    stack_manipulator: QueueManipulator
-    stack_navigator: QueueNavigator
+    stack_manipulator: "QueueManipulator"
+    stack_navigator: "QueueNavigator"
     sync_time: Literal["enter", "exit", "none"] = "enter"
     sync_pull_requests: bool = True
 
@@ -28,7 +30,7 @@ class QueueOperation:
             self.stack_manipulator.sync(sync_pull_requests=self.sync_pull_requests)
 
     def __exit__(
-        self, exc_type: Union[type, None], exc_val: Exception, exc_tb: TracebackType
+        self, exc_type: Union[type, None], exc_val: Exception, exc_tb: "TracebackType"
     ) -> None:
         if self.sync_time == "exit" and exc_type is not None:
             self.stack_manipulator.sync(sync_pull_requests=self.sync_pull_requests)

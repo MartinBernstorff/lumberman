@@ -1,12 +1,14 @@
 import re
-from collections.abc import Sequence
 from dataclasses import dataclass
-from typing import Callable
+from typing import TYPE_CHECKING, Callable
 
 import typer
 
 from lumberman.cli import manipulation as man
 from lumberman.cli import navigation as nav
+
+if TYPE_CHECKING:
+    from collections.abc import Sequence
 
 app = typer.Typer(
     name="[l]umber[m]an",
@@ -26,7 +28,7 @@ class Command:
 @dataclass(frozen=True)
 class CommandSection:
     name: str
-    commands: Sequence[Command]
+    commands: "Sequence[Command]"
 
 
 commands = [

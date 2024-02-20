@@ -1,9 +1,12 @@
 from dataclasses import dataclass
-from types import TracebackType
+from typing import TYPE_CHECKING
 
 import typer
 
 from lumberman.cli.subprocess_utils import shell_output
+
+if TYPE_CHECKING:
+    from types import TracebackType
 
 
 def has_uncommitted_changes() -> bool:
@@ -41,7 +44,7 @@ class StagingMigrater:
         shell_output("git stash")
         self.has_stashed = True
 
-    def __exit__(self, exc_type: type, exc_val: Exception, exc_tb: TracebackType) -> None:
+    def __exit__(self, exc_type: type, exc_val: Exception, exc_tb: "TracebackType") -> None:
         """Applies the latest stash"""
         if not self.has_stashed:
             return

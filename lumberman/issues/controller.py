@@ -1,20 +1,22 @@
-from collections.abc import Sequence
 from dataclasses import dataclass
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
 from rich.progress import Progress, SpinnerColumn, TextColumn
 
-from .provider import Issue, IssueProvider
-from .selecter import IssueSelecter
+if TYPE_CHECKING:
+    from collections.abc import Sequence
+
+    from .provider import Issue, IssueProvider
+    from .selecter import IssueSelecter
 
 
 @dataclass(frozen=True)
 class IssueController:
-    view: IssueSelecter
-    provider: IssueProvider
+    view: "IssueSelecter"
+    provider: "IssueProvider"
     in_progress_label: str
 
-    def _get_latest_issues(self) -> Sequence[Issue]:
+    def _get_latest_issues(self) -> "Sequence[Issue]":
         with Progress(
             SpinnerColumn(), TextColumn("[progress.description]{task.description}"), transient=True
         ) as progress:
@@ -28,7 +30,7 @@ class IssueController:
 
         return latest_issues
 
-    def _get_my_issues(self) -> Sequence[Issue]:
+    def _get_my_issues(self) -> "Sequence[Issue]":
         with Progress(
             SpinnerColumn(), TextColumn("[progress.description]{task.description}"), transient=True
         ) as progress:
@@ -39,10 +41,10 @@ class IssueController:
 
         return my_issues
 
-    def label_issue_in_progress(self, issue: Issue):
+    def label_issue_in_progress(self, issue: "Issue"):
         self.provider.label_issue(issue, label=self.in_progress_label)
 
-    def select_issue(self, issues: Optional[Sequence[Issue]] = None) -> Issue:
+    def select_issue(self, issues: Optional["Sequence[Issue]"] = None) -> "Issue":
         if not issues:
             issues = [*self._get_my_issues(), *self._get_latest_issues()]
 
