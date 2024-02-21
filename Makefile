@@ -5,6 +5,9 @@ MAKEFLAGS = --no-print-directory
 install:
 	rye sync
 
+quicksync:
+	rye sync --no-lock
+
 test:
 	@rye run pytest --cov=$(SRC_PATH) $(SRC_PATH) --cov-report xml:.coverage.xml --cov-report lcov:.coverage.lcov
 
@@ -38,3 +41,6 @@ docker_ci: ## Run all checks in docker
 	@docker rm -f lumberman || true
 	@docker build -t lumberman:latest -f Dockerfile .
 	@docker run lumberman make validate_ci
+
+pr: ## Submit a PR
+	@rye run lm sync --squash --automerge
