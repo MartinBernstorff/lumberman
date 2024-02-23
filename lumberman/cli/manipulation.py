@@ -26,15 +26,15 @@ def insert(location: LocationCLIOption = Location.up):
     with STACK_OP(sync_time="exit", sync_pull_requests=False):
         selected_issue = _select_issue()
 
-        if location.to_full_location() == Location.trunk:
+        if location.to_full_location == Location.trunk:
             STACK_NAVIGATOR.trunk()
-        if location.to_full_location() == Location.bottom:
+        if location.to_full_location == Location.bottom:
             STACK_NAVIGATOR.bottom()
-        if location.to_full_location() == Location.top:
+        if location.to_full_location == Location.top:
             STACK_NAVIGATOR.top()
-        if location.to_full_location() == Location.up:
+        if location.to_full_location == Location.up:
             pass
-        if location.to_full_location() == Location.down:
+        if location.to_full_location == Location.down:
             STACK_NAVIGATOR.down()
 
         STACK_MANIPULATOR.insert(selected_issue)
@@ -59,15 +59,15 @@ def fork(location: LocationCLIOption = Location.bottom):
     with STACK_OP(sync_time="enter", sync_pull_requests=False):
         selected_issue = _select_issue()
 
-        if location.to_full_location() == Location.bottom:
+        if location.to_full_location == Location.bottom:
             STACK_NAVIGATOR.bottom()
             STACK_NAVIGATOR.up()
-        elif location.to_full_location() == Location.top:
+        elif location.to_full_location == Location.top:
             STACK_NAVIGATOR.top()
             STACK_NAVIGATOR.down()
-        elif location.to_full_location() == Location.up:
+        elif location.to_full_location == Location.up:
             pass  # No need to do anything, already in the correct location
-        elif location.to_full_location() == Location.down:
+        elif location.to_full_location == Location.down:
             STACK_NAVIGATOR.down()
 
         STACK_MANIPULATOR.fork(selected_issue)

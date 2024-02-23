@@ -15,6 +15,7 @@ class Location(str, enum.Enum):
     trunk = "trunk"
     tr = "tr"
 
+    @property
     def to_full_location(self) -> "Location":
         if self == Location.to:
             return Location.top
@@ -24,7 +25,7 @@ class Location(str, enum.Enum):
             return Location.bottom
         if self == Location.tr:
             return Location.trunk
-        raise ValueError(f"Unknown location {self}")
+        return self
 
 
 LocationCLIOption = Annotated[Location, typer.Argument()]
