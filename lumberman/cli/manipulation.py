@@ -16,7 +16,8 @@ def _select_issue() -> "Issue":
     print_md(f"# {selected_issue.title!s}")
     if selected_issue.description:
         print_md("## Description")
-        print_md(f"> {selected_issue.description}")
+        description = "\n".join([f"> {line}" for line in selected_issue.description.split("\n")])
+        print_md(description)
     return selected_issue
 
 
