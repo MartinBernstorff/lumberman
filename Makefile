@@ -13,6 +13,7 @@ test:
 
 test-with-coverage: 
 	@echo "––– Testing –––"
+	@make test
 	@rye run diff-cover .coverage.xml
 	@echo "✅✅✅ Tests passed ✅✅✅"
 
@@ -26,7 +27,7 @@ lint: ## Format code
 
 types: ## Type-check code
 	@echo "––– Type-checking –––"
-	@rye run pyright $(SRC_PATH)
+	@rye run pyright .
 	@echo "✅✅✅ Types ✅✅✅"
 
 validate_ci: ## Run all checks
