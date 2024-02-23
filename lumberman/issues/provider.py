@@ -27,6 +27,9 @@ class IssueProvider(Protocol):
     def get_issues_assigned_to_me(self, in_progress_label: str) -> "Sequence[Issue]":
         ...
 
+    def get_current_issue(self) -> Optional[Issue]:
+        ...
+
     def label_issue(self, issue: Issue, label: str) -> None:
         ...
 
@@ -75,6 +78,20 @@ class GithubIssueProvider(IssueProvider):
 
     def _add_label_to_issue(self, issue: Issue, label: str) -> None:
         shell_output(f'gh issue edit "{issue.entity_id}" --add-label "{label}"')
+
+    def get_current_issue(self) -> Optional[Issue]:
+        current_branch: str = shell_output("git rev-parse --abbrev-ref HEAD")  # type: ignore
+
+        branch_items = current_branch.split("/")
+
+        if len(branch_items) != 3:
+            return None
+
+        return Issue(
+            entity_id=branch_items[1],
+            title=IssueTitle(prefix=branch_items[0], content=branch_items[2]),
+            description="",
+        )
 
     def label_issue(self, issue: Issue, label: str) -> None:
         if not issue.entity_id:
