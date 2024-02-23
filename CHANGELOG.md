@@ -2,6 +2,19 @@
 
 
 
+## v0.46.0 (2024-02-23)
+
+### Feature
+
+* feat(#259): add label on PR (#260)
+
+Fixes #259 ([`85c9429`](https://github.com/MartinBernstorff/lumberman/commit/85c94291d61a00c9a39fbe3db02bb7aba9e9634b))
+
+* feat(#259): add label on PR
+
+Fixes #259 ([`12ae39d`](https://github.com/MartinBernstorff/lumberman/commit/12ae39d62544b0ff07fd86154bcf6b1cdc329ebd))
+
+
 ## v0.45.1 (2024-02-23)
 
 ### Fix
