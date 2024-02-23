@@ -86,14 +86,21 @@ def new():
         ISSUE_CONTROLLER.provider.assign(selected_issue, assignee="@me")
 
 
-def sync(automerge: bool = False, draft: bool = False, squash: bool = False):
+def sync(
+    automerge: bool = False, draft: bool = False, squash: bool = False, add_pr_label: bool = True
+):
     """Synchronize all state, ensuring the stack is internally in sync, and in sync with the remote. Creates PRs if needed."""
     with STACK_OP(sync_time="none", sync_pull_requests=False):
         STACK_MANIPULATOR.sync(
             automerge=automerge, squash=squash, draft=draft, sync_pull_requests=True
         )
+
+        if add_pr_label:
+            current_issue = ISSUE_CONTROLLER.provider.get_current_issue()
+            if current_issue:
+                ISSUE_CONTROLLER.provider.label_issue(current_issue, "has-pr")
         print(":rocket: [bold green]Stack synced![/bold green]")
 
 
 if __name__ == "__main__":
-    move()
+    sync()
