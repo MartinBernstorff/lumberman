@@ -2,6 +2,49 @@
 
 
 
+## v0.45.1 (2024-02-23)
+
+### Fix
+
+* fix(#252): quote every line in issue description when outputting to terminal (#256)
+
+Fixes #252 ([`38d860d`](https://github.com/MartinBernstorff/lumberman/commit/38d860ddbb31537e12bb44d7408878389e131dd8))
+
+* fix(#252): quote every line in issue description when outputting to terminal
+
+Fixes #252 ([`7d91ebb`](https://github.com/MartinBernstorff/lumberman/commit/7d91ebb9d31b5143e4379075e78a6c73760e159f))
+
+### Refactor
+
+* refactor: remove mvc terminology (#248) ([`1b6adf3`](https://github.com/MartinBernstorff/lumberman/commit/1b6adf33e646a793b63b3cf43d05ccf31eb5a500))
+
+### Unknown
+
+* dev: update copier (#254) ([`3e6ce29`](https://github.com/MartinBernstorff/lumberman/commit/3e6ce29df2d8e0f00c1a3028ef6b00a453fa57e1))
+
+* dev: update copier ([`a8b4d16`](https://github.com/MartinBernstorff/lumberman/commit/a8b4d166f1c3d32d7214db1b81d43483bad5478c))
+
+* update .copier-answers.yml and Dockerfile ([`9de3dbb`](https://github.com/MartinBernstorff/lumberman/commit/9de3dbbe670de9c46696d80947f6307cbcd0aeb4))
+
+* dev: update devcontainer (#250) ([`8f18f28`](https://github.com/MartinBernstorff/lumberman/commit/8f18f28aae404624469d4ef75bffd99898e34dbc))
+
+* Update README.md ([`9842102`](https://github.com/MartinBernstorff/lumberman/commit/98421022d5ccd044669f1bd4a4cacfd2be14ad79))
+
+* Update README.md ([`4d48351`](https://github.com/MartinBernstorff/lumberman/commit/4d483519a21d3e66e9d520e592f5dc739bc2587c))
+
+* Update README.md ([`b403718`](https://github.com/MartinBernstorff/lumberman/commit/b403718018893cec096e6bef7e2f3e9a6c01d4c2))
+
+* Update README.md ([`deaf1d6`](https://github.com/MartinBernstorff/lumberman/commit/deaf1d64a0194cb83bf7e485c1abd9ab80e58bd3))
+
+* Update README.md ([`529f594`](https://github.com/MartinBernstorff/lumberman/commit/529f594b65f1d030fa6933a1fdba87b24bd300c4))
+
+* Update README.md ([`1275bc3`](https://github.com/MartinBernstorff/lumberman/commit/1275bc3c026ff927660d78d3184a0c33350a3f59))
+
+* Update README.md ([`35a4b14`](https://github.com/MartinBernstorff/lumberman/commit/35a4b14333ee6824178069eb6cef2b72f94d9ad3))
+
+* dev: migrate to copier (#249) ([`b3e01aa`](https://github.com/MartinBernstorff/lumberman/commit/b3e01aa1497690a27e1de2c219f503a2fd948a44))
+
+
 ## v0.45.0 (2024-02-19)
 
 ### Feature
@@ -25,6 +68,10 @@ Fixes #235 ([`dfa745b`](https://github.com/MartinBernstorff/lumberman/commit/dfa
 * feat(#236): print issue content to terminal when selecting
 
 Fixes #236 ([`3407156`](https://github.com/MartinBernstorff/lumberman/commit/34071567b8f08024d34965c20123b6ad045ba382))
+
+### Refactor
+
+* refactor: remove mvc terminology ([`b4b874f`](https://github.com/MartinBernstorff/lumberman/commit/b4b874f69839f2443ddef51e2774df03bbd7e7ad))
 
 
 ## v0.44.1 (2024-02-19)
