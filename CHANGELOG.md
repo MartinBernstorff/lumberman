@@ -2,6 +2,21 @@
 
 
 
+## v0.46.1 (2024-02-27)
+
+### Fix
+
+* fix(#261): add shorthands for locations (#262)
+
+Fixes #261 ([`13d7446`](https://github.com/MartinBernstorff/lumberman/commit/13d744684125736b8b1fda0b3f1bec8d2f148749))
+
+### Unknown
+
+* bug(#261): shorthand for top not working
+
+Fixes #261 ([`7542490`](https://github.com/MartinBernstorff/lumberman/commit/7542490860d6f6cb62f4dbff337caab92ff3e923))
+
+
 ## v0.46.0 (2024-02-23)
 
 ### Feature
