@@ -58,18 +58,21 @@ commands = [
 
 shorthands: set[str] = set()
 
+# Add the commands and shorthands to the app
 for section in commands:
     for command in section.commands:
+        # Add the combined command, e.g. [i]nsert
         app.command(name=command.name, rich_help_panel=section.name)(command.fn)
 
+        # Handle shorthand, e.g. i
         command_shorthand = re.findall(r"\[(.*?)\]", command.name)[0]
-
         if command_shorthand in shorthands:
             raise ValueError(f"Duplicate shorthand '{command_shorthand}'")
 
         shorthands.add(command_shorthand)
         app.command(name=command_shorthand, hidden=True)(command.fn)
 
+        # Add the full command, e.g. insert
         command_full = command.name.replace("[", "").replace("]", "")
         app.command(name=command_full, hidden=True)(command.fn)
 
