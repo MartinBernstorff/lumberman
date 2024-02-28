@@ -50,10 +50,6 @@ class IssueController:
 
         selected_issue = self.view.select_issue_dialog(issues)
 
-        if selected_issue is self.view.refresh_prompt:
-            return self.select_issue()
-        if selected_issue is self.view.ten_latest_prompt:
-            return self.select_issue(self._get_latest_issues())
         if isinstance(selected_issue, str):
             raise NotImplementedError(f"Command {selected_issue} not implemented")
 

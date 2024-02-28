@@ -15,9 +15,6 @@ console = Console()
 
 
 class IssueSelecter(Protocol):
-    ten_latest_prompt: str
-    refresh_prompt: str
-
     def select_issue_dialog(self, issues: "Sequence[Issue]") -> Union[Issue, str]:
         ...
 
@@ -27,27 +24,21 @@ class FZFSelection:
     input_str: str
     selected_str: str
 
-    def any_string(self) -> str:
+    def either(self) -> str:
         return self.selected_str or self.input_str
 
 
 @dataclass(frozen=True)
 class DefaultIssueSelecter(IssueSelecter):
-    ten_latest_prompt: str = "Recent"
-    refresh_prompt: str = "Refresh..."
-
     def _show_selection_dialog(self, issues: "Sequence[Issue]") -> FZFSelection:
         issue_titles = [f"{issue.title.content} #{issue.entity_id}" for issue in issues]
         typer.echo("Select an issue or enter a new issue title.")
-        selection: tuple(str, str) = iterfzf([*issue_titles, self.refresh_prompt], print_query=True)  # type: ignore
+        selection: tuple(str, str) = iterfzf([*issue_titles], print_query=True)  # type: ignore
         return FZFSelection(input_str=selection[0], selected_str=selection[1])  # type: ignore
 
     def select_issue_dialog(self, issues: "Sequence[Issue]") -> Union[Issue, str]:
-        selected_issue = self._show_selection_dialog(issues=issues)
-        selected_issue_title = selected_issue.any_string()
-
-        if selected_issue_title in [self.refresh_prompt]:
-            return selected_issue_title
+        fzf_selection = self._show_selection_dialog(issues=issues)
+        selected_issue_title = fzf_selection.either()
 
         selected_issue_from_list = [i for i in issues if i.title.content == selected_issue_title]
         if selected_issue_from_list:
