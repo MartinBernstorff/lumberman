@@ -41,9 +41,6 @@ class IssueController:
 
         return my_issues
 
-    def label_issue_in_progress(self, issue: "GithubIssue"):
-        self.provider.label_issue(issue, label=self.in_progress_label)
-
     def select_issue(self, issues: Optional["Sequence[GithubIssue]"] = None) -> "GithubIssue":
         if not issues:
             issues = [*self._get_my_issues(), *self._get_latest_issues()]

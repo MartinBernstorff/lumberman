@@ -55,8 +55,8 @@ def insert(location: LocationCLIOption = Location.up):
             STACK_NAVIGATOR.down()
 
         STACK_MANIPULATOR.insert(selected_issue)
-        ISSUE_CONTROLLER.label_issue_in_progress(selected_issue)
-        ISSUE_CONTROLLER.provider.assign(selected_issue, assignee="@me")
+        selected_issue.label("in-progress")
+        selected_issue.assign(assignee="@me")
 
 
 def move():
@@ -88,8 +88,8 @@ def fork(location: LocationCLIOption = Location.bottom):
             STACK_NAVIGATOR.down()
 
         STACK_MANIPULATOR.fork(selected_issue)
-        ISSUE_CONTROLLER.label_issue_in_progress(selected_issue)
-        ISSUE_CONTROLLER.provider.assign(selected_issue, assignee="@me")
+        selected_issue.label("in-progress")
+        selected_issue.assign(assignee="@me")
 
 
 def new():
@@ -99,8 +99,8 @@ def new():
         STACK_MANIPULATOR.sync(sync_pull_requests=False)
         STACK_NAVIGATOR.trunk()
         STACK_MANIPULATOR.fork(selected_issue)
-        ISSUE_CONTROLLER.label_issue_in_progress(selected_issue)
-        ISSUE_CONTROLLER.provider.assign(selected_issue, assignee="@me")
+        selected_issue.label("in-progress")
+        selected_issue.assign(assignee="@me")
 
 
 def sync(
@@ -115,7 +115,7 @@ def sync(
         if add_pr_label:
             current_issue = ISSUE_CONTROLLER.provider.get_current_issue()
             if current_issue:
-                ISSUE_CONTROLLER.provider.label_issue(current_issue, "has-pr")
+                current_issue.label("has-pr")
         print(":rocket: [bold green]Stack synced![/bold green]")
 
 
