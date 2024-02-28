@@ -8,16 +8,33 @@ from lumberman.cli.location import Location, LocationCLIOption
 from .markdown import print_md
 
 if TYPE_CHECKING:
-    from ..issues.provider import Issue
+    from lumberman.issues.provider import IssueComment
+
+    from ..issues.provider import GithubIssue
 
 
-def _select_issue() -> "Issue":
+def _markdown_quote_string(string: str) -> str:
+    return "\n".join([f"> {line}" for line in string.split("\n")])
+
+
+def _print_comment(comment: "IssueComment"):
+    print_md(f"## {comment.author_login}")
+    print_md(_markdown_quote_string(comment.body))
+
+
+def _select_issue() -> "GithubIssue":
     selected_issue = ISSUE_CONTROLLER.select_issue()
     print_md(f"# {selected_issue.title!s}")
+
     if selected_issue.description:
         print_md("## Description")
-        description = "\n".join([f"> {line}" for line in selected_issue.description.split("\n")])
+        description = _markdown_quote_string(selected_issue.description)
         print_md(description)
+
+    if comments := selected_issue.get_comments():
+        for comment in comments:
+            _print_comment(comment)
+
     return selected_issue
 
 
