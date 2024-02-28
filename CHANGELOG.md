@@ -2,6 +2,19 @@
 
 
 
+## v0.49.0 (2024-02-28)
+
+### Feature
+
+* feat(#257): print entire issue thread (#267)
+
+Fixes #257 ([`848481d`](https://github.com/MartinBernstorff/lumberman/commit/848481dad9f711f949f787dd94c25174d2998ef7))
+
+* feat(#257): print entire issue thread
+
+Fixes #257 ([`bde62c0`](https://github.com/MartinBernstorff/lumberman/commit/bde62c08aef159c6a54c39a2fd990233f1ba7482))
+
+
 ## v0.48.0 (2024-02-28)
 
 ### Feature
