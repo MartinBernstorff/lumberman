@@ -2,6 +2,25 @@
 
 
 
+## v0.48.0 (2024-02-28)
+
+### Feature
+
+* feat(#253): allow manual creation directly in fzf (#264)
+
+Fixes #253 ([`732e955`](https://github.com/MartinBernstorff/lumberman/commit/732e95562cdb78867e797d14d785f9e988e265df))
+
+* feat(#253): allow manual creation directly in fzf
+
+Fixes #253 ([`505a0d8`](https://github.com/MartinBernstorff/lumberman/commit/505a0d8f58381d0313f4cfff51384fb307248c74))
+
+### Refactor
+
+* refactor: remove recent and manual prompt (#265) ([`33382a1`](https://github.com/MartinBernstorff/lumberman/commit/33382a124cdfc9f80e616c24ef2d845dcf13c07c))
+
+* refactor: remove recent and manual prompt ([`0a6f458`](https://github.com/MartinBernstorff/lumberman/commit/0a6f458fb6d91c276298cde792322427fe8cdf01))
+
+
 ## v0.47.0 (2024-02-27)
 
 ### Feature
