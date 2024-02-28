@@ -6,7 +6,7 @@ from rich.progress import Progress, SpinnerColumn, TextColumn
 if TYPE_CHECKING:
     from collections.abc import Sequence
 
-    from .provider import Issue, IssueProvider
+    from .provider import GithubIssue, IssueProvider
     from .selecter import IssueSelecter
 
 
@@ -16,7 +16,7 @@ class IssueController:
     provider: "IssueProvider"
     in_progress_label: str
 
-    def _get_latest_issues(self) -> "Sequence[Issue]":
+    def _get_latest_issues(self) -> "Sequence[GithubIssue]":
         with Progress(
             SpinnerColumn(), TextColumn("[progress.description]{task.description}"), transient=True
         ) as progress:
@@ -30,7 +30,7 @@ class IssueController:
 
         return latest_issues
 
-    def _get_my_issues(self) -> "Sequence[Issue]":
+    def _get_my_issues(self) -> "Sequence[GithubIssue]":
         with Progress(
             SpinnerColumn(), TextColumn("[progress.description]{task.description}"), transient=True
         ) as progress:
@@ -41,10 +41,10 @@ class IssueController:
 
         return my_issues
 
-    def label_issue_in_progress(self, issue: "Issue"):
+    def label_issue_in_progress(self, issue: "GithubIssue"):
         self.provider.label_issue(issue, label=self.in_progress_label)
 
-    def select_issue(self, issues: Optional["Sequence[Issue]"] = None) -> "Issue":
+    def select_issue(self, issues: Optional["Sequence[GithubIssue]"] = None) -> "GithubIssue":
         if not issues:
             issues = [*self._get_my_issues(), *self._get_latest_issues()]
 

@@ -5,7 +5,7 @@ import typer
 from iterfzf import iterfzf  # type: ignore
 from rich.console import Console
 
-from .provider import Issue
+from .provider import GithubIssue
 from .title_parser import parse_issue_title
 
 if TYPE_CHECKING:
@@ -15,7 +15,7 @@ console = Console()
 
 
 class IssueSelecter(Protocol):
-    def select_issue_dialog(self, issues: "Sequence[Issue]") -> Union[Issue, str]:
+    def select_issue_dialog(self, issues: "Sequence[GithubIssue]") -> Union[GithubIssue, str]:
         ...
 
 
@@ -30,13 +30,13 @@ class FZFSelection:
 
 @dataclass(frozen=True)
 class DefaultIssueSelecter(IssueSelecter):
-    def _show_selection_dialog(self, issues: "Sequence[Issue]") -> FZFSelection:
+    def _show_selection_dialog(self, issues: "Sequence[GithubIssue]") -> FZFSelection:
         issue_titles = [f"{issue.title.content} #{issue.entity_id}" for issue in issues]
         typer.echo("Select an issue or enter a new issue title.")
         selection: tuple(str, str) = iterfzf([*issue_titles], print_query=True)  # type: ignore
         return FZFSelection(input_str=selection[0], selected_str=selection[1])  # type: ignore
 
-    def select_issue_dialog(self, issues: "Sequence[Issue]") -> Union[Issue, str]:
+    def select_issue_dialog(self, issues: "Sequence[GithubIssue]") -> Union[GithubIssue, str]:
         fzf_selection = self._show_selection_dialog(issues=issues)
         selected_issue_title = fzf_selection.either()
 
@@ -45,4 +45,4 @@ class DefaultIssueSelecter(IssueSelecter):
             return next(issue for issue in selected_issue_from_list)
 
         parsed_title = parse_issue_title(selected_issue_title)
-        return Issue(entity_id=None, title=parsed_title, description="")
+        return GithubIssue(entity_id=None, title=parsed_title, description="")

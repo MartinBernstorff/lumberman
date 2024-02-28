@@ -2,14 +2,14 @@ from dataclasses import dataclass
 
 import pytest
 
-from .provider import Issue
+from .provider import GithubIssue
 from .stringifyer import DefaultIssueStringifyer
 from .title_parser import IssueTitle
 
 
 @dataclass(frozen=True)
 class TestIssueStringifyer:
-    input_issue: Issue
+    input_issue: GithubIssue
     first_commit_str: str
     branch_title: str
 
@@ -18,7 +18,7 @@ class TestIssueStringifyer:
     ("example"),
     [
         TestIssueStringifyer(
-            input_issue=Issue(
+            input_issue=GithubIssue(
                 entity_id="42",
                 title=IssueTitle(prefix="test-prefix", content="test-description"),
                 description="test-description",
@@ -29,7 +29,7 @@ Fixes #42""",
             branch_title="test-prefix/42/test-description",
         ),
         TestIssueStringifyer(
-            input_issue=Issue(
+            input_issue=GithubIssue(
                 entity_id=None,
                 title=IssueTitle(prefix=None, content="test-description"),
                 description="test-description",
@@ -38,7 +38,7 @@ Fixes #42""",
             branch_title="test-description",
         ),
         TestIssueStringifyer(
-            input_issue=Issue(
+            input_issue=GithubIssue(
                 entity_id="42",
                 title=IssueTitle(prefix=None, content="test-description"),
                 description="test-description",
@@ -49,7 +49,7 @@ Fixes #42""",
             branch_title="42/test-description",
         ),
         TestIssueStringifyer(
-            input_issue=Issue(
+            input_issue=GithubIssue(
                 entity_id=None,
                 title=IssueTitle(prefix="test-prefix", content="test-description"),
                 description="test-description",
