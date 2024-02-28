@@ -26,16 +26,48 @@ def _parse_issue_comment(comment_json: Mapping[str, str]) -> IssueComment:
     )
 
 
+def _create_label(label: str) -> None:
+    shell_output(f"gh label create {label}")
+
+
 @dataclass(frozen=True)
 class GithubIssue:
     entity_id: Optional[str]
     title: IssueTitle
     description: str
 
+    def _add_label(self, label: str) -> None:
+        if not self.entity_id:
+            return
+
+        shell_output(f"gh issue edit {int(self.entity_id)} --add-label {label}")
+
+    def label(self, label: str) -> None:
+        if not self.entity_id:
+            return
+
+        try:
+            self._add_label(label)
+        except Exception:
+            try:
+                _create_label(label)
+                self._add_label(label)
+            except Exception as e:
+                raise RuntimeError(f"Error labeling issue {self.entity_id} with {label}") from e
+
     def get_comments(self) -> "Sequence[IssueComment]":
+        if not self.entity_id:
+            return []
+
         comments_json = shell_output(f"gh issue view {self.entity_id} --json comments")
         comments: Sequence[Mapping[str, str]] = json.loads(comments_json)["comments"]  # type: ignore
         return [_parse_issue_comment(c) for c in comments]
+
+    def assign(self, assignee: str) -> None:
+        if not self.entity_id:
+            return
+
+        shell_output(f"gh issue edit {int(self.entity_id)} --add-assignee {assignee}")
 
 
 class IssueProvider(Protocol):
@@ -50,12 +82,6 @@ class IssueProvider(Protocol):
         ...
 
     def get_current_issue(self) -> Optional[GithubIssue]:
-        ...
-
-    def label_issue(self, issue: GithubIssue, label: str) -> None:
-        ...
-
-    def assign(self, issue: GithubIssue, assignee: str) -> None:
         ...
 
 
@@ -95,12 +121,6 @@ class GithubIssueProvider(IssueProvider):
         parsed_output = [self._values_to_issue(v) for v in values]
         return parsed_output
 
-    def _create_label(self, label: str) -> None:
-        shell_output(f"gh label create {label}")
-
-    def _add_label_to_issue(self, issue: GithubIssue, label: str) -> None:
-        shell_output(f'gh issue edit "{issue.entity_id}" --add-label "{label}"')
-
     def get_current_issue(self) -> Optional[GithubIssue]:
         current_branch: str = shell_output("git rev-parse --abbrev-ref HEAD")  # type: ignore
 
@@ -114,22 +134,6 @@ class GithubIssueProvider(IssueProvider):
             title=IssueTitle(prefix=branch_items[0], content=branch_items[2]),
             description="",
         )
-
-    def label_issue(self, issue: GithubIssue, label: str) -> None:
-        if not issue.entity_id:
-            return
-        try:
-            self._add_label_to_issue(issue, label)
-        except Exception:
-            try:
-                self._create_label(label)
-                self._add_label_to_issue(issue, label)
-            except Exception as e:
-                raise RuntimeError(f"Error labeling issue {issue.entity_id} with {label}") from e
-
-    def assign(self, issue: GithubIssue, assignee: str) -> None:
-        if issue.entity_id:
-            shell_output(f"gh issue edit {int(issue.entity_id)} --add-assignee {assignee}")
 
 
 if __name__ == "__main__":
