@@ -47,7 +47,4 @@ class IssueController:
 
         selected_issue = self.view.select_issue_dialog(issues)
 
-        if isinstance(selected_issue, str):
-            raise NotImplementedError(f"Command {selected_issue} not implemented")
-
         return selected_issue
