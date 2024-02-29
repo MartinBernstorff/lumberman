@@ -4,10 +4,8 @@ from rich import print
 
 from lumberman.cli.config import ISSUE_CONTROLLER, STACK_MANIPULATOR, STACK_NAVIGATOR, STACK_OP
 from lumberman.cli.location import Location, LocationCLIOption
-from lumberman.issues.provider import Issue, RemoteIssue
-
-from ..issues.provider import GithubIssue
-from .markdown import print_md
+from lumberman.cli.markdown import print_md
+from lumberman.issues.provider import GithubIssue, Issue, RemoteIssue
 
 if TYPE_CHECKING:
     from lumberman.issues.provider import IssueComment
@@ -124,4 +122,4 @@ def sync(
 
 
 if __name__ == "__main__":
-    sync()
+    insert()
