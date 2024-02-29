@@ -2,6 +2,21 @@
 
 
 
+## v0.50.0 (2024-02-29)
+
+### Feature
+
+* feat: exact matching (#270) ([`0317ce2`](https://github.com/MartinBernstorff/lumberman/commit/0317ce257b20dcde1d4dc92a88f3f0198765a7e0))
+
+* feat: exact matching ([`1fb36c2`](https://github.com/MartinBernstorff/lumberman/commit/1fb36c20059768cd7da2d022aecc3ac10ebb37b5))
+
+### Refactor
+
+* refactor: move issue processing logic onto issue itself (#268) ([`af6eb92`](https://github.com/MartinBernstorff/lumberman/commit/af6eb922d51c07a006392015fc5cf60fac37db33))
+
+* refactor: move issue processing logic onto issue itself ([`f86d97e`](https://github.com/MartinBernstorff/lumberman/commit/f86d97e47f72e8c5936a82e08695311738858138))
+
+
 ## v0.49.0 (2024-02-28)
 
 ### Feature
