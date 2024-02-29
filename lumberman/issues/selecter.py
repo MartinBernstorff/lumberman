@@ -40,7 +40,7 @@ class DefaultIssueSelecter(IssueSelecter):
         fzf_selection = self._show_selection_dialog(issues=issues)
         selected_issue_title = fzf_selection.either()
 
-        selected_issue_from_list = [i for i in issues if i.title.content == selected_issue_title]
+        selected_issue_from_list = [i for i in issues if i.title.content in selected_issue_title]
         if selected_issue_from_list:
             return next(issue for issue in selected_issue_from_list)
 
