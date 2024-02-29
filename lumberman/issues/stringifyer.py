@@ -1,8 +1,10 @@
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Protocol
 
+from lumberman.issues.provider import RemoteIssue
+
 if TYPE_CHECKING:
-    from .provider import GithubIssue
+    from .provider import Issue
 
 
 @dataclass(frozen=True)
@@ -12,7 +14,7 @@ class IssueInfo:
 
 
 class IssueStringifyer(Protocol):
-    def get_issue_info(self, issue: "GithubIssue") -> IssueInfo:
+    def get_issue_info(self, issue: "Issue") -> IssueInfo:
         ...
 
 
@@ -24,31 +26,32 @@ def sanitise_text_for_bash(input_string: str) -> str:
 
 
 class DefaultIssueStringifyer(IssueStringifyer):
-    def get_issue_info(self, issue: "GithubIssue") -> IssueInfo:
+    def get_issue_info(self, issue: "Issue") -> IssueInfo:
         return IssueInfo(
             branch_title=self._get_branch_title(issue=issue),
             first_commit_str=self._get_first_commit_str(issue=issue),
         )
 
-    def _get_branch_title(self, issue: "GithubIssue") -> str:
-        branch_title = ""
-        branch_title += f"{issue.title.prefix}/" if issue.title.prefix else ""
-        branch_title += f"{issue.entity_id}/" if issue.entity_id else ""
+    def _get_branch_title(self, issue: "Issue") -> str:
+        branch_title: str = ""
+        branch_title += f"{issue.title.prefix}/" if issue.title.prefix is not None else ""
+        branch_title += f"{issue.entity_id}/" if isinstance(issue, RemoteIssue) else ""
         branch_title += issue.title.content
+
         return sanitise_text_for_bash(branch_title)
 
-    def _get_first_commit_str(self, issue: "GithubIssue") -> str:
-        first_commit_str = ""
-        first_commit_str += issue.title.prefix if issue.title.prefix else ""
-        first_commit_str += f"(#{issue.entity_id})" if issue.entity_id else ""
+    def _get_first_commit_str(self, issue: "Issue") -> str:
+        first_commit_str = issue.title.prefix if issue.title.prefix is not None else ""
+
+        if isinstance(issue, RemoteIssue):
+            first_commit_str += f"(#{issue.entity_id})"
+
         first_commit_str += ": " if first_commit_str else first_commit_str
         first_commit_str += issue.title.content
-        first_commit_str += (
-            f"""
+
+        if isinstance(issue, RemoteIssue):
+            first_commit_str += f"""
 
 Fixes #{issue.entity_id}"""
-            if issue.entity_id
-            else ""
-        )
 
         return sanitise_text_for_bash(first_commit_str)

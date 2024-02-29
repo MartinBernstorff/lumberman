@@ -1,6 +1,6 @@
 import json
 from dataclasses import dataclass
-from typing import TYPE_CHECKING, Mapping, Optional, Protocol
+from typing import TYPE_CHECKING, Mapping, Optional, Protocol, runtime_checkable
 
 from lumberman.cli.subprocess_utils import shell_output
 from lumberman.issues.title_parser import IssueTitle, parse_issue_title
@@ -30,9 +30,38 @@ def _create_label(label: str) -> None:
     shell_output(f"gh label create {label}")
 
 
+@runtime_checkable
+class Issue(Protocol):
+    title: IssueTitle
+
+
 @dataclass(frozen=True)
-class GithubIssue:
-    entity_id: Optional[str]
+class LocalIssue(Issue):
+    """Issue created by entering a title in the CLI"""
+
+    title: IssueTitle
+
+
+@runtime_checkable
+class RemoteIssue(Protocol):
+    """Issue created by a remote source (e.g. Github)"""
+
+    entity_id: str
+    description: str
+
+    def label(self, label: str) -> None:
+        ...
+
+    def assign(self, assignee: str) -> None:
+        ...
+
+    def get_comments(self) -> "Sequence[IssueComment]":
+        ...
+
+
+@dataclass(frozen=True)
+class GithubIssue(Issue, RemoteIssue):
+    entity_id: str
     title: IssueTitle
     description: str
 

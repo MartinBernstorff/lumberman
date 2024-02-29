@@ -6,6 +6,8 @@ from rich.progress import Progress, SpinnerColumn, TextColumn
 if TYPE_CHECKING:
     from collections.abc import Sequence
 
+    from lumberman.issues.provider import Issue
+
     from .provider import GithubIssue, IssueProvider
     from .selecter import IssueSelecter
 
@@ -41,7 +43,7 @@ class IssueController:
 
         return my_issues
 
-    def select_issue(self, issues: Optional["Sequence[GithubIssue]"] = None) -> "GithubIssue":
+    def select_issue(self, issues: Optional["Sequence[GithubIssue]"] = None) -> "Issue":
         if not issues:
             issues = [*self._get_my_issues(), *self._get_latest_issues()]
 

@@ -4,13 +4,13 @@ from rich import print
 
 from lumberman.cli.config import ISSUE_CONTROLLER, STACK_MANIPULATOR, STACK_NAVIGATOR, STACK_OP
 from lumberman.cli.location import Location, LocationCLIOption
+from lumberman.issues.provider import Issue, RemoteIssue
 
+from ..issues.provider import GithubIssue
 from .markdown import print_md
 
 if TYPE_CHECKING:
     from lumberman.issues.provider import IssueComment
-
-    from ..issues.provider import GithubIssue
 
 
 def _markdown_quote_string(string: str) -> str:
@@ -22,18 +22,18 @@ def _print_comment(comment: "IssueComment"):
     print_md(_markdown_quote_string(comment.body))
 
 
-def _select_issue() -> "GithubIssue":
+def _select_issue() -> "Issue":
     selected_issue = ISSUE_CONTROLLER.select_issue()
     print_md(f"# {selected_issue.title!s}")
 
-    if selected_issue.description:
+    if isinstance(selected_issue, GithubIssue):
         print_md("## Description")
         description = _markdown_quote_string(selected_issue.description)
         print_md(description)
 
-    if comments := selected_issue.get_comments():
-        for comment in comments:
-            _print_comment(comment)
+        if comments := selected_issue.get_comments():
+            for comment in comments:
+                _print_comment(comment)
 
     return selected_issue
 
@@ -55,8 +55,9 @@ def insert(location: LocationCLIOption = Location.up):
             STACK_NAVIGATOR.down()
 
         STACK_MANIPULATOR.insert(selected_issue)
-        selected_issue.label("in-progress")
-        selected_issue.assign(assignee="@me")
+        if isinstance(selected_issue, RemoteIssue):
+            selected_issue.label("in-progress")
+            selected_issue.assign(assignee="@me")
 
 
 def move():
@@ -88,8 +89,9 @@ def fork(location: LocationCLIOption = Location.bottom):
             STACK_NAVIGATOR.down()
 
         STACK_MANIPULATOR.fork(selected_issue)
-        selected_issue.label("in-progress")
-        selected_issue.assign(assignee="@me")
+        if isinstance(selected_issue, RemoteIssue):
+            selected_issue.label("in-progress")
+            selected_issue.assign(assignee="@me")
 
 
 def new():
@@ -99,8 +101,10 @@ def new():
         STACK_MANIPULATOR.sync(sync_pull_requests=False)
         STACK_NAVIGATOR.trunk()
         STACK_MANIPULATOR.fork(selected_issue)
-        selected_issue.label("in-progress")
-        selected_issue.assign(assignee="@me")
+
+        if isinstance(selected_issue, RemoteIssue):
+            selected_issue.label("in-progress")
+            selected_issue.assign(assignee="@me")
 
 
 def sync(
