@@ -2,6 +2,25 @@
 
 
 
+## v0.50.1 (2024-02-29)
+
+### Fix
+
+* fix(#272): correct branch naming (#273) ([`02662eb`](https://github.com/MartinBernstorff/lumberman/commit/02662eb9c14a1e6b1166c14fc7ddc3e963fe59f2))
+
+* fix(#272): correct branch naming
+
+Fixes #272 ([`540309a`](https://github.com/MartinBernstorff/lumberman/commit/540309a9bd07832d504d4551591825e52c9a59f3))
+
+### Refactor
+
+* refactor: separate `GithubIssue` and `ManualIssue` #269 (#271) ([`9d10ea7`](https://github.com/MartinBernstorff/lumberman/commit/9d10ea7f20b6e00e491179c4496df44636ab9ff5))
+
+### Unknown
+
+* separate GithubIssue and ManualIssue #269 ([`987e79b`](https://github.com/MartinBernstorff/lumberman/commit/987e79b56de65c9f4015c218a5975b5232fe8413))
+
+
 ## v0.50.0 (2024-02-29)
 
 ### Feature
