@@ -2,6 +2,21 @@
 
 
 
+## v0.52.0 (2024-07-29)
+
+### Feature
+
+* feat: do not auto-delete branches on submit (#284) ([`ef7e80b`](https://github.com/MartinBernstorff/lumberman/commit/ef7e80b0f37da6f937865d8858992481e91062c8))
+
+* feat: do not auto-delete branches on submit ([`d7fa1a0`](https://github.com/MartinBernstorff/lumberman/commit/d7fa1a020303ed171f6eba28aa0c5453de418cc8))
+
+### Fix
+
+* fix: migrate to src layout (#283) ([`7ff7dd6`](https://github.com/MartinBernstorff/lumberman/commit/7ff7dd6f30679af525bd113ae249de2b27c2ce1d))
+
+* fix: migrate to src layout ([`e54b23d`](https://github.com/MartinBernstorff/lumberman/commit/e54b23df7fc5787f472997052c9e620856362523))
+
+
 ## v0.51.0 (2024-07-29)
 
 ### Feature
