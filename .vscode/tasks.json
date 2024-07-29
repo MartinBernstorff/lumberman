@@ -1,61 +1,75 @@
 {
-    // See https://go.microsoft.com/fwlink/?LinkId=733558
-    // for the documentation about the tasks.json format
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "PR",
-            "type": "shell",
-            "command": "make pr",
+            "label": "Run All Tasks",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "make: lint",
+                "make: types and test"
+            ],
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
-            "dependsOn": [
-                "Lint",
-                "Test",
-                "Static type check",
-            ],
             "presentation": {
-                "reveal": "always",
-                "clear": true,
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "dedicated",
                 "showReuseMessage": false,
-                "group": "pr"
-            },
-            "problemMatcher": []
+                "clear": true
+            }
         },
         {
-            "label": "Lint",
             "type": "shell",
             "command": "make lint",
+            "label": "make: lint",
+            "problemMatcher": [],
             "presentation": {
-                "reveal": "always",
+                "group": "buildTasks",
+                "panel": "dedicated",
                 "clear": true,
-                "showReuseMessage": false,
-                "group": "pr"
-            },
-            "problemMatcher": []
+                "reveal": "silent",
+            }
         },
         {
-            "label": "Test",
-            "type": "shell",
-            "command": "make test-with-coverage",
+            "label": "make: types and test",
+            "dependsOn": [
+                "make: types",
+                "make: test"
+            ],
+            "dependsOrder": "parallel",
+            "problemMatcher": [],
             "presentation": {
-                "reveal": "always",
+                "group": "buildTasks",
+                "panel": "dedicated",
                 "clear": true,
-                "showReuseMessage": false,
-                "group": "pr"
-            },
+                "reveal": "silent",
+            }
         },
         {
-            "label": "Static type check",
             "type": "shell",
             "command": "make types",
+            "label": "make: types",
+            "problemMatcher": [],
             "presentation": {
-                "reveal": "always",
+                "group": "buildTasks",
+                "panel": "dedicated",
                 "clear": true,
-                "showReuseMessage": false,
-                "group": "pr"
+                "reveal": "silent",
+            }
+        },
+        {
+            "type": "shell",
+            "command": "make test",
+            "label": "make: test",
+            "problemMatcher": [],
+            "presentation": {
+                "group": "buildTasks",
+                "panel": "dedicated",
+                "clear": true,
+                "reveal": "silent",
             }
         }
     ]

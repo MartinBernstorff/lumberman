@@ -1,8 +1,15 @@
 {
     "exclude": [
-        ".*venv*"
+        ".*venv*",
+        ".cache",
     ],
     "pythonPlatform": "Darwin",
     "reportMissingTypeStubs": false,
+    "reportMissingParameterType": false, // Covered by ruff ANN
+    "reportUnknownParameterType": false, // Covered by ruff ANN
+    "reportUnusedExpression": false, // Covered by ruff B018
+    "reportPrivateUsage": false, // Covered by ruff PLC2701
+    "reportUntypedFunctionDecorator": false,
+    "reportUnusedImport": "none", // Covered by ruff
     "typeCheckingMode": "strict"
 }

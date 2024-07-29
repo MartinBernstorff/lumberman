@@ -1,12 +1,11 @@
 [project]
 version = "0.50.1"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 name = "lumberman"
 description = "lumberman"
 dependencies = ["typer==0.12.3", "rich==13.7.1", "iterfzf>=1.1.0.44.0"]
 authors = [{ name = "Martin Bernstorff", email = "martinbernstorff@gmail.com" }]
 classifiers = [
-  "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
@@ -27,8 +26,9 @@ content-type = "text/markdown"
 rye = { dev-dependencies = [
   "diff-cover==8.0.3",
   "pyright==1.1.350",
-  "pytest==8.0.1",
+  "pytest==7.4.0",
   "pytest-cov==4.1.0",
+  "pytest-testmon==2.1.0",
   "pytest-xdist==3.5.0",
   "pytest-sugar==1.0.0",
   "ruff==0.2.2",

@@ -1,5 +1,5 @@
 # Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
-_commit: 3bc5a3e
+_commit: d91c27b
 _src_path: https://github.com/MartinBernstorff/nimble-python-template
 email: martinbernstorff@gmail.com
 full_name: Martin Bernstorff
@@ -7,5 +7,6 @@ github_username: MartinBernstorff
 package_name: lumberman
 project_name: lumberman
 project_slug: lumberman
-python_version: '3.9'
-release_to_pypi: true
+python_version: '3.10'
+release_docker_image: true
+release_package: false
