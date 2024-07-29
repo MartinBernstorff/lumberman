@@ -3,9 +3,11 @@ from typing import TYPE_CHECKING
 from rich import print
 
 from lumberman.cli.config import ISSUE_CONTROLLER, STACK_MANIPULATOR, STACK_NAVIGATOR, STACK_OP
-from lumberman.cli.location import Location, LocationCLIOption
+from lumberman.cli.location import FullLocation, Location, LocationCLIOption
 from lumberman.cli.markdown import print_md
+from lumberman.cli.navigation import navigate_to_insert_location
 from lumberman.issues.provider import GithubIssue, Issue, RemoteIssue
+from lumberman.issues.selecter import DefaultIssueSelecter
 
 if TYPE_CHECKING:
     from lumberman.issues.provider import IssueComment
@@ -36,21 +38,20 @@ def _select_issue() -> "Issue":
     return selected_issue
 
 
+def jab(location: LocationCLIOption = Location.up):
+    """Prompt to create a new item on the current stack, without fetching issues."""
+    with STACK_OP(sync_time="exit", sync_pull_requests=False):
+        selected_issue = DefaultIssueSelecter().select_issue_dialog([])
+        navigate_to_insert_location(location)
+        STACK_MANIPULATOR.insert(selected_issue)
+
+
 def insert(location: LocationCLIOption = Location.up):
     """Prompt to create a new item on the current stack. Defaults to creating an item in between the current item and the next item."""
     with STACK_OP(sync_time="exit", sync_pull_requests=False):
         selected_issue = _select_issue()
 
-        if location.to_full_location == Location.trunk:
-            STACK_NAVIGATOR.trunk()
-        if location.to_full_location == Location.bottom:
-            STACK_NAVIGATOR.bottom()
-        if location.to_full_location == Location.top:
-            STACK_NAVIGATOR.top()
-        if location.to_full_location == Location.up:
-            pass
-        if location.to_full_location == Location.down:
-            STACK_NAVIGATOR.down()
+        navigate_to_insert_location(location)
 
         STACK_MANIPULATOR.insert(selected_issue)
         if isinstance(selected_issue, RemoteIssue):
@@ -75,16 +76,17 @@ def fork(location: LocationCLIOption = Location.bottom):
     with STACK_OP(sync_time="enter", sync_pull_requests=False):
         selected_issue = _select_issue()
 
-        if location.to_full_location == Location.bottom:
-            STACK_NAVIGATOR.bottom()
-            STACK_NAVIGATOR.up()
-        elif location.to_full_location == Location.top:
-            STACK_NAVIGATOR.top()
-            STACK_NAVIGATOR.down()
-        elif location.to_full_location == Location.up:
-            pass  # No need to do anything, already in the correct location
-        elif location.to_full_location == Location.down:
-            STACK_NAVIGATOR.down()
+        match location.to_full_location:
+            case FullLocation.bottom | FullLocation.trunk:
+                STACK_NAVIGATOR.bottom()
+                STACK_NAVIGATOR.up()
+            case FullLocation.top:
+                STACK_NAVIGATOR.top()
+                STACK_NAVIGATOR.down()
+            case FullLocation.up:
+                pass  # No need to do anything, already in the correct location
+            case FullLocation.down:
+                STACK_NAVIGATOR.down()
 
         STACK_MANIPULATOR.fork(selected_issue)
         if isinstance(selected_issue, RemoteIssue):

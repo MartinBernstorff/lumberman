@@ -47,6 +47,7 @@ commands = [
         name="Manipulation",
         commands=[
             Command(name="[i]nsert", fn=man.insert),
+            Command(name="[j]ab", fn=man.jab),
             Command(name="[d]elete", fn=man.delete),
             Command(name="[f]ork", fn=man.fork),
             Command(name="[m]ove", fn=man.move),
