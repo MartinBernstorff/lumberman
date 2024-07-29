@@ -2,6 +2,19 @@
 
 
 
+## v0.51.0 (2024-07-29)
+
+### Feature
+
+* feat: add jab (#282) ([`986684b`](https://github.com/MartinBernstorff/lumberman/commit/986684b1dec14ed27bc0f65955e46c885aa7cfc2))
+
+* feat: add jab ([`0af027e`](https://github.com/MartinBernstorff/lumberman/commit/0af027e18ae52cde30134e901bfd7fe43479d1c1))
+
+### Unknown
+
+* update src/lumberman/__init__.py ([`f10e2b1`](https://github.com/MartinBernstorff/lumberman/commit/f10e2b1286f41129fb71cb2be0477d54ddaf1b1d))
+
+
 ## v0.50.2 (2024-07-29)
 
 ### Chore
