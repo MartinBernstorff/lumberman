@@ -1,3 +1,7 @@
+###########################
+# Start template makefile #
+###########################
+
 SRC_PATH = lumberman
 MAKEFLAGS = --no-print-directory
 
@@ -9,7 +13,7 @@ quicksync:
 	rye sync --no-lock
 
 test:
-	@rye run pytest --cov=$(SRC_PATH) $(SRC_PATH) --cov-report xml:.coverage.xml --cov-report lcov:.coverage.lcov
+	rye test
 
 test-with-coverage: 
 	@echo "––– Testing –––"
@@ -20,9 +24,7 @@ test-with-coverage:
 lint: ## Format code
 	@echo "––– Linting –––"
 	@rye run ruff format .
-	@rye run ruff . --fix --unsafe-fixes \
-		--extend-select F401 \
-		--extend-select F841
+	@rye run ruff . --fix --unsafe-fixes
 	@echo "✅✅✅ Lint ✅✅✅"
 
 types: ## Type-check code
@@ -39,9 +41,9 @@ validate_ci: ## Run all checks
 
 docker_ci: ## Run all checks in docker
 	@echo "––– Running all checks in docker –––"
-	@docker rm -f lumberman || true
-	@docker build -t lumberman:latest -f Dockerfile .
-	@docker run lumberman make validate_ci
+	docker build -t lumberman_ci -f .github/Dockerfile.dev .
+	docker run lumberman_ci make validate_ci
 
-pr: ## Submit a PR
-	@rye run lm sync --squash --automerge
+#########################
+# End template makefile #
+#########################
