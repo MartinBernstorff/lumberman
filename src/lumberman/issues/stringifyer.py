@@ -34,9 +34,8 @@ class DefaultIssueStringifyer(IssueStringifyer):
 
     def _get_branch_title(self, issue: "Issue") -> str:
         branch_title: str = ""
-        branch_title += f"{issue.title.prefix}/" if issue.title.prefix is not None else ""
-        branch_title += f"{issue.entity_id}/" if isinstance(issue, RemoteIssue) else ""
         branch_title += issue.title.content
+        branch_title += f"/{issue.entity_id}" if isinstance(issue, RemoteIssue) else ""
 
         return sanitise_text_for_bash(branch_title)
 
