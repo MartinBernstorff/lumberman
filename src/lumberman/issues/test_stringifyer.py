@@ -26,7 +26,7 @@ class TestIssueStringifyer:
             first_commit_str="""test-prefix(#42): test-description
 
 Fixes #42""",
-            branch_title="test-prefix/42/test-description",
+            branch_title="test-description/42",
         ),
         TestIssueStringifyer(
             input_issue=LocalIssue(title=IssueTitle(prefix=None, content="test-description")),
@@ -42,14 +42,14 @@ Fixes #42""",
             first_commit_str="""feat(#42): test-description
 
 Fixes #42""",
-            branch_title="feat/42/test-description",
+            branch_title="test-description/42",
         ),
         TestIssueStringifyer(
             input_issue=LocalIssue(
                 title=IssueTitle(prefix="test-prefix", content="test-description")
             ),
             first_commit_str="""test-prefix: test-description""",
-            branch_title="test-prefix/test-description",
+            branch_title="test-description",
         ),
     ],
 )
