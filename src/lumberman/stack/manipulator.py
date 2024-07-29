@@ -74,7 +74,7 @@ class GraphiteManipulator(QueueManipulator):
         if squash:
             interactive_cmd("gt squash --no-edit")
 
-        interactive_cmd("gt sync --pull --force --restack --delete")
+        interactive_cmd("gt sync --pull --force --restack")
 
         if sync_pull_requests:
             command = "gt submit --no-edit --stack"
