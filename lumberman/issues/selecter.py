@@ -21,8 +21,8 @@ class IssueSelecter(Protocol):
 
 @dataclass(frozen=True)
 class FZFSelection:
-    input_str: str
-    selected_str: str
+    input_str: str  # String typed into FZF dialog
+    selected_str: str | None  # Selected string from FZF, e.g. the matching entry
 
     def either(self) -> str:
         return self.selected_str or self.input_str
@@ -32,6 +32,9 @@ class FZFSelection:
 class DefaultIssueSelecter(IssueSelecter):
     def _show_selection_dialog(self, issues: "Sequence[GithubIssue]") -> FZFSelection:
         issue_titles = [f"{issue.title.content} #{issue.entity_id}" for issue in issues]
+        if len(issue_titles) == 0:
+            issue_titles.append("No issues found. Enter an title for the change below.")
+
         typer.echo("Select an issue or enter a new issue title.")
         selection: tuple(str, str) = iterfzf([*issue_titles], print_query=True, exact=True)  # type: ignore
         return FZFSelection(input_str=selection[0], selected_str=selection[1])  # type: ignore
