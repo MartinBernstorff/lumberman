@@ -2,6 +2,19 @@
 
 
 
+## v0.53.0 (2024-07-29)
+
+### Feature
+
+* feat: remove prefix from branch title (#285) ([`4487998`](https://github.com/MartinBernstorff/lumberman/commit/44879982a0c220d38d6125053524d2811bb2a11d))
+
+* feat: remove prefix from branch title ([`21f73e4`](https://github.com/MartinBernstorff/lumberman/commit/21f73e4c2f3217265455da9fbb0324fa417c5a99))
+
+### Unknown
+
+* update settings.json and test_stringifyer.py ([`840245d`](https://github.com/MartinBernstorff/lumberman/commit/840245d8d22ddb1d47bcc8c98c25ca44760ed2c9))
+
+
 ## v0.52.0 (2024-07-29)
 
 ### Feature
