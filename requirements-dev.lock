@@ -14,6 +14,7 @@ click==8.1.7
     # via typer
 coverage==7.4.1
     # via pytest-cov
+    # via pytest-testmon
 diff-cover==8.0.3
 exceptiongroup==1.2.0
     # via pytest
@@ -43,12 +44,14 @@ pygments==2.17.2
     # via diff-cover
     # via rich
 pyright==1.1.350
-pytest==8.0.1
+pytest==7.4.0
     # via pytest-cov
     # via pytest-sugar
+    # via pytest-testmon
     # via pytest-xdist
 pytest-cov==4.1.0
 pytest-sugar==1.0.0
+pytest-testmon==2.1.0
 pytest-xdist==3.5.0
 rich==13.7.1
     # via lumberman
