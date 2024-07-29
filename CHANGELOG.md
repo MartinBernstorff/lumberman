@@ -2,6 +2,99 @@
 
 
 
+## v0.50.2 (2024-07-29)
+
+### Chore
+
+* chore: update from copier template (#280) ([`7482582`](https://github.com/MartinBernstorff/lumberman/commit/748258230acb5648b4bcbbee22fabfaa05028783))
+
+* chore: update from copier template ([`c626f65`](https://github.com/MartinBernstorff/lumberman/commit/c626f6524452bfa30fd7b072cac7870b4cc51036))
+
+### Fix
+
+* fix: release package (#281) ([`30aeb70`](https://github.com/MartinBernstorff/lumberman/commit/30aeb70d919ae0e78b013c058303e69903b8bf1b))
+
+* fix: release package ([`84755b9`](https://github.com/MartinBernstorff/lumberman/commit/84755b95112fb3fd4be7e01fee76ac63fdaf4b03))
+
+* fix: handle repos with no issues (#279) ([`b374dca`](https://github.com/MartinBernstorff/lumberman/commit/b374dcaa52776ce986d7c8e9eb6eeda612394305))
+
+* fix: handle repos with no issues ([`f866bb1`](https://github.com/MartinBernstorff/lumberman/commit/f866bb1bf992420bd2a5802aa05fe5d72a83c735))
+
+### Unknown
+
+* deps:(deps): bump typer from 0.12.1 to 0.12.3 (#278) ([`37f517d`](https://github.com/MartinBernstorff/lumberman/commit/37f517d8f42b3436b2a29865f514e554298b5102))
+
+* deps:(deps): bump typer from 0.12.1 to 0.12.3
+
+Bumps [typer](https://github.com/tiangolo/typer) from 0.12.1 to 0.12.3.
+- [Release notes](https://github.com/tiangolo/typer/releases)
+- [Changelog](https://github.com/tiangolo/typer/blob/master/docs/release-notes.md)
+- [Commits](https://github.com/tiangolo/typer/compare/0.12.1...0.12.3)
+
+---
+updated-dependencies:
+- dependency-name: typer
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`1fa46e4`](https://github.com/MartinBernstorff/lumberman/commit/1fa46e4a1c200099f5ea036df6da6a303b14d94b))
+
+* deps:(deps-dev): bump typer from 0.12.0 to 0.12.1 (#277) ([`c17201b`](https://github.com/MartinBernstorff/lumberman/commit/c17201ba7c177855de3e254f16baf645e9c9d30f))
+
+* deps:(deps-dev): bump typer from 0.12.0 to 0.12.1
+
+Bumps [typer](https://github.com/tiangolo/typer) from 0.12.0 to 0.12.1.
+- [Release notes](https://github.com/tiangolo/typer/releases)
+- [Changelog](https://github.com/tiangolo/typer/blob/master/docs/release-notes.md)
+- [Commits](https://github.com/tiangolo/typer/compare/0.12.0...0.12.1)
+
+---
+updated-dependencies:
+- dependency-name: typer
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`af0df24`](https://github.com/MartinBernstorff/lumberman/commit/af0df24be159de11a5736e09c46b4ae9371796ad))
+
+* deps:(deps-dev): bump typer from 0.9.0 to 0.12.0 (#276) ([`7efcd48`](https://github.com/MartinBernstorff/lumberman/commit/7efcd482148dc6ef1c0ee7454b00097c7be4cb94))
+
+* deps:(deps-dev): bump typer from 0.9.0 to 0.12.0
+
+Bumps [typer](https://github.com/tiangolo/typer) from 0.9.0 to 0.12.0.
+- [Release notes](https://github.com/tiangolo/typer/releases)
+- [Changelog](https://github.com/tiangolo/typer/blob/master/docs/release-notes.md)
+- [Commits](https://github.com/tiangolo/typer/compare/0.9.0...0.12.0)
+
+---
+updated-dependencies:
+- dependency-name: typer
+  dependency-type: direct:production
+  update-type: version-update:semver-minor
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`98f70c5`](https://github.com/MartinBernstorff/lumberman/commit/98f70c5fa2fd74cfdff1230ee2c2c42f1c2b0f3d))
+
+* deps:(deps-dev): bump rich from 13.7.0 to 13.7.1 (#274) ([`d53fb45`](https://github.com/MartinBernstorff/lumberman/commit/d53fb450c688c3925563a78f2242fad7d080e7b4))
+
+* deps:(deps-dev): bump rich from 13.7.0 to 13.7.1
+
+Bumps [rich](https://github.com/Textualize/rich) from 13.7.0 to 13.7.1.
+- [Release notes](https://github.com/Textualize/rich/releases)
+- [Changelog](https://github.com/Textualize/rich/blob/master/CHANGELOG.md)
+- [Commits](https://github.com/Textualize/rich/compare/v13.7.0...v13.7.1)
+
+---
+updated-dependencies:
+- dependency-name: rich
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`6b09454`](https://github.com/MartinBernstorff/lumberman/commit/6b09454832159461c46f1308e47d4613e5d0ed6c))
+
+
 ## v0.50.1 (2024-02-29)
 
 ### Fix

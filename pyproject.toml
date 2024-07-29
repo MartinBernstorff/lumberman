@@ -1,5 +1,5 @@
 [project]
-version = "0.50.1"
+version = "0.50.2"
 requires-python = ">=3.10"
 name = "lumberman"
 description = "lumberman"
