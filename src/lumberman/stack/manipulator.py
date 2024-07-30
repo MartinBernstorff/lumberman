@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Protocol
 
+from lumberman.change_manager.manager import ChangeManager
 from lumberman.issues.provider import Issue
 
 from ..cli.subprocess_utils import interactive_cmd
@@ -10,12 +11,8 @@ if TYPE_CHECKING:
     from ..issues.stringifyer import IssueStringifyer
 
 
-class QueueManipulator(Protocol):
+class StackManager(ChangeManager):
     issue_parser: "IssueStringifyer"
-
-    def fork(self, issue: "Issue"):
-        """Create a new item, forking from the current item."""
-        ...
 
     def insert(self, issue: "Issue"):
         """Create a new item. If an item exists above the current item, insert between them."""
@@ -27,18 +24,9 @@ class QueueManipulator(Protocol):
     def move(self):
         ...
 
-    def sync(
-        self,
-        sync_pull_requests: bool = True,
-        automerge: bool = False,
-        squash: bool = False,
-        draft: bool = True,
-    ):
-        ...
-
 
 @dataclass(frozen=True)
-class GraphiteManipulator(QueueManipulator):
+class GraphtieManager(StackManager):
     issue_parser: "IssueStringifyer"
 
     def _new_branch(self, insert: bool, issue: "Issue"):
@@ -64,25 +52,18 @@ class GraphiteManipulator(QueueManipulator):
     def move(self):
         interactive_cmd("gt move")
 
-    def sync(
-        self,
-        sync_pull_requests: bool = True,
-        automerge: bool = False,
-        squash: bool = False,
-        draft: bool = True,
-    ):
+    def sync(self, automerge: bool = False, squash: bool = False, draft: bool = True):
         if squash:
             interactive_cmd("gt squash --no-edit")
 
         interactive_cmd("gt sync --pull --force --restack")
 
-        if sync_pull_requests:
-            command = "gt submit --no-edit --stack"
-            if draft:
-                command += " --draft"
-            else:
-                command += " --publish"
+        command = "gt submit --no-edit --stack"
+        if draft:
+            command += " --draft"
+        else:
+            command += " --publish"
 
-            if automerge:
-                command += " --merge-when-ready"
-            interactive_cmd(command)
+        if automerge:
+            command += " --merge-when-ready"
+        interactive_cmd(command)

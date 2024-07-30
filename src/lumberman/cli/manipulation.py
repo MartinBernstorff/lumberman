@@ -2,7 +2,7 @@ from typing import TYPE_CHECKING
 
 from rich import print
 
-from lumberman.cli.config import ISSUE_CONTROLLER, STACK_MANIPULATOR, STACK_NAVIGATOR, STACK_OP
+from lumberman.cli.config import ISSUE_CONTROLLER, MANAGER, STACK_NAVIGATOR, STACK_OP
 from lumberman.cli.location import FullLocation, Location, LocationCLIOption
 from lumberman.cli.markdown import print_md
 from lumberman.cli.navigation import navigate_to_insert_location
@@ -43,7 +43,7 @@ def jab(location: LocationCLIOption = Location.up):
     with STACK_OP(sync_time="exit", sync_pull_requests=False):
         selected_issue = DefaultIssueSelecter().select_issue_dialog([])
         navigate_to_insert_location(location)
-        STACK_MANIPULATOR.insert(selected_issue)
+        MANAGER.insert(selected_issue)
 
 
 def insert(location: LocationCLIOption = Location.up):
@@ -53,7 +53,7 @@ def insert(location: LocationCLIOption = Location.up):
 
         navigate_to_insert_location(location)
 
-        STACK_MANIPULATOR.insert(selected_issue)
+        MANAGER.insert(selected_issue)
         if isinstance(selected_issue, RemoteIssue):
             selected_issue.label("in-progress")
             selected_issue.assign(assignee="@me")
@@ -62,13 +62,13 @@ def insert(location: LocationCLIOption = Location.up):
 def move():
     """Move the current item to a new location in the stack."""
     with STACK_OP(sync_time="exit", sync_pull_requests=True):
-        STACK_MANIPULATOR.move()
+        MANAGER.move()
 
 
 def delete():
     """Prompt to delete an item."""
     with STACK_OP(sync_time="exit", sync_pull_requests=False):
-        STACK_MANIPULATOR.delete()
+        MANAGER.delete()
 
 
 def fork(location: LocationCLIOption = Location.bottom):
@@ -88,7 +88,7 @@ def fork(location: LocationCLIOption = Location.bottom):
             case FullLocation.down:
                 STACK_NAVIGATOR.down()
 
-        STACK_MANIPULATOR.fork(selected_issue)
+        MANAGER.fork(selected_issue)
         if isinstance(selected_issue, RemoteIssue):
             selected_issue.label("in-progress")
             selected_issue.assign(assignee="@me")
@@ -98,9 +98,9 @@ def new():
     """Start a new stack on top of trunk."""
     with STACK_OP(sync_time="none", sync_pull_requests=False):
         selected_issue = _select_issue()
-        STACK_MANIPULATOR.sync(sync_pull_requests=False)
+        MANAGER.sync(sync_pull_requests=False)
         STACK_NAVIGATOR.trunk()
-        STACK_MANIPULATOR.fork(selected_issue)
+        MANAGER.fork(selected_issue)
 
         if isinstance(selected_issue, RemoteIssue):
             selected_issue.label("in-progress")
@@ -112,9 +112,7 @@ def sync(
 ):
     """Synchronize all state, ensuring the stack is internally in sync, and in sync with the remote. Creates PRs if needed."""
     with STACK_OP(sync_time="none", sync_pull_requests=False):
-        STACK_MANIPULATOR.sync(
-            automerge=automerge, squash=squash, draft=draft, sync_pull_requests=True
-        )
+        MANAGER.sync(automerge=automerge, squash=squash, draft=draft, sync_pull_requests=True)
 
         if add_pr_label:
             current_issue = ISSUE_CONTROLLER.provider.get_current_issue()
