@@ -37,7 +37,8 @@
             "label": "make: types and test",
             "dependsOn": [
                 "make: types",
-                "make: test"
+                "make: test",
+                "diff"
             ],
             "dependsOrder": "parallel",
             "problemMatcher": [],
@@ -58,6 +59,18 @@
                 "panel": "dedicated",
                 "clear": true,
                 "reveal": "silent",
+            }
+        },
+        {
+            "type": "shell",
+            "command": "git diff origin/main",
+            "label": "diff",
+            "problemMatcher": [],
+            "presentation": {
+                "group": "diff",
+                "panel": "dedicated",
+                "clear": true,
+                "reveal": "always",
             }
         },
         {
