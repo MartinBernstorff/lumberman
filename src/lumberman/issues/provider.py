@@ -47,7 +47,7 @@ class RemoteIssue(Protocol):
 
     entity_id: str
     description: str
-    labels: "Sequence[str]"
+    labels: "list[str]"
 
     def branch_id(self) -> str: ...
 

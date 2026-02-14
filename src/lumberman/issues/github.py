@@ -19,7 +19,7 @@ class GithubIssue(RemoteIssue, Issue):
     entity_id: str
     title: IssueTitle
     description: str
-    labels: Sequence[str]
+    labels: "Sequence[str]"
 
     def issue_magic_identifier(self) -> str:
         return f"#{self.entity_id}"

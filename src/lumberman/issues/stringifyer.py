@@ -50,6 +50,6 @@ class DefaultIssueStringifyer(IssueStringifyer):
         if isinstance(issue, RemoteIssue):
             first_commit_str += f"""
 
-Fixes #{issue.issue_magic_identifier()}"""
+Fixes {issue.issue_magic_identifier()}"""
 
         return sanitise_text_for_bash(first_commit_str)
