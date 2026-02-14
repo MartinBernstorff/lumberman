@@ -30,7 +30,6 @@ class LinearIssue(RemoteIssue, Issue):
     description: str
     identifier: str  # e.g. "TEAM-123"
 
-    @property
     def branch_id(self) -> str:
         return self.identifier
 

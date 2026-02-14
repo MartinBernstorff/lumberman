@@ -20,7 +20,6 @@ class GithubIssue(RemoteIssue, Issue):
     title: IssueTitle
     description: str
 
-    @property
     def branch_id(self) -> str:
         return self.entity_id
 
