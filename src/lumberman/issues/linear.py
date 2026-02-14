@@ -31,8 +31,8 @@ class LinearIssue(RemoteIssue, Issue):
     identifier: str  # e.g. "TEAM-123"
     labels: list[str]
 
-    def issue_magic_identifier(self) -> str:
-        return f"{self.identifier}"
+    def magic_identifier(self) -> str:
+        return self.identifier
 
     def branch_id(self) -> str:
         return self.identifier
@@ -65,9 +65,9 @@ class LinearIssue(RemoteIssue, Issue):
             except (KeyError, TypeError, IndexError) as e:
                 raise RuntimeError(f"Error finding/creating label {label}") from e
 
-        _linear_api(f"""
+        _linear_api("""
             mutation {{
-                issueUpdate(id: "{self.entity_id}", input: {{ labelIds: ["{label_id}"] }}) {{
+                issueUpdate(id: f"{self.entity_id}", input: {{ labelIds: [f"{label_id}"] }}) {{
                     issue {{ id }}
                 }}
             }}
@@ -133,7 +133,7 @@ class LinearIssueProvider:
             identifier=node.get("identifier", ""),
             title=parsed_title,
             description=node.get("description", "") or "",
-            labels=[l["name"] for l in label_nodes],
+            labels=[label["name"] for label in label_nodes],
         )
 
     def get_by_identifier(self, identifier: str) -> LinearIssue | None:

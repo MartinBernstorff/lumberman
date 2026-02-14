@@ -19,9 +19,9 @@ class GithubIssue(RemoteIssue, Issue):
     entity_id: str
     title: IssueTitle
     description: str
-    labels: "Sequence[str]"
+    labels: "list[str]"
 
-    def issue_magic_identifier(self) -> str:
+    def magic_identifier(self) -> str:
         return f"#{self.entity_id}"
 
     def branch_id(self) -> str:
@@ -74,7 +74,7 @@ class GithubIssueProvider:
             entity_id=str(values["number"]),
             title=parsed_title,
             description=values["body"],
-            labels=values["labels"],
+            labels=values["labels"],  # type: ignore
         )
 
     def get_latest_issues(self, in_progress_label: str) -> "Sequence[GithubIssue]":

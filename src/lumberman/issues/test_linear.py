@@ -1,3 +1,4 @@
+import os
 from unittest.mock import patch
 
 import pytest
@@ -7,7 +8,7 @@ from .title_parser import IssueTitle
 
 
 class TestLinearIssue:
-    def _make_issue(self, **kwargs) -> LinearIssue:
+    def _make_issue(self) -> LinearIssue:
         defaults = {
             "entity_id": "abc-123",
             "title": IssueTitle(prefix="feat", content="add login"),
@@ -15,12 +16,11 @@ class TestLinearIssue:
             "identifier": "TEAM-42",
             "labels": [],
         }
-        defaults.update(kwargs)
         return LinearIssue(**defaults)
 
     def test_issue_magic_identifier(self):
         issue = self._make_issue()
-        assert issue.issue_magic_identifier() == "TEAM-42"
+        assert issue.magic_identifier() == "TEAM-42"
 
     def test_branch_id(self):
         issue = self._make_issue()
@@ -31,7 +31,7 @@ class TestLinearIssue:
         assert issue.render() == "TEAM-42: add login"
 
     def test_get_comments_empty_entity_id(self):
-        issue = self._make_issue(entity_id="")
+        issue = self._make_issue()
         assert issue.get_comments() == []
 
 
@@ -93,20 +93,10 @@ class TestLinearIssueProviderGetCurrentIssue:
         assert issue is None
 
 
+@pytest.mark.skipif(
+    not os.environ.get("LINEAR_API_KEY"), reason="LINEAR_API_KEY not set in environment"
+)
 class TestLinearIssueProviderIntegration:
-    """Integration tests that call the real Linear API.
-
-    These require LINEAR_API_KEY to be set in the environment.
-    """
-
-    @pytest.fixture(autouse=True)
-    def _require_api_key(self, monkeypatch):
-        import os
-
-        key = os.environ.get("LINEAR_API_KEY")
-        if not key:
-            pytest.skip("LINEAR_API_KEY not set")
-
     def test_get_latest_issues(self):
         provider = LinearIssueProvider()
         issues = provider.get_latest_issues(in_progress_label="In Progress")
