@@ -1,12 +1,12 @@
 import json
 from dataclasses import dataclass
-from typing import TYPE_CHECKING, Mapping, Optional, Protocol, runtime_checkable
+from typing import TYPE_CHECKING, Optional, Protocol, runtime_checkable
 
 from lumberman.cli.subprocess_utils import shell_output
 from lumberman.issues.title_parser import IssueTitle, parse_issue_title
 
 if TYPE_CHECKING:
-    from collections.abc import Sequence
+    from collections.abc import Mapping, Sequence
 
 
 @dataclass
@@ -17,7 +17,7 @@ class IssueComment:
     url: str
 
 
-def _parse_issue_comment(comment_json: Mapping[str, str]) -> IssueComment:
+def _parse_issue_comment(comment_json: "Mapping[str, str]") -> IssueComment:
     return IssueComment(
         id=comment_json["id"],  # type: ignore
         body=comment_json["body"],  # type: ignore
@@ -35,7 +35,7 @@ class Issue(Protocol):
     title: IssueTitle
 
 
-@dataclass(frozen=True)
+@dataclass
 class LocalIssue(Issue):
     """Issue created by entering a title in the CLI"""
 
@@ -49,17 +49,14 @@ class RemoteIssue(Protocol):
     entity_id: str
     description: str
 
-    def label(self, label: str) -> None:
-        ...
+    def label(self, label: str) -> None: ...
 
-    def assign(self, assignee: str) -> None:
-        ...
+    def assign(self, assignee: str) -> None: ...
 
-    def get_comments(self) -> "Sequence[IssueComment]":
-        ...
+    def get_comments(self) -> "Sequence[IssueComment]": ...
 
 
-@dataclass(frozen=True)
+@dataclass
 class GithubIssue(Issue, RemoteIssue):
     entity_id: str
     title: IssueTitle
@@ -104,14 +101,11 @@ class IssueProvider(Protocol):
         """Any setup needed, including installing CLI tools, etc."""
         ...
 
-    def get_latest_issues(self, in_progress_label: str) -> "Sequence[GithubIssue]":
-        ...
+    def get_latest_issues(self, in_progress_label: str) -> "Sequence[GithubIssue]": ...
 
-    def get_issues_assigned_to_me(self, in_progress_label: str) -> "Sequence[GithubIssue]":
-        ...
+    def get_issues_assigned_to_me(self, in_progress_label: str) -> "Sequence[GithubIssue]": ...
 
-    def get_current_issue(self) -> Optional[GithubIssue]:
-        ...
+    def get_current_issue(self) -> GithubIssue | None: ...
 
 
 class GithubIssueProvider(IssueProvider):
@@ -150,7 +144,7 @@ class GithubIssueProvider(IssueProvider):
         parsed_output = [self._values_to_issue(v) for v in values]
         return parsed_output
 
-    def get_current_issue(self) -> Optional[GithubIssue]:
+    def get_current_issue(self) -> GithubIssue | None:
         current_branch: str = shell_output("git rev-parse --abbrev-ref HEAD")  # type: ignore
 
         branch_items = current_branch.split("/")

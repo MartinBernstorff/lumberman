@@ -44,7 +44,9 @@ class StagingMigrater:
         shell_output("git stash")
         self.has_stashed = True
 
-    def __exit__(self, exc_type: type, exc_val: Exception, exc_tb: "TracebackType") -> None:
+    def __exit__(
+        self, exc_type: type | None, exc_val: BaseException | None, exc_tb: "TracebackType | None"
+    ) -> None:
         """Applies the latest stash"""
         if not self.has_stashed:
             return

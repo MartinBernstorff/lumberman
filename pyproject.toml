@@ -22,18 +22,6 @@ lm = "lumberman.__main__:app"
 file = "README.md"
 content-type = "text/markdown"
 
-[tool]
-rye = { dev-dependencies = [
-  "diff-cover==8.0.3",
-  "pyright==1.1.350",
-  "pytest==7.4.0",
-  "pytest-cov==4.1.0",
-  "pytest-testmon==2.1.0",
-  "pytest-xdist==3.5.0",
-  "pytest-sugar==1.0.0",
-  "ruff==0.2.2",
-] }
-
 [project.urls]
 homepage = "https://github.com/MartinBernstorff/lumberman"
 repository = "https://github.com/MartinBernstorff/lumberman"
@@ -42,6 +30,18 @@ documentation = "https://MartinBernstorff.github.io/lumberman/"
 [build-system]
 requires = ["setuptools>=61.0.0", "wheel", "setuptools_scm"]
 build-backend = "setuptools.build_meta"
+
+[dependency-groups]
+dev = [
+  "diff-cover>=10.2.0",
+  "pyrefly>=0.52.0",
+  "pytest>=9.0.2",
+  "pytest-cov>=7.0.0",
+  "pytest-sugar>=1.1.1",
+  "pytest-testmon>=2.2.0",
+  "pytest-xdist>=3.8.0",
+  "ruff>=0.15.1",
+]
 
 [tool.setuptools]
 include-package-data = true

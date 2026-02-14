@@ -20,7 +20,7 @@ def interactive_cmd(command: str) -> None:
         raise RuntimeError(error_message) from e
 
 
-def shell_output(command: str) -> Optional[str]:
+def shell_output(command: str) -> str | None:
     import subprocess
 
     try:
@@ -29,7 +29,7 @@ def shell_output(command: str) -> Optional[str]:
         raise RuntimeError(
             f"""{command} failed.
     Exit code: {e.returncode}
-    Output: {e.stdout.decode('utf-8').strip()}"""
+    Output: {e.stdout.decode("utf-8").strip()}"""
         ) from e
 
     if not result:

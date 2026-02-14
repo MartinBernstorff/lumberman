@@ -36,6 +36,8 @@ class Location(str, enum.Enum):
                 return FullLocation.trunk
             case Location.up:
                 return FullLocation.up
+            case _:
+                raise ValueError(f"Unknown location: {self}")
 
 
 LocationCLIOption = Annotated[Location, typer.Argument()]
