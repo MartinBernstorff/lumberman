@@ -57,6 +57,9 @@ class GithubIssue(RemoteIssue, Issue):
         comments: Sequence[Mapping[str, str]] = json.loads(comments_json)["comments"]  # type: ignore
         return [_parse_issue_comment(c) for c in comments]
 
+    def mark_in_progress(self) -> None:
+        self.label("in-progress")
+
     def assign_me(self) -> None:
         if not self.entity_id:
             return
