@@ -41,6 +41,7 @@ def _select_issue() -> "Issue":
 def insert(location: LocationCLIOption = Location.up):
     """Prompt to create a new item on the current stack. Defaults to creating an item in between the current item and the next item."""
     with STACK_OP(sync_time="exit", sync_pull_requests=False):
+        # Some comment
         selected_issue = DefaultIssueSelecter().select_issue_dialog([])
 
         navigate_to_insert_location(location)
