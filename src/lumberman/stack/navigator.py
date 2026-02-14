@@ -29,6 +29,7 @@ class GraphiteNavigator(QueueNavigator):
     def trunk(self):
         with StagingMigrater():
             interactive_cmd("gt trunk")
+            interactive_cmd("git pull")
 
     def bottom(self):
         with StagingMigrater():
