@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING
 from rich import print  # noqa: A004
 
 from lumberman.cli.config import ISSUE_CONTROLLER, STACK_MANIPULATOR, STACK_NAVIGATOR, STACK_OP
-from lumberman.cli.location import FullLocation, Location, LocationCLIOption
+from lumberman.cli.location import FullLocation, LocationCLIOption, StackLocation
 from lumberman.cli.markdown import print_md
 from lumberman.cli.navigation import navigate_to_insert_location
 from lumberman.issues.github import GithubIssue
@@ -39,10 +39,10 @@ def _select_issue() -> "Issue":
     return selected_issue
 
 
-def insert(location: LocationCLIOption = Location.up):
+def insert(location: LocationCLIOption = StackLocation.up):
     """Prompt to create a new item on the current stack. Defaults to creating an item in between the current item and the next item."""
     with STACK_OP(sync_time="exit", sync_pull_requests=False):
-        selected_issue = DefaultIssueSelecter().select_issue_dialog([])
+        selected_issue = _select_issue()
 
         navigate_to_insert_location(location)
 
@@ -64,7 +64,7 @@ def delete():
         STACK_MANIPULATOR.delete()
 
 
-def fork(location: LocationCLIOption = Location.bottom):
+def fork(location: LocationCLIOption = StackLocation.bottom):
     """Fork into a new stack and add an item. Defaults to forking from the first item in the current stack."""
     with STACK_OP(sync_time="enter", sync_pull_requests=False):
         selected_issue = _select_issue()

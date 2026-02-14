@@ -12,7 +12,7 @@ class FullLocation(str, enum.Enum):
     down = "down"
 
 
-class Location(str, enum.Enum):
+class StackLocation(str, enum.Enum):
     up = "up"
     top = "top"
     to = "to"
@@ -26,18 +26,18 @@ class Location(str, enum.Enum):
     @property
     def to_full_location(self) -> "FullLocation":
         match self:
-            case Location.to | Location.top:
+            case StackLocation.to | StackLocation.top:
                 return FullLocation.top
-            case Location.do | Location.down:
+            case StackLocation.do | StackLocation.down:
                 return FullLocation.down
-            case Location.bo | Location.bottom:
+            case StackLocation.bo | StackLocation.bottom:
                 return FullLocation.bottom
-            case Location.tr | Location.trunk:
+            case StackLocation.tr | StackLocation.trunk:
                 return FullLocation.trunk
-            case Location.up:
+            case StackLocation.up:
                 return FullLocation.up
             case _:
                 raise ValueError(f"Unknown location: {self}")
 
 
-LocationCLIOption = Annotated[Location, typer.Argument()]
+LocationCLIOption = Annotated[StackLocation, typer.Argument()]
