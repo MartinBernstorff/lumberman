@@ -2,7 +2,8 @@ from dataclasses import dataclass
 
 import pytest
 
-from .provider import GithubIssue, Issue, LocalIssue
+from .github import GithubIssue
+from .provider import Issue, LocalIssue
 from .stringifyer import DefaultIssueStringifyer
 from .title_parser import IssueTitle
 
