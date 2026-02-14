@@ -21,11 +21,9 @@ class QueueManipulator(Protocol):
         """Create a new item. If an item exists above the current item, insert between them."""
         ...
 
-    def delete(self):
-        ...
+    def delete(self): ...
 
-    def move(self):
-        ...
+    def move(self): ...
 
     def sync(
         self,
@@ -33,8 +31,7 @@ class QueueManipulator(Protocol):
         automerge: bool = False,
         squash: bool = False,
         draft: bool = True,
-    ):
-        ...
+    ): ...
 
 
 @dataclass(frozen=True)
@@ -74,7 +71,7 @@ class GraphiteManipulator(QueueManipulator):
         if squash:
             interactive_cmd("gt squash --no-edit")
 
-        interactive_cmd("gt sync --pull --force --restack")
+        interactive_cmd("gt sync --force --restack")
 
         if sync_pull_requests:
             command = "gt submit --no-edit --stack"
