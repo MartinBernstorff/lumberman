@@ -29,7 +29,7 @@ class LinearIssue(RemoteIssue, Issue):
     title: IssueTitle
     description: str
     identifier: str  # e.g. "TEAM-123"
-    labels: list[str]
+    labels: Sequence[str]
 
     def issue_magic_identifier(self) -> str:
         return f"{self.identifier}"

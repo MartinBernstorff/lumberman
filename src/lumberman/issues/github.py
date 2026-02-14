@@ -19,7 +19,7 @@ class GithubIssue(RemoteIssue, Issue):
     entity_id: str
     title: IssueTitle
     description: str
-    labels: list[str]
+    labels: Sequence[str]
 
     def issue_magic_identifier(self) -> str:
         return f"#{self.entity_id}"
@@ -71,12 +71,15 @@ class GithubIssueProvider:
     def _values_to_issue(self, values: dict[str, str]) -> GithubIssue:
         parsed_title = parse_issue_title(values["title"])
         return GithubIssue(
-            entity_id=str(values["number"]), title=parsed_title, description=values["body"]
+            entity_id=str(values["number"]),
+            title=parsed_title,
+            description=values["body"],
+            labels=values["labels"],
         )
 
     def get_latest_issues(self, in_progress_label: str) -> "Sequence[GithubIssue]":
         latest_issues = shell_output(
-            f"gh issue list --limit 10 --json number,title,body --search 'is:open -label:{in_progress_label}'"
+            f"gh issue list --limit 10 --json number,title,body,labels --search 'is:open -label:{in_progress_label}'"
         )
 
         if latest_issues is None:
@@ -112,4 +115,5 @@ class GithubIssueProvider:
             entity_id=branch_items[1],
             title=IssueTitle(prefix=branch_items[0], content=branch_items[2]),
             description="",
+            labels=[],
         )
