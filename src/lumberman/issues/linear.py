@@ -55,7 +55,7 @@ class LinearIssue(RemoteIssue, Issue):
             # Label may already exist; search for it
             result = _linear_api(f"""
                 {{
-                    issueLabels(filter: {{ name: {{ eq: "{label}" }} }}) {{
+                    issueLabels(filter: {{ name: {{ eq: f"{label}" }} }}) {{
                         nodes {{ id }}
                     }}
                 }}
@@ -65,9 +65,9 @@ class LinearIssue(RemoteIssue, Issue):
             except (KeyError, TypeError, IndexError) as e:
                 raise RuntimeError(f"Error finding/creating label {label}") from e
 
-        _linear_api(f"""
+        _linear_api("""
             mutation {{
-                issueUpdate(id: "{self.entity_id}", input: {{ labelIds: ["{label_id}"] }}) {{
+                issueUpdate(id: f"{self.entity_id}", input: {{ labelIds: [f"{label_id}"] }}) {{
                     issue {{ id }}
                 }}
             }}
