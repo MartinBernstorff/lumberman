@@ -48,7 +48,7 @@ def insert(location: LocationCLIOption = Location.up):
 
         STACK_MANIPULATOR.insert(selected_issue)
         if isinstance(selected_issue, RemoteIssue):
-            selected_issue.label("in-progress")
+            selected_issue.mark_in_progress()
             selected_issue.assign_me()
 
 
@@ -83,7 +83,7 @@ def fork(location: LocationCLIOption = Location.bottom):
 
         STACK_MANIPULATOR.fork(selected_issue)
         if isinstance(selected_issue, RemoteIssue):
-            selected_issue.label("in-progress")
+            selected_issue.mark_in_progress()
             selected_issue.assign_me()
 
 
@@ -96,7 +96,7 @@ def new():
         STACK_MANIPULATOR.fork(selected_issue)
 
         if isinstance(selected_issue, RemoteIssue):
-            selected_issue.label("in-progress")
+            selected_issue.mark_in_progress()
             selected_issue.assign_me()
 
 

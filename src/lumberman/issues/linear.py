@@ -101,6 +101,27 @@ class LinearIssue(RemoteIssue, Issue):
             for c in comments
         ]
 
+    def mark_in_progress(self) -> None:
+        result = _linear_api("""
+            {
+                workflowStates(filter: { name: { eq: "In Progress" } }) {
+                    nodes { id }
+                }
+            }
+        """)
+        try:
+            state_id = result["data"]["workflowStates"]["nodes"][0]["id"]
+        except (KeyError, TypeError, IndexError) as e:
+            raise RuntimeError("Could not find 'In Progress' workflow state") from e
+
+        _linear_api(f"""
+            mutation {{
+                issueUpdate(id: "{self.entity_id}", input: {{ stateId: "{state_id}" }}) {{
+                    issue {{ id }}
+                }}
+            }}
+        """)
+
     def assign_me(self) -> None:
         result = _linear_api("""
             {
