@@ -49,7 +49,7 @@ def insert(location: LocationCLIOption = Location.up):
         STACK_MANIPULATOR.insert(selected_issue)
         if isinstance(selected_issue, RemoteIssue):
             selected_issue.label("in-progress")
-            selected_issue.assign(assignee="@me")
+            selected_issue.assign_me()
 
 
 def move():
@@ -84,7 +84,7 @@ def fork(location: LocationCLIOption = Location.bottom):
         STACK_MANIPULATOR.fork(selected_issue)
         if isinstance(selected_issue, RemoteIssue):
             selected_issue.label("in-progress")
-            selected_issue.assign(assignee="@me")
+            selected_issue.assign_me()
 
 
 def new():
@@ -97,7 +97,7 @@ def new():
 
         if isinstance(selected_issue, RemoteIssue):
             selected_issue.label("in-progress")
-            selected_issue.assign(assignee="@me")
+            selected_issue.assign_me()
 
 
 def sync(automerge: bool = False, draft: bool = False, squash: bool = False):

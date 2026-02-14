@@ -57,11 +57,11 @@ class GithubIssue(RemoteIssue, Issue):
         comments: Sequence[Mapping[str, str]] = json.loads(comments_json)["comments"]  # type: ignore
         return [_parse_issue_comment(c) for c in comments]
 
-    def assign(self, assignee: str) -> None:
+    def assign_me(self) -> None:
         if not self.entity_id:
             return
 
-        shell_output(f"gh issue edit {int(self.entity_id)} --add-assignee {assignee}")
+        shell_output(f"gh issue edit {int(self.entity_id)} --add-assignee @me")
 
 
 class GithubIssueProvider:

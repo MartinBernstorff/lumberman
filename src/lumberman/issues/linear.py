@@ -101,19 +101,16 @@ class LinearIssue(RemoteIssue, Issue):
             for c in comments
         ]
 
-    def assign(self, assignee: str) -> None:
-        # Find user by display name or email
-        result = _linear_api(f"""
-            {{
-                users(filter: {{ displayName: {{ eq: "{assignee}" }} }}) {{
-                    nodes {{ id }}
-                }}
-            }}
+    def assign_me(self) -> None:
+        result = _linear_api("""
+            {
+                viewer { id }
+            }
         """)
         try:
-            user_id = result["data"]["users"]["nodes"][0]["id"]
-        except (KeyError, TypeError, IndexError) as e:
-            raise RuntimeError(f"Error finding user {assignee}") from e
+            user_id = result["data"]["viewer"]["id"]
+        except (KeyError, TypeError) as e:
+            raise RuntimeError("Error finding current user") from e
 
         _linear_api(f"""
             mutation {{
