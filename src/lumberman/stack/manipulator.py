@@ -75,6 +75,7 @@ class GraphiteManipulator(QueueManipulator):
 
         if sync_pull_requests:
             command = "gt submit --no-edit --stack"
+
             if draft:
                 command += " --draft"
             else:
