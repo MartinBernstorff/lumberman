@@ -42,7 +42,7 @@ class DefaultIssueStringifyer(IssueStringifyer):
         first_commit_str = issue.title.prefix if issue.title.prefix is not None else ""
 
         if isinstance(issue, RemoteIssue):
-            first_commit_str += f"({issue.magic_identifier()})"
+            first_commit_str += f"{issue.magic_identifier()}"
 
         first_commit_str += ": " if first_commit_str else first_commit_str
         first_commit_str += issue.title.content
