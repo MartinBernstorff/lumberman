@@ -46,6 +46,7 @@ class RemoteIssue(Protocol):
     """Issue created by a remote source (e.g. Github)"""
 
     entity_id: str
+    branch_id: str
     description: str
 
     def label(self, label: str) -> None: ...
