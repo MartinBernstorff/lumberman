@@ -6,9 +6,9 @@ from rich.progress import Progress, SpinnerColumn, TextColumn
 if TYPE_CHECKING:
     from collections.abc import Sequence
 
-    from lumberman.issues.provider import Issue
+    from lumberman.issues.provider import Issue, IssueProvider
 
-    from .provider import GithubIssue, IssueProvider
+    from .github import GithubIssue
     from .selecter import IssueSelecter
 
 
@@ -18,7 +18,7 @@ class IssueController:
     provider: "IssueProvider"
     in_progress_label: str
 
-    def _get_latest_issues(self) -> "Sequence[GithubIssue]":
+    def _get_latest_issues(self) -> "Sequence[Issue]":
         with Progress(
             SpinnerColumn(), TextColumn("[progress.description]{task.description}"), transient=True
         ) as progress:
@@ -32,7 +32,7 @@ class IssueController:
 
         return latest_issues
 
-    def _get_my_issues(self) -> "Sequence[GithubIssue]":
+    def _get_my_issues(self) -> "Sequence[Issue]":
         with Progress(
             SpinnerColumn(), TextColumn("[progress.description]{task.description}"), transient=True
         ) as progress:
@@ -43,7 +43,7 @@ class IssueController:
 
         return my_issues
 
-    def select_issue(self, issues: Optional["Sequence[GithubIssue]"] = None) -> "Issue":
+    def select_issue(self, issues: "Sequence[Issue] | None" = None) -> "Issue":
         if not issues:
             issues = [*self._get_my_issues(), *self._get_latest_issues()]
 

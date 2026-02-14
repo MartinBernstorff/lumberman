@@ -34,7 +34,7 @@ class DefaultIssueStringifyer(IssueStringifyer):
     def _get_branch_title(self, issue: "Issue") -> str:
         branch_title: str = ""
         branch_title += issue.title.content
-        branch_title += f"/{issue.entity_id}" if isinstance(issue, RemoteIssue) else ""
+        branch_title += f"/{issue.branch_id()}" if isinstance(issue, RemoteIssue) else ""
 
         return sanitise_text_for_bash(branch_title)
 
@@ -42,7 +42,7 @@ class DefaultIssueStringifyer(IssueStringifyer):
         first_commit_str = issue.title.prefix if issue.title.prefix is not None else ""
 
         if isinstance(issue, RemoteIssue):
-            first_commit_str += f"(#{issue.entity_id})"
+            first_commit_str += f"({issue.magic_identifier()})"
 
         first_commit_str += ": " if first_commit_str else first_commit_str
         first_commit_str += issue.title.content
@@ -50,6 +50,6 @@ class DefaultIssueStringifyer(IssueStringifyer):
         if isinstance(issue, RemoteIssue):
             first_commit_str += f"""
 
-Fixes #{issue.entity_id}"""
+Fixes {issue.magic_identifier()}"""
 
         return sanitise_text_for_bash(first_commit_str)

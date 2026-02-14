@@ -1,5 +1,8 @@
+import os
+
 from ..issues.controller import IssueController
-from ..issues.provider import GithubIssueProvider
+from ..issues.github import GithubIssueProvider
+from ..issues.linear import LinearIssueProvider
 from ..issues.selecter import DefaultIssueSelecter
 from ..issues.stringifyer import DefaultIssueStringifyer
 from ..stack.manipulator import GraphiteManipulator
@@ -9,7 +12,11 @@ from .interface_elements import QueueOperation
 STACK_MANIPULATOR = GraphiteManipulator(issue_parser=DefaultIssueStringifyer())
 STACK_NAVIGATOR = GraphiteNavigator()
 ISSUE_CONTROLLER = IssueController(
-    provider=GithubIssueProvider(), view=DefaultIssueSelecter(), in_progress_label="in-progress"
+    provider=GithubIssueProvider()
+    if not os.environ.get("LINEAR_API_KEY")
+    else LinearIssueProvider(),
+    view=DefaultIssueSelecter(),
+    in_progress_label="in-progress",
 )
 STACK_OP = QueueOperation(
     sync_time="enter", stack_manipulator=STACK_MANIPULATOR, stack_navigator=STACK_NAVIGATOR

@@ -6,7 +6,8 @@ from lumberman.cli.config import ISSUE_CONTROLLER, STACK_MANIPULATOR, STACK_NAVI
 from lumberman.cli.location import FullLocation, Location, LocationCLIOption
 from lumberman.cli.markdown import print_md
 from lumberman.cli.navigation import navigate_to_insert_location
-from lumberman.issues.provider import GithubIssue, Issue, RemoteIssue
+from lumberman.issues.github import GithubIssue
+from lumberman.issues.provider import Issue, RemoteIssue
 from lumberman.issues.selecter import DefaultIssueSelecter
 
 if TYPE_CHECKING:
@@ -48,7 +49,7 @@ def insert(location: LocationCLIOption = Location.up):
         STACK_MANIPULATOR.insert(selected_issue)
         if isinstance(selected_issue, RemoteIssue):
             selected_issue.label("in-progress")
-            selected_issue.assign(assignee="@me")
+            selected_issue.assign_me()
 
 
 def move():
@@ -83,7 +84,7 @@ def fork(location: LocationCLIOption = Location.bottom):
         STACK_MANIPULATOR.fork(selected_issue)
         if isinstance(selected_issue, RemoteIssue):
             selected_issue.label("in-progress")
-            selected_issue.assign(assignee="@me")
+            selected_issue.assign_me()
 
 
 def new():
@@ -96,22 +97,16 @@ def new():
 
         if isinstance(selected_issue, RemoteIssue):
             selected_issue.label("in-progress")
-            selected_issue.assign(assignee="@me")
+            selected_issue.assign_me()
 
 
-def sync(
-    automerge: bool = False, draft: bool = False, squash: bool = False, add_pr_label: bool = True
-):
+def sync(automerge: bool = False, draft: bool = False, squash: bool = False):
     """Synchronize all state, ensuring the stack is internally in sync, and in sync with the remote. Creates PRs if needed."""
     with STACK_OP(sync_time="none", sync_pull_requests=False):
         STACK_MANIPULATOR.sync(
             automerge=automerge, squash=squash, draft=draft, sync_pull_requests=True
         )
 
-        if add_pr_label:
-            current_issue = ISSUE_CONTROLLER.provider.get_current_issue()
-            if current_issue:
-                current_issue.label("has-pr")
         print(":rocket: [bold green]Stack synced![/bold green]")
 
 

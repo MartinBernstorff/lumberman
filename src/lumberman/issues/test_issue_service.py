@@ -1,6 +1,6 @@
 import pytest
 
-from .provider import GithubIssueProvider
+from .github import GithubIssueProvider
 
 
 @pytest.mark.skip

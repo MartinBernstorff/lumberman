@@ -5,7 +5,8 @@ import typer
 from iterfzf import iterfzf  # type: ignore
 from rich.console import Console
 
-from .provider import GithubIssue, Issue, LocalIssue
+from .github import GithubIssue
+from .provider import Issue, LocalIssue
 from .title_parser import parse_issue_title
 
 if TYPE_CHECKING:
@@ -15,7 +16,7 @@ console = Console()
 
 
 class IssueSelecter(Protocol):
-    def select_issue_dialog(self, issues: "Sequence[GithubIssue]") -> Issue: ...
+    def select_issue_dialog(self, issues: "Sequence[Issue]") -> Issue: ...
 
 
 @dataclass(frozen=True)
@@ -29,8 +30,8 @@ class FZFSelection:
 
 @dataclass(frozen=True)
 class DefaultIssueSelecter(IssueSelecter):
-    def _show_selection_dialog(self, issues: "Sequence[GithubIssue]") -> FZFSelection:
-        issue_titles = [f"{issue.title.content} #{issue.entity_id}" for issue in issues]
+    def _show_selection_dialog(self, issues: "Sequence[Issue]") -> FZFSelection:
+        issue_titles = [issue.render() for issue in issues]
         if len(issue_titles) == 0:
             issue_titles.append("No issues found. Enter an title for the change below.")
 
@@ -38,7 +39,7 @@ class DefaultIssueSelecter(IssueSelecter):
         selection: tuple(str, str) = iterfzf([*issue_titles], print_query=True, exact=True)  # type: ignore
         return FZFSelection(input_str=selection[0], selected_str=selection[1])  # type: ignore
 
-    def select_issue_dialog(self, issues: "Sequence[GithubIssue]") -> Issue:
+    def select_issue_dialog(self, issues: "Sequence[Issue]") -> Issue:
         fzf_selection = self._show_selection_dialog(issues=issues)
         selected_issue_title = fzf_selection.either()
 

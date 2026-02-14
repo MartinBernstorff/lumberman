@@ -1,8 +1,10 @@
+from cProfile import label
 from dataclasses import dataclass
 
 import pytest
 
-from .provider import GithubIssue, Issue, LocalIssue
+from .github import GithubIssue
+from .provider import Issue, LocalIssue
 from .stringifyer import DefaultIssueStringifyer
 from .title_parser import IssueTitle
 
@@ -22,6 +24,7 @@ class IssueStringifyerDummy:
                 entity_id="42",
                 title=IssueTitle(prefix="test-prefix", content="test-description"),
                 description="test-description",
+                labels=[],
             ),
             first_commit_str="""test-prefix(#42): test-description
 
@@ -38,6 +41,7 @@ Fixes #42""",
                 entity_id="42",
                 title=IssueTitle(prefix="feat", content="test-description"),
                 description="test-description",
+                labels=[],
             ),
             first_commit_str="""feat(#42): test-description
 
