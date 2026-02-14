@@ -1,6 +1,6 @@
 import re
 from dataclasses import dataclass
-from typing import TYPE_CHECKING, Callable
+from typing import TYPE_CHECKING
 
 import typer
 
@@ -8,7 +8,7 @@ from lumberman.cli import manipulation as man
 from lumberman.cli import navigation as nav
 
 if TYPE_CHECKING:
-    from collections.abc import Sequence
+    from collections.abc import Callable, Sequence
 
 app = typer.Typer(
     name="[l]umber[m]an",
@@ -22,7 +22,7 @@ app = typer.Typer(
 @dataclass(frozen=True)
 class Command:
     name: str
-    fn: Callable[[], None]
+    fn: "Callable[[], None]"
 
 
 @dataclass(frozen=True)
@@ -47,7 +47,6 @@ commands = [
         name="Manipulation",
         commands=[
             Command(name="[i]nsert", fn=man.insert),
-            Command(name="[j]ab", fn=man.jab),
             Command(name="[d]elete", fn=man.delete),
             Command(name="[f]ork", fn=man.fork),
             Command(name="[m]ove", fn=man.move),

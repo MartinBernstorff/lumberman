@@ -1,6 +1,6 @@
 from typing import TYPE_CHECKING
 
-from rich import print
+from rich import print  # noqa: A004
 
 from lumberman.cli.config import ISSUE_CONTROLLER, STACK_MANIPULATOR, STACK_NAVIGATOR, STACK_OP
 from lumberman.cli.location import FullLocation, Location, LocationCLIOption
@@ -38,18 +38,10 @@ def _select_issue() -> "Issue":
     return selected_issue
 
 
-def jab(location: LocationCLIOption = Location.up):
-    """Prompt to create a new item on the current stack, without fetching issues."""
-    with STACK_OP(sync_time="exit", sync_pull_requests=False):
-        selected_issue = DefaultIssueSelecter().select_issue_dialog([])
-        navigate_to_insert_location(location)
-        STACK_MANIPULATOR.insert(selected_issue)
-
-
 def insert(location: LocationCLIOption = Location.up):
     """Prompt to create a new item on the current stack. Defaults to creating an item in between the current item and the next item."""
     with STACK_OP(sync_time="exit", sync_pull_requests=False):
-        selected_issue = _select_issue()
+        selected_issue = DefaultIssueSelecter().select_issue_dialog([])
 
         navigate_to_insert_location(location)
 

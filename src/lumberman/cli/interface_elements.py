@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Literal, Union
 
-from rich import print
+from rich import print  # noqa: A004
 
 if TYPE_CHECKING:
     from types import TracebackType
@@ -30,7 +30,7 @@ class QueueOperation:
             self.stack_manipulator.sync(sync_pull_requests=self.sync_pull_requests)
 
     def __exit__(
-        self, exc_type: Union[type, None], exc_val: Exception, exc_tb: "TracebackType"
+        self, exc_type: type | None, exc_val: BaseException | None, exc_tb: "TracebackType | None"
     ) -> None:
         if self.sync_time == "exit" and exc_type is not None:
             self.stack_manipulator.sync(sync_pull_requests=self.sync_pull_requests)

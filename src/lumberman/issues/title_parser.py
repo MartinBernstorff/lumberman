@@ -5,7 +5,7 @@ from typing import Optional
 
 @dataclass(frozen=True)
 class IssueTitle:
-    prefix: Optional[str]
+    prefix: str | None
     content: str
 
     def __str__(self) -> str:

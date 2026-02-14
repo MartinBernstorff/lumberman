@@ -14,8 +14,7 @@ class IssueInfo:
 
 
 class IssueStringifyer(Protocol):
-    def get_issue_info(self, issue: "Issue") -> IssueInfo:
-        ...
+    def get_issue_info(self, issue: "Issue") -> IssueInfo: ...
 
 
 def sanitise_text_for_bash(input_string: str) -> str:

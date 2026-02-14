@@ -15,8 +15,7 @@ console = Console()
 
 
 class IssueSelecter(Protocol):
-    def select_issue_dialog(self, issues: "Sequence[GithubIssue]") -> Issue:
-        ...
+    def select_issue_dialog(self, issues: "Sequence[GithubIssue]") -> Issue: ...
 
 
 @dataclass(frozen=True)

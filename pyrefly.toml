@@ -1,0 +1,11 @@
+project-excludes = [
+    ".*venv*",
+    ".cache",
+]
+python-platform = "darwin"
+infer-with-first-use = false
+
+[errors]
+untyped-import = "ignore"
+unannotated-parameter = "ignore"
+no-access = "ignore"
