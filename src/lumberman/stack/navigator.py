@@ -28,8 +28,10 @@ class QueueNavigator(Protocol):
 class GraphiteNavigator(QueueNavigator):
     def trunk(self):
         with StagingMigrater():
-            interactive_cmd("gt trunk")
-            interactive_cmd("git pull")
+            trunk_branch = shell_output("gt trunk")
+            if trunk_branch is None:
+                raise RuntimeError("Failed to get trunk branch")
+            interactive_cmd(f"git checkout {trunk_branch}")
 
     def bottom(self):
         with StagingMigrater():
