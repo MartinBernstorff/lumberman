@@ -19,6 +19,11 @@ class GithubIssue(RemoteIssue, Issue):
     entity_id: str
     title: IssueTitle
     description: str
+    labels: list[str] = None  # type: ignore[assignment]
+
+    def __post_init__(self):
+        if self.labels is None:
+            self.labels = []
 
     def issue_magic_identifier(self) -> str:
         return f"#{self.entity_id}"

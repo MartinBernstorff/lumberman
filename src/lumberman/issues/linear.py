@@ -29,6 +29,7 @@ class LinearIssue(RemoteIssue, Issue):
     title: IssueTitle
     description: str
     identifier: str  # e.g. "TEAM-123"
+    labels: list[str]
 
     def issue_magic_identifier(self) -> str:
         return f"{self.identifier}"
@@ -40,9 +41,6 @@ class LinearIssue(RemoteIssue, Issue):
         return f"{self.identifier}: {self.title.content}"
 
     def label(self, label: str) -> None:
-        if not self.entity_id:
-            return
-
         # Find or create the label, then attach it
         result = _linear_api(f"""
             mutation {{
@@ -57,7 +55,7 @@ class LinearIssue(RemoteIssue, Issue):
             # Label may already exist; search for it
             result = _linear_api(f"""
                 {{
-                    issueLabels(filter: {{ name: {{ eq: f"{label}" }} }}) {{
+                    issueLabels(filter: {{ name: {{ eq: "{label}" }} }}) {{
                         nodes {{ id }}
                     }}
                 }}
@@ -67,9 +65,9 @@ class LinearIssue(RemoteIssue, Issue):
             except (KeyError, TypeError, IndexError) as e:
                 raise RuntimeError(f"Error finding/creating label {label}") from e
 
-        _linear_api("""
+        _linear_api(f"""
             mutation {{
-                issueUpdate(id: f"{self.entity_id}", input: {{ labelIds: [f"{label_id}"] }}) {{
+                issueUpdate(id: "{self.entity_id}", input: {{ labelIds: ["{label_id}"] }}) {{
                     issue {{ id }}
                 }}
             }}
@@ -104,9 +102,6 @@ class LinearIssue(RemoteIssue, Issue):
         ]
 
     def assign(self, assignee: str) -> None:
-        if not self.entity_id:
-            return
-
         # Find user by display name or email
         result = _linear_api(f"""
             {{
@@ -135,12 +130,31 @@ class LinearIssueProvider:
 
     def _values_to_issue(self, node: dict) -> LinearIssue:
         parsed_title = parse_issue_title(node.get("title", ""))
+        label_nodes = node.get("labels", {}).get("nodes", [])
         return LinearIssue(
             entity_id=node["id"],
             identifier=node.get("identifier", ""),
             title=parsed_title,
             description=node.get("description", "") or "",
+            labels=[l["name"] for l in label_nodes],
         )
+
+    def get_by_identifier(self, identifier: str) -> LinearIssue | None:
+        number = identifier.split("-")[-1]
+        result = _linear_api(f"""
+            {{
+                issues(filter: {{ number: {{ eq: {number} }} }}) {{
+                    nodes {{ id identifier title description labels {{ nodes {{ name }} }} }}
+                }}
+            }}
+        """)
+        try:
+            nodes = result["data"]["issues"]["nodes"]
+            if not nodes:
+                return None
+            return self._values_to_issue(nodes[0])
+        except (KeyError, TypeError):
+            return None
 
     def get_latest_issues(self, in_progress_label: str) -> "Sequence[LinearIssue]":
         result = _linear_api(f"""
@@ -154,14 +168,11 @@ class LinearIssueProvider:
                     }},
                     orderBy: createdAt
                 ) {{
-                    nodes {{ id identifier title description }}
+                    nodes {{ id identifier title description labels {{ nodes {{ name }} }} }}
                 }}
             }}
         """)
-        try:
-            nodes = result["data"]["issues"]["nodes"]
-        except (KeyError, TypeError):
-            return []
+        nodes = result["data"]["issues"]["nodes"]
 
         return [self._values_to_issue(n) for n in nodes]
 
@@ -176,7 +187,7 @@ class LinearIssueProvider:
                             canceledAt: {{ null: true }}
                         }}
                     ) {{
-                        nodes {{ id identifier title description }}
+                        nodes {{ id identifier title description labels {{ nodes {{ name }} }} }}
                     }}
                 }}
             }}
@@ -201,4 +212,5 @@ class LinearIssueProvider:
             identifier=branch_items[1],
             title=IssueTitle(prefix=branch_items[0], content=branch_items[2]),
             description="",
+            labels=[],
         )
