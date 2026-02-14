@@ -4,7 +4,6 @@
 [![PyPI](https://img.shields.io/pypi/v/lumberman.svg)][pypi status]
 [![Python Version](https://img.shields.io/pypi/pyversions/lumberman)][pypi status]
 [![Roadmap](https://img.shields.io/badge/Board-Roadmap-green)][roadmap]
-
 [dev container]: https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/MartinBernstorff/lumberman/
 [pypi status]: https://pypi.org/project/lumberman/
 [documentation]: https://MartinBernstorff.github.io/lumberman/
