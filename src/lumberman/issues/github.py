@@ -20,6 +20,9 @@ class GithubIssue(RemoteIssue, Issue):
     title: IssueTitle
     description: str
 
+    def issue_magic_identifier(self) -> str:
+        return f"#{self.entity_id}"
+
     def branch_id(self) -> str:
         return self.entity_id
 

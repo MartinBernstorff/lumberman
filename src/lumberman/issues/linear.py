@@ -30,6 +30,9 @@ class LinearIssue(RemoteIssue, Issue):
     description: str
     identifier: str  # e.g. "TEAM-123"
 
+    def issue_magic_identifier(self) -> str:
+        return f"{self.identifier}"
+
     def branch_id(self) -> str:
         return self.identifier
 
