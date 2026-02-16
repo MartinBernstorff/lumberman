@@ -45,5 +45,5 @@ def parse_issue_title(issue_title: str) -> IssueTitle:
         # No prefix found, return without prefix
         return IssueTitle(prefix=None, content=issue_title)
 
-    description = re.findall(r": (.*)$", issue_title)[0]
-    return IssueTitle(prefix=prefix, content=description)
+    description = re.findall(r": (.*)$", issue_title)
+    return IssueTitle(prefix=prefix, content=description[0] if description else "")
