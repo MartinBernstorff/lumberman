@@ -178,7 +178,7 @@ class LinearIssueProvider:
         result = _linear_api(f"""
             {{
                 issues(
-                    first: 10,
+                    first: 250,
                     filter: {{
                         state: {{ name: {{ neq: "{in_progress_label}" }} }},
                         completedAt: {{ null: true }},
